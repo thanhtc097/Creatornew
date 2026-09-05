@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Remove image backgrounds online for free. Create transparent PNG images with AI processing directly in your browser.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#5d5fef">
+  <link rel="icon" type="image/png" href="../creatornew-icon.png">
+  <link rel="apple-touch-icon" href="../creatornew-icon.png">
+  <link rel="canonical" href="https://creatornew.com/background-remover/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CreatorNew">
+  <meta property="og:title" content="Free AI Background Remover | CreatorNew">
+  <meta property="og:description" content="Remove backgrounds and download transparent PNG images directly in your browser.">
+  <meta property="og:url" content="https://creatornew.com/background-remover/">
+  <title>Free AI Background Remover — Transparent PNG | CreatorNew</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/background-remover.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://creatornew.com/background-remover/#app",
+        "name": "CreatorNew Background Remover",
+        "url": "https://creatornew.com/background-remover/",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any",
+        "description": "A free AI background remover that processes supported images in the browser.",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://creatornew.com/background-remover/#faq",
+        "mainEntity": [
+          {"@type": "Question", "name": "Is the background remover free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can remove image backgrounds for free without creating an account."}},
+          {"@type": "Question", "name": "Are my images uploaded?", "acceptedAnswer": {"@type": "Answer", "text": "The image is processed by an AI model in your browser and is not uploaded to CreatorNew."}},
+          {"@type": "Question", "name": "Why does the first background removal take longer?", "acceptedAnswer": {"@type": "Answer", "text": "Your browser needs to download the AI model the first time. Later uses may be faster because browser caching can reuse model files."}}
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#remover">Skip to background remover</a>
+  <header class="topbar">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="https://creatornew.com/"><img class="brand-logo" src="../creatornew-logo.png" alt="CreatorNew" width="2075" height="758"></a>
+      <div class="nav-links">
+        <details class="nav-dropdown">
+          <summary>Image Converter <span aria-hidden="true">⌄</span></summary>
+          <div class="nav-dropdown-menu">
+            <a href="../image-converter/"><strong>Image Converter</strong><small>Convert JPG, PNG and WebP</small></a>
+            <a href="../background-remover/"><strong>Background Remover</strong><small>Create transparent PNGs</small></a>
+            <a href="../png-to-webp/"><strong>PNG to WebP</strong><small>Lightweight web images</small></a>
+            <a href="../jpg-to-webp/"><strong>JPG to WebP</strong><small>Optimize photos for web</small></a>
+            <a href="../webp-to-jpg/"><strong>WebP to JPG</strong><small>Improve compatibility</small></a>
+            <a href="../image-compressor/"><strong>Image Compressor</strong><small>Reduce image file size</small></a>
+            <a href="../image-resize/"><strong>Image Resizer</strong><small>Resize for creator platforms</small></a>
+          </div>
+        </details>
+        <a href="#faq">FAQ</a>
+        <a href="../how-to-convert-images-online-free/">Guides</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="hero background-hero">
+    <section class="hero-copy">
+      <p class="eyebrow">AI image tool</p>
+      <h1>Remove backgrounds <span>automatically</span></h1>
+      <p class="lead">Create a clean transparent PNG with AI processing in your browser. No account, watermark or image upload.</p>
+      <div class="benefits">
+        <div class="benefit"><span class="check">✓</span> AI subject detection</div>
+        <div class="benefit"><span class="check">✓</span> Transparent PNG output</div>
+        <div class="benefit"><span class="check">✓</span> Browser-side processing</div>
+        <div class="benefit"><span class="check">✓</span> Free to use</div>
+      </div>
+    </section>
+
+    <section id="remover" class="tool-card background-tool" aria-label="AI image editor">
+      <div class="remover-modes" role="tablist" aria-label="Editing mode">
+        <button id="backgroundModeBtn" class="mode-btn is-active" type="button" role="tab" aria-selected="true" aria-controls="backgroundModePanel">Remove background</button>
+        <button id="objectModeBtn" class="mode-btn" type="button" role="tab" aria-selected="false" aria-controls="objectModePanel">Erase owned logo/object</button>
+      </div>
+      <div id="objectPolicy" class="object-policy" hidden>
+        <h2>Use this tool only on images you may edit</h2>
+        <p>Remove a logo or object only when you own the image or have permission. Do not remove copyright watermarks, signatures, authenticity, ownership or security marks.</p>
+        <label><input id="ownershipConfirm" type="checkbox"> I own this image or have permission to edit it.</label>
+        <label><input id="prohibitedPurpose" type="checkbox"> I am trying to remove a third-party watermark or rights-management mark.</label>
+        <p id="policyStatus" class="status" role="alert" tabindex="-1"></p>
+      </div>
+      <div id="backgroundDropZone" class="drop-zone" role="button" tabindex="0" aria-label="Choose an image or drag it here">
+        <div class="upload-visual" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M15 36h22a8 8 0 0 0 .5-15.98A13 13 0 0 0 12.37 17 9.5 9.5 0 0 0 15 36Z" stroke="currentColor" stroke-width="2.8"/><path d="m24 31V17m0 0-5 5m5-5 5 5" stroke="currentColor" stroke-width="2.8"/></svg></div>
+        <h2>Drop an image here</h2>
+        <p>Select a JPG, PNG or WebP image up to 25 MB</p>
+        <button id="backgroundChooseBtn" class="primary-btn" type="button">+ Choose Image</button>
+        <p class="privacy">🔒 Your image is processed on your device</p>
+      </div>
+
+      <div id="backgroundWorkspace" class="background-workspace" hidden>
+        <div class="workspace-head"><div><h2 id="backgroundFileName" class="workspace-title"></h2><span id="backgroundFileSize" class="file-size"></span></div><button id="clearBackgroundBtn" class="text-btn danger" type="button">Clear</button></div>
+        <div id="backgroundModePanel" role="tabpanel" aria-labelledby="backgroundModeBtn">
+        <div class="background-previews">
+          <figure><figcaption>Original</figcaption><div class="background-preview"><img id="originalPreview" alt=""></div></figure>
+          <figure><figcaption>Transparent result</figcaption><div class="background-preview checkerboard is-empty"><img id="resultPreview" alt=""><span>Result appears here</span></div></figure>
+        </div>
+        <div class="background-progress" role="progressbar" aria-label="Background removal progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="backgroundProgressBar"></span></div>
+        <p id="backgroundProgressText" class="progress-text">Ready to remove the background.</p>
+        <p class="seo-file-note">SEO-friendly output: creatornew-br-image-name.png</p>
+        <button id="removeBackgroundBtn" class="primary-btn convert-btn" type="button">Remove Background</button>
+        <button id="downloadBackgroundBtn" class="primary-btn convert-btn" type="button" hidden>Download Transparent PNG</button>
+        </div>
+        <div id="objectModePanel" role="tabpanel" aria-labelledby="objectModeBtn" hidden>
+          <div class="mask-editor-shell">
+            <div class="mask-stage" id="maskStage">
+              <img id="objectSourcePreview" alt="Image being edited">
+              <canvas id="maskCanvas" tabindex="0" aria-label="Object-removal mask editor. Use pointer or keyboard cursor controls."></canvas>
+            </div>
+            <p id="maskA11yStatus" class="sr-only" role="status" aria-live="polite">Mask is empty.</p>
+            <div class="mask-toolbar" aria-label="Mask controls">
+              <button id="maskAddBtn" class="tool-toggle is-active" type="button" aria-pressed="true">Add mask</button>
+              <button id="maskEraseBtn" class="tool-toggle" type="button" aria-pressed="false">Erase mask</button>
+              <label>Brush size <input id="maskBrushSize" type="range" min="1" max="20" value="6"></label>
+              <button id="maskUndoBtn" type="button" disabled>Undo</button>
+              <button id="maskRedoBtn" type="button" disabled>Redo</button>
+              <button id="maskClearBtn" type="button">Clear mask</button>
+            </div>
+            <div id="maskWarning" class="status" role="status"></div>
+            <div class="model-note"><strong>First use:</strong> the 92.6 MB AI model downloads to your browser. Your image is not uploaded.</div>
+            <div class="object-actions">
+              <button id="removeObjectBtn" class="primary-btn" type="button">Erase selected object</button>
+              <button id="cancelObjectBtn" type="button" hidden>Cancel</button>
+            </div>
+          </div>
+        </div>
+        <div id="oversizePrompt" class="oversize-prompt" role="dialog" aria-modal="true" aria-labelledby="oversizeTitle" hidden>
+          <h3 id="oversizeTitle">Large image</h3>
+          <p>This image needs a reduced working copy for safe processing. Your original stays unchanged.</p>
+          <button id="acceptReducedBtn" class="primary-btn" type="button">Continue with reduced copy</button>
+          <button id="cancelReducedBtn" type="button">Cancel</button>
+        </div>
+        <p id="backgroundStatus" class="status" role="status" aria-live="polite"></p>
+      </div>
+      <input id="backgroundFileInput" type="file" accept="image/jpeg,image/png,image/webp">
+    </section>
+  </main>
+
+  <section class="content-section" aria-labelledby="how-title"><div class="section-inner"><div class="section-heading"><h2 id="how-title">How to remove an image background</h2><p>Create a transparent subject image in three steps.</p></div><div class="steps"><article class="info-card"><span class="step-number">1</span><h3>Add an image</h3><p>Choose a clear JPG, PNG or WebP image with a visible foreground subject.</p></article><article class="info-card"><span class="step-number">2</span><h3>Run the AI model</h3><p>The model separates the main subject from its background on your device.</p></article><article class="info-card"><span class="step-number">3</span><h3>Download PNG</h3><p>Preview the transparent result and download it as a PNG file.</p></article></div></div></section>
+
+  <section class="content-section soft" aria-labelledby="tips-title"><div class="section-inner"><div class="section-heading"><h2 id="tips-title">Tips for cleaner results</h2><p>AI works best when the subject is visually distinct from the background.</p></div><div class="feature-grid"><article class="info-card"><span class="step-number">01</span><h3>Use clear edges</h3><p>Choose a sharp image with good contrast around hair, products or people.</p></article><article class="info-card"><span class="step-number">02</span><h3>Avoid busy scenes</h3><p>Simple backgrounds make it easier for the model to identify the subject.</p></article><article class="info-card"><span class="step-number">03</span><h3>Allow the first download</h3><p>The AI model loads on first use, so the initial result can take longer.</p></article></div></div></section>
+
+  <section id="faq" class="content-section" aria-labelledby="faq-title"><div class="section-inner"><div class="section-heading"><h2 id="faq-title">Frequently asked questions</h2></div><div class="faq-list"><details><summary>Is the background remover free?</summary><p>Yes. You can remove image backgrounds for free without creating an account.</p></details><details><summary>Are my images uploaded?</summary><p>The image is processed by an AI model in your browser and is not uploaded to CreatorNew.</p></details><details><summary>Why does the first result take longer?</summary><p>Your browser needs to download the AI model the first time. Later uses may be faster because the model can be cached.</p></details><details><summary>Which formats are supported?</summary><p>You can add JPG, JPEG, PNG and WebP images. Results are downloaded as transparent PNG files.</p></details></div></div></section>
+
+  <section class="content-section soft" aria-labelledby="related-guides-title"><div class="section-inner"><div class="section-heading"><p class="eyebrow">Related Guides</p><h2 id="related-guides-title">Prepare images for any project</h2></div><div class="guide-grid"><article class="guide-card"><div class="guide-card-body"><span class="guide-label">Image guide</span><h3><a href="../how-to-convert-images-online-free/">How to Convert Images Online for Free</a></h3><p>See when transparent PNG is the right choice and how conversion fits with compression and background removal.</p><a class="tool-link" href="../how-to-convert-images-online-free/">Read the guide &rarr;</a></div></article></div></div></section>
+
+  <footer class="site-footer"><div class="footer-inner"><span>© 2026 CreatorNew. Free tools for creators.</span><a href="../">Explore all tools</a></div></footer>
+  <script type="module" src="../js/site-i18n.js"></script>
+  <script type="module" src="../js/background-remover.js"></script>
+</body>
+</html>

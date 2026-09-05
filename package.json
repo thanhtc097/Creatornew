@@ -1,0 +1,35 @@
+{
+  "name": "creatornew",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "sync:prompts": "node scripts/sync-prompts-chat.mjs",
+    "build": "node scripts/sync-prompts-chat.mjs && node scripts/verify-inpainting-model.mjs && vite build && node scripts/generate-tools-sitemap.mjs",
+    "build:offline": "node scripts/verify-inpainting-model.mjs && vite build && node scripts/generate-tools-sitemap.mjs",
+    "build:free-sounds": "vite build --config vite.free-sounds.config.js",
+    "build:free-videos": "vite build --config vite.free-videos.config.js",
+    "build:media-apps": "npm run build:free-sounds && npm run build:free-videos",
+    "model:fetch": "node scripts/fetch-inpainting-model.mjs",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "onnxruntime-web": "^1.23.2",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "jsdom": "^26.1.0",
+    "oxlint": "^1.71.0",
+    "vite": "^8.1.1",
+    "vitest": "^3.2.4"
+  }
+}

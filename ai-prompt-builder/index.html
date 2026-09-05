@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Build clear, detailed AI prompts online for free. Create prompts for ChatGPT, Claude, Gemini, image generators and content creation without registration.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#7c3aed">
+  <link rel="canonical" href="https://creatornew.com/ai-prompt-builder/">
+  <link rel="icon" type="image/png" href="../creatornew-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CreatorNew">
+  <meta property="og:title" content="Free AI Prompt Builder for ChatGPT, Claude & Gemini">
+  <meta property="og:description" content="Create better AI prompts for writing, marketing, images, video and creator workflows.">
+  <meta property="og:url" content="https://creatornew.com/ai-prompt-builder/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free AI Prompt Builder | CreatorNew">
+  <meta name="twitter:description" content="Turn your idea into a clear, structured AI prompt in seconds.">
+  <title>Free AI Prompt Builder for ChatGPT, Claude &amp; Gemini | CreatorNew</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/prompt-builder.css">
+  <link rel="stylesheet" href="../css/prompt-library.css">
+  <link rel="stylesheet" href="../css/prompt-community.css">
+  <link rel="stylesheet" href="../css/prompt-thumbnails.css">
+  <link rel="stylesheet" href="../css/prompt-layout-fix.css">
+  <link rel="stylesheet" href="../css/prompt-popularity.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"CreatorNew AI Prompt Builder","url":"https://creatornew.com/ai-prompt-builder/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","description":"A free browser-based AI prompt generator for content creators.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+</head>
+<body class="prompt-page">
+  <a class="skip-link" href="#prompt-builder">Skip to prompt builder</a>
+  <header class="topbar"><nav class="nav" aria-label="Main navigation"><a class="brand" href="../" aria-label="CreatorNew home"><img class="brand-logo" src="../creatornew-logo.png" alt="CreatorNew" width="2075" height="758"></a><div class="nav-links"><details class="nav-dropdown ai-nav-dropdown"><summary>AI Tools <span aria-hidden="true">⌄</span></summary><div class="nav-dropdown-menu"><a href="./"><strong>AI Prompt Builder</strong><small>Find and build better AI prompts</small></a></div></details><a href="../#tools">All Tools</a><a href="#how">How It Works</a><a href="#faq">FAQ</a></div></nav></header>
+
+  <main>
+    <section class="prompt-hero">
+      <p class="eyebrow">Free AI creator tool</p>
+      <h1>AI prompt library <span>and builder</span></h1>
+      <p class="lead">Explore ready-to-use prompts for writing, images, video and marketing—or build a custom prompt for your next project.</p>
+      <div class="benefits"><div class="benefit"><span class="check">✓</span> Free to use</div><div class="benefit"><span class="check">✓</span> No registration</div><div class="benefit"><span class="check">✓</span> Works locally</div></div>
+    </section>
+
+    <section id="prompt-library" class="prompt-library" aria-labelledby="library-title">
+      <div class="library-heading"><div><p class="eyebrow">Curated prompt library</p><h2 id="library-title">Find a prompt for your next idea</h2><p>Search practical prompts created for everyday creator workflows.</p></div><a class="primary-btn" href="#prompt-builder">Build Your Own</a></div>
+      <div class="library-toolbar"><label class="library-search"><span aria-hidden="true">⌕</span><input id="librarySearch" type="search" placeholder="Search prompts, ideas or use cases..."></label><select id="libraryModel" aria-label="Filter by AI model"><option value="all">All AI models</option><option>ChatGPT</option><option>Claude</option><option>Gemini</option><option>Midjourney</option><option>DALL-E</option><option>General AI</option></select></div>
+      <div id="libraryCategories" class="library-categories"><button class="is-active" data-category="all">All Prompts</button><button data-category="writing">Writing</button><button data-category="marketing">Marketing</button><button data-category="image">AI Images</button><button data-category="video">AI Video</button><button data-category="social">Social Media</button></div>
+      <div class="library-results-head"><div><h3>Popular prompts</h3><small id="librarySourceStatus">Loading community prompts...</small></div><span id="libraryCount"></span></div>
+      <div id="promptGrid" class="prompt-library-grid"></div>
+      <div id="libraryEmpty" class="library-empty" hidden><h3>No matching prompts</h3><p>Try another keyword, category or AI model.</p></div>
+    </section>
+
+    <section id="prompt-builder" class="prompt-builder" aria-label="AI Prompt Builder">
+      <div class="prompt-form-panel">
+        <div class="prompt-panel-heading"><span>01</span><div><p>PROMPT DETAILS</p><h2>Describe what you need</h2></div></div>
+        <form id="promptForm">
+          <div class="prompt-field full"><label for="promptGoal">What do you want AI to create?</label><textarea id="promptGoal" rows="4" maxlength="1200" placeholder="Example: Write a YouTube video script about beginner photography tips" required></textarea><small><span id="goalCount">0</span>/1200</small></div>
+          <div class="prompt-fields">
+            <div class="prompt-field"><label for="aiTool">AI tool</label><select id="aiTool"><option>ChatGPT</option><option>Claude</option><option>Gemini</option><option>Microsoft Copilot</option><option>Midjourney</option><option>DALL-E</option><option>Stable Diffusion</option><option value="General AI">Other / General AI</option></select></div>
+            <div class="prompt-field"><label for="contentType">Content type</label><select id="contentType"><option>Blog post</option><option>Social media post</option><option>YouTube script</option><option>Short-form video script</option><option>Email</option><option>Marketing copy</option><option>Product description</option><option>Image prompt</option><option>Research summary</option><option>Code</option><option>Other</option></select></div>
+            <div class="prompt-field"><label for="audience">Target audience</label><input id="audience" maxlength="180" placeholder="Example: New content creators"></div>
+            <div class="prompt-field"><label for="tone">Tone</label><select id="tone"><option>Professional</option><option>Friendly</option><option>Conversational</option><option>Persuasive</option><option>Educational</option><option>Confident</option><option>Creative</option><option>Humorous</option><option>Inspirational</option></select></div>
+            <div class="prompt-field"><label for="outputLanguage">Output language</label><select id="outputLanguage"><option>English</option><option>Vietnamese</option><option>Spanish</option><option>French</option><option>German</option><option>Portuguese</option><option>Japanese</option><option>Korean</option><option>Chinese</option></select></div>
+            <div class="prompt-field"><label for="outputLength">Output length</label><select id="outputLength"><option>Short</option><option selected>Medium</option><option>Detailed</option><option>Custom</option></select></div>
+          </div>
+          <details class="advanced-prompt"><summary>Advanced options</summary><div class="prompt-fields"><div class="prompt-field full"><label for="context">Background or context</label><textarea id="context" rows="3" maxlength="1000" placeholder="Add facts, brand details or context the AI should know"></textarea></div><div class="prompt-field full"><label for="mustInclude">Must include</label><textarea id="mustInclude" rows="2" maxlength="600" placeholder="Keywords, examples, sections or calls to action"></textarea></div><div class="prompt-field full"><label for="avoid">Avoid</label><textarea id="avoid" rows="2" maxlength="600" placeholder="Topics, phrases, styles or mistakes to avoid"></textarea></div><div class="prompt-field full"><label for="format">Preferred output format</label><input id="format" maxlength="200" placeholder="Example: Markdown with headings and bullet points"></div></div></details>
+          <div class="prompt-form-actions"><button id="clearPromptBtn" class="secondary-btn" type="button">Clear</button><button class="prompt-generate-btn" type="submit">Generate Prompt <span>→</span></button></div>
+        </form>
+      </div>
+
+      <div class="prompt-output-panel">
+        <div class="prompt-panel-heading"><span>02</span><div><p>GENERATED PROMPT</p><h2>Your optimized prompt</h2></div></div>
+        <div id="promptEmpty" class="prompt-empty"><div>✦</div><h3>Your prompt will appear here</h3><p>Complete the details and select Generate Prompt.</p></div>
+        <div id="promptResult" class="prompt-result" hidden><textarea id="promptOutput" aria-label="Generated AI prompt" spellcheck="true"></textarea><div class="prompt-result-meta"><span id="promptWordCount">0 words</span><span>Generated locally</span></div><div class="prompt-result-actions"><button id="copyPromptBtn" class="primary-btn" type="button">Copy Prompt</button><button id="downloadPromptBtn" class="secondary-btn" type="button">Download TXT</button></div></div>
+      </div>
+    </section>
+
+    <section id="how" class="content-section"><div class="section-inner"><div class="section-heading"><h2>How to build a better AI prompt</h2><p>Give AI the context it needs to produce a useful first result.</p></div><div class="steps"><article class="info-card"><span class="step-number">1</span><h3>Describe the goal</h3><p>Explain the result you need in simple, specific language.</p></article><article class="info-card"><span class="step-number">2</span><h3>Add useful context</h3><p>Choose the audience, tone, format and important requirements.</p></article><article class="info-card"><span class="step-number">3</span><h3>Generate and refine</h3><p>Copy the structured prompt, use it with your AI tool and adjust as needed.</p></article></div></div></section>
+    <section class="content-section soft"><div class="section-inner"><div class="section-heading"><h2>Why use a structured AI prompt?</h2></div><div class="feature-grid"><article class="info-card"><span class="step-number">✓</span><h3>Clearer instructions</h3><p>Define the role, task, audience and output before AI begins.</p></article><article class="info-card"><span class="step-number">⚡</span><h3>Faster results</h3><p>Spend less time repeating instructions and correcting generic outputs.</p></article><article class="info-card"><span class="step-number">AI</span><h3>Works across platforms</h3><p>Use generated prompts with popular text and image AI tools.</p></article></div></div></section>
+    <section id="faq" class="content-section"><div class="section-inner"><div class="section-heading"><h2>Frequently asked questions</h2></div><div class="faq-list"><details><summary>Is the AI Prompt Builder free?</summary><p>Yes. You can generate, edit, copy and download prompts without registration.</p></details><details><summary>Does CreatorNew send my prompt to an AI service?</summary><p>No. This tool structures your prompt locally in the browser. You choose where to use it.</p></details><details><summary>Does the tool generate AI answers?</summary><p>No. It creates a detailed prompt that you can paste into ChatGPT, Claude, Gemini or another AI tool.</p></details><details><summary>Can I edit the generated prompt?</summary><p>Yes. The generated prompt remains fully editable before you copy or download it.</p></details></div></div></section>
+  </main>
+  <div id="promptModal" class="prompt-modal-backdrop" hidden><section class="prompt-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button id="closePromptModal" class="prompt-modal-close" type="button" aria-label="Close">×</button><div id="modalVisual" class="prompt-modal-visual"></div><div class="prompt-modal-content"><div class="prompt-modal-tags"><span id="modalCategory"></span><span id="modalModel"></span></div><div id="modalPopularity" class="modal-popularity" aria-label="Prompt popularity"></div><h2 id="modalTitle"></h2><p id="modalDescription"></p><a id="modalSource" class="prompt-source-link" href="https://prompts.chat/" target="_blank" rel="noopener noreferrer" hidden>View original on prompts.chat ↗</a><label for="modalPrompt">Prompt</label><textarea id="modalPrompt"></textarea><div class="prompt-modal-actions"><button id="useInBuilderBtn" class="secondary-btn" type="button">Customize in Builder</button><button id="copyLibraryPromptBtn" class="primary-btn" type="button">Copy Prompt</button></div></div></section></div>
+  <footer class="site-footer"><div class="footer-inner"><span>&copy; 2026 CreatorNew. Free tools for creators.</span><div class="footer-links"><a href="../">Home</a><a href="#prompt-builder">Prompt Builder</a><a href="#faq">FAQ</a></div></div></footer>
+  <script type="module" src="../js/site-i18n.js"></script>
+  <script type="module" src="../js/ai-prompt-builder.js"></script>
+</body>
+</html>

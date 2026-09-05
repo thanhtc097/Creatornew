@@ -1,0 +1,41 @@
+.prompt-hero {
+  padding: 58px 24px 38px;
+}
+
+.prompt-hero > .eyebrow {
+  display: inline-flex;
+  margin-inline: auto;
+}
+
+.prompt-hero .lead {
+  margin-bottom: 22px;
+}
+
+.prompt-hero .benefits {
+  width: auto;
+  max-width: none;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+}
+
+.prompt-library {
+  margin-top: 0;
+}
+
+@media (max-width: 620px) {
+  .prompt-hero {
+    padding: 44px 18px 32px;
+  }
+
+  .prompt-hero .benefits {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: max-content;
+    max-width: 100%;
+    gap: 10px;
+  }
+}

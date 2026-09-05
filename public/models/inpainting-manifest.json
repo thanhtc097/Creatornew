@@ -1,0 +1,13 @@
+{
+  "id": "opencv-lama-2025jan",
+  "fileName": "inpainting_lama_2025jan.onnx",
+  "url": "https://huggingface.co/opencv/inpainting_lama/resolve/c47be27/inpainting_lama_2025jan.onnx",
+  "sizeBytes": 92600000,
+  "sha256": "7df918ac3921d3daf0aae1d219776cf0dc4e4935f035af81841b40adcf74fdf2",
+  "validatedBackends": ["wasm"],
+  "rejectedBackends": { "webgpu": "Runtime Add kernel incompatibility in the LaMa Fourier path" },
+  "input": { "width": 512, "height": 512, "imageName": "image", "maskName": "mask" },
+  "license": "Apache-2.0",
+  "source": "https://huggingface.co/opencv/inpainting_lama",
+  "attribution": "LaMa by Suvorov et al.; ONNX artifact published by OpenCV"
+}

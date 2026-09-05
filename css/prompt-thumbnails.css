@@ -1,0 +1,11 @@
+.library-card-visual,
+.prompt-modal-visual {
+  background-color: #27135f;
+  background-repeat: no-repeat;
+  background-size: 300% 200%;
+}
+
+.library-card-visual::before,
+.prompt-modal-visual::before {
+  display: none;
+}

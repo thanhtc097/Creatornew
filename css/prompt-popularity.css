@@ -1,0 +1,36 @@
+.prompt-popularity {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  color: #667085;
+  font-weight: 700;
+}
+
+.prompt-popularity > span:first-child {
+  color: #e34b78;
+}
+
+.prompt-popularity > span:last-child {
+  color: #5f56c7;
+}
+
+.modal-popularity {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.modal-popularity span {
+  padding: 6px 9px;
+  color: #5f56c7;
+  border-radius: 999px;
+  background: #f1efff;
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.modal-popularity span:first-child {
+  color: #d93668;
+  background: #fff0f5;
+}
