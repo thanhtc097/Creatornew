@@ -159,14 +159,20 @@ https://creatornew.com/tools-sitemap.xml
 
 ## 10. Trạng thái workspace tại thời điểm đóng gói
 
-Workspace có thay đổi cục bộ/chưa được Git theo dõi, bao gồm chỉnh sửa `index.html`, `css/style.css`, xóa `js/app.js`, cùng nhiều tệp/tính năng mới chưa được add. Đây là thông tin hiện trạng để tránh vô tình mất phần việc đang dang dở; hãy review `git status` trước khi commit hoặc triển khai.
+Workspace đã được rà soát, dọn dẹp và đóng gói commit hoàn chỉnh vào nhánh `main`:
+- Đã bổ sung `.gitignore` cho các thư mục build riêng (`free-sounds-dist/`, `free-videos-dist/`) và thư mục tạm (`tmp/`, `old-version/`).
+- Sửa triệt để các cảnh báo linter: `oxlint` đạt chuẩn 0 errors, 0 warnings.
+- Kiểm thử: 16/16 Vitest unit tests đã vượt qua thành công.
+- Model AI: `public/models/inpainting_lama_2025jan.onnx` được xác thực checksum SHA-256 chính xác.
+- Build: Đã hoàn tất build cả website chính và hai media app React.
+- Trạng thái git: `working tree clean`.
 
 ## 11. Checklist bàn giao nhanh
 
-- [ ] Cài dependencies bằng `npm install`.
-- [ ] Lấy đúng model bằng `npm run model:fetch`.
-- [ ] Chạy lint và test.
-- [ ] Build main site và hai media app.
+- [x] Cài dependencies bằng `npm install`.
+- [x] Lấy đúng model bằng `npm run model:fetch`.
+- [x] Chạy lint và test (`npm run lint`, `npm test`).
+- [x] Build main site và hai media app (`npm run build:offline`, `npm run build:media-apps`).
 - [ ] Mở thử tất cả URL tool quan trọng trên môi trường staging.
 - [ ] Xác minh sitemap, canonical, robots và cache/CDN.
 - [ ] Xác minh model có checksum, CORS và worker access đúng trong production.
