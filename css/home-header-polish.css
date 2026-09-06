@@ -91,3 +91,21 @@
     display: none;
   }
 }
+
+.home-hero-wrapper {
+  position: relative;
+  width: 100%;
+  background:
+    linear-gradient(90deg, #fbfcff 0%, rgba(251, 252, 255, 0.95) 38%, rgba(246, 243, 255, 0.85) 60%, rgba(238, 233, 255, 0.72) 100%),
+    url('../hero-creator-4k.jpg') right center / cover no-repeat;
+  border-bottom: 1px solid rgba(208, 213, 221, 0.6);
+}
+
+@media (max-width: 960px) {
+  .home-hero-wrapper {
+    background:
+      linear-gradient(180deg, rgba(251, 252, 255, 0.96) 0%, rgba(246, 243, 255, 0.92) 100%),
+      url('../hero-creator-4k.jpg') center top / cover no-repeat;
+  }
+}
+
