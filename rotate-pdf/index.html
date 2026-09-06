@@ -1,1 +1,261 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Rotate PDF pages online for free. Preview and rotate individual pages privately in your browser."><link rel="canonical" href="https://creatornew.com/rotate-pdf/"><link rel="icon" href="../creatornew-icon.png"><title>Rotate PDF Pages Online Free | CreatorNew</title><link rel="stylesheet" href="../css/style.css"></head><body class="pdf-tool-page"><header class="topbar"><nav class="nav"><a class="brand" href="../"><img class="brand-logo" src="../creatornew-logo.png" alt="CreatorNew"></a><div class="nav-links"><details class="nav-dropdown pdf-nav-dropdown"><summary>PDF Tools <span>⌄</span></summary><div class="nav-dropdown-menu"><a href="../images-to-pdf/"><strong>Images to PDF</strong></a><a href="../merge-pdf/"><strong>Merge PDF</strong></a><a href="../split-pdf/"><strong>Split PDF</strong></a><a href="../pdf-to-jpg/"><strong>PDF to JPG</strong></a><a href="./"><strong>Rotate PDF</strong></a></div></details></div></nav></header><main class="hero pdf-hero"><section class="hero-copy"><p class="eyebrow">Free PDF tool</p><h1>Rotate PDF <span>pages visually</span></h1><p class="lead">Preview every page, rotate individual pages or the whole document, then download privately.</p></section><section class="tool-card pdf-tool-card"><div id="rotDrop" class="drop-zone" role="button" tabindex="0"><h2>Drop one PDF here</h2><p>Select a PDF up to 100 MB</p><button id="rotChoose" class="primary-btn">+ Choose PDF</button></div><div id="rotWork" class="workspace pdf-workspace" hidden><div class="workspace-head"><div><h2 id="rotName" class="workspace-title"></h2><p id="rotMeta"></p></div><div class="workspace-actions merge-workspace-actions"><button id="rotReplace" class="secondary-btn merge-action-btn">Replace PDF</button><button id="rotClear" class="secondary-btn merge-action-btn danger">Clear</button></div></div><div class="rotate-all-actions"><button id="rotAllLeft" class="secondary-btn">↶ Rotate All Left</button><button id="rotAllRight" class="secondary-btn">Rotate All Right ↷</button></div><div id="rotGrid" class="split-thumbnail-grid"></div><button id="rotSave" class="primary-btn convert-btn">Create Rotated PDF</button><p id="rotStatus" class="status"></p><section id="rotResult" class="merge-result" hidden><div class="merge-result-head"><div><p class="merge-result-label">Rotated PDF ready</p><h3>Review your PDF</h3></div><button id="rotDownload" class="primary-btn">Download PDF</button></div><iframe id="rotPreview" title="Rotated PDF preview"></iframe></section></div><input id="rotInput" class="pdf-hidden-input" type="file" accept="application/pdf,.pdf"></section></main><section class="content-section"><div class="section-inner"><div class="section-heading"><h2>Rotate PDF pages visually</h2><p>Choose a PDF, rotate pages and download the corrected document.</p></div></div></section><footer class="site-footer"><div class="footer-inner"><span>© 2026 CreatorNew.</span></div></footer><script type="module" src="../js/site-i18n.js"></script><script type="module" src="../js/rotate-pdf.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rotate PDF pages online for free. Preview, rotate individual pages or all pages 90, 180 or 270 degrees privately in your browser with zero uploads.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#5d5fef">
+  <link rel="icon" type="image/png" href="../creatornew-icon.png">
+  <link rel="apple-touch-icon" href="../creatornew-icon.png">
+  <link rel="canonical" href="https://creatornew.com/rotate-pdf/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CreatorNew">
+  <meta property="og:title" content="Rotate PDF Pages Online Free — Permanent PDF Rotation | CreatorNew">
+  <meta property="og:description" content="Preview, rotate individual pages or rotate all pages permanently in your browser. 100% free and private.">
+  <meta property="og:url" content="https://creatornew.com/rotate-pdf/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Rotate PDF Pages Online Free | CreatorNew">
+  <meta name="twitter:description" content="Rotate PDF pages visually and privately in your browser. Free batch rotation with zero server uploads.">
+  <title>Rotate PDF Pages Online Free — Rotate PDF Visually | CreatorNew</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://creatornew.com/#website",
+        "url": "https://creatornew.com/",
+        "name": "CreatorNew",
+        "description": "Free browser-based tools for creators."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://creatornew.com/rotate-pdf/#rotate-pdf",
+        "name": "CreatorNew Rotate PDF",
+        "url": "https://creatornew.com/rotate-pdf/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript and a modern web browser",
+        "description": "A free online PDF page rotator. Preview individual pages and rotate them 90, 180, or 270 degrees locally in the browser.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Visual PDF page thumbnails",
+          "Rotate individual pages or all pages",
+          "90, 180 and 270 degree rotation",
+          "Local browser processing with zero uploads",
+          "No registration or watermark"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://creatornew.com/rotate-pdf/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is Rotate PDF free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. CreatorNew Rotate PDF is completely free with no registration, watermarks, or page limits."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are my PDF files uploaded to a server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All PDF processing and rotation happens entirely inside your browser using WebAssembly and client-side JavaScript. Your files never leave your device."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I rotate individual pages or the entire PDF?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Both. You can click any individual page thumbnail to rotate it clockwise, or use the 'Rotate All Left' and 'Rotate All Right' buttons to rotate every page simultaneously."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does rotating PDF pages reduce document quality or text sharpness?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The rotation adjusts the page orientation metadata and rendering matrices directly, preserving original vector text, fonts, images and layout without compression artifacts."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="pdf-tool-page">
+  <a class="skip-link" href="#rotDrop">Skip to Rotate PDF tool</a>
+  <header class="topbar">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="../"><img class="brand-logo" src="../creatornew-logo.png" alt="CreatorNew" width="2075" height="758"></a>
+      <div class="nav-links">
+        <details class="nav-dropdown">
+          <summary>Image Tools <span>⌄</span></summary>
+          <div class="nav-dropdown-menu">
+            <a href="../image-converter/"><strong>Image Converter</strong><small>Convert JPG, PNG and WebP</small></a>
+            <a href="../background-remover/"><strong>Background Remover</strong><small>Create transparent PNGs</small></a>
+            <a href="../image-compressor/"><strong>Image Compressor</strong><small>Reduce image file size</small></a>
+            <a href="../image-resize/"><strong>Image Resizer</strong><small>Resize images</small></a>
+          </div>
+        </details>
+        <details class="nav-dropdown pdf-nav-dropdown">
+          <summary>PDF Tools <span>⌄</span></summary>
+          <div class="nav-dropdown-menu">
+            <a href="../images-to-pdf/"><strong>Images to PDF</strong><small>Combine images into PDF</small></a>
+            <a href="../merge-pdf/"><strong>Merge PDF</strong><small>Combine multiple PDFs</small></a>
+            <a href="../split-pdf/"><strong>Split PDF</strong><small>Split pages into files</small></a>
+            <a href="../delete-pdf-pages/"><strong>Delete PDF Pages</strong><small>Remove unwanted pages</small></a>
+            <a href="../pdf-to-jpg/"><strong>PDF to JPG</strong><small>Convert pages to JPG</small></a>
+            <a href="../pdf-to-png/"><strong>PDF to PNG</strong><small>Convert pages to PNG</small></a>
+            <a href="./"><strong>Rotate PDF</strong><small>Rotate pages visually</small></a>
+          </div>
+        </details>
+        <a href="#faq">FAQ</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="hero pdf-hero">
+    <section class="hero-copy">
+      <p class="eyebrow">Free PDF tool</p>
+      <h1>Rotate PDF <span>pages visually</span></h1>
+      <p class="lead">Preview every page, rotate individual pages or the whole document, then download privately without uploading your document.</p>
+      <div class="benefits">
+        <div class="benefit"><span class="check">✓</span> Rotate single or all pages</div>
+        <div class="benefit"><span class="check">✓</span> Visual thumbnail preview</div>
+        <div class="benefit"><span class="check">✓</span> No registration or watermark</div>
+        <div class="benefit"><span class="check">✓</span> 100% private in your browser</div>
+      </div>
+    </section>
+
+    <section class="tool-card pdf-tool-card" aria-label="Rotate PDF tool">
+      <div id="rotDrop" class="drop-zone" role="button" tabindex="0" aria-label="Choose one PDF or drag it here">
+        <div class="upload-visual" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none">
+            <path d="M15 36h22a8 8 0 0 0 .5-15.98A13 13 0 0 0 12.37 17 9.5 9.5 0 0 0 15 36Z" stroke="currentColor" stroke-width="2.8"/>
+            <path d="m24 31V17m0 0-5 5m5-5 5 5" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h2>Drop one PDF here</h2>
+        <p>Select a PDF up to 100 MB</p>
+        <button id="rotChoose" class="primary-btn" type="button">+ Choose PDF</button>
+        <p class="privacy">🔒 Your PDF stays on your device</p>
+      </div>
+
+      <div id="rotWork" class="workspace pdf-workspace" hidden>
+        <div class="workspace-head">
+          <div>
+            <h2 id="rotName" class="workspace-title"></h2>
+            <p id="rotMeta" class="pdf-order-hint"></p>
+          </div>
+          <div class="workspace-actions merge-workspace-actions">
+            <button id="rotReplace" class="secondary-btn merge-action-btn" type="button">Replace PDF</button>
+            <button id="rotClear" class="secondary-btn merge-action-btn danger" type="button">Clear</button>
+          </div>
+        </div>
+        <div class="rotate-all-actions">
+          <button id="rotAllLeft" class="secondary-btn" type="button">↶ Rotate All Left</button>
+          <button id="rotAllRight" class="secondary-btn" type="button">Rotate All Right ↷</button>
+        </div>
+        <div id="rotGrid" class="split-thumbnail-grid"></div>
+        <button id="rotSave" class="primary-btn convert-btn" type="button">Create Rotated PDF</button>
+        <p id="rotStatus" class="status" role="status" aria-live="polite"></p>
+        <section id="rotResult" class="merge-result" hidden>
+          <div class="merge-result-head">
+            <div>
+              <p class="merge-result-label">Rotated PDF ready</p>
+              <h3>Review your PDF</h3>
+            </div>
+            <button id="rotDownload" class="primary-btn" type="button">Download PDF</button>
+          </div>
+          <iframe id="rotPreview" title="Rotated PDF preview"></iframe>
+        </section>
+      </div>
+      <input id="rotInput" class="pdf-hidden-input" type="file" accept="application/pdf,.pdf">
+    </section>
+  </main>
+
+  <section class="content-section">
+    <div class="section-inner">
+      <div class="section-heading">
+        <h2>How to rotate PDF pages online</h2>
+        <p>Follow three simple steps to correct upside-down or sideways pages in seconds.</p>
+      </div>
+      <div class="steps">
+        <article class="info-card">
+          <span class="step-number">1</span>
+          <h3>Add your PDF</h3>
+          <p>Drag and drop your PDF document or choose it from your local storage.</p>
+        </article>
+        <article class="info-card">
+          <span class="step-number">2</span>
+          <h3>Rotate pages visually</h3>
+          <p>Click individual thumbnails to rotate 90°, or rotate all pages at once with one click.</p>
+        </article>
+        <article class="info-card">
+          <span class="step-number">3</span>
+          <h3>Download rotated PDF</h3>
+          <p>Review the preview and save your permanently rotated PDF document immediately.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="content-section soft">
+    <div class="section-inner">
+      <div class="section-heading">
+        <h2>Frequently asked questions</h2>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>Is Rotate PDF free?</summary>
+          <p>Yes. CreatorNew Rotate PDF is completely free with no registration, watermarks, or page limits.</p>
+        </details>
+        <details>
+          <summary>Are my PDF files uploaded to a server?</summary>
+          <p>No. All PDF processing and rotation happens entirely inside your browser using WebAssembly and client-side JavaScript. Your files never leave your device.</p>
+        </details>
+        <details>
+          <summary>Can I rotate individual pages or the entire PDF?</summary>
+          <p>Both. You can click any individual page thumbnail to rotate it clockwise, or use the 'Rotate All Left' and 'Rotate All Right' buttons to rotate every page simultaneously.</p>
+        </details>
+        <details>
+          <summary>Does rotating PDF pages reduce document quality or text sharpness?</summary>
+          <p>No. The rotation adjusts the page orientation metadata and rendering matrices directly, preserving original vector text, fonts, images and layout without compression artifacts.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>&copy; 2026 CreatorNew. Free tools for creators.</span>
+      <div class="footer-links">
+        <a href="../">All Tools</a>
+        <a href="../merge-pdf/">Merge PDF</a>
+        <a href="../split-pdf/">Split PDF</a>
+        <a href="../delete-pdf-pages/">Delete PDF Pages</a>
+        <a href="../pdf-to-jpg/">PDF to JPG</a>
+        <a href="../pdf-to-png/">PDF to PNG</a>
+        <a href="../images-to-pdf/">Images to PDF</a>
+        <a href="../image-converter/">Image Converter</a>
+        <a href="../background-remover/">Background Remover</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="../js/site-i18n.js"></script>
+  <script type="module" src="../js/rotate-pdf.js"></script>
+</body>
+</html>

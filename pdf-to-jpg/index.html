@@ -1,1 +1,272 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Convert PDF pages to high-quality JPG images online for free. Select pages and process files privately in your browser."><meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://creatornew.com/pdf-to-jpg/"><link rel="icon" href="../creatornew-icon.png"><title>PDF to JPG Converter Online Free | CreatorNew</title><link rel="stylesheet" href="../css/style.css"><script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"CreatorNew PDF to JPG","url":"https://creatornew.com/pdf-to-jpg/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script></head><body class="pdf-tool-page"><header class="topbar"><nav class="nav"><a class="brand" href="../"><img class="brand-logo" src="../creatornew-logo.png" alt="CreatorNew"></a><div class="nav-links"><details class="nav-dropdown pdf-nav-dropdown"><summary>PDF Tools <span>⌄</span></summary><div class="nav-dropdown-menu"><a href="../images-to-pdf/"><strong>Images to PDF</strong><small>Combine images</small></a><a href="../merge-pdf/"><strong>Merge PDF</strong><small>Combine PDFs</small></a><a href="../split-pdf/"><strong>Split PDF</strong><small>Extract pages</small></a><a href="./"><strong>PDF to JPG</strong><small>Convert pages to images</small></a></div></details><a href="#faq">FAQ</a></div></nav></header><main class="hero pdf-hero"><section class="hero-copy"><p class="eyebrow">Free PDF tool</p><h1>Convert PDF <span>pages to JPG</span></h1><p class="lead">Turn selected PDF pages into clear JPG images directly in your browser.</p><div class="benefits"><div class="benefit"><span class="check">✓</span> Page selection</div><div class="benefit"><span class="check">✓</span> High quality</div><div class="benefit"><span class="check">✓</span> ZIP download</div><div class="benefit"><span class="check">✓</span> Private</div></div></section><section class="tool-card pdf-tool-card"><div id="p2jDrop" class="drop-zone" role="button" tabindex="0"><h2>Drop one PDF here</h2><p>Select a PDF up to 100 MB</p><button id="p2jChoose" class="primary-btn">+ Choose PDF</button><p class="privacy">🔒 Your PDF stays on your device</p></div><div id="p2jWork" class="workspace pdf-workspace" hidden><div class="workspace-head"><div><h2 id="p2jName" class="workspace-title"></h2><p id="p2jMeta" class="pdf-order-hint"></p></div><div class="workspace-actions merge-workspace-actions"><button id="p2jReplace" class="secondary-btn merge-action-btn">Replace PDF</button><button id="p2jClear" class="secondary-btn merge-action-btn danger">Clear</button></div></div><div class="split-controls"><label for="p2jQuality">JPG quality</label><select id="p2jQuality"><option value="0.8">Good - smaller file</option><option value="0.9" selected>High - recommended</option><option value="1">Maximum</option></select><div class="p2j-selection-actions"><button id="p2jAll" class="secondary-btn">Select All</button><button id="p2jNone" class="secondary-btn">Clear Selection</button></div></div><div id="p2jGrid" class="split-thumbnail-grid"></div><button id="p2jConvert" class="primary-btn convert-btn" disabled>Convert Pages to JPG</button><p id="p2jStatus" class="status"></p></div><input id="p2jInput" class="pdf-hidden-input" type="file" accept="application/pdf,.pdf"></section></main><section class="content-section"><div class="section-inner"><div class="section-heading"><h2>How to convert PDF to JPG</h2></div><div class="steps"><article class="info-card"><span class="step-number">1</span><h3>Add PDF</h3><p>Select your document.</p></article><article class="info-card"><span class="step-number">2</span><h3>Select pages</h3><p>Choose pages and JPG quality.</p></article><article class="info-card"><span class="step-number">3</span><h3>Download</h3><p>Save one JPG or a ZIP archive.</p></article></div></div></section><section id="faq" class="content-section soft"><div class="section-inner"><div class="section-heading"><h2>Frequently asked questions</h2></div><div class="faq-list"><details><summary>Is PDF to JPG free?</summary><p>Yes, with no account or watermark.</p></details><details><summary>Are files uploaded?</summary><p>No. Conversion happens in your browser.</p></details></div></div></section><footer class="site-footer"><div class="footer-inner"><span>© 2026 CreatorNew.</span></div></footer><script type="module" src="../js/site-i18n.js"></script><script type="module" src="../js/pdf-to-jpg.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Convert PDF pages to high-quality JPG images online for free. Select pages, adjust quality and extract images privately in your browser with zero uploads.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#5d5fef">
+  <link rel="icon" type="image/png" href="../creatornew-icon.png">
+  <link rel="apple-touch-icon" href="../creatornew-icon.png">
+  <link rel="canonical" href="https://creatornew.com/pdf-to-jpg/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CreatorNew">
+  <meta property="og:title" content="PDF to JPG Converter Online Free — High Quality Images | CreatorNew">
+  <meta property="og:description" content="Convert PDF pages to crisp JPG images directly in your browser. 100% private, free batch extraction with zero server uploads.">
+  <meta property="og:url" content="https://creatornew.com/pdf-to-jpg/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="PDF to JPG Converter Online Free | CreatorNew">
+  <meta name="twitter:description" content="Convert PDF pages to JPG images privately in your browser. Fast batch conversion with no registration.">
+  <title>PDF to JPG Converter Online Free — Convert PDF Pages to JPG | CreatorNew</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://creatornew.com/#website",
+        "url": "https://creatornew.com/",
+        "name": "CreatorNew",
+        "description": "Free browser-based tools for creators."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://creatornew.com/pdf-to-jpg/#pdf-to-jpg",
+        "name": "CreatorNew PDF to JPG",
+        "url": "https://creatornew.com/pdf-to-jpg/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript and a modern web browser",
+        "description": "A free online tool to convert PDF pages into high-resolution JPG images directly in the browser.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Selective page extraction",
+          "Custom JPG compression quality",
+          "Individual download or ZIP package",
+          "Local browser processing with zero uploads",
+          "No watermark or registration required"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://creatornew.com/pdf-to-jpg/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is PDF to JPG free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. CreatorNew PDF to JPG is 100% free with no account creation, subscription, or watermark."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are my PDF files uploaded to a remote server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The entire rendering and conversion process runs client-side in your web browser. Your confidential documents never touch any external server."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I convert multiple pages into a ZIP archive?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. When you convert multiple pages, CreatorNew automatically packages all rendered JPG images into a convenient, single ZIP file for quick download."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool work on mobile phones and tablets?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. CreatorNew is fully responsive and compatible with modern mobile browsers on iOS, iPadOS, and Android devices."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="pdf-tool-page">
+  <a class="skip-link" href="#p2jDrop">Skip to PDF to JPG converter</a>
+  <header class="topbar">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="../"><img class="brand-logo" src="../creatornew-logo.png" alt="CreatorNew" width="2075" height="758"></a>
+      <div class="nav-links">
+        <details class="nav-dropdown">
+          <summary>Image Tools <span>⌄</span></summary>
+          <div class="nav-dropdown-menu">
+            <a href="../image-converter/"><strong>Image Converter</strong><small>Convert JPG, PNG and WebP</small></a>
+            <a href="../background-remover/"><strong>Background Remover</strong><small>Create transparent PNGs</small></a>
+            <a href="../image-compressor/"><strong>Image Compressor</strong><small>Reduce image file size</small></a>
+            <a href="../image-resize/"><strong>Image Resizer</strong><small>Resize images</small></a>
+          </div>
+        </details>
+        <details class="nav-dropdown pdf-nav-dropdown">
+          <summary>PDF Tools <span>⌄</span></summary>
+          <div class="nav-dropdown-menu">
+            <a href="../images-to-pdf/"><strong>Images to PDF</strong><small>Combine images</small></a>
+            <a href="../merge-pdf/"><strong>Merge PDF</strong><small>Combine PDFs</small></a>
+            <a href="../split-pdf/"><strong>Split PDF</strong><small>Extract pages</small></a>
+            <a href="../delete-pdf-pages/"><strong>Delete PDF Pages</strong><small>Remove unwanted pages</small></a>
+            <a href="./"><strong>PDF to JPG</strong><small>Convert pages to images</small></a>
+            <a href="../pdf-to-png/"><strong>PDF to PNG</strong><small>Convert pages to PNG</small></a>
+            <a href="../rotate-pdf/"><strong>Rotate PDF</strong><small>Rotate pages visually</small></a>
+          </div>
+        </details>
+        <a href="#faq">FAQ</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="hero pdf-hero">
+    <section class="hero-copy">
+      <p class="eyebrow">Free PDF tool</p>
+      <h1>Convert PDF <span>pages to JPG</span></h1>
+      <p class="lead">Turn selected PDF pages into clear, high-resolution JPG images directly in your browser without uploading your document.</p>
+      <div class="benefits">
+        <div class="benefit"><span class="check">✓</span> Selective page extraction</div>
+        <div class="benefit"><span class="check">✓</span> High image clarity</div>
+        <div class="benefit"><span class="check">✓</span> Single or ZIP download</div>
+        <div class="benefit"><span class="check">✓</span> 100% private in your browser</div>
+      </div>
+    </section>
+
+    <section class="tool-card pdf-tool-card" aria-label="PDF to JPG converter">
+      <div id="p2jDrop" class="drop-zone" role="button" tabindex="0" aria-label="Choose one PDF or drag it here">
+        <div class="upload-visual" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none">
+            <path d="M15 36h22a8 8 0 0 0 .5-15.98A13 13 0 0 0 12.37 17 9.5 9.5 0 0 0 15 36Z" stroke="currentColor" stroke-width="2.8"/>
+            <path d="m24 31V17m0 0-5 5m5-5 5 5" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h2>Drop one PDF here</h2>
+        <p>Select a PDF up to 100 MB</p>
+        <button id="p2jChoose" class="primary-btn" type="button">+ Choose PDF</button>
+        <p class="privacy">🔒 Your PDF stays on your device</p>
+      </div>
+
+      <div id="p2jWork" class="workspace pdf-workspace" hidden>
+        <div class="workspace-head">
+          <div>
+            <h2 id="p2jName" class="workspace-title"></h2>
+            <p id="p2jMeta" class="pdf-order-hint"></p>
+          </div>
+          <div class="workspace-actions merge-workspace-actions">
+            <button id="p2jReplace" class="secondary-btn merge-action-btn" type="button">Replace PDF</button>
+            <button id="p2jClear" class="secondary-btn merge-action-btn danger" type="button">Clear</button>
+          </div>
+        </div>
+
+        <div class="split-controls">
+          <label for="p2jQuality">JPG quality</label>
+          <select id="p2jQuality">
+            <option value="0.8">Good - smaller file</option>
+            <option value="0.9" selected>High - recommended</option>
+            <option value="1">Maximum</option>
+          </select>
+          <div class="p2j-selection-actions">
+            <button id="p2jAll" class="secondary-btn" type="button">Select All</button>
+            <button id="p2jNone" class="secondary-btn" type="button">Clear Selection</button>
+          </div>
+        </div>
+
+        <div id="p2jGrid" class="split-thumbnail-grid"></div>
+        <button id="p2jConvert" class="primary-btn convert-btn" type="button" disabled>Convert Pages to JPG</button>
+        <p id="p2jStatus" class="status" role="status" aria-live="polite"></p>
+
+        <section id="p2jResult" class="merge-result" hidden>
+          <div class="merge-result-head">
+            <div>
+              <p class="merge-result-label">Conversion complete</p>
+              <h3>Download your JPG images</h3>
+            </div>
+            <button id="p2jDownload" class="primary-btn" type="button">Download Images</button>
+          </div>
+          <div id="p2jResultList" class="result-list"></div>
+        </section>
+      </div>
+      <input id="p2jInput" class="pdf-hidden-input" type="file" accept="application/pdf,.pdf">
+    </section>
+  </main>
+
+  <section class="content-section">
+    <div class="section-inner">
+      <div class="section-heading">
+        <h2>How to convert PDF to JPG online</h2>
+        <p>Extract crystal-clear images from any PDF document in three easy steps.</p>
+      </div>
+      <div class="steps">
+        <article class="info-card">
+          <span class="step-number">1</span>
+          <h3>Add your PDF</h3>
+          <p>Drag and drop your PDF or select it from your computer or phone.</p>
+        </article>
+        <article class="info-card">
+          <span class="step-number">2</span>
+          <h3>Select pages & quality</h3>
+          <p>Choose specific pages or all pages, and pick your preferred JPG compression level.</p>
+        </article>
+        <article class="info-card">
+          <span class="step-number">3</span>
+          <h3>Download JPG images</h3>
+          <p>Download your individual JPGs or grab the whole set packaged cleanly as a ZIP archive.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="content-section soft">
+    <div class="section-inner">
+      <div class="section-heading">
+        <h2>Frequently asked questions</h2>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>Is PDF to JPG free?</summary>
+          <p>Yes. CreatorNew PDF to JPG is 100% free with no account creation, subscription, or watermark.</p>
+        </details>
+        <details>
+          <summary>Are my PDF files uploaded to a remote server?</summary>
+          <p>No. The entire rendering and conversion process runs client-side in your web browser. Your confidential documents never touch any external server.</p>
+        </details>
+        <details>
+          <summary>Can I convert multiple pages into a ZIP archive?</summary>
+          <p>Yes. When you convert multiple pages, CreatorNew automatically packages all rendered JPG images into a convenient, single ZIP file for quick download.</p>
+        </details>
+        <details>
+          <summary>Does this tool work on mobile phones and tablets?</summary>
+          <p>Yes. CreatorNew is fully responsive and compatible with modern mobile browsers on iOS, iPadOS, and Android devices.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>&copy; 2026 CreatorNew. Free tools for creators.</span>
+      <div class="footer-links">
+        <a href="../">All Tools</a>
+        <a href="../pdf-to-png/">PDF to PNG</a>
+        <a href="../merge-pdf/">Merge PDF</a>
+        <a href="../split-pdf/">Split PDF</a>
+        <a href="../delete-pdf-pages/">Delete PDF Pages</a>
+        <a href="../rotate-pdf/">Rotate PDF</a>
+        <a href="../images-to-pdf/">Images to PDF</a>
+        <a href="../image-converter/">Image Converter</a>
+        <a href="../image-compressor/">Image Compressor</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="../js/site-i18n.js"></script>
+  <script type="module" src="../js/pdf-to-jpg.js"></script>
+</body>
+</html>

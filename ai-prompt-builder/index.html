@@ -25,7 +25,78 @@
   <link rel="stylesheet" href="../css/prompt-layout-fix.css">
   <link rel="stylesheet" href="../css/prompt-popularity.css">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"CreatorNew AI Prompt Builder","url":"https://creatornew.com/ai-prompt-builder/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","description":"A free browser-based AI prompt generator for content creators.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://creatornew.com/#website",
+        "url": "https://creatornew.com/",
+        "name": "CreatorNew",
+        "description": "Free browser-based tools for creators."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://creatornew.com/ai-prompt-builder/#prompt-builder",
+        "name": "CreatorNew AI Prompt Builder",
+        "url": "https://creatornew.com/ai-prompt-builder/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript and a modern web browser",
+        "description": "A free browser-based AI prompt generator for ChatGPT, Claude, Gemini and content creators. Prompts are built and processed locally.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Structured prompt generator",
+          "Curated prompt library",
+          "Multi-model support for ChatGPT, Claude, Gemini, Midjourney",
+          "Local browser processing",
+          "No registration or limits"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://creatornew.com/ai-prompt-builder/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is the AI Prompt Builder free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. You can generate, edit, copy and download prompts without registration."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does CreatorNew send my prompt to an AI service?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. This tool structures your prompt locally in the browser. You choose where to use it."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the tool generate AI answers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It creates a detailed prompt that you can paste into ChatGPT, Claude, Gemini or another AI tool."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I edit the generated prompt?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The generated prompt remains fully editable before you copy or download it."
+            }
+          }
+        ]
+      }
+    ]
+  }
   </script>
 </head>
 <body class="prompt-page">
@@ -79,7 +150,7 @@
     <section id="faq" class="content-section"><div class="section-inner"><div class="section-heading"><h2>Frequently asked questions</h2></div><div class="faq-list"><details><summary>Is the AI Prompt Builder free?</summary><p>Yes. You can generate, edit, copy and download prompts without registration.</p></details><details><summary>Does CreatorNew send my prompt to an AI service?</summary><p>No. This tool structures your prompt locally in the browser. You choose where to use it.</p></details><details><summary>Does the tool generate AI answers?</summary><p>No. It creates a detailed prompt that you can paste into ChatGPT, Claude, Gemini or another AI tool.</p></details><details><summary>Can I edit the generated prompt?</summary><p>Yes. The generated prompt remains fully editable before you copy or download it.</p></details></div></div></section>
   </main>
   <div id="promptModal" class="prompt-modal-backdrop" hidden><section class="prompt-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button id="closePromptModal" class="prompt-modal-close" type="button" aria-label="Close">×</button><div id="modalVisual" class="prompt-modal-visual"></div><div class="prompt-modal-content"><div class="prompt-modal-tags"><span id="modalCategory"></span><span id="modalModel"></span></div><div id="modalPopularity" class="modal-popularity" aria-label="Prompt popularity"></div><h2 id="modalTitle"></h2><p id="modalDescription"></p><a id="modalSource" class="prompt-source-link" href="https://prompts.chat/" target="_blank" rel="noopener noreferrer" hidden>View original on prompts.chat ↗</a><label for="modalPrompt">Prompt</label><textarea id="modalPrompt"></textarea><div class="prompt-modal-actions"><button id="useInBuilderBtn" class="secondary-btn" type="button">Customize in Builder</button><button id="copyLibraryPromptBtn" class="primary-btn" type="button">Copy Prompt</button></div></div></section></div>
-  <footer class="site-footer"><div class="footer-inner"><span>&copy; 2026 CreatorNew. Free tools for creators.</span><div class="footer-links"><a href="../">Home</a><a href="#prompt-builder">Prompt Builder</a><a href="#faq">FAQ</a></div></div></footer>
+  <footer class="site-footer"><div class="footer-inner"><span>&copy; 2026 CreatorNew. Free tools for creators.</span><div class="footer-links"><a href="../">All Tools</a><a href="../background-remover/">Background Remover</a><a href="../image-converter/">Image Converter</a><a href="../image-compressor/">Image Compressor</a><a href="../free-sounds/">Free Sounds</a><a href="../free-videos/">Free Videos</a><a href="../merge-pdf/">Merge PDF</a><a href="#prompt-builder">Prompt Builder</a><a href="#faq">FAQ</a></div></div></footer>
   <script type="module" src="../js/site-i18n.js"></script>
   <script type="module" src="../js/ai-prompt-builder.js"></script>
 </body>
