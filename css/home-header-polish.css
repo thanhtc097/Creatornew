@@ -96,16 +96,40 @@
   position: relative;
   width: 100%;
   background:
-    linear-gradient(90deg, #fbfcff 0%, rgba(251, 252, 255, 0.95) 38%, rgba(246, 243, 255, 0.85) 60%, rgba(238, 233, 255, 0.72) 100%),
+    linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0.94) 28%, rgba(255, 255, 255, 0.7) 45%, rgba(255, 255, 255, 0.1) 62%, transparent 75%),
     url('../hero-creator-4k.jpg') right center / cover no-repeat;
-  border-bottom: 1px solid rgba(208, 213, 221, 0.6);
+  border-bottom: 1px solid rgba(208, 213, 221, 0.5);
+}
+
+.home-page .home-hero {
+  grid-template-columns: minmax(0, 580px);
+  min-height: 580px;
+  padding: 84px 0;
+}
+
+.home-page .home-hero-copy {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(14px);
+  padding: 36px 40px;
+  border-radius: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 16px 42px rgba(16, 24, 40, 0.08);
 }
 
 @media (max-width: 960px) {
   .home-hero-wrapper {
     background:
-      linear-gradient(180deg, rgba(251, 252, 255, 0.96) 0%, rgba(246, 243, 255, 0.92) 100%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.88) 55%, rgba(255, 255, 255, 0.25) 100%),
       url('../hero-creator-4k.jpg') center top / cover no-repeat;
   }
+  .home-page .home-hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 40px 0 60px;
+  }
+  .home-page .home-hero-copy {
+    padding: 26px 20px;
+  }
 }
+
 
