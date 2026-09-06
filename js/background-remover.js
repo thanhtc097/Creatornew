@@ -9,6 +9,7 @@ import { InpaintService } from "./background-remover/inpaint-service.js";
 const $ = (id) => document.getElementById(id);
 const elements = {
   dropZone: $("backgroundDropZone"), fileInput: $("backgroundFileInput"), choose: $("backgroundChooseBtn"),
+  sampleSection: $("samplePhotosSection"),
   workspace: $("backgroundWorkspace"), original: $("originalPreview"), result: $("resultPreview"),
   fileName: $("backgroundFileName"), fileSize: $("backgroundFileSize"), removeBackground: $("removeBackgroundBtn"),
   download: $("downloadBackgroundBtn"), clear: $("clearBackgroundBtn"), progressBar: $("backgroundProgressBar"),
@@ -19,6 +20,10 @@ const elements = {
   maskAdd: $("maskAddBtn"), maskErase: $("maskEraseBtn"), brush: $("maskBrushSize"), maskUndo: $("maskUndoBtn"),
   maskRedo: $("maskRedoBtn"), maskClear: $("maskClearBtn"), maskWarning: $("maskWarning"), removeObject: $("removeObjectBtn"),
   cancelObject: $("cancelObjectBtn"), oversize: $("oversizePrompt"), acceptReduced: $("acceptReducedBtn"), cancelReduced: $("cancelReducedBtn"),
+  viewModeTabs: $("viewModeTabs"), btnSideBySide: $("btnSideBySide"), btnSliderView: $("btnSliderView"),
+  sideBySideContainer: $("sideBySideContainer"), sliderContainer: $("beforeAfterSliderContainer"),
+  baSliderFrame: document.querySelector(".ba-slider-frame"), baResultImg: $("baResultImg"), baOriginalImg: $("baOriginalImg"),
+  baRangeInput: $("baRangeInput"), shareToolBtn: $("shareToolBtn"),
 };
 
 const session = createSession();
@@ -60,6 +65,22 @@ elements.prohibited.addEventListener("change", () => { session.prohibitedPurpose
 elements.maskCanvas.addEventListener("keydown", handleMaskKeyboard);
 window.addEventListener("beforeunload", () => { inpaint.dispose(); resetSession(session); decoded?.bitmap.close?.(); });
 
+document.querySelectorAll(".sample-card").forEach((button) => {
+  button.addEventListener("click", () => loadSample(button.dataset.sample));
+});
+
+elements.btnSideBySide?.addEventListener("click", () => switchResultView("side-by-side"));
+elements.btnSliderView?.addEventListener("click", () => switchResultView("slider"));
+elements.baRangeInput?.addEventListener("input", (e) => {
+  elements.baSliderFrame?.style.setProperty("--slider-pos", `${e.target.value}%`);
+});
+elements.shareToolBtn?.addEventListener("click", () => {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(window.location.href);
+    showStatus("Tool link copied to clipboard! Share it with your friends.", "success");
+  }
+});
+
 attachMaskEditor(elements.maskCanvas, mask, {
   getOperation: () => maskOperation,
   getRadius: () => Number(elements.brush.value) / 100,
@@ -83,6 +104,35 @@ async function selectFile(file) {
   }
 }
 
+async function loadSample(sampleType) {
+  const sampleMap = {
+    portrait: { file: "sample-portrait.jpg", name: "sample-portrait.jpg", mode: "background" },
+    product: { file: "sample-product.jpg", name: "sample-product.jpg", mode: "background" },
+    object: { file: "sample-object.jpg", name: "sample-object-erase.jpg", mode: "object" },
+  };
+  const item = sampleMap[sampleType];
+  if (!item) return;
+  showStatus("Loading sample image...", "");
+  try {
+    const res = await fetch(`../samples/${item.file}`);
+    if (!res.ok) throw new Error("Could not load sample");
+    const blob = await res.blob();
+    const file = new File([blob], item.name, { type: "image/jpeg" });
+    await selectFile(file);
+    if (item.mode === "object") {
+      setMode("object");
+      elements.ownership.checked = true;
+      session.authorizationConfirmed = true;
+      enforcePolicy();
+    } else {
+      setMode("background");
+    }
+  } catch (err) {
+    console.error("Failed to load sample", err);
+    showStatus("Failed to load sample image. Please choose an image from your device.", "error");
+  }
+}
+
 function acceptDecoded(result) {
   decoded?.bitmap.close?.();
   decoded = result;
@@ -96,6 +146,7 @@ function acceptDecoded(result) {
   elements.fileSize.textContent = formatBytes(currentFile.size);
   elements.workspace.hidden = false;
   elements.dropZone.hidden = true;
+  if (elements.sampleSection) elements.sampleSection.hidden = true;
   elements.download.hidden = true;
   elements.removeBackground.hidden = false;
   clearResultPreview();
@@ -258,10 +309,63 @@ function handleMaskKeyboard(event) {
 }
 
 function resizeMaskCanvas() { const rect = $("maskStage").getBoundingClientRect(); elements.maskCanvas.width = Math.max(1, Math.round(rect.width)); elements.maskCanvas.height = Math.max(1, Math.round(rect.height)); updateMask(); }
-function showResult(url, alt) { elements.result.src = url; elements.result.alt = alt; elements.result.parentElement.classList.remove("is-empty"); elements.download.hidden = false; }
-function clearResultPreview() { elements.result.removeAttribute("src"); elements.result.parentElement.classList.add("is-empty"); }
-function downloadResult() { if (!session.activeResult) return; const link = document.createElement("a"); link.href = session.activeResult.objectUrl; link.download = outputFileName(currentFile.name, "image/png", session.activeResult.mode === "object" ? "clean" : "br"); document.body.appendChild(link); link.click(); link.remove(); }
-function clearAll() { backgroundAbort?.abort(); inpaint.dispose(); decoded?.bitmap.close?.(); decoded = null; currentFile = null; replaceMask(createMaskState()); resetSession(session); elements.workspace.hidden = true; elements.dropZone.hidden = false; elements.policy.hidden = true; clearStatus(); }
+function showResult(url, alt) {
+  elements.result.src = url;
+  elements.result.alt = alt;
+  elements.result.parentElement.classList.remove("is-empty");
+  elements.download.hidden = false;
+  if (elements.shareToolBtn) elements.shareToolBtn.hidden = false;
+  if (session.source?.objectUrl) {
+    if (elements.baOriginalImg) elements.baOriginalImg.src = session.source.objectUrl;
+    if (elements.baResultImg) elements.baResultImg.src = url;
+    if (elements.viewModeTabs) elements.viewModeTabs.hidden = false;
+  }
+}
+
+function switchResultView(view) {
+  const isSlider = view === "slider";
+  elements.btnSideBySide?.classList.toggle("is-active", !isSlider);
+  elements.btnSliderView?.classList.toggle("is-active", isSlider);
+  if (elements.sideBySideContainer) elements.sideBySideContainer.hidden = isSlider;
+  if (elements.sliderContainer) elements.sliderContainer.hidden = !isSlider;
+}
+
+function clearResultPreview() {
+  elements.result.removeAttribute("src");
+  elements.result.parentElement.classList.add("is-empty");
+  if (elements.viewModeTabs) elements.viewModeTabs.hidden = true;
+  if (elements.sliderContainer) elements.sliderContainer.hidden = true;
+  if (elements.sideBySideContainer) elements.sideBySideContainer.hidden = false;
+  if (elements.shareToolBtn) elements.shareToolBtn.hidden = true;
+  elements.btnSideBySide?.classList.add("is-active");
+  elements.btnSliderView?.classList.remove("is-active");
+}
+
+function downloadResult() {
+  if (!session.activeResult) return;
+  const link = document.createElement("a");
+  link.href = session.activeResult.objectUrl;
+  link.download = outputFileName(currentFile.name, "image/png", session.activeResult.mode === "object" ? "clean" : "br");
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+}
+
+function clearAll() {
+  backgroundAbort?.abort();
+  inpaint.dispose();
+  decoded?.bitmap.close?.();
+  decoded = null;
+  currentFile = null;
+  replaceMask(createMaskState());
+  resetSession(session);
+  clearResultPreview();
+  elements.workspace.hidden = true;
+  elements.dropZone.hidden = false;
+  if (elements.sampleSection) elements.sampleSection.hidden = false;
+  elements.policy.hidden = true;
+  clearStatus();
+}
 function toggleBusy(busy, object = false) { elements.clear.disabled = busy; elements.removeBackground.disabled = busy; elements.removeObject.disabled = busy; elements.cancelObject.hidden = !(busy && object); }
 function setProgress(value, message) { elements.progressBar.style.width = `${value}%`; elements.progressBar.parentElement.setAttribute("aria-valuenow", String(value)); elements.progressText.textContent = message; }
 function showStatus(message, type = "") { elements.status.textContent = message; elements.status.className = `status${type ? ` ${type}` : ""}`; }

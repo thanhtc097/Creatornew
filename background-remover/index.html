@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Remove image backgrounds online for free. Create transparent PNG images with AI processing directly in your browser.">
+  <meta name="description" content="Remove image backgrounds and erase unwanted objects online for free. 100% private in-browser AI processing with zero server uploads, no watermark and no registration.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#5d5fef">
   <link rel="icon" type="image/png" href="../creatornew-icon.png">
@@ -11,10 +11,10 @@
   <link rel="canonical" href="https://creatornew.com/background-remover/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="CreatorNew">
-  <meta property="og:title" content="Free AI Background Remover | CreatorNew">
-  <meta property="og:description" content="Remove backgrounds and download transparent PNG images directly in your browser.">
+  <meta property="og:title" content="Free AI Background &amp; Object Remover — 100% Private | CreatorNew">
+  <meta property="og:description" content="Remove backgrounds and erase unwanted objects directly in your browser. 100% private, free forever, zero cloud uploads.">
   <meta property="og:url" content="https://creatornew.com/background-remover/">
-  <title>Free AI Background Remover — Transparent PNG | CreatorNew</title>
+  <title>Free AI Background &amp; Object Remover — 100% Private In-Browser | CreatorNew</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/background-remover.css">
   <script type="application/ld+json">
@@ -24,20 +24,20 @@
       {
         "@type": "SoftwareApplication",
         "@id": "https://creatornew.com/background-remover/#app",
-        "name": "CreatorNew Background Remover",
+        "name": "CreatorNew AI Background & Object Remover",
         "url": "https://creatornew.com/background-remover/",
         "applicationCategory": "MultimediaApplication",
         "operatingSystem": "Any",
-        "description": "A free AI background remover that processes supported images in the browser.",
+        "description": "A free AI background and object remover that processes images locally in the browser with zero cloud uploads.",
         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
       },
       {
         "@type": "FAQPage",
         "@id": "https://creatornew.com/background-remover/#faq",
         "mainEntity": [
-          {"@type": "Question", "name": "Is the background remover free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can remove image backgrounds for free without creating an account."}},
-          {"@type": "Question", "name": "Are my images uploaded?", "acceptedAnswer": {"@type": "Answer", "text": "The image is processed by an AI model in your browser and is not uploaded to CreatorNew."}},
-          {"@type": "Question", "name": "Why does the first background removal take longer?", "acceptedAnswer": {"@type": "Answer", "text": "Your browser needs to download the AI model the first time. Later uses may be faster because browser caching can reuse model files."}}
+          {"@type": "Question", "name": "Is the background remover free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can remove image backgrounds and erase objects for free without creating an account or watermarks."}},
+          {"@type": "Question", "name": "Are my images uploaded to any server?", "acceptedAnswer": {"@type": "Answer", "text": "No. The AI model runs directly inside your browser (WebAssembly). Your images never leave your computer."}},
+          {"@type": "Question", "name": "Why does the first background removal take longer?", "acceptedAnswer": {"@type": "Answer", "text": "Your browser downloads the AI model the first time. Subsequent uses run instantly and even work offline."}}
         ]
       }
     ]
@@ -70,14 +70,14 @@
 
   <main class="hero background-hero">
     <section class="hero-copy">
-      <p class="eyebrow">AI image tool</p>
-      <h1>Remove backgrounds <span>automatically</span></h1>
-      <p class="lead">Create a clean transparent PNG with AI processing in your browser. No account, watermark or image upload.</p>
+      <p class="eyebrow">100% In-Browser AI Tool</p>
+      <h1>Remove backgrounds &amp; <span>erase objects privately</span></h1>
+      <p class="lead">Create transparent PNGs or erase unwanted objects with local AI in your browser. Free forever, no watermark, and zero photos uploaded to any server.</p>
       <div class="benefits">
-        <div class="benefit"><span class="check">✓</span> AI subject detection</div>
-        <div class="benefit"><span class="check">✓</span> Transparent PNG output</div>
-        <div class="benefit"><span class="check">✓</span> Browser-side processing</div>
-        <div class="benefit"><span class="check">✓</span> Free to use</div>
+        <div class="benefit"><span class="check">✓</span> 100% Private (Runs on Device)</div>
+        <div class="benefit"><span class="check">✓</span> Unlimited &amp; Free (No Watermark)</div>
+        <div class="benefit"><span class="check">✓</span> Zero Server Uploads</div>
+        <div class="benefit"><span class="check">✓</span> High-Quality AI Inpainting</div>
       </div>
     </section>
 
@@ -98,21 +98,76 @@
         <h2>Drop an image here</h2>
         <p>Select a JPG, PNG or WebP image up to 25 MB</p>
         <button id="backgroundChooseBtn" class="primary-btn" type="button">+ Choose Image</button>
-        <p class="privacy">🔒 Your image is processed on your device</p>
+        <p class="privacy">🔒 100% In-Browser · Files are never uploaded</p>
+      </div>
+
+      <div id="samplePhotosSection" class="sample-photos-section">
+        <p class="sample-heading">💡 Or test instantly with a 1-click sample photo:</p>
+        <div class="sample-grid">
+          <button type="button" class="sample-card" data-sample="portrait">
+            <img src="../samples/sample-portrait.jpg" alt="Portrait photo sample" width="68" height="68" loading="lazy">
+            <div class="sample-info">
+              <strong>Portrait</strong>
+              <small>Hair &amp; edges</small>
+            </div>
+          </button>
+          <button type="button" class="sample-card" data-sample="product">
+            <img src="../samples/sample-product.jpg" alt="Sneaker product photo sample" width="68" height="68" loading="lazy">
+            <div class="sample-info">
+              <strong>Product</strong>
+              <small>E-commerce shoe</small>
+            </div>
+          </button>
+          <button type="button" class="sample-card" data-sample="object">
+            <img src="../samples/sample-object.jpg" alt="Coffee table with note sample" width="68" height="68" loading="lazy">
+            <div class="sample-info">
+              <strong>Object Erase</strong>
+              <small>Erase sticky note</small>
+            </div>
+          </button>
+        </div>
       </div>
 
       <div id="backgroundWorkspace" class="background-workspace" hidden>
         <div class="workspace-head"><div><h2 id="backgroundFileName" class="workspace-title"></h2><span id="backgroundFileSize" class="file-size"></span></div><button id="clearBackgroundBtn" class="text-btn danger" type="button">Clear</button></div>
         <div id="backgroundModePanel" role="tabpanel" aria-labelledby="backgroundModeBtn">
-        <div class="background-previews">
+        
+        <div class="view-mode-tabs" id="viewModeTabs" hidden>
+          <button type="button" class="view-tab is-active" id="btnSideBySide">Side by side</button>
+          <button type="button" class="view-tab" id="btnSliderView">Interactive Slider</button>
+        </div>
+
+        <div class="background-previews" id="sideBySideContainer">
           <figure><figcaption>Original</figcaption><div class="background-preview"><img id="originalPreview" alt=""></div></figure>
           <figure><figcaption>Transparent result</figcaption><div class="background-preview checkerboard is-empty"><img id="resultPreview" alt=""><span>Result appears here</span></div></figure>
         </div>
+
+        <div id="beforeAfterSliderContainer" class="ba-slider-container" hidden>
+          <div class="ba-slider-frame checkerboard">
+            <img id="baResultImg" class="ba-img ba-result" alt="Result transparent">
+            <div class="ba-overlay" id="baOverlay">
+              <img id="baOriginalImg" class="ba-img ba-original" alt="Original">
+            </div>
+            <div class="ba-handle" id="baHandle" aria-hidden="true">
+              <span class="ba-handle-line"></span>
+              <span class="ba-handle-btn">↔</span>
+            </div>
+            <input type="range" id="baRangeInput" min="0" max="100" value="50" class="ba-range" aria-label="Compare original and result">
+          </div>
+          <div class="ba-labels">
+            <span>◀ Original</span>
+            <span>Result (Transparent) ▶</span>
+          </div>
+        </div>
+
         <div class="background-progress" role="progressbar" aria-label="Background removal progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="backgroundProgressBar"></span></div>
         <p id="backgroundProgressText" class="progress-text">Ready to remove the background.</p>
         <p class="seo-file-note">SEO-friendly output: creatornew-br-image-name.png</p>
-        <button id="removeBackgroundBtn" class="primary-btn convert-btn" type="button">Remove Background</button>
-        <button id="downloadBackgroundBtn" class="primary-btn convert-btn" type="button" hidden>Download Transparent PNG</button>
+        <div class="action-buttons-group">
+          <button id="removeBackgroundBtn" class="primary-btn convert-btn" type="button">Remove Background</button>
+          <button id="downloadBackgroundBtn" class="primary-btn convert-btn" type="button" hidden>Download Transparent PNG</button>
+          <button id="shareToolBtn" class="secondary-btn share-btn" type="button" hidden title="Copy tool link">🔗 Share Tool</button>
+        </div>
         </div>
         <div id="objectModePanel" role="tabpanel" aria-labelledby="objectModeBtn" hidden>
           <div class="mask-editor-shell">
