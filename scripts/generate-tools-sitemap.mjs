@@ -24,7 +24,7 @@ function isNoindex(html) {
   return robots.toLowerCase().split(',').map((value) => value.trim()).includes('noindex')
 }
 
-const entries = []
+const entriesMap = new Map()
 const toolSlugs = JSON.parse(await readFile(toolsConfig, 'utf8'))
 for (const slug of toolSlugs) {
   const relativeIndex = join(slug, 'index.html')
@@ -43,8 +43,10 @@ for (const slug of toolSlugs) {
   } catch {}
 
   const fileInfo = await stat(modifiedFile)
-  entries.push({ loc, lastmod: fileInfo.mtime.toISOString() })
+  entriesMap.set(loc, { loc, lastmod: fileInfo.mtime.toISOString() })
 }
+
+const entries = Array.from(entriesMap.values())
 
 entries.sort((first, second) => first.loc.localeCompare(second.loc))
 
