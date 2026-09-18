@@ -36,6 +36,8 @@ export default defineConfig({
         creatornewVsRemoveBg: 'creatornew-vs-remove-bg/index.html',
         creatornewVsTinyPng: 'creatornew-vs-tinypng/index.html',
         creatornewVsIlovePdf: 'creatornew-vs-ilovepdf/index.html',
+        creatornewVsSmallpdf: 'creatornew-vs-smallpdf/index.html',
+        creatornewVsEzgif: 'creatornew-vs-ezgif/index.html',
       },
     },
   },
