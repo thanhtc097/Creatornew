@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://creatornew.com/about/</loc>
+    <lastmod>2026-09-18T00:57:24.111Z</lastmod>
+  </url>
+  <url>
     <loc>https://creatornew.com/ai-prompt-builder/</loc>
     <lastmod>2026-09-06T16:18:18.792Z</lastmod>
   </url>
   <url>
     <loc>https://creatornew.com/background-remover/</loc>
-    <lastmod>2026-09-06T14:49:25.062Z</lastmod>
+    <lastmod>2026-09-18T00:58:38.085Z</lastmod>
   </url>
   <url>
     <loc>https://creatornew.com/delete-pdf-pages/</loc>
-    <lastmod>2026-07-28T15:09:28.717Z</lastmod>
+    <lastmod>2026-09-18T00:58:16.011Z</lastmod>
   </url>
   <url>
     <loc>https://creatornew.com/free-sounds/</loc>
@@ -22,19 +26,19 @@
   </url>
   <url>
     <loc>https://creatornew.com/how-to-convert-images-online-free/</loc>
-    <lastmod>2026-09-06T16:18:40.953Z</lastmod>
+    <lastmod>2026-09-18T00:59:21.693Z</lastmod>
   </url>
   <url>
     <loc>https://creatornew.com/image-compressor/</loc>
-    <lastmod>2026-08-05T15:04:02.109Z</lastmod>
+    <lastmod>2026-09-18T00:58:44.839Z</lastmod>
   </url>
   <url>
     <loc>https://creatornew.com/image-converter/</loc>
-    <lastmod>2026-08-05T15:04:00.852Z</lastmod>
+    <lastmod>2026-09-18T00:58:53.662Z</lastmod>
   </url>
   <url>
     <loc>https://creatornew.com/image-resize/</loc>
-    <lastmod>2026-07-28T15:05:21.386Z</lastmod>
+    <lastmod>2026-09-18T00:58:48.887Z</lastmod>
   </url>
   <url>
     <loc>https://creatornew.com/images-to-pdf/</loc>
@@ -42,11 +46,11 @@
   </url>
   <url>
     <loc>https://creatornew.com/jpg-to-webp/</loc>
-    <lastmod>2026-07-28T15:05:18.680Z</lastmod>
+    <lastmod>2026-09-18T00:58:57.621Z</lastmod>
   </url>
   <url>
     <loc>https://creatornew.com/merge-pdf/</loc>
-    <lastmod>2026-07-28T15:09:28.716Z</lastmod>
+    <lastmod>2026-09-18T00:58:30.077Z</lastmod>
   </url>
   <url>
     <loc>https://creatornew.com/pdf-to-jpg/</loc>
@@ -58,7 +62,11 @@
   </url>
   <url>
     <loc>https://creatornew.com/png-to-webp/</loc>
-    <lastmod>2026-07-28T15:05:17.742Z</lastmod>
+    <lastmod>2026-09-18T00:59:01.806Z</lastmod>
+  </url>
+  <url>
+    <loc>https://creatornew.com/privacy-policy/</loc>
+    <lastmod>2026-09-18T00:57:35.627Z</lastmod>
   </url>
   <url>
     <loc>https://creatornew.com/rotate-pdf/</loc>
@@ -66,10 +74,14 @@
   </url>
   <url>
     <loc>https://creatornew.com/split-pdf/</loc>
-    <lastmod>2026-07-28T15:09:28.715Z</lastmod>
+    <lastmod>2026-09-18T00:58:22.499Z</lastmod>
+  </url>
+  <url>
+    <loc>https://creatornew.com/terms/</loc>
+    <lastmod>2026-09-18T00:57:45.835Z</lastmod>
   </url>
   <url>
     <loc>https://creatornew.com/webp-to-jpg/</loc>
-    <lastmod>2026-07-28T15:05:19.553Z</lastmod>
+    <lastmod>2026-09-18T00:59:08.780Z</lastmod>
   </url>
 </urlset>
