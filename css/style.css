@@ -108,6 +108,46 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
 .nav-links a:hover { color: var(--primary); }
 
 .nav-dropdown { position: relative; }
+
+.breadcrumb-nav {
+  width: min(1180px, calc(100% - 40px));
+  margin: 18px auto 0;
+  padding: 0;
+}
+
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.breadcrumb-list a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.breadcrumb-list a:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  color: #98a2b3;
+  font-size: 11px;
+  user-select: none;
+}
+
+.breadcrumb-list [aria-current="page"] {
+  color: var(--navy);
+  font-weight: 600;
+}
 .nav-dropdown[open] { z-index: 70; }
 
 .nav-dropdown summary {

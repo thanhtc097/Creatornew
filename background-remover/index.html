@@ -32,6 +32,30 @@
     "@context": "https://schema.org",
     "@graph": [
       {
+    "@type": "BreadcrumbList",
+    "@id": "https://creatornew.com/background-remover/#breadcrumbs",
+    "itemListElement": [
+            {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://creatornew.com/"
+            },
+            {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Image Tools",
+                    "item": "https://creatornew.com/#tools"
+            },
+            {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Background Remover",
+                    "item": "https://creatornew.com/background-remover/"
+            }
+    ]
+},
+      {
         "@type": "SoftwareApplication",
         "@id": "https://creatornew.com/background-remover/#app",
         "name": "CreatorNew AI Background & Object Remover",
@@ -95,6 +119,15 @@
     </nav>
   </header>
 
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+    <ol class="breadcrumb-list">
+      <li><a href="../">Home</a></li>
+      <li class="breadcrumb-separator" aria-hidden="true">›</li>
+      <li><a href="../#tools">Image Tools</a></li>
+      <li class="breadcrumb-separator" aria-hidden="true">›</li>
+      <li aria-current="page">Background Remover</li>
+    </ol>
+  </nav>
   <main class="hero background-hero">
     <section class="hero-copy">
       <p class="eyebrow">100% In-Browser AI Tool</p>

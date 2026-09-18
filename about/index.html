@@ -7,14 +7,17 @@
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#5d5fef">
   <link rel="icon" type="image/png" href="../creatornew-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
   <link rel="apple-touch-icon" href="../creatornew-icon.png">
   <link rel="canonical" href="https://creatornew.com/about/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="CreatorNew">
   <meta property="og:title" content="About CreatorNew — 100% Private In-Browser Creative Tools">
   <meta property="og:description" content="Discover how CreatorNew uses WebAssembly and on-device AI to process images and PDFs directly in your browser with zero cloud uploads.">
+  <meta property="og:image" content="https://creatornew.com/og-image.png">
   <meta property="og:url" content="https://creatornew.com/about/">
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://creatornew.com/og-image.png">
   <meta name="twitter:title" content="About CreatorNew — In-Browser Tools & Technology">
   <meta name="twitter:description" content="Learn how CreatorNew processes images and PDFs locally with zero server uploads.">
   <title>About CreatorNew — 100% Private In-Browser Tools &amp; Technology</title>
@@ -27,6 +30,24 @@
   {
     "@context": "https://schema.org",
     "@graph": [
+      {
+    "@type": "BreadcrumbList",
+    "@id": "https://creatornew.com/about/#breadcrumbs",
+    "itemListElement": [
+            {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://creatornew.com/"
+            },
+            {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "About CreatorNew",
+                    "item": "https://creatornew.com/about/"
+            }
+    ]
+},
       {
         "@type": "WebSite",
         "@id": "https://creatornew.com/#website",
@@ -99,6 +120,13 @@
     </nav>
   </header>
 
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+    <ol class="breadcrumb-list">
+      <li><a href="../">Home</a></li>
+      <li class="breadcrumb-separator" aria-hidden="true">›</li>
+      <li aria-current="page">About CreatorNew</li>
+    </ol>
+  </nav>
   <main id="about-content" class="article-main">
     <header class="article-hero">
       <div class="article-hero-inner">

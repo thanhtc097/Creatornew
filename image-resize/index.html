@@ -7,14 +7,17 @@
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#5d5fef">
   <link rel="icon" type="image/png" href="../creatornew-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
   <link rel="apple-touch-icon" href="../creatornew-icon.png">
   <link rel="canonical" href="https://creatornew.com/image-resize/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="CreatorNew">
   <meta property="og:title" content="Free Online Image Resizer — JPG, PNG & WebP">
   <meta property="og:description" content="Resize images privately in your browser with custom dimensions and batch processing.">
+  <meta property="og:image" content="https://creatornew.com/og-image.png">
   <meta property="og:url" content="https://creatornew.com/image-resize/">
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://creatornew.com/og-image.png">
   <meta name="twitter:title" content="Free Online Image Resizer — CreatorNew">
   <meta name="twitter:description" content="Resize JPG, PNG and WebP images privately in your browser.">
   <title>Free Online Image Resizer — Resize Images in Pixels | CreatorNew</title>
@@ -27,6 +30,30 @@
   {
     "@context": "https://schema.org",
     "@graph": [
+      {
+    "@type": "BreadcrumbList",
+    "@id": "https://creatornew.com/image-resize/#breadcrumbs",
+    "itemListElement": [
+            {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://creatornew.com/"
+            },
+            {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Image Tools",
+                    "item": "https://creatornew.com/#tools"
+            },
+            {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Image Resizer",
+                    "item": "https://creatornew.com/image-resize/"
+            }
+    ]
+},
       {
         "@type": "WebSite",
         "@id": "https://creatornew.com/#website",
@@ -133,6 +160,15 @@
     </nav>
   </header>
 
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+    <ol class="breadcrumb-list">
+      <li><a href="../">Home</a></li>
+      <li class="breadcrumb-separator" aria-hidden="true">›</li>
+      <li><a href="../#tools">Image Tools</a></li>
+      <li class="breadcrumb-separator" aria-hidden="true">›</li>
+      <li aria-current="page">Image Resizer</li>
+    </ol>
+  </nav>
   <main class="hero">
     <section class="hero-copy">
       <p class="eyebrow">Free creator tool</p>

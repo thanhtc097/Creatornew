@@ -7,14 +7,17 @@
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#5d5fef">
   <link rel="icon" type="image/png" href="../creatornew-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
   <link rel="apple-touch-icon" href="../creatornew-icon.png">
   <link rel="canonical" href="https://creatornew.com/terms/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="CreatorNew">
   <meta property="og:title" content="Terms of Service — CreatorNew">
   <meta property="og:description" content="Terms of Service for CreatorNew in-browser utilities. 100% user ownership and clear guidelines.">
+  <meta property="og:image" content="https://creatornew.com/og-image.png">
   <meta property="og:url" content="https://creatornew.com/terms/">
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://creatornew.com/og-image.png">
   <meta name="twitter:title" content="CreatorNew Terms of Service">
   <meta name="twitter:description" content="Read the Terms of Service for using CreatorNew tools.">
   <title>Terms of Service — CreatorNew</title>
@@ -27,6 +30,24 @@
   {
     "@context": "https://schema.org",
     "@graph": [
+      {
+    "@type": "BreadcrumbList",
+    "@id": "https://creatornew.com/terms/#breadcrumbs",
+    "itemListElement": [
+            {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://creatornew.com/"
+            },
+            {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Terms of Service",
+                    "item": "https://creatornew.com/terms/"
+            }
+    ]
+},
       {
         "@type": "WebSite",
         "@id": "https://creatornew.com/#website",
@@ -90,6 +111,13 @@
     </nav>
   </header>
 
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+    <ol class="breadcrumb-list">
+      <li><a href="../">Home</a></li>
+      <li class="breadcrumb-separator" aria-hidden="true">›</li>
+      <li aria-current="page">Terms of Service</li>
+    </ol>
+  </nav>
   <main id="terms-content" class="article-main">
     <header class="article-hero">
       <div class="article-hero-inner">
