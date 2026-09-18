@@ -475,12 +475,73 @@
     document.body.appendChild(switcher)
   }
 
+  function setupNavDropdowns() {
+    function bindDropdown(details) {
+      if (details.dataset.dropdownBound) return
+      details.dataset.dropdownBound = 'true'
+      if (!details.getAttribute('name')) {
+        details.setAttribute('name', 'site-nav-dropdown')
+      }
+      details.addEventListener('toggle', () => {
+        if (details.open) {
+          document.querySelectorAll('.nav-dropdown[open]').forEach((other) => {
+            if (other !== details) {
+              other.open = false
+            }
+          })
+        }
+      })
+    }
+
+    document.querySelectorAll('.nav-dropdown').forEach(bindDropdown)
+
+    if (!window.__creatornewNavDropdownsInitialized) {
+      window.__creatornewNavDropdownsInitialized = true
+
+      document.addEventListener('click', (event) => {
+        const summary = event.target.closest('.nav-dropdown > summary')
+        if (summary) {
+          const current = summary.parentElement
+          document.querySelectorAll('.nav-dropdown[open]').forEach((other) => {
+            if (other !== current) {
+              other.open = false
+            }
+          })
+          return
+        }
+
+        if (event.target.closest('.nav-dropdown-menu a')) {
+          document.querySelectorAll('.nav-dropdown[open]').forEach((d) => {
+            d.open = false
+          })
+          return
+        }
+
+        if (!event.target.closest('.nav-dropdown')) {
+          document.querySelectorAll('.nav-dropdown[open]').forEach((d) => {
+            d.open = false
+          })
+        }
+      })
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          document.querySelectorAll('.nav-dropdown[open]').forEach((d) => {
+            d.open = false
+          })
+        }
+      })
+    }
+  }
+
   function init() {
     createSwitcher()
+    setupNavDropdowns()
     const saved = localStorage.getItem(STORAGE_KEY)
     const language = saved === 'vi' || saved === 'en' ? saved : (navigator.language || '').toLowerCase().startsWith('vi') ? 'vi' : 'en'
     applyLanguage(language)
     const observer = new MutationObserver((mutations) => {
+      setupNavDropdowns()
       if (!mutations.some((mutation) => mutation.addedNodes.length)) return
       requestAnimationFrame(() => applyLanguage(document.documentElement.lang === 'vi' ? 'vi' : 'en'))
     })

@@ -107,6 +107,7 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
 .nav-links a:hover { color: var(--primary); }
 
 .nav-dropdown { position: relative; }
+.nav-dropdown[open] { z-index: 70; }
 
 .nav-dropdown summary {
   min-height: 40px;
@@ -1218,9 +1219,9 @@ details p {
 .audio-nav-dropdown summary::before { background: linear-gradient(90deg, #2bc488, #6de0b0); }
 .audio-nav-dropdown .nav-dropdown-menu { width: 285px; }
 .video-nav-dropdown summary { color: #fff; background: linear-gradient(135deg, #5743d2, #6d5ce5 58%, #9488f4); box-shadow: 0 8px 20px rgba(87,67,210,.22); }
-.video-nav-dropdown .nav-dropdown-menu { width: 300px; }
+.video-nav-dropdown .nav-dropdown-menu { width: 300px; right: 0; left: auto; }
 .ai-nav-dropdown summary { color: #fff; border-color: transparent; background: linear-gradient(135deg, var(--ai-start), var(--ai-end)); box-shadow: 0 8px 20px rgba(91,33,182,.22); }
-.ai-nav-dropdown .nav-dropdown-menu { width: 285px; }
+.ai-nav-dropdown .nav-dropdown-menu { width: 285px; right: 0; left: auto; }
 .audio-tool-card { background: linear-gradient(145deg, #f0fff8, #f7fffc); }
 .audio-tool-card .tool-card-icon, .audio-quick-tool .quick-tab-icon { background: linear-gradient(135deg, #17865e, #6de0b0); }
 .video-tool-card { background: linear-gradient(145deg, #f5f2ff, #fbfaff); }
