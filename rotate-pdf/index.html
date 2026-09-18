@@ -61,15 +61,15 @@
             "name": "Is Rotate PDF free?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. CreatorNew Rotate PDF is completely free with no registration, watermarks, or page limits."
+              "text": "Yes. CreatorNew Rotate PDF is completely free forever with no registration, watermarks, or page limits."
             }
           },
           {
             "@type": "Question",
-            "name": "Are my PDF files uploaded to a server?",
+            "name": "Are my PDF files uploaded to a remote server?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. All PDF processing and rotation happens entirely inside your browser using WebAssembly and client-side JavaScript. Your files never leave your device."
+              "text": "No. All PDF processing and rotation happens entirely inside your browser memory using WebAssembly and client-side JavaScript. Your files never leave your device."
             }
           },
           {
@@ -77,7 +77,7 @@
             "name": "Can I rotate individual pages or the entire PDF?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Both. You can click any individual page thumbnail to rotate it clockwise, or use the 'Rotate All Left' and 'Rotate All Right' buttons to rotate every page simultaneously."
+              "text": "Both. You can click any individual page thumbnail to rotate it clockwise by 90 degrees, or use the 'Rotate All Left' and 'Rotate All Right' buttons to rotate every page simultaneously."
             }
           },
           {
@@ -85,7 +85,23 @@
             "name": "Does rotating PDF pages reduce document quality or text sharpness?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. The rotation adjusts the page orientation metadata and rendering matrices directly, preserving original vector text, fonts, images and layout without compression artifacts."
+              "text": "No. The rotation adjusts the page orientation metadata and rendering matrices directly, preserving original vector text, fonts, images, and layout without compression artifacts."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is the rotation permanent across all PDF readers and printers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. CreatorNew permanently modifies the /Rotate attribute within the PDF dictionary structure so that the document opens in the correct orientation in Adobe Acrobat, Apple Preview, web browsers, and physical printers."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I rotate PDFs on iPhone, iPad, and Android?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. CreatorNew is fully mobile-responsive and operates seamlessly in mobile browsers on iOS, iPadOS, and Android without requiring third-party app installations."
             }
           }
         ]
@@ -212,7 +228,73 @@
     </div>
   </section>
 
-  <section id="faq" class="content-section soft">
+  <section class="content-section">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">Understanding PDF Orientation</p>
+        <h2>Permanent metadata rotation vs temporary view rotation</h2>
+        <p>Why rotating inside your browser viewer doesn't save the document, and how CreatorNew fixes it permanently.</p>
+      </div>
+
+      <div class="article-layout" style="max-width: 860px; margin: 0 auto;">
+        <div class="article-callout">
+          <strong>The Temporary Viewer Problem:</strong> When you click "Rotate Clockwise" inside Chrome, Safari, or standard PDF preview software, the application only rotates your <em>display viewport</em>. The underlying file remains unchanged. As soon as you email the PDF to a colleague, upload it to a portal, or print it out, the pages return to their sideways or upside-down orientation.
+        </div>
+
+        <h3>How CreatorNew Permanently Saves Your Rotation</h3>
+        <p>PDF documents store page orientation using an internal dictionary attribute known as <code>/Rotate</code> (typically set to 0, 90, 180, or 270 degrees). When you rotate pages on CreatorNew, our client-side WebAssembly engine modifies the actual internal PDF dictionary tree.</p>
+        <p>This means your orientation changes are <strong>permanently embedded</strong> into the file. The document will open correctly in Adobe Acrobat, Apple Preview, Google Drive, mobile readers, and on physical printing hardware.</p>
+
+        <h3>Common Scenarios for Rotating PDF Pages</h3>
+        <ul>
+          <li><strong>Inverted Mobile Scans:</strong> Phone scanning apps often capture documents upside-down or sideways depending on handheld gyroscope orientation.</li>
+          <li><strong>Mixed Orientation Documents:</strong> Reports that combine portrait text pages with wide landscape financial spreadsheets or Gantt charts.</li>
+          <li><strong>Visa &amp; Passport Applications:</strong> Government and consular upload portals frequently reject sideways documents or upside-down passport scans.</li>
+          <li><strong>Architectural &amp; Engineering Plans:</strong> Aligning CAD blueprints for landscape presentation displays.</li>
+        </ul>
+
+        <h3>Zero Server Upload Privacy Guarantee</h3>
+        <p>Because PDF documents frequently contain sensitive personal records, legal contracts, or confidential company figures, uploading them to cloud PDF sites presents unnecessary security risks. CreatorNew rotates your files entirely within your device's memory (RAM). No data ever leaves your computer.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section soft">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">Related Tools &amp; Guides</p>
+        <h2>More free client-side PDF utilities</h2>
+      </div>
+      <div class="guide-grid">
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Tool Comparison</span>
+            <h3><a href="../creatornew-vs-ilovepdf/">CreatorNew vs iLovePDF (2026)</a></h3>
+            <p>Compare privacy guarantees, client-side WebAssembly RAM processing, and file limits against cloud PDF services.</p>
+            <a class="tool-link" href="../creatornew-vs-ilovepdf/">Read comparison &rarr;</a>
+          </div>
+        </article>
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Organize Documents</span>
+            <h3><a href="../merge-pdf/">Merge PDF Online</a></h3>
+            <p>Combine multiple PDF documents, receipts, and reports into a single, organized file.</p>
+            <a class="tool-link" href="../merge-pdf/">Merge PDFs &rarr;</a>
+          </div>
+        </article>
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Extract Pages</span>
+            <h3><a href="../split-pdf/">Split PDF Pages</a></h3>
+            <p>Select specific page ranges or extract chapters into individual PDF files with instant visual preview.</p>
+            <a class="tool-link" href="../split-pdf/">Split PDF &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="content-section">
     <div class="section-inner">
       <div class="section-heading">
         <h2>Frequently asked questions</h2>
@@ -220,19 +302,27 @@
       <div class="faq-list">
         <details>
           <summary>Is Rotate PDF free?</summary>
-          <p>Yes. CreatorNew Rotate PDF is completely free with no registration, watermarks, or page limits.</p>
+          <p>Yes. CreatorNew Rotate PDF is completely free forever with no registration, watermarks, or page limits.</p>
         </details>
         <details>
-          <summary>Are my PDF files uploaded to a server?</summary>
-          <p>No. All PDF processing and rotation happens entirely inside your browser using WebAssembly and client-side JavaScript. Your files never leave your device.</p>
+          <summary>Are my PDF files uploaded to a remote server?</summary>
+          <p>No. All PDF processing and rotation happens entirely inside your browser memory using WebAssembly and client-side JavaScript. Your files never leave your device.</p>
         </details>
         <details>
           <summary>Can I rotate individual pages or the entire PDF?</summary>
-          <p>Both. You can click any individual page thumbnail to rotate it clockwise, or use the 'Rotate All Left' and 'Rotate All Right' buttons to rotate every page simultaneously.</p>
+          <p>Both. You can click any individual page thumbnail to rotate it clockwise by 90 degrees, or use the 'Rotate All Left' and 'Rotate All Right' buttons to rotate every page simultaneously.</p>
         </details>
         <details>
           <summary>Does rotating PDF pages reduce document quality or text sharpness?</summary>
-          <p>No. The rotation adjusts the page orientation metadata and rendering matrices directly, preserving original vector text, fonts, images and layout without compression artifacts.</p>
+          <p>No. The rotation adjusts the page orientation metadata and rendering matrices directly, preserving original vector text, fonts, images, and layout without compression artifacts.</p>
+        </details>
+        <details>
+          <summary>Is the rotation permanent across all PDF readers and printers?</summary>
+          <p>Yes. CreatorNew permanently modifies the /Rotate attribute within the PDF dictionary structure so that the document opens in the correct orientation in Adobe Acrobat, Apple Preview, web browsers, and physical printers.</p>
+        </details>
+        <details>
+          <summary>Can I rotate PDFs on iPhone, iPad, and Android?</summary>
+          <p>Yes. CreatorNew is fully mobile-responsive and operates seamlessly in mobile browsers on iOS, iPadOS, and Android without requiring third-party app installations.</p>
         </details>
       </div>
     </div>
@@ -243,14 +333,17 @@
       <span>&copy; 2026 CreatorNew. Free tools for creators.</span>
       <div class="footer-links">
         <a href="../">All Tools</a>
+        <a href="../about/">About</a>
+        <a href="../privacy-policy/">Privacy Policy</a>
+        <a href="../terms/">Terms</a>
+        <a href="../creatornew-vs-ilovepdf/">CreatorNew vs iLovePDF</a>
         <a href="../merge-pdf/">Merge PDF</a>
         <a href="../split-pdf/">Split PDF</a>
         <a href="../delete-pdf-pages/">Delete PDF Pages</a>
         <a href="../pdf-to-jpg/">PDF to JPG</a>
         <a href="../pdf-to-png/">PDF to PNG</a>
         <a href="../images-to-pdf/">Images to PDF</a>
-        <a href="../image-converter/">Image Converter</a>
-        <a href="../background-remover/">Background Remover</a>
+        <a href="../image-compressor/">Image Compressor</a>
       </div>
     </div>
   </footer>

@@ -35,6 +35,7 @@ export default defineConfig({
         terms: 'terms/index.html',
         creatornewVsRemoveBg: 'creatornew-vs-remove-bg/index.html',
         creatornewVsTinyPng: 'creatornew-vs-tinypng/index.html',
+        creatornewVsIlovePdf: 'creatornew-vs-ilovepdf/index.html',
       },
     },
   },
