@@ -44,9 +44,12 @@
         "@type": "FAQPage",
         "@id": "https://creatornew.com/background-remover/#faq",
         "mainEntity": [
-          {"@type": "Question", "name": "Is the background remover free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can remove image backgrounds and erase objects for free without creating an account or watermarks."}},
-          {"@type": "Question", "name": "Are my images uploaded to any server?", "acceptedAnswer": {"@type": "Answer", "text": "No. The AI model runs directly inside your browser (WebAssembly). Your images never leave your computer."}},
-          {"@type": "Question", "name": "Why does the first background removal take longer?", "acceptedAnswer": {"@type": "Answer", "text": "Your browser downloads the AI model the first time. Subsequent uses run instantly and even work offline."}}
+          {"@type": "Question", "name": "Is CreatorNew AI Background Remover free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can remove image backgrounds and erase unwanted objects completely free without subscriptions, credits, or watermarks."}},
+          {"@type": "Question", "name": "Are my images uploaded to any remote server?", "acceptedAnswer": {"@type": "Answer", "text": "No. The AI model executes entirely inside your browser via WebAssembly (WASM). Your photos never leave your device's memory."}},
+          {"@type": "Question", "name": "Why does the first use take a few seconds to load?", "acceptedAnswer": {"@type": "Answer", "text": "Your browser downloads the quantized neural network model weights during your first visit. Afterwards, it is cached locally and works instantly, even offline."}},
+          {"@type": "Question", "name": "What image formats are supported?", "acceptedAnswer": {"@type": "Answer", "text": "You can upload JPG, JPEG, PNG, and WebP images up to 25 MB. Results are exported as lossless transparent 32-bit PNG files."}},
+          {"@type": "Question", "name": "How does CreatorNew compare to Remove.bg?", "acceptedAnswer": {"@type": "Answer", "text": "Unlike Remove.bg, which limits free users to low-resolution preview cutouts and charges subscriptions for HD exports, CreatorNew is 100% free, exports full resolution, and guarantees absolute privacy by processing on-device."}},
+          {"@type": "Question", "name": "Can I remove background objects or tourists as well?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Switch to 'Erase owned logo/object' mode to paint a mask over unwanted objects. The on-device LaMa inpainting AI reconstructs the background seamlessly."}}
         ]
       }
     ]
@@ -213,13 +216,198 @@
     </section>
   </main>
 
-  <section class="content-section" aria-labelledby="how-title"><div class="section-inner"><div class="section-heading"><h2 id="how-title">How to remove an image background</h2><p>Create a transparent subject image in three steps.</p></div><div class="steps"><article class="info-card"><span class="step-number">1</span><h3>Add an image</h3><p>Choose a clear JPG, PNG or WebP image with a visible foreground subject.</p></article><article class="info-card"><span class="step-number">2</span><h3>Run the AI model</h3><p>The model separates the main subject from its background on your device.</p></article><article class="info-card"><span class="step-number">3</span><h3>Download PNG</h3><p>Preview the transparent result and download it as a PNG file.</p></article></div></div></section>
+  <section class="content-section" aria-labelledby="how-title">
+    <div class="section-inner">
+      <div class="section-heading">
+        <h2 id="how-title">How to remove an image background online</h2>
+        <p>Create clean, transparent cutouts in three simple steps without uploading files to any cloud server.</p>
+      </div>
+      <div class="steps">
+        <article class="info-card">
+          <span class="step-number">1</span>
+          <h3>Upload or drop your photo</h3>
+          <p>Select any JPG, PNG or WebP image up to 25 MB, or test instantly with a 1-click sample portrait or product.</p>
+        </article>
+        <article class="info-card">
+          <span class="step-number">2</span>
+          <h3>Run the on-device AI</h3>
+          <p>Our deep learning neural network separates subjects from backgrounds right in your browser via WebAssembly.</p>
+        </article>
+        <article class="info-card">
+          <span class="step-number">3</span>
+          <h3>Compare &amp; download PNG</h3>
+          <p>Slide the interactive comparison slider to inspect edges, then download full-resolution transparent PNGs.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-  <section class="content-section soft" aria-labelledby="tips-title"><div class="section-inner"><div class="section-heading"><h2 id="tips-title">Tips for cleaner results</h2><p>AI works best when the subject is visually distinct from the background.</p></div><div class="feature-grid"><article class="info-card"><span class="step-number">01</span><h3>Use clear edges</h3><p>Choose a sharp image with good contrast around hair, products or people.</p></article><article class="info-card"><span class="step-number">02</span><h3>Avoid busy scenes</h3><p>Simple backgrounds make it easier for the model to identify the subject.</p></article><article class="info-card"><span class="step-number">03</span><h3>Allow the first download</h3><p>The AI model loads on first use, so the initial result can take longer.</p></article></div></div></section>
+  <section id="use-cases" class="content-section soft" aria-labelledby="usecases-title">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">Practical Applications</p>
+        <h2 id="usecases-title">Popular use cases for transparent backgrounds</h2>
+        <p>Whether you run an online shop, design content, or prepare documents, transparent cutouts save hours of manual editing.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="info-card">
+          <span class="step-number" aria-hidden="true">🛒</span>
+          <h3>E-Commerce &amp; Product Catalogs</h3>
+          <p>Amazon, Shopify, and Etsy require clean white or transparent backgrounds. Automatically isolate sneakers, clothing, jewelry, and electronics to boost product conversion rates.</p>
+        </article>
+        <article class="info-card">
+          <span class="step-number" aria-hidden="true">🪪</span>
+          <h3>ID Photos, Passports &amp; Visas</h3>
+          <p>Remove messy room backgrounds from headshots and portraits. Replace them with standard white, light grey, or blue backgrounds for official visa and employment applications.</p>
+        </article>
+        <article class="info-card">
+          <span class="step-number" aria-hidden="true">🎨</span>
+          <h3>Graphic Design &amp; Thumbnails</h3>
+          <p>Isolate creators, actors, and items to assemble eye-catching YouTube thumbnails, podcast covers, marketing banners, and Instagram story templates.</p>
+        </article>
+        <article class="info-card">
+          <span class="step-number" aria-hidden="true">✍️</span>
+          <h3>Digital Signatures &amp; Stamps</h3>
+          <p>Photograph handwritten ink signatures on paper, remove the paper background with one click, and export transparent PNGs ready to place on digital contracts and PDF documents.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-  <section id="faq" class="content-section" aria-labelledby="faq-title"><div class="section-inner"><div class="section-heading"><h2 id="faq-title">Frequently asked questions</h2></div><div class="faq-list"><details><summary>Is the background remover free?</summary><p>Yes. You can remove image backgrounds for free without creating an account.</p></details><details><summary>Are my images uploaded?</summary><p>The image is processed by an AI model in your browser and is not uploaded to CreatorNew.</p></details><details><summary>Why does the first result take longer?</summary><p>Your browser needs to download the AI model the first time. Later uses may be faster because the model can be cached.</p></details><details><summary>Which formats are supported?</summary><p>You can add JPG, JPEG, PNG and WebP images. Results are downloaded as transparent PNG files.</p></details></div></div></section>
+  <section id="comparison" class="content-section" aria-labelledby="comparison-title">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">Architecture Comparison</p>
+        <h2 id="comparison-title">CreatorNew On-Device AI vs Cloud Alternatives</h2>
+        <p>Why processing locally inside your web browser offers a fundamentally better experience than cloud-based tools.</p>
+      </div>
+      <table class="format-table">
+        <thead>
+          <tr>
+            <th>Comparison Metric</th>
+            <th>CreatorNew In-Browser AI</th>
+            <th>Traditional Cloud Services (Remove.bg, Photoroom)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>File Privacy &amp; Data Security</strong></td>
+            <td><strong>100% Private:</strong> Photos never leave your device RAM. Zero server uploads.</td>
+            <td>Photos uploaded to third-party cloud servers and processed remotely.</td>
+          </tr>
+          <tr>
+            <td><strong>Free Tier Resolution</strong></td>
+            <td><strong>Full Resolution:</strong> Export original resolution without downsizing or blur.</td>
+            <td>Downgraded to ~0.25 MP preview size (e.g. 500x500 px) unless you pay.</td>
+          </tr>
+          <tr>
+            <td><strong>Watermarks &amp; Branding</strong></td>
+            <td><strong>Never:</strong> 100% clean, professional PNG output.</td>
+            <td>Often stamped with intrusive logos on free tiers.</td>
+          </tr>
+          <tr>
+            <td><strong>Cost &amp; Limits</strong></td>
+            <td><strong>Free Forever:</strong> Unlimited images with no accounts or credits.</td>
+            <td>Freemium model charging $0.20 to $1.99 per full-resolution download.</td>
+          </tr>
+          <tr>
+            <td><strong>Offline Support</strong></td>
+            <td><strong>Yes:</strong> Once the model is cached, works completely offline without WiFi.</td>
+            <td>No: Requires active high-speed internet connection for every image.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
-  <section class="content-section soft" aria-labelledby="related-guides-title"><div class="section-inner"><div class="section-heading"><p class="eyebrow">Related Guides</p><h2 id="related-guides-title">Prepare images for any project</h2></div><div class="guide-grid"><article class="guide-card"><div class="guide-card-body"><span class="guide-label">Image guide</span><h3><a href="../how-to-convert-images-online-free/">How to Convert Images Online for Free</a></h3><p>See when transparent PNG is the right choice and how conversion fits with compression and background removal.</p><a class="tool-link" href="../how-to-convert-images-online-free/">Read the guide &rarr;</a></div></article></div></div></section>
+  <section class="content-section soft" aria-labelledby="tips-title">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">Quality Optimization</p>
+        <h2 id="tips-title">Pro tips for razor-sharp edges &amp; hair detail</h2>
+        <p>Get studio-quality transparent cutouts every time with these proven photo preparation techniques.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="info-card">
+          <span class="step-number" aria-hidden="true">💡</span>
+          <h3>Ensure Strong Lighting Contrast</h3>
+          <p>AI neural networks detect subject boundaries by analyzing color gradients and edge contrast. Subjects with high contrast against the background produce clean hair strands.</p>
+        </article>
+        <article class="info-card">
+          <span class="step-number" aria-hidden="true">🔍</span>
+          <h3>Inspect with the Interactive Slider</h3>
+          <p>Use our built-in Before/After slider to swipe across tricky areas like wispy flyaway hairs, glasses, and transparent glassware before downloading.</p>
+        </article>
+        <article class="info-card">
+          <span class="step-number" aria-hidden="true">🧹</span>
+          <h3>Erase Distractions First</h3>
+          <p>If your photo has stray photobombers or shadows, switch to our "Erase owned logo/object" tab first to clean the scene before removing the background.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="content-section" aria-labelledby="faq-title">
+    <div class="section-inner">
+      <div class="section-heading">
+        <h2 id="faq-title">Frequently asked questions</h2>
+        <p>Everything you need to know about our free, on-device AI background and object removal tool.</p>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>Is CreatorNew AI Background Remover free?</summary>
+          <p>Yes. You can remove backgrounds and erase unwanted objects completely free without subscriptions, account registration, or watermarks. There are no hidden fees or paywalls.</p>
+        </details>
+        <details>
+          <summary>Are my images uploaded to any remote server?</summary>
+          <p>No. The AI model executes entirely inside your browser via WebAssembly (WASM). Your photos are processed exclusively in volatile device RAM and never leave your computer or phone.</p>
+        </details>
+        <details>
+          <summary>Why does the first use take a few seconds to load?</summary>
+          <p>Your browser downloads the lightweight neural network model weights during your first visit. Once downloaded, your browser caches the model locally, allowing subsequent edits to execute almost instantaneously—even when disconnected from the internet.</p>
+        </details>
+        <details>
+          <summary>What image formats are supported?</summary>
+          <p>CreatorNew supports JPG, JPEG, PNG, and WebP input images up to 25 MB. Cutouts are automatically exported as 32-bit transparent PNG files preserving full color accuracy and alpha transparency.</p>
+        </details>
+        <details>
+          <summary>How does CreatorNew compare to Remove.bg?</summary>
+          <p>While Remove.bg is a cloud-based service that restricts free users to tiny 0.25 MP preview images and charges recurring subscription fees for HD downloads, CreatorNew is 100% free, exports at original full resolution, and guarantees absolute privacy by processing client-side.</p>
+        </details>
+        <details>
+          <summary>Can I remove unwanted objects or people from images?</summary>
+          <p>Yes. Switch to the 'Erase owned logo/object' tab at the top of the workspace. Paint a mask over any unwanted tourist, powerline, or object, and our on-device deep learning inpainting AI will seamlessly reconstruct the background.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section soft" aria-labelledby="related-guides-title">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">Related Guides &amp; Comparisons</p>
+        <h2 id="related-guides-title">Explore more image workflows</h2>
+      </div>
+      <div class="guide-grid">
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Tool Comparison</span>
+            <h3><a href="../creatornew-vs-remove-bg/">CreatorNew vs Remove.bg: Full Comparison</a></h3>
+            <p>Discover why creators are switching to private, on-device AI background removal over paid cloud alternatives.</p>
+            <a class="tool-link" href="../creatornew-vs-remove-bg/">Read comparison &rarr;</a>
+          </div>
+        </article>
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Image Guide</span>
+            <h3><a href="../how-to-convert-images-online-free/">How to Convert Images Online for Free</a></h3>
+            <p>Learn when transparent PNG is the right choice and how to optimize image sizes for websites and online stores.</p>
+            <a class="tool-link" href="../how-to-convert-images-online-free/">Read guide &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
   <footer class="site-footer"><div class="footer-inner"><span>© 2026 CreatorNew. Free tools for creators.</span><div class="footer-links"><a href="../">Home</a><a href="../about/">About</a><a href="../privacy-policy/">Privacy</a><a href="../terms/">Terms</a><a href="../#tools">Explore all tools</a></div></div></footer>
   <script type="module" src="../js/site-i18n.js"></script>

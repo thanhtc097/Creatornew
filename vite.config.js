@@ -33,6 +33,7 @@ export default defineConfig({
         about: 'about/index.html',
         privacyPolicy: 'privacy-policy/index.html',
         terms: 'terms/index.html',
+        creatornewVsRemoveBg: 'creatornew-vs-remove-bg/index.html',
       },
     },
   },

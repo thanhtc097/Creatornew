@@ -59,22 +59,32 @@
           {
             "@type": "Question",
             "name": "Is CreatorNew Image Compressor free?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can compress supported images for free without creating an account or adding a watermark."}
+            "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can compress JPG, PNG and WebP images completely free without creating an account, paying subscription fees, or having watermarks added."}
           },
           {
             "@type": "Question",
-            "name": "Are my images uploaded to a server?",
-            "acceptedAnswer": {"@type": "Answer", "text": "No. Supported images are processed locally in your browser and are not uploaded to CreatorNew."}
+            "name": "Are my images uploaded to any cloud server?",
+            "acceptedAnswer": {"@type": "Answer", "text": "No. Supported images are compressed and re-encoded locally inside your web browser using HTML5 Canvas APIs. Zero image files are ever uploaded across the network."}
           },
           {
             "@type": "Question",
-            "name": "Which image formats are supported?",
-            "acceptedAnswer": {"@type": "Answer", "text": "The converter supports JPG, PNG and WebP input and output in modern browsers."}
+            "name": "How much file size reduction can I expect?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Most unoptimized camera photos and screenshots see reductions of 50% to 80% with our Balanced setting, while preserving sharp visual fidelity."}
           },
           {
             "@type": "Question",
-            "name": "Why can a compressed image be larger than the original?",
-            "acceptedAnswer": {"@type": "Answer", "text": "An image may already be optimized, use a lower original quality, or use lossless PNG compression. Re-encoding it in the browser can then create a larger file. Converting PNG to WebP or selecting a stronger level may reduce the size more effectively."}
+            "name": "Why can a compressed image sometimes be larger than the original?",
+            "acceptedAnswer": {"@type": "Answer", "text": "If an image is already heavily compressed or uses lossless PNG compression, re-encoding it in the browser can increase its size. Converting lossless PNG files to modern WebP format typically solves this and reduces file size substantially."}
+          },
+          {
+            "@type": "Question",
+            "name": "What compression level should I choose: Light, Balanced, or Strong?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Use Balanced for everyday websites and online stores. Use Light for high-detail photography portfolios. Use Strong when preparing images for email newsletters or government portals with strict file size caps."}
+          },
+          {
+            "@type": "Question",
+            "name": "Does compressing an image change its dimensions in pixels?",
+            "acceptedAnswer": {"@type": "Answer", "text": "No. Compression reduces the file weight (bytes/kilobytes) by optimizing color data and quantization. The image width and height remain unchanged. To alter dimensions, use our Image Resizer."}
           }
         ]
       }
@@ -226,71 +236,140 @@
   <section class="content-section soft" aria-labelledby="why-title">
     <div class="section-inner">
       <div class="section-heading">
-        <h2 id="why-title">A private image compressor for creators</h2>
-        <p>Reduce image sizes with a fast workflow on both desktop and mobile.</p>
+        <p class="eyebrow">In-Browser Performance</p>
+        <h2 id="why-title">Fast, lossless &amp; lossy compression without server uploads</h2>
+        <p>Every conversion happens directly inside your web browser using HTML5 Canvas quantization and WebAssembly codecs. Keep full control over image quality and confidential data.</p>
       </div>
       <div class="feature-grid">
         <article class="info-card">
-          <span class="step-number" aria-hidden="true">✓</span>
-          <h3>Private by design</h3>
-          <p>Your images stay on your device because conversion happens inside the browser.</p>
-        </article>
-        <article class="info-card">
-          <span class="step-number" aria-hidden="true">↻</span>
-          <h3>Batch conversion</h3>
-          <p>Convert multiple images in one session instead of repeating the same task.</p>
+          <span class="step-number" aria-hidden="true">🛡️</span>
+          <h3>100% Private &amp; Device-Local</h3>
+          <p>Photos, sensitive client proofs, and personal documents never leave your machine or touch a cloud server. Processing runs in local RAM.</p>
         </article>
         <article class="info-card">
           <span class="step-number" aria-hidden="true">⚡</span>
-          <h3>No account needed</h3>
-          <p>Start immediately with no registration, subscription or added watermark.</p>
+          <h3>Instant Batch Processing</h3>
+          <p>Compress up to 20 images simultaneously without waiting in server queues or burning cellular bandwidth on heavy file uploads.</p>
+        </article>
+        <article class="info-card">
+          <span class="step-number" aria-hidden="true">🚫</span>
+          <h3>Zero Watermarks &amp; Zero Cost</h3>
+          <p>No arbitrary file size caps, no credit subscriptions, and no forced branding. Enjoy professional optimization completely free forever.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="formats" class="content-section" aria-labelledby="formats-title">
+  <section id="platform-targets" class="content-section" aria-labelledby="platforms-title">
     <div class="section-inner">
       <div class="section-heading">
-        <h2 id="formats-title">Choose the right image format</h2>
-        <p>Each format works best for a different kind of image or publishing workflow.</p>
+        <p class="eyebrow">Platform Optimization Guidelines</p>
+        <h2 id="platforms-title">Recommended image sizes &amp; target file weights</h2>
+        <p>Uploading oversized photos slows down page load times and damages SEO rankings. Target these industry-standard file weight limits for maximum performance.</p>
       </div>
       <table class="format-table">
-        <thead><tr><th>Format</th><th>Best for</th><th>Key benefit</th></tr></thead>
+        <thead>
+          <tr>
+            <th>Platform / Channel</th>
+            <th>Recommended Max File Size</th>
+            <th>Ideal Format</th>
+            <th>Why it Matters</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td><strong>WebP</strong></td><td>Websites, blogs and online stores</td><td>Small files with strong visual quality</td></tr>
-          <tr><td><strong>JPG</strong></td><td>Photos and widely compatible sharing</td><td>Works almost everywhere</td></tr>
-          <tr><td><strong>PNG</strong></td><td>Graphics, screenshots and transparency</td><td>Lossless output and transparent backgrounds</td></tr>
+          <tr>
+            <td><strong>Shopify / WooCommerce</strong></td>
+            <td>&lt; 150 KB per product photo</td>
+            <td>WebP / Progressive JPG</td>
+            <td>Faster mobile checkout speeds directly reduce cart abandonment and increase conversion rates.</td>
+          </tr>
+          <tr>
+            <td><strong>WordPress / Core Web Vitals</strong></td>
+            <td>&lt; 100 KB for hero banners</td>
+            <td>WebP</td>
+            <td>Essential for passing Google LCP (Largest Contentful Paint &lt; 2.5s) to boost organic search rank.</td>
+          </tr>
+          <tr>
+            <td><strong>Etsy &amp; Handmade Marketplaces</strong></td>
+            <td>&lt; 250 KB (2000px wide)</td>
+            <td>JPG / WebP</td>
+            <td>Provides crisp zoom capabilities on mobile without high latency or sluggish scrolling.</td>
+          </tr>
+          <tr>
+            <td><strong>Email Newsletters (Mailchimp, Klaviyo)</strong></td>
+            <td>&lt; 60 KB per graphic</td>
+            <td>JPG / PNG</td>
+            <td>Prevents email clipping in Gmail/Outlook and avoids cellular data slowdowns for subscribers.</td>
+          </tr>
+          <tr>
+            <td><strong>Government Portals &amp; Visa Uploads</strong></td>
+            <td>&lt; 50 KB – 100 KB</td>
+            <td>JPG</td>
+            <td>Strict government identity portals reject files over standard caps (e.g. 100KB or 240KB limits).</td>
+          </tr>
         </tbody>
       </table>
     </div>
   </section>
 
-  <section id="faq" class="content-section soft" aria-labelledby="faq-title">
+  <section id="science" class="content-section soft" aria-labelledby="science-title">
     <div class="section-inner">
       <div class="section-heading">
+        <p class="eyebrow">Compression Science</p>
+        <h2 id="science-title">How browser-based image compression works</h2>
+        <p>Understanding quality algorithms, chroma subsampling, and the PNG compression paradox.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="info-card">
+          <span class="step-number" aria-hidden="true">🎯</span>
+          <h3>Light vs. Balanced vs. Strong</h3>
+          <p><strong>Balanced (Default):</strong> 80% quality factor. Optimal balance between human visual acuity and 50–80% byte savings for 95% of websites.<br><br><strong>Light:</strong> 90% quality factor. Retains pristine high-frequency texture for photography portfolios and print.<br><br><strong>Strong:</strong> 65% quality factor. Aggressive quantization to squeeze files into strict upload caps.</p>
+        </article>
+        <article class="info-card">
+          <span class="step-number" aria-hidden="true">💡</span>
+          <h3>The PNG Compression Paradox</h3>
+          <p>PNG is a lossless format relying on DEFLATE compression. If an already optimized PNG is re-encoded with browser canvas, it may occasionally stay the same size or even grow. To achieve massive reductions (up to 80%) on PNG graphics while retaining full alpha transparency, convert them to modern <strong>WebP</strong> instead.</p>
+        </article>
+        <article class="info-card">
+          <span class="step-number" aria-hidden="true">🚀</span>
+          <h3>Boost Core Web Vitals &amp; SEO</h3>
+          <p>Google Search algorithm explicitly rewards fast-loading pages. Oversized hero banners are the primary culprit behind failing LCP (Largest Contentful Paint) metrics. Compressing banners under 100 KB immediately improves Core Web Vitals scores and bounce rates.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="content-section" aria-labelledby="faq-title">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">Help &amp; FAQs</p>
         <h2 id="faq-title">Frequently asked questions</h2>
+        <p>Everything you need to know about browser-based image compression.</p>
       </div>
       <div class="faq-list">
         <details>
           <summary>Is CreatorNew Image Compressor free?</summary>
-          <p>Yes. You can compress supported images for free without creating an account or adding a watermark.</p>
+          <p>Yes. You can compress JPG, PNG and WebP images completely free without creating an account, paying subscription fees, or having watermarks added.</p>
         </details>
         <details>
-          <summary>Are my images uploaded to a server?</summary>
-          <p>No. Supported images are processed locally in your browser and are not uploaded to CreatorNew.</p>
+          <summary>Are my images uploaded to any cloud server?</summary>
+          <p>No. Supported images are compressed and re-encoded locally inside your web browser using HTML5 Canvas APIs. Zero image files are ever uploaded across the network.</p>
         </details>
         <details>
-          <summary>Which image formats are supported?</summary>
-          <p>The converter supports JPG, PNG and WebP input and output in modern browsers.</p>
+          <summary>How much file size reduction can I expect?</summary>
+          <p>Most unoptimized camera photos and screenshots see reductions of 50% to 80% with our Balanced setting, while preserving sharp visual fidelity.</p>
         </details>
         <details>
-          <summary>Can I convert several images at once?</summary>
-          <p>Yes. You can add up to 20 images per session, with a maximum size of 50 MB per image.</p>
+          <summary>Why can a compressed image sometimes be larger than the original?</summary>
+          <p>If an image is already heavily compressed or uses lossless PNG compression, re-encoding it in the browser can increase its size. Converting lossless PNG files to modern WebP format typically solves this and reduces file size substantially.</p>
         </details>
         <details>
-          <summary>Why can a compressed image be larger than the original?</summary>
-          <p>The original may already be optimized or saved at a lower quality than the level you selected. PNG is lossless, so re-encoding it may not reduce its size. Try WebP output for PNG, or use Balanced or Strong for JPG and WebP. Always check the displayed before-and-after size.</p>
+          <summary>What compression level should I choose: Light, Balanced, or Strong?</summary>
+          <p>Use Balanced for everyday websites and online stores. Use Light for high-detail photography portfolios. Use Strong when preparing images for email newsletters or government portals with strict file size caps.</p>
+        </details>
+        <details>
+          <summary>Does compressing an image change its dimensions in pixels?</summary>
+          <p>No. Compression reduces the file weight (bytes/kilobytes) by optimizing color data and quantization. The image width and height remain unchanged. To alter dimensions, use our Image Resizer.</p>
         </details>
       </div>
     </div>
@@ -323,7 +402,30 @@
   </section>
 
   <section class="content-section soft" aria-labelledby="related-guides-title">
-    <div class="section-inner"><div class="section-heading"><p class="eyebrow">Related Guides</p><h2 id="related-guides-title">Choose the best image workflow</h2></div><div class="guide-grid"><article class="guide-card"><div class="guide-card-body"><span class="guide-label">Image guide</span><h3><a href="../how-to-convert-images-online-free/">How to Convert Images Online for Free</a></h3><p>Learn when to convert, compress or remove a background and how to choose the right output format.</p><a class="tool-link" href="../how-to-convert-images-online-free/">Read the guide &rarr;</a></div></article></div></div>
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">Related Guides &amp; Comparisons</p>
+        <h2 id="related-guides-title">Choose the best image workflow</h2>
+      </div>
+      <div class="guide-grid">
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Image guide</span>
+            <h3><a href="../how-to-convert-images-online-free/">How to Convert Images Online for Free</a></h3>
+            <p>Learn when to convert, compress or remove a background and how to choose the right output format.</p>
+            <a class="tool-link" href="../how-to-convert-images-online-free/">Read the guide &rarr;</a>
+          </div>
+        </article>
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Tool Comparison</span>
+            <h3><a href="../creatornew-vs-remove-bg/">CreatorNew vs Remove.bg Comparison</a></h3>
+            <p>Compare resolution, privacy, and pricing between in-browser AI and cloud background removers.</p>
+            <a class="tool-link" href="../creatornew-vs-remove-bg/">Read comparison &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </div>
   </section>
 
   <footer class="site-footer">
