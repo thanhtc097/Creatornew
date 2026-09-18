@@ -18,6 +18,10 @@
   <meta name="twitter:title" content="Free &amp; 100% Private In-Browser Tools | CreatorNew">
   <meta name="twitter:description" content="Remove backgrounds and erase objects with local AI, compress images and edit PDFs. Zero server uploads.">
   <title>Free &amp; 100% Private In-Browser Tools for Creators | CreatorNew</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="./creatornew-logo.webp" type="image/webp" fetchpriority="high">
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/home-header-polish.css">
   <script type="module" src="./js/site-i18n.js"></script>
@@ -81,7 +85,10 @@
   <header class="topbar">
     <nav class="nav" aria-label="Main navigation">
       <a class="brand" href="./" aria-label="CreatorNew home">
-        <img class="brand-logo" src="./creatornew-logo.png" alt="CreatorNew" width="2075" height="758">
+        <picture>
+          <source srcset="./creatornew-logo.webp" type="image/webp">
+          <img class="brand-logo" src="./creatornew-logo.png" alt="CreatorNew" width="2075" height="758" fetchpriority="high" decoding="async">
+        </picture>
       </a>
       <div class="nav-links">
         <details class="nav-dropdown image-nav-dropdown" name="site-nav-dropdown">

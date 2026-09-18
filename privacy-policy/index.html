@@ -18,7 +18,11 @@
   <meta name="twitter:title" content="CreatorNew Privacy Policy — Zero Server Uploads">
   <meta name="twitter:description" content="Discover how CreatorNew keeps all your documents and photos strictly on your device.">
   <title>Privacy Policy — 100% In-Browser &amp; Zero Server Uploads | CreatorNew</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="preload" as="image" href="../creatornew-logo.webp" type="image/webp" fetchpriority="high">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -49,7 +53,10 @@
   <header class="topbar">
     <nav class="nav" aria-label="Main navigation">
       <a class="brand" href="../" aria-label="CreatorNew home">
-        <img class="brand-logo" src="../creatornew-logo.png" alt="CreatorNew" width="2075" height="758">
+        <picture>
+          <source srcset="../creatornew-logo.webp" type="image/webp">
+          <img class="brand-logo" src="../creatornew-logo.png" alt="CreatorNew" width="2075" height="758" fetchpriority="high" decoding="async">
+        </picture>
       </a>
       <div class="nav-links">
         <details class="nav-dropdown image-nav-dropdown">

@@ -15,6 +15,10 @@
   <meta property="og:description" content="Remove backgrounds and erase unwanted objects directly in your browser. 100% private, free forever, zero cloud uploads.">
   <meta property="og:url" content="https://creatornew.com/background-remover/">
   <title>Free AI Background &amp; Object Remover — 100% Private In-Browser | CreatorNew</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="../creatornew-logo.webp" type="image/webp" fetchpriority="high">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/background-remover.css">
   <script type="application/ld+json">
@@ -60,7 +64,12 @@
   <a class="skip-link" href="#remover">Skip to background remover</a>
   <header class="topbar">
     <nav class="nav" aria-label="Main navigation">
-      <a class="brand" href="https://creatornew.com/"><img class="brand-logo" src="../creatornew-logo.png" alt="CreatorNew" width="2075" height="758"></a>
+      <a class="brand" href="../" aria-label="CreatorNew home">
+        <picture>
+          <source srcset="../creatornew-logo.webp" type="image/webp">
+          <img class="brand-logo" src="../creatornew-logo.png" alt="CreatorNew" width="2075" height="758" fetchpriority="high" decoding="async">
+        </picture>
+      </a>
       <div class="nav-links">
         <details class="nav-dropdown" name="site-nav-dropdown">
           <summary>Image Converter <span aria-hidden="true">⌄</span></summary>

@@ -109,7 +109,7 @@ export default function VideoApp() {
 
   return <div className="video-app">
     <header className="video-nav">
-      <a href="/" aria-label="CreatorNew home"><img src="/creatornew-logo.png" alt="CreatorNew" /></a>
+      <a href="/" aria-label="CreatorNew home"><picture><source srcSet="/creatornew-logo.webp" type="image/webp"/><img src="/creatornew-logo.png" alt="CreatorNew" width="2075" height="758" fetchPriority="high" decoding="async"/></picture></a>
       <span><b></b> Open video library</span>
       <a href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank" rel="noreferrer">About CC licenses ↗</a>
     </header>
@@ -143,7 +143,7 @@ export default function VideoApp() {
       </section>}
     </main>
 
-    <footer className="video-footer"><img src="/creatornew-logo.png" alt="CreatorNew"/><p>License details are provided by uploaders. Always verify the source page before publishing.</p></footer>
+    <footer className="video-footer"><picture><source srcSet="/creatornew-logo.webp" type="image/webp"/><img src="/creatornew-logo.png" alt="CreatorNew" width="2075" height="758" loading="lazy" decoding="async"/></picture><p>License details are provided by uploaders. Always verify the source page before publishing.</p></footer>
 
     {preview && <div className="preview-backdrop" role="dialog" aria-modal="true" aria-label="Video preview" onMouseDown={(e) => e.target === e.currentTarget && setPreview(null)}>
       <div className="preview-modal"><button className="preview-close" onClick={() => setPreview(null)} aria-label="Close">×</button><video src={preview.imageinfo?.[0]?.url} poster={preview.imageinfo?.[0]?.thumburl} controls autoPlay /><div><h2>{cleanTitle(preview.title)}</h2><p>{authorName(preview)} · {licenseName(preview)}</p><a href={preview.imageinfo?.[0]?.descriptionurl} target="_blank" rel="noreferrer">Open source page ↗</a></div></div>

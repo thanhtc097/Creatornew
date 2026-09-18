@@ -12,6 +12,8 @@
 
 .home-page .brand-logo {
   width: 160px;
+  height: auto;
+  aspect-ratio: 2075 / 758;
 }
 
 .home-page .nav-links {
@@ -79,6 +81,8 @@
 
   .home-page .brand-logo {
     width: 128px;
+    height: auto;
+    aspect-ratio: 2075 / 758;
   }
 
   .home-page .nav-links {
@@ -97,7 +101,10 @@
   width: 100%;
   background:
     linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0.94) 28%, rgba(255, 255, 255, 0.7) 45%, rgba(255, 255, 255, 0.1) 62%, transparent 75%),
-    url('../hero-creator-4k.jpg') right center / cover no-repeat;
+    image-set(
+      url('/hero-creator.webp') type('image/webp'),
+      url('/hero-creator-4k.jpg') type('image/jpeg')
+    ) right center / cover no-repeat;
   border-bottom: 1px solid rgba(208, 213, 221, 0.5);
 }
 
@@ -120,7 +127,10 @@
   .home-hero-wrapper {
     background:
       linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.88) 55%, rgba(255, 255, 255, 0.25) 100%),
-      url('../hero-creator-4k.jpg') center top / cover no-repeat;
+      image-set(
+        url('/hero-creator.webp') type('image/webp'),
+        url('/hero-creator-4k.jpg') type('image/jpeg')
+      ) center top / cover no-repeat;
   }
   .home-page .home-hero {
     grid-template-columns: 1fr;

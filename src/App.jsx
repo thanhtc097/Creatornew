@@ -158,7 +158,7 @@ function App() {
   return (
     <div className="app-shell">
       <header className="nav">
-        <a className="brand" href="/"><img className="creatornew-audio-logo" src="/creatornew-logo.png" alt="CreatorNew"/></a>
+        <a className="brand" href="/" aria-label="CreatorNew home"><picture><source srcSet="/creatornew-logo.webp" type="image/webp"/><img className="creatornew-audio-logo" src="/creatornew-logo.png" alt="CreatorNew" width="2075" height="758" fetchPriority="high" decoding="async"/></picture></a>
         <div className="nav-note"><span></span> Open audio library</div>
         <a className="about-link" href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank" rel="noreferrer">About CC licenses <Icon name="external" size={15}/></a>
       </header>
@@ -195,7 +195,7 @@ function App() {
           {!loading && pageCount > 1 && <div className="pagination"><button disabled={page <= 1} onClick={() => search(query, page - 1)}>← Previous</button><span>Page {page} / {Math.min(pageCount, Math.ceil(10000 / PAGE_SIZE))}</span><button disabled={page >= pageCount} onClick={() => search(query, page + 1)}>Next page →</button></div>}
         </section>}
       </main>
-      <footer><a className="brand small" href="/"><img className="creatornew-audio-logo" src="/creatornew-logo.png" alt="CreatorNew"/></a><p>Audio belongs to its respective creators. Always verify the source license before publishing.</p></footer>
+      <footer><a className="brand small" href="/" aria-label="CreatorNew home"><picture><source srcSet="/creatornew-logo.webp" type="image/webp"/><img className="creatornew-audio-logo" src="/creatornew-logo.png" alt="CreatorNew" width="2075" height="758" loading="lazy" decoding="async"/></picture></a><p>Audio belongs to its respective creators. Always verify the source license before publishing.</p></footer>
     </div>
   )
 }

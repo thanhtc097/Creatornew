@@ -87,6 +87,7 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
 .brand-logo {
   width: 174px;
   height: auto;
+  aspect-ratio: 2075 / 758;
   display: block;
 }
 
@@ -716,6 +717,8 @@ input[type="range"] {
 .content-section {
   padding: 88px 20px;
   background: #fff;
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 600px;
 }
 
 .content-section.soft { background: #f8f9ff; }
