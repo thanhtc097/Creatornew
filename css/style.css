@@ -700,7 +700,7 @@ input[type="range"] {
 .related-card:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(41, 51, 92, .1); }
 .related-card[aria-disabled="true"] { cursor: default; }
 
-.guide-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
 .guide-card { overflow: hidden; border: 1px solid rgba(208, 213, 221, .8); border-radius: 18px; background: #fff; box-shadow: 0 12px 34px rgba(41, 51, 92, .08); }
 .guide-card-body { padding: 28px; }
 .guide-card h3 { margin: 10px 0; color: var(--navy); font-size: 22px; line-height: 1.3; }
