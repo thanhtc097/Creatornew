@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Page not found. Explore CreatorNew's free in-browser image, PDF, audio, video and AI tools with zero server uploads.">
+  <meta name="robots" content="noindex,follow">
+  <meta name="theme-color" content="#5d5fef">
+  <link rel="icon" type="image/png" href="./creatornew-icon.png">
+  <link rel="apple-touch-icon" href="./creatornew-icon.png">
+  <link rel="manifest" href="./site.webmanifest">
+  <title>404 — Page Not Found | CreatorNew</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="./creatornew-logo.webp" type="image/webp" fetchpriority="high">
+  <link rel="stylesheet" href="./css/style.css">
+  <script type="module" src="./js/site-i18n.js"></script>
+  <style>
+    .not-found-hero {
+      padding: 80px 20px 60px;
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .not-found-code {
+      display: inline-block;
+      font-size: 88px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -3px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+    .not-found-hero h1 {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    .not-found-hero p {
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+    .not-found-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .quick-categories {
+      max-width: 1080px;
+      margin: 0 auto 80px;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .quick-cat-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 4px 20px rgba(16, 24, 40, 0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .quick-cat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(16, 24, 40, 0.08);
+    }
+    .quick-cat-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .quick-cat-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .quick-cat-links a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.15s;
+    }
+    .quick-cat-links a:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+    @media (max-width: 820px) {
+      .quick-categories {
+        grid-template-columns: 1fr;
+      }
+      .not-found-hero {
+        padding: 50px 16px 40px;
+      }
+      .not-found-code {
+        font-size: 68px;
+      }
+      .not-found-hero h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body class="home-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="topbar">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="./" aria-label="CreatorNew home">
+        <picture>
+          <source srcset="./creatornew-logo.webp" type="image/webp">
+          <img class="brand-logo" src="./creatornew-logo.png" alt="CreatorNew" width="2075" height="758" fetchpriority="high" decoding="async">
+        </picture>
+      </a>
+      <div class="nav-links">
+        <details class="nav-dropdown image-nav-dropdown" name="site-nav-dropdown">
+          <summary>Image Tools <span aria-hidden="true">⌄</span></summary>
+          <div class="nav-dropdown-menu">
+            <a href="./image-converter/"><strong>Image Converter</strong><small>Convert JPG, PNG and WebP</small></a>
+            <a href="./background-remover/"><strong>Background Remover</strong><small>Create transparent PNGs</small></a>
+            <a href="./image-compressor/"><strong>Image Compressor</strong><small>Reduce image file size</small></a>
+            <a href="./image-resize/"><strong>Image Resizer</strong><small>Resize for any platform</small></a>
+          </div>
+        </details>
+        <details class="nav-dropdown pdf-nav-dropdown" name="site-nav-dropdown">
+          <summary>PDF Tools <span aria-hidden="true">⌄</span></summary>
+          <div class="nav-dropdown-menu">
+            <a href="./images-to-pdf/"><strong>Images to PDF</strong><small>Combine images into one PDF</small></a>
+            <a href="./merge-pdf/"><strong>Merge PDF</strong><small>Combine multiple PDF files</small></a>
+            <a href="./split-pdf/"><strong>Split PDF</strong><small>Extract selected pages</small></a>
+            <a href="./delete-pdf-pages/"><strong>Delete PDF Pages</strong><small>Remove unwanted pages</small></a>
+          </div>
+        </details>
+        <a href="./about/">About</a>
+        <a href="./how-to-convert-images-online-free/">Guides</a>
+        <a href="./#faq">FAQ</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="not-found-hero">
+      <div class="not-found-code">404</div>
+      <h1>Page not found</h1>
+      <p>The link you clicked may be broken, or the page may have been moved. Jump straight into any of our free in-browser tools below with zero server uploads.</p>
+      <div class="not-found-actions">
+        <a class="primary-btn" href="./">← Return to Homepage</a>
+        <a class="secondary-btn" href="./#tools">Explore All Tools</a>
+      </div>
+    </section>
+
+    <section class="quick-categories" aria-label="Popular Tools Directory">
+      <div class="quick-cat-card">
+        <h3>🖼️ Image Tools</h3>
+        <ul class="quick-cat-links">
+          <li><a href="./background-remover/">AI Background Remover →</a></li>
+          <li><a href="./image-compressor/">Image Compressor →</a></li>
+          <li><a href="./image-converter/">Image Converter (JPG, PNG, WebP) →</a></li>
+          <li><a href="./png-to-webp/">PNG to WebP Converter →</a></li>
+          <li><a href="./jpg-to-webp/">JPG to WebP Converter →</a></li>
+          <li><a href="./webp-to-jpg/">WebP to JPG Converter →</a></li>
+          <li><a href="./image-resize/">Image Resizer →</a></li>
+        </ul>
+      </div>
+
+      <div class="quick-cat-card">
+        <h3>📄 PDF Utilities</h3>
+        <ul class="quick-cat-links">
+          <li><a href="./merge-pdf/">Merge PDF Documents →</a></li>
+          <li><a href="./split-pdf/">Split &amp; Extract PDF Pages →</a></li>
+          <li><a href="./delete-pdf-pages/">Delete PDF Pages →</a></li>
+          <li><a href="./images-to-pdf/">Images to PDF Converter →</a></li>
+          <li><a href="./pdf-to-jpg/">PDF to JPG Converter →</a></li>
+          <li><a href="./pdf-to-png/">PDF to PNG Converter →</a></li>
+          <li><a href="./rotate-pdf/">Rotate PDF Pages →</a></li>
+        </ul>
+      </div>
+
+      <div class="quick-cat-card">
+        <h3>⚡ Open Media &amp; AI</h3>
+        <ul class="quick-cat-links">
+          <li><a href="./free-sounds/">Free Sound Effects &amp; Music →</a></li>
+          <li><a href="./free-videos/">Free Stock Videos &amp; Footage →</a></li>
+          <li><a href="./ai-prompt-builder/">AI Prompt Builder &amp; Library →</a></li>
+          <li><a href="./about/">About CreatorNew Architecture →</a></li>
+          <li><a href="./how-to-convert-images-online-free/">Image Conversion Guide →</a></li>
+          <li><a href="./privacy-policy/">Zero Server Upload Guarantee →</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>&copy; 2026 CreatorNew. Free online tools for everyone.</span>
+      <div class="footer-links">
+        <a href="./about/">About</a>
+        <a href="./privacy-policy/">Privacy Policy</a>
+        <a href="./terms/">Terms</a>
+        <a href="./how-to-convert-images-online-free/">Guides</a>
+        <a href="./image-converter/">Image Tools</a>
+        <a href="./merge-pdf/">PDF Tools</a>
+        <a href="./#faq">FAQ</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

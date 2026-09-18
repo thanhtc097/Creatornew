@@ -1,0 +1,18 @@
+{
+  "name": "CreatorNew — Free & Private In-Browser Tools",
+  "short_name": "CreatorNew",
+  "description": "Free and 100% private online tools for images, PDFs, audio, video and AI. Zero server uploads.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f9fc",
+  "theme_color": "#5d5fef",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/creatornew-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

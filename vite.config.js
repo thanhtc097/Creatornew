@@ -38,6 +38,8 @@ export default defineConfig({
         creatornewVsIlovePdf: 'creatornew-vs-ilovepdf/index.html',
         creatornewVsSmallpdf: 'creatornew-vs-smallpdf/index.html',
         creatornewVsEzgif: 'creatornew-vs-ezgif/index.html',
+        creatornewVsConvertio: 'creatornew-vs-convertio/index.html',
+        notFound: '404.html',
       },
     },
   },
