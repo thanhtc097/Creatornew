@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nén ảnh dưới 100KB, 200KB, 500KB online miễn phí. Tự động giảm dung lượng ảnh thẻ 3x4, 4x6, CCCD, bằng cấp nộp Cổng Dịch vụ công (dvc.gov.vn), thi công chức, xin việc, visa. Bảo mật 100% trên máy.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#5d5fef">
+  <link rel="icon" type="image/png" href="../../creatornew-icon.png">
+  <link rel="apple-touch-icon" href="../../creatornew-icon.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="canonical" href="https://creatornew.com/vi/nen-anh-duoi-200kb/">
+  <link rel="alternate" hreflang="vi" href="https://creatornew.com/vi/nen-anh-duoi-200kb/">
+  <link rel="alternate" hreflang="x-default" href="https://creatornew.com/vi/nen-anh-duoi-200kb/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CreatorNew">
+  <meta property="og:title" content="Nén Ảnh Dưới 200KB, 100KB Online Nộp Hồ Sơ &amp; Thi Công Chức">
+  <meta property="og:description" content="Tự động nén ảnh dưới 100KB, 200KB nộp cổng dịch vụ công và thi công chức. Không cần căn chỉnh thủ công, không tải ảnh lên máy chủ.">
+  <meta property="og:url" content="https://creatornew.com/vi/nen-anh-duoi-200kb/">
+  <meta property="og:image" content="https://creatornew.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nén Ảnh Dưới 200KB, 100KB Online | CreatorNew">
+  <meta name="twitter:description" content="Tự động giảm dung lượng ảnh dưới 100KB, 200KB chuẩn nộp hồ sơ công chức, xin việc và visa.">
+  <meta name="twitter:image" content="https://creatornew.com/og-image.png">
+  <title>Nén Ảnh Dưới 200KB, 100KB Online Nộp Hồ Sơ &amp; Thi Công Chức | CreatorNew</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="../../creatornew-logo.webp" type="image/webp" fetchpriority="high">
+  <link rel="stylesheet" href="../../css/style.css">
+  <style>
+    .target-presets-container {
+      margin: 18px 0 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .target-presets-label {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-heading, #101828);
+    }
+    .target-presets-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+    }
+    .target-preset-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      padding: 12px 14px;
+      background: var(--surface, #ffffff);
+      border: 2px solid var(--border, #e4e7ec);
+      border-radius: 12px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .target-preset-btn:hover {
+      border-color: var(--primary, #5d5fef);
+      transform: translateY(-1px);
+    }
+    .target-preset-btn.is-active {
+      border-color: var(--primary, #5d5fef);
+      background: rgba(93, 95, 239, 0.06);
+      box-shadow: 0 0 0 3px rgba(93, 95, 239, 0.15);
+    }
+    .target-preset-size {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--primary, #5d5fef);
+    }
+    .target-preset-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted, #667085);
+      line-height: 1.35;
+    }
+    .custom-kb-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 6px;
+      font-size: 0.88rem;
+      color: var(--text-body, #344054);
+    }
+    .custom-kb-input {
+      width: 110px;
+      padding: 8px 12px;
+      border: 1px solid var(--border, #d0d5dd);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .compliance-badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+      margin-left: 8px;
+    }
+    .badge-ok {
+      background: #ecfdf3;
+      color: #027a48;
+      border: 1px solid #abefc6;
+    }
+    .badge-warn {
+      background: #fff6ed;
+      color: #b54708;
+      border: 1px solid #fedf89;
+    }
+    .privacy-box {
+      background: linear-gradient(135deg, rgba(93, 95, 239, 0.05), rgba(46, 144, 250, 0.05));
+      border: 1px solid rgba(93, 95, 239, 0.15);
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-top: 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .privacy-box-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+    .portal-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.92rem;
+    }
+    .portal-table th, .portal-table td {
+      border: 1px solid var(--border, #eaecf0);
+      padding: 12px 16px;
+      text-align: left;
+    }
+    .portal-table th {
+      background: var(--surface-alt, #f9fafb);
+      font-weight: 700;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://creatornew.com/vi/nen-anh-duoi-200kb/#breadcrumbs",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Trang chủ",
+            "item": "https://creatornew.com/vi/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Công cụ ảnh",
+            "item": "https://creatornew.com/vi/#tools"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Nén ảnh dưới 200KB",
+            "item": "https://creatornew.com/vi/nen-anh-duoi-200kb/"
+          }
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://creatornew.com/vi/nen-anh-duoi-200kb/#software",
+        "name": "CreatorNew Nén Ảnh Dưới 200KB Nộp Hồ Sơ",
+        "url": "https://creatornew.com/vi/nen-anh-duoi-200kb/",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "VND"
+        },
+        "description": "Công cụ nén ảnh tự động đạt dung lượng dưới 100KB, 200KB, 500KB nộp hồ sơ công chức, xin việc và visa không lo mờ chữ."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://creatornew.com/vi/nen-anh-duoi-200kb/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Nén ảnh xuống dưới 100KB hoặc 200KB có bị mờ chữ trên bằng cấp, CCCD không?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Không. Thuật toán của CreatorNew tự động tính toán chất lượng và tỉ lệ điểm ảnh để nén vừa tròn dưới mức quy định (ví dụ 185-195 KB khi chọn dưới 200KB), đảm bảo tối đa độ sắc nét của chữ số trên CCCD và bằng cấp."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Tại sao các cổng Dịch vụ công lại yêu cầu ảnh dưới 100KB hoặc 200KB?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Các hệ thống dịch vụ công nhà nước (như dvc.gov.vn, cấp đổi GPLX, nộp hồ sơ viên chức) tiếp nhận hàng triệu hồ sơ mỗi ngày. Giới hạn dung lượng dưới 100KB - 200KB giúp hệ thống máy chủ không bị nghẽn và tải trang nhanh hơn."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Ảnh CCCD, bằng lái xe, hộ chiếu của tôi có bị tải lên mạng không?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tuyệt đối không. Toàn bộ quá trình nén ảnh diễn ra 100% trong bộ nhớ tạm (RAM) của trình duyệt bạn đang dùng nhờ công nghệ Canvas. Không một byte dữ liệu nào được tải lên bất kỳ máy chủ nào."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Định dạng ảnh nào được các cơ quan nhà nước chấp nhận nhiều nhất?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Định dạng JPG (JPEG) được chấp nhận 100% trên tất cả các cổng thông tin chính phủ và tuyển dụng tại Việt Nam. Bạn nên giữ định dạng đầu ra là JPG."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#tool">Chuyển đến công cụ nén</a>
+  <header class="topbar">
+    <nav class="nav" aria-label="Điều hướng chính">
+      <a class="brand" href="../../vi/" aria-label="CreatorNew trang chủ">
+        <picture>
+          <source srcset="../../creatornew-logo.webp" type="image/webp">
+          <img class="brand-logo" src="../../creatornew-logo.png" alt="CreatorNew" width="2075" height="758" fetchpriority="high" decoding="async">
+        </picture>
+      </a>
+      <div class="nav-links">
+        <details class="nav-dropdown" name="site-nav-dropdown">
+          <summary>Công cụ Ảnh <span aria-hidden="true">⌄</span></summary>
+          <div class="nav-dropdown-menu">
+            <a href="../background-remover/"><strong>Xóa phông ảnh AI</strong><small>Tách nền ảnh thẻ, sản phẩm</small></a>
+            <a href="../image-compressor/"><strong>Nén ảnh thông thường</strong><small>Giảm dung lượng ảnh</small></a>
+            <a href="./"><strong>Nén ảnh dưới 200KB</strong><small>Chuẩn nộp hồ sơ công chức</small></a>
+            <a href="../image-converter/"><strong>Chuyển đổi ảnh</strong><small>JPG, PNG, WebP</small></a>
+            <a href="../image-resize/"><strong>Đổi kích thước ảnh</strong><small>Chỉnh pixel theo yêu cầu</small></a>
+          </div>
+        </details>
+        <details class="nav-dropdown" name="site-nav-dropdown">
+          <summary>Công cụ PDF <span aria-hidden="true">⌄</span></summary>
+          <div class="nav-dropdown-menu">
+            <a href="../merge-pdf/"><strong>Gộp file PDF</strong><small>Ghép nhiều file thành một</small></a>
+            <a href="../split-pdf/"><strong>Tách file PDF</strong><small>Trích xuất trang cần dùng</small></a>
+          </div>
+        </details>
+        <a href="#quy-dinh">Quy định dung lượng</a>
+        <a href="#faq">Hỏi đáp</a>
+      </div>
+    </nav>
+  </header>
+
+  <nav class="breadcrumb-container" aria-label="Breadcrumb">
+    <ol class="breadcrumb-list">
+      <li><a href="../../vi/">Trang chủ</a></li>
+      <li class="breadcrumb-separator" aria-hidden="true">›</li>
+      <li><a href="../../vi/#tools">Công cụ Ảnh</a></li>
+      <li class="breadcrumb-separator" aria-hidden="true">›</li>
+      <li aria-current="page">Nén ảnh dưới 200KB</li>
+    </ol>
+  </nav>
+
+  <main class="hero">
+    <section class="hero-copy">
+      <p class="eyebrow">⚡ Chuẩn Dịch Vụ Công &amp; Thi Công Chức 2026</p>
+      <h1>Nén ảnh dưới 200KB, 100KB <span>chuẩn nộp hồ sơ online</span></h1>
+      <p class="lead">
+        Tự động giảm dung lượng ảnh thẻ 3x4, 4x6, CCCD, bằng cấp vừa khít quy định của Cổng Dịch vụ công (dvc.gov.vn),
+        hồ sơ xin việc và thị thực Visa. Đảm bảo chữ số rõ nét, xử lý 100% trên máy không tải ảnh lên mạng.
+      </p>
+      <div class="benefits">
+        <div class="benefit"><span class="check">✓</span> Đạt chuẩn dung lượng ngay lần đầu</div>
+        <div class="benefit"><span class="check">✓</span> Giữ chữ trên bằng cấp sắc nét</div>
+        <div class="benefit"><span class="check">✓</span> Bảo mật 100% — Xử lý trên RAM</div>
+        <div class="benefit"><span class="check">✓</span> Hỗ trợ nén hàng loạt miễn phí</div>
+      </div>
+    </section>
+
+    <section id="tool" class="tool-card" aria-label="Công cụ nén ảnh dưới 200KB">
+      <div class="target-presets-container">
+        <label class="target-presets-label">1. Chọn mức dung lượng mục tiêu:</label>
+        <div class="target-presets-grid">
+          <button type="button" class="target-preset-btn" data-bytes="102400">
+            <span class="target-preset-size">⚡ Dưới 100 KB</span>
+            <span class="target-preset-desc">Thi công chức, Dịch vụ công Quốc gia, đổi GPLX</span>
+          </button>
+          <button type="button" class="target-preset-btn is-active" data-bytes="204800">
+            <span class="target-preset-size">🔥 Dưới 200 KB</span>
+            <span class="target-preset-desc">Hồ sơ xin việc, CV, đăng ký thuế, cổng đại học</span>
+          </button>
+          <button type="button" class="target-preset-btn" data-bytes="512000">
+            <span class="target-preset-size">🎯 Dưới 500 KB</span>
+            <span class="target-preset-desc">Hồ sơ Visa các nước, mở tài khoản ngân hàng</span>
+          </button>
+        </div>
+        <div class="custom-kb-row">
+          <span>Hoặc tự nhập dung lượng tối đa:</span>
+          <input type="number" id="customTargetKb" class="custom-kb-input" placeholder="Ví dụ: 150" min="10" max="5000">
+          <span>KB</span>
+        </div>
+      </div>
+
+      <div class="settings" style="margin-bottom: 16px;">
+        <div class="field">
+          <label for="outputFormat">Định dạng file xuất ra:</label>
+          <select id="outputFormat">
+            <option value="image/jpeg" selected>JPG / JPEG (Khuyên dùng — 100% cổng chấp nhận)</option>
+            <option value="image/webp">WebP (Siêu nhẹ — dành cho website)</option>
+            <option value="image/png">PNG (Giữ nền trong suốt)</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="dropZone" class="drop-zone" role="button" tabindex="0" aria-label="Chọn ảnh hoặc kéo thả vào đây">
+        <div class="upload-visual" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none">
+            <path d="M15 36h22a8 8 0 0 0 .5-15.98A13 13 0 0 0 12.37 17 9.5 9.5 0 0 0 15 36Z" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="m24 31V17m0 0-5 5m5-5 5 5" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2>Kéo thả ảnh cần nén vào đây</h2>
+        <p>Hỗ trợ ảnh chụp điện thoại JPG, PNG dung lượng lớn (lên đến 50MB)</p>
+        <button id="chooseBtn" class="primary-btn" type="button">＋ Chọn Ảnh Cần Nén</button>
+        <p class="privacy">🔒 Bảo mật tuyệt đối: Ảnh CCCD &amp; bằng cấp chỉ xử lý trên thiết bị của bạn</p>
+      </div>
+
+      <div id="workspace" class="workspace" style="display:none;">
+        <div class="workspace-head">
+          <h2 class="workspace-title"><span id="fileCount">0</span> ảnh đã chọn</h2>
+          <div class="workspace-actions">
+            <button id="addMoreBtn" class="text-btn" type="button">+ Thêm ảnh</button>
+            <button id="clearAllBtn" class="text-btn danger" type="button">Xóa tất cả</button>
+          </div>
+        </div>
+
+        <div id="files" class="files"></div>
+
+        <button id="convertBtn" class="primary-btn convert-btn" type="button">
+          ⚡ Nén Tất Cả Ảnh Dưới 200 KB
+        </button>
+        <button id="downloadAllBtn" class="primary-btn convert-btn" type="button" style="display:none; background:#027a48;">
+          📥 Tải Xuống Tất Cả Ảnh
+        </button>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+      </div>
+
+      <input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp" multiple style="display:none;">
+
+      <div class="privacy-box">
+        <div class="privacy-box-icon" aria-hidden="true">🛡️</div>
+        <div>
+          <strong>Cam kết An toàn Thông tin Cá nhân</strong>
+          <p style="margin: 4px 0 0; font-size: 0.86rem; color: var(--text-muted, #667085); line-height: 1.45;">
+            Các giấy tờ tùy thân như CCCD, bằng đại học, hồ sơ bệnh án chứa thông tin nhạy cảm.
+            CreatorNew nén ảnh trực tiếp trên RAM trình duyệt bằng Canvas API, <strong>không lưu trữ, không gửi ảnh qua Internet</strong>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section id="quy-dinh" class="content-section" aria-labelledby="section-guide-title">
+    <div class="section-inner">
+      <div class="section-heading">
+        <h2 id="section-guide-title">Quy định dung lượng ảnh trên các cổng trực tuyến Việt Nam</h2>
+        <p>Bảng tra cứu giới hạn file ảnh để không bao giờ bị báo lỗi "Dung lượng vượt quá mức cho phép".</p>
+      </div>
+
+      <table class="portal-table">
+        <thead>
+          <tr>
+            <th>Hệ thống / Cổng dịch vụ</th>
+            <th>Mục đích sử dụng</th>
+            <th>Giới hạn dung lượng</th>
+            <th>Định dạng khuyến nghị</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Cổng Dịch vụ công Quốc gia (dvc.gov.vn)</strong></td>
+            <td>Cấp hộ chiếu, đổi GPLX, làm thủ tục hành chính</td>
+            <td><strong>≤ 100 KB hoặc ≤ 200 KB</strong></td>
+            <td>JPG / JPEG</td>
+          </tr>
+          <tr>
+            <td><strong>Hệ thống Thi tuyển Công chức, Viên chức</strong></td>
+            <td>Ảnh thẻ chân dung 3x4, 4x6 đính kèm phiếu đăng ký</td>
+            <td><strong>≤ 100 KB</strong></td>
+            <td>JPG</td>
+          </tr>
+          <tr>
+            <td><strong>Cổng nộp Hồ sơ Tuyển dụng (TopCV, VietnamWorks)</strong></td>
+            <td>Ảnh đại diện CV, đính kèm chứng chỉ, bằng khen</td>
+            <td><strong>≤ 200 KB - 500 KB</strong></td>
+            <td>JPG / PNG</td>
+          </tr>
+          <tr>
+            <td><strong>Cổng Đăng ký Thị thực điện tử (E-visa các nước)</strong></td>
+            <td>Ảnh hộ chiếu và ảnh chân dung nền trắng</td>
+            <td><strong>≤ 200 KB - 240 KB</strong></td>
+            <td>JPG</td>
+          </tr>
+          <tr>
+            <td><strong>Cổng nộp thuế điện tử / Đăng ký DN</strong></td>
+            <td>Bản scan giấy tờ pháp lý, hợp đồng</td>
+            <td><strong>≤ 500 KB / trang</strong></td>
+            <td>JPG / PDF</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <article class="content-block">
+        <h3>Tại sao nén ảnh bằng các công cụ thông thường hay bị lỗi?</h3>
+        <p>
+          Hầu hết các trang web nén ảnh trên mạng hiện nay chỉ cung cấp một thanh trượt tỷ lệ phần trăm (như 50%, 70%).
+          Khi bạn chụp ảnh bằng điện thoại độ phân giải cao (thường từ 3MB đến 8MB):
+        </p>
+        <ul>
+          <li>Nếu kéo nén nhẹ (70%), dung lượng ảnh vẫn còn <strong>350KB - 500KB</strong>, tải lên hệ thống dịch vụ công vẫn bị từ chối.</li>
+          <li>Nếu kéo nén quá mạnh (20%), ảnh bị vỡ hạt, chữ số trên CCCD hoặc bằng cấp bị mờ nhòe, cán bộ thụ lý hồ sơ sẽ trả về yêu cầu chụp lại.</li>
+        </ul>
+        <p>
+          <strong>Giải pháp của CreatorNew:</strong> Thuật toán <em>Target Size Binary Search</em> tự động đo lường và tinh chỉnh
+          chất lượng nén lặp lại, tìm ra điểm cân bằng tối ưu nhất sao cho file luôn nằm sát ngưỡng mục tiêu (ví dụ 185-195 KB khi chọn dưới 200KB).
+          Chữ trên văn bản được giữ sắc nét tối đa mà dung lượng vẫn hoàn toàn hợp lệ.
+        </p>
+      </article>
+
+      <article class="content-block" style="margin-top: 28px;">
+        <h3>Hướng dẫn 3 bước nén ảnh hồ sơ nhanh chóng</h3>
+        <ol>
+          <li><strong>Bước 1:</strong> Chọn mức dung lượng mục tiêu phù hợp với yêu cầu cổng nộp (100KB cho thi công chức, 200KB cho hồ sơ xin việc, hoặc tự nhập số KB).</li>
+          <li><strong>Bước 2:</strong> Kéo thả ảnh CCCD, ảnh thẻ hoặc bằng cấp vào khung công cụ (có thể chọn nhiều ảnh cùng lúc).</li>
+          <li><strong>Bước 3:</strong> Bấm <em>"Nén Tất Cả Ảnh"</em> và tải file đã nén đạt chuẩn về máy để nộp hồ sơ ngay.</li>
+        </ol>
+      </article>
+    </div>
+  </section>
+
+  <section id="faq" class="content-section" aria-labelledby="section-faq-title">
+    <div class="section-inner">
+      <div class="section-heading">
+        <h2 id="section-faq-title">Câu hỏi thường gặp (FAQ)</h2>
+        <p>Giải đáp thắc mắc về nén ảnh nộp hồ sơ công chức và dịch vụ công.</p>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Nén ảnh xuống dưới 100KB hoặc 200KB có bị mờ chữ không?</summary>
+          <p>Không. Công cụ tự động tính toán chất lượng sao cho file đạt dung lượng tối đa cho phép trong giới hạn an toàn, giữ độ tương phản cao cho chữ viết và dấu mộc đỏ trên bằng cấp, giấy chứng nhận.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Cổng Dịch vụ công Quốc gia dvc.gov.vn nhận ảnh định dạng nào?</summary>
+          <p>Cổng DVC và các hệ thống một cửa điện tử tại Việt Nam chủ yếu chấp nhận file JPG (hoặc JPEG). Bạn nên để định dạng xuất mặc định là JPG để đảm bảo tương thích 100%.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Ảnh hồ sơ của tôi có bị lưu lại trên máy chủ không?</summary>
+          <p>Hoàn toàn không. Toàn bộ quá trình nén chạy bằng Canvas trên chính trình duyệt điện thoại/máy tính của bạn. Dữ liệu của bạn không bao giờ được truyền qua mạng Internet.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Tôi có thể nén nhiều ảnh cùng một lúc không?</summary>
+          <p>Có. Bạn có thể chọn cùng lúc tối đa 20 file ảnh (mặt trước CCCD, mặt sau CCCD, bằng tốt nghiệp, bảng điểm, sơ yếu lý lịch) và công cụ sẽ nén tất cả về dưới mức dung lượng đã chọn chỉ với một cú nhấp chuột.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© 2026 CreatorNew. Công cụ miễn phí cho mọi người.</span>
+      <div class="footer-links">
+        <a href="../../vi/">Trang chủ</a>
+        <a href="../background-remover/">Xóa phông ảnh</a>
+        <a href="../image-compressor/">Nén ảnh</a>
+        <a href="../merge-pdf/">Gộp PDF</a>
+        <a href="#tool">Lên đầu trang ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="../../js/site-i18n.js"></script>
+  <script type="module" src="./target-compressor-app.js"></script>
+</body>
+</html>

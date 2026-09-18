@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bộ công cụ online miễn phí và bảo mật 100%: Xóa phông ảnh AI, nén ảnh dưới 200KB nộp hồ sơ công chức, chuyển đổi WebP, gộp và tách file PDF trực tiếp trên trình duyệt. Không tải file lên máy chủ.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#5d5fef">
+  <link rel="icon" type="image/png" href="../creatornew-icon.png">
+  <link rel="apple-touch-icon" href="../creatornew-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
+  <link rel="canonical" href="https://creatornew.com/vi/">
+  <link rel="alternate" hreflang="en" href="https://creatornew.com/">
+  <link rel="alternate" hreflang="vi" href="https://creatornew.com/vi/">
+  <link rel="alternate" hreflang="x-default" href="https://creatornew.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CreatorNew">
+  <meta property="og:title" content="Bộ Công Cụ Online Xử Lý Ảnh &amp; PDF Miễn Phí, Bảo Mật 100% | CreatorNew">
+  <meta property="og:description" content="Xóa phông ảnh bằng AI, nén ảnh dưới 200KB nộp hồ sơ, đổi định dạng ảnh và chỉnh sửa PDF trên trình duyệt. Không cần đăng ký, không tải file lên server.">
+  <meta property="og:url" content="https://creatornew.com/vi/">
+  <meta property="og:image" content="https://creatornew.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bộ Công Cụ Online Miễn Phí, Bảo Mật | CreatorNew">
+  <meta name="twitter:description" content="Xóa phông AI, nén ảnh công chức, chỉnh sửa PDF 100% an toàn trên trình duyệt.">
+  <meta name="twitter:image" content="https://creatornew.com/og-image.png">
+  <title>Bộ Công Cụ Online Xử Lý Ảnh &amp; PDF Miễn Phí, Bảo Mật 100% | CreatorNew</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="../creatornew-logo.webp" type="image/webp" fetchpriority="high">
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://creatornew.com/vi/#website",
+        "url": "https://creatornew.com/vi/",
+        "name": "CreatorNew Tiếng Việt",
+        "description": "Bộ công cụ online miễn phí và riêng tư cho công việc và sáng tạo nội dung."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://creatornew.com/vi/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "CreatorNew có miễn phí thật sự không?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Có. Tất cả các công cụ xử lý ảnh, nén ảnh và chỉnh sửa PDF trên CreatorNew đều miễn phí 100%, không giới hạn số lượt sử dụng và không yêu cầu đăng ký tài khoản."}
+          },
+          {
+            "@type": "Question",
+            "name": "Tài liệu và hình ảnh của tôi có bị tải lên máy chủ không?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Tuyệt đối không. Toàn bộ quá trình tách phông, nén ảnh, gộp tách PDF đều được thực hiện 100% trên bộ nhớ RAM trình duyệt của bạn nhờ WebAssembly và Canvas API."}
+          },
+          {
+            "@type": "Question",
+            "name": "CreatorNew có dùng được trên điện thoại không?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Có. Website được tối ưu tương thích hoàn hảo với cả điện thoại Android, iPhone, iPad và máy tính để bàn."}
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="home-page">
+  <a class="skip-link" href="#tools">Chuyển đến danh sách công cụ</a>
+
+  <header class="topbar">
+    <nav class="nav" aria-label="Điều hướng chính">
+      <a class="brand" href="./" aria-label="CreatorNew trang chủ">
+        <picture>
+          <source srcset="../creatornew-logo.webp" type="image/webp">
+          <img class="brand-logo" src="../creatornew-logo.png" alt="CreatorNew" width="2075" height="758" fetchpriority="high" decoding="async">
+        </picture>
+      </a>
+      <div class="nav-links">
+        <details class="nav-dropdown image-nav-dropdown" name="site-nav-dropdown">
+          <summary>Công cụ Ảnh <span aria-hidden="true">⌄</span></summary>
+          <div class="nav-dropdown-menu">
+            <a href="./background-remover/"><strong>Xóa phông ảnh AI</strong><small>Tách nền ảnh thẻ, sản phẩm</small></a>
+            <a href="./nen-anh-duoi-200kb/"><strong>Nén ảnh dưới 200KB</strong><small>Chuẩn nộp hồ sơ công chức</small></a>
+            <a href="./image-compressor/"><strong>Nén ảnh online</strong><small>Giảm dung lượng WebP, JPG</small></a>
+            <a href="./image-converter/"><strong>Chuyển đổi định dạng</strong><small>JPG, PNG, WebP</small></a>
+            <a href="./png-to-webp/"><strong>PNG sang WebP</strong><small>Tối ưu ảnh cho website</small></a>
+            <a href="./jpg-to-webp/"><strong>JPG sang WebP</strong><small>Giảm dung lượng ảnh chụp</small></a>
+            <a href="./image-resize/"><strong>Đổi kích thước ảnh</strong><small>Resize theo pixel</small></a>
+          </div>
+        </details>
+        <details class="nav-dropdown pdf-nav-dropdown" name="site-nav-dropdown">
+          <summary>Công cụ PDF <span aria-hidden="true">⌄</span></summary>
+          <div class="nav-dropdown-menu">
+            <a href="./merge-pdf/"><strong>Gộp file PDF</strong><small>Ghép nhiều file thành một</small></a>
+            <a href="./split-pdf/"><strong>Tách file PDF</strong><small>Trích xuất trang cần dùng</small></a>
+            <a href="../images-to-pdf/"><strong>Ảnh sang PDF</strong><small>Chuyển JPG/PNG thành PDF</small></a>
+            <a href="../pdf-to-jpg/"><strong>PDF sang JPG</strong><small>Chuyển trang PDF thành ảnh</small></a>
+            <a href="../rotate-pdf/"><strong>Xoay trang PDF</strong><small>Chỉnh hướng trang xoay</small></a>
+            <a href="../delete-pdf-pages/"><strong>Xóa trang PDF</strong><small>Loại bỏ trang thừa</small></a>
+          </div>
+        </details>
+        <details class="nav-dropdown audio-nav-dropdown" name="site-nav-dropdown">
+          <summary>Âm thanh &amp; Video <span aria-hidden="true">⌄</span></summary>
+          <div class="nav-dropdown-menu">
+            <a href="../free-sounds/"><strong>Free Sounds</strong><small>Kho hiệu ứng âm thanh CC0</small></a>
+            <a href="../free-videos/"><strong>Free Videos</strong><small>Video bản quyền mở</small></a>
+          </div>
+        </details>
+        <a href="../about/">Giới thiệu</a>
+        <a href="#why">Vì sao chọn</a>
+        <a href="#faq">Hỏi đáp</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="home-hero-wrapper">
+      <section class="home-hero">
+        <div class="home-hero-copy">
+          <p class="eyebrow">100% Xử lý Trên Trình Duyệt · Bảo Mật Tuyệt Đối</p>
+          <h1>Bộ công cụ AI &amp; Đồ họa <span>miễn phí, riêng tư 100%</span></h1>
+          <p class="lead">Xóa phông ảnh bằng AI cục bộ, nén ảnh chuẩn nộp hồ sơ công chức dưới 100KB–200KB, gộp tách PDF nhanh chóng. Không tải file lên máy chủ, không watermark, không cần đăng ký.</p>
+          <div class="hero-actions">
+            <a class="primary-btn" href="./background-remover/">🔥 Thử AI Xóa Phông</a>
+            <a class="secondary-btn" href="./nen-anh-duoi-200kb/">⚡ Nén Ảnh Dưới 200KB</a>
+          </div>
+          <div class="home-trust" aria-label="Lợi ích CreatorNew">
+            <span>🔒 100% Trên Trình Duyệt (Không Upload)</span>
+            <span>⚡ AI Chạy Trên Thiết Bị (WASM)</span>
+            <span>✨ Miễn Phí Vĩnh Viễn (Không Watermark)</span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section id="tools" class="content-section home-tools" aria-labelledby="tools-title">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">Hệ sinh thái tiện ích CreatorNew</p>
+          <h2 id="tools-title">Công cụ miễn phí &amp; tiện lợi cho mọi người</h2>
+          <p>Tối ưu tốc độ, tiện ích thiết thực và bảo vệ quyền riêng tư dữ liệu của bạn.</p>
+        </div>
+        <div class="tool-grid">
+          <a class="tool-link-card featured-tool category-ai" href="./background-remover/">
+            <span class="tool-badge">🔥 Công cụ AI Mũi Nhọn</span>
+            <span class="tool-card-icon">AI</span>
+            <h3>AI Xóa Phông &amp; Vật Thể</h3>
+            <p>Tách nền ảnh chân dung, ảnh sản phẩm bằng AI chạy trực tiếp trên máy. Không tải ảnh lên mạng, giữ nguyên độ nét gốc.</p>
+            <span class="tool-link">Mở AI Studio →</span>
+          </a>
+          <a class="tool-link-card category-image" href="./nen-anh-duoi-200kb/">
+            <span class="tool-badge">⚡ Chuẩn DVC</span>
+            <span class="tool-card-icon">DOC</span>
+            <h3>Nén Ảnh Dưới 200KB / 100KB</h3>
+            <p>Tự động giảm dung lượng ảnh thẻ, CCCD, bằng cấp nộp Cổng Dịch vụ công (dvc.gov.vn) và hồ sơ xin việc không lo mờ chữ.</p>
+            <span class="tool-link">Nén hồ sơ ngay →</span>
+          </a>
+          <a class="tool-link-card category-image" href="./image-compressor/">
+            <span class="tool-badge">Phổ biến</span>
+            <span class="tool-card-icon">ZIP</span>
+            <h3>Nén Ảnh Online</h3>
+            <p>Giảm dung lượng file WebP, JPG, PNG tối ưu tốc độ tải website và bán hàng online.</p>
+            <span class="tool-link">Nén ảnh →</span>
+          </a>
+          <a class="tool-link-card category-image" href="./image-converter/">
+            <span class="tool-card-icon">IMG</span>
+            <h3>Chuyển Đổi Định Dạng Ảnh</h3>
+            <p>Chuyển đổi hàng loạt giữa JPG, PNG và WebP với tùy chỉnh chất lượng linh hoạt.</p>
+            <span class="tool-link">Mở công cụ →</span>
+          </a>
+          <a class="tool-link-card category-image" href="./png-to-webp/">
+            <span class="tool-card-icon">PNG</span>
+            <h3>PNG sang WebP</h3>
+            <p>Biến file PNG đồ họa thành WebP siêu nhẹ giúp website tăng tốc vượt trội.</p>
+            <span class="tool-link">Chuyển PNG →</span>
+          </a>
+          <a class="tool-link-card category-image" href="./jpg-to-webp/">
+            <span class="tool-card-icon">JPG</span>
+            <h3>JPG sang WebP</h3>
+            <p>Tối ưu ảnh chụp camera để đăng tải lên website và mạng xã hội mượt mà hơn.</p>
+            <span class="tool-link">Chuyển JPG →</span>
+          </a>
+          <a class="tool-link-card category-image" href="./image-resize/">
+            <span class="tool-card-icon">RES</span>
+            <h3>Đổi Kích Thước Ảnh</h3>
+            <p>Resize kích thước pixel theo yêu cầu cho Facebook, YouTube, TikTok và Shopee.</p>
+            <span class="tool-link">Resize ảnh →</span>
+          </a>
+          <a class="tool-link-card category-pdf" href="./merge-pdf/">
+            <span class="tool-card-icon">PDF</span>
+            <h3>Gộp File PDF</h3>
+            <p>Sắp xếp thứ tự và ghép nhiều tài liệu PDF thành một file duy nhất trong vài giây.</p>
+            <span class="tool-link">Gộp PDF →</span>
+          </a>
+          <a class="tool-link-card category-pdf" href="./split-pdf/">
+            <span class="tool-card-icon">PDF</span>
+            <h3>Tách File PDF</h3>
+            <p>Trích xuất từng trang lẻ hoặc khoảng trang mong muốn ra file PDF độc lập.</p>
+            <span class="tool-link">Tách PDF →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="why" class="content-section" aria-labelledby="why-title">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">Cam kết chất lượng</p>
+          <h2 id="why-title">Vì sao nên chọn CreatorNew?</h2>
+          <p>Thiết kế dành cho sự đơn giản, nhanh chóng và bảo mật tối đa.</p>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <span class="feature-icon">🔒</span>
+            <h3>Bảo mật Client-side 100%</h3>
+            <p>Tất cả file ảnh và tài liệu PDF của bạn được xử lý trực tiếp trên RAM của máy tính/điện thoại. Không bao giờ lưu trữ trên đám mây.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">⚡</span>
+            <h3>Tốc độ tức thì, không đợi tải</h3>
+            <p>Không mất thời gian upload file nặng lên server rồi tải ngược về. Bấm nút là có ngay kết quả tức thì.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">✨</span>
+            <h3>Miễn phí &amp; Không giới hạn</h3>
+            <p>Không có gói tài khoản ẩn, không ép trả tiền để tải file phân giải cao, không đóng dấu watermark lên tác phẩm.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="content-section" aria-labelledby="home-faq-title">
+      <div class="section-inner">
+        <div class="section-heading">
+          <h2 id="home-faq-title">Câu hỏi thường gặp</h2>
+          <p>Những điều bạn có thể muốn biết về nền tảng CreatorNew.</p>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>CreatorNew có thu phí sau này không?</summary>
+            <p>Không. Tất cả các tính năng cơ bản và nâng cao hiện tại đều phục vụ miễn phí cho cộng đồng người dùng và nhà sáng tạo nội dung.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Tôi có thể dùng khi mất mạng (Offline) không?</summary>
+            <p>Có. CreatorNew được xây dựng theo chuẩn PWA với Service Worker, cho phép bạn cài đặt ra màn hình chính và sử dụng offline nhiều công cụ ngay cả khi không có kết nối Internet.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Dữ liệu nhạy cảm (CCCD, tài liệu nội bộ) có an toàn không?</summary>
+            <p>Rất an toàn. Vì công cụ chạy hoàn toàn bằng JavaScript/WASM cục bộ, dữ liệu của bạn không bao giờ rời khỏi thiết bị cá nhân.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© 2026 CreatorNew. Bộ công cụ online miễn phí cho mọi người.</span>
+      <div class="footer-links">
+        <a href="./">Trang chủ</a>
+        <a href="../about/">Giới thiệu</a>
+        <a href="../privacy-policy/">Chính sách</a>
+        <a href="../terms/">Điều khoản</a>
+        <a href="#tools">Khám phá tất cả công cụ ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="../js/site-i18n.js"></script>
+</body>
+</html>

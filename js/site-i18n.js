@@ -469,8 +469,14 @@
     switcher.addEventListener('click', (event) => {
       const button = event.target.closest('button[data-language]')
       if (!button) return
-      localStorage.setItem(STORAGE_KEY, button.dataset.language)
-      applyLanguage(button.dataset.language)
+      const targetLang = button.dataset.language
+      localStorage.setItem(STORAGE_KEY, targetLang)
+      const altLink = document.querySelector(`link[rel="alternate"][hreflang="${targetLang}"]`)
+      if (altLink && altLink.href && altLink.href !== window.location.href) {
+        window.location.href = altLink.href
+        return
+      }
+      applyLanguage(targetLang)
     })
     document.body.appendChild(switcher)
   }

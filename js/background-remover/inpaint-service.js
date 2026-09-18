@@ -8,10 +8,11 @@ export class InpaintService {
 
   async initialize() {
     if (this.initialized) return;
-    const response = await fetch(new URL("../models/inpainting-manifest.json", window.location.href));
+    const manifestUrl = new URL("/models/inpainting-manifest.json", window.location.origin);
+    const response = await fetch(manifestUrl);
     if (!response.ok) throw new Error("Unable to load the inpainting manifest.");
     const manifest = await response.json();
-    const publicUrl = new URL(`../models/${manifest.fileName}`, window.location.href).href;
+    const publicUrl = new URL(`/models/${manifest.fileName}`, window.location.origin).href;
     this.worker = new Worker(new URL("./inpaint.worker.js", import.meta.url), { type: "module" });
     this.worker.onmessage = (event) => this.handleMessage(event.data);
     const ready = new Promise((resolve, reject) => this.pending.set("initialize", { resolve, reject }));
