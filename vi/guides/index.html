@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Trung tâm cẩm nang và hướng dẫn CreatorNew: Quy định nén ảnh nộp hồ sơ công chức dưới 100KB-200KB, quy chuẩn kích thước ảnh thẻ 3x4, 4x6, so sánh WebP vs PNG vs JPG, và kỹ thuật ghép PDF an toàn.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#5d5fef">
+  <link rel="icon" type="image/png" href="../../creatornew-icon.png">
+  <link rel="apple-touch-icon" href="../../creatornew-icon.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="canonical" href="https://creatornew.com/vi/guides/">
+  <link rel="alternate" hreflang="en" href="https://creatornew.com/guides/">
+  <link rel="alternate" hreflang="vi" href="https://creatornew.com/vi/guides/">
+  <link rel="alternate" hreflang="x-default" href="https://creatornew.com/guides/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CreatorNew">
+  <meta property="og:title" content="Cẩm Nang &amp; Hướng Dẫn Kỹ Thuật Đồ Họa, Hồ Sơ Số | CreatorNew">
+  <meta property="og:description" content="Hướng dẫn chuẩn xác về định dạng ảnh, kích thước mạng xã hội và kỹ năng số.">
+  <meta property="og:url" content="https://creatornew.com/vi/guides/">
+  <meta property="og:image" content="https://creatornew.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cẩm Nang &amp; Hướng Dẫn CreatorNew">
+  <meta name="twitter:description" content="Tổng hợp kiến thức nén ảnh, tách nền và xử lý tài liệu số.">
+  <meta name="twitter:image" content="https://creatornew.com/og-image.png">
+  <title>Cẩm Nang &amp; Hướng Dẫn Kỹ Thuật Đồ Họa, Hồ Sơ Số | CreatorNew</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="../../creatornew-logo.webp" type="image/webp" fetchpriority="high">
+  <link rel="stylesheet" href="../../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://creatornew.com/vi/guides/#breadcrumbs",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Trang chủ",
+            "item": "https://creatornew.com/vi/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Cẩm nang",
+            "item": "https://creatornew.com/vi/guides/"
+          }
+        ]
+      },
+      {
+        "@type": "CollectionPage",
+        "@id": "https://creatornew.com/vi/guides/#page",
+        "url": "https://creatornew.com/vi/guides/",
+        "name": "Trung Tâm Cẩm Nang CreatorNew",
+        "description": "Kho cẩm nang hướng dẫn nén ảnh, định dạng đồ họa và kỹ năng số cho người dùng Việt Nam."
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#guides-content">Chuyển đến danh sách bài viết</a>
+  <header class="topbar">
+    <nav class="nav" aria-label="Điều hướng chính">
+      <a class="brand" href="../../vi/" aria-label="CreatorNew trang chủ">
+        <picture>
+          <source srcset="../../creatornew-logo.webp" type="image/webp">
+          <img class="brand-logo" src="../../creatornew-logo.png" alt="CreatorNew" width="2075" height="758" fetchpriority="high" decoding="async">
+        </picture>
+      </a>
+      <div class="nav-links">
+        <details class="nav-dropdown" name="site-nav-dropdown">
+          <summary>Công cụ Ảnh <span aria-hidden="true">⌄</span></summary>
+          <div class="nav-dropdown-menu">
+            <a href="../background-remover/"><strong>Xóa phông ảnh AI</strong><small>Tách nền ảnh thẻ</small></a>
+            <a href="../nen-anh-duoi-200kb/"><strong>Nén ảnh dưới 200KB</strong><small>Nộp hồ sơ công chức</small></a>
+            <a href="../image-compressor/"><strong>Nén ảnh online</strong><small>Giảm dung lượng ảnh</small></a>
+            <a href="../image-converter/"><strong>Chuyển đổi định dạng</strong><small>JPG, PNG, WebP</small></a>
+            <a href="../image-resize/"><strong>Đổi kích thước ảnh</strong><small>Resize theo pixel</small></a>
+          </div>
+        </details>
+        <details class="nav-dropdown" name="site-nav-dropdown">
+          <summary>Công cụ PDF <span aria-hidden="true">⌄</span></summary>
+          <div class="nav-dropdown-menu">
+            <a href="../merge-pdf/"><strong>Gộp file PDF</strong><small>Ghép nhiều file PDF</small></a>
+            <a href="../split-pdf/"><strong>Tách file PDF</strong><small>Trích xuất trang lẻ</small></a>
+          </div>
+        </details>
+        <a href="./" class="nav-link-active" aria-current="page">Cẩm nang</a>
+        <a href="../../about/">Giới thiệu</a>
+      </div>
+    </nav>
+  </header>
+
+  <nav class="breadcrumb-container" aria-label="Breadcrumb">
+    <ol class="breadcrumb-list">
+      <li><a href="../../vi/">Trang chủ</a></li>
+      <li class="breadcrumb-separator" aria-hidden="true">›</li>
+      <li aria-current="page">Cẩm nang &amp; Hướng dẫn</li>
+    </ol>
+  </nav>
+
+  <main id="guides-content" class="hero" style="text-align: left; padding-bottom: 20px;">
+    <section class="hero-copy" style="max-width: 900px; margin: 0 auto;">
+      <p class="eyebrow">Thư viện Tri Thức CreatorNew</p>
+      <h1>Cẩm Nang &amp; <span>Hướng Dẫn Số Thực Chiến</span></h1>
+      <p class="lead">
+        Tổng hợp các bài viết chuyên sâu về xử lý ảnh, tối ưu hóa tốc độ tải website, quy định dung lượng ảnh nộp hồ sơ công chức 
+        và giải pháp bảo mật dữ liệu cá nhân khi thao tác trên môi trường số.
+      </p>
+    </section>
+  </main>
+
+  <section class="content-section">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">Hướng dẫn thực tế</p>
+        <h2>Cẩm nang Nổi Bật cho Người Dùng Việt</h2>
+        <p>Giải quyết trực diện các vấn đề thường gặp trong công việc, thủ tục hành chính và kinh doanh online.</p>
+      </div>
+
+      <div class="guide-grid">
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Thủ tục Hành chính</span>
+            <h3><a href="./huong-dan-nen-anh-nop-ho-so/">Hướng Dẫn Nén Ảnh Dưới 100KB, 200KB Nộp Cổng Dịch Vụ Công &amp; Thi Công Chức</a></h3>
+            <p>Bí quyết nén ảnh CCCD, bằng tốt nghiệp vừa khít quy định của dvc.gov.vn mà không bị mờ chữ số, không bị trả lại hồ sơ.</p>
+            <a class="tool-link" href="./huong-dan-nen-anh-nop-ho-so/">Xem hướng dẫn &rarr;</a>
+          </div>
+        </article>
+
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Kỹ thuật Web &amp; SEO</span>
+            <h3><a href="./so-sanh-webp-png-jpg/">So Sánh WebP vs PNG vs JPG: Định Dạng Nào Tốt Nhất Cho Website 2026?</a></h3>
+            <p>Phân tích hiệu năng nén, độ trong suốt và tác động trực tiếp đến chỉ số Core Web Vitals (LCP) giúp tăng điểm Google PageSpeed.</p>
+            <a class="tool-link" href="./so-sanh-webp-png-jpg/">Xem so sánh chi tiết &rarr;</a>
+          </div>
+        </article>
+
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Bán hàng TMĐT</span>
+            <h3><a href="../background-remover/">Bí Quyết Tách Phông Nền Ảnh Sản Phẩm Shopee, Lazada</a></h3>
+            <p>Tạo ảnh sản phẩm nền trắng đạt chuẩn SEO gian hàng thương mại điện tử bằng AI trực tiếp trên máy tính.</p>
+            <a class="tool-link" href="../background-remover/">Mở công cụ xóa phông &rarr;</a>
+          </div>
+        </article>
+
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Bảo mật Dữ liệu</span>
+            <h3><a href="../merge-pdf/">Ghép File PDF Hợp Đồng Tuyệt Đối Không Lộ Thông Tin</a></h3>
+            <p>Tại sao không nên tải hồ sơ tài chính và hợp đồng lên các website đám mây, và cách gộp file an toàn trên RAM.</p>
+            <a class="tool-link" href="../merge-pdf/">Mở công cụ gộp PDF &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© 2026 CreatorNew. Công cụ miễn phí cho mọi người.</span>
+      <div class="footer-links">
+        <a href="../../vi/">Trang chủ</a>
+        <a href="../nen-anh-duoi-200kb/">Nén dưới 200KB</a>
+        <a href="../background-remover/">Xóa phông AI</a>
+        <a href="../merge-pdf/">Gộp PDF</a>
+        <a href="#guides-content">Lên đầu trang ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="../../js/site-i18n.js"></script>
+</body>
+</html>

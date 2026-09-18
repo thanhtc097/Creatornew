@@ -1473,3 +1473,45 @@ details p {
     justify-content: space-between;
   }
 }
+
+/* Tool CTA Box for Guides and Blog Articles */
+.tool-cta-box {
+  background: linear-gradient(135deg, rgba(93, 95, 239, 0.08), rgba(46, 144, 250, 0.08));
+  border: 2px solid var(--primary, #5d5fef);
+  border-radius: 16px;
+  padding: 28px 24px;
+  margin: 36px 0;
+  text-align: center;
+}
+.tool-cta-box h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-heading, #101828);
+  margin: 0 0 10px;
+}
+.tool-cta-box p {
+  font-size: 0.98rem;
+  color: var(--text-body, #475467);
+  margin: 0 auto 20px;
+  max-width: 620px;
+  line-height: 1.6;
+}
+.tool-cta-box .cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+.tool-cta-box .cta-buttons .primary-btn,
+.tool-cta-box .cta-buttons .secondary-btn {
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+}
+

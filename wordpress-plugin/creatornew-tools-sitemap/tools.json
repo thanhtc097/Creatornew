@@ -42,5 +42,9 @@
   "vi/image-converter",
   "vi/image-resize",
   "vi/png-to-webp",
-  "vi/jpg-to-webp"
+  "vi/jpg-to-webp",
+  "guides",
+  "vi/guides",
+  "vi/guides/huong-dan-nen-anh-nop-ho-so",
+  "vi/guides/so-sanh-webp-png-jpg"
 ]
