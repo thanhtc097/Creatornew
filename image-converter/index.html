@@ -59,17 +59,32 @@
           {
             "@type": "Question",
             "name": "Is CreatorNew Image Converter free?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can convert supported images for free without creating an account or adding a watermark."}
+            "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can convert JPG, PNG, and WebP images completely free with no registration, no subscription fees, and no watermark added."}
           },
           {
             "@type": "Question",
-            "name": "Are my images uploaded to a server?",
-            "acceptedAnswer": {"@type": "Answer", "text": "No. Supported images are processed locally in your browser and are not uploaded to CreatorNew."}
+            "name": "Are my images uploaded to an external server?",
+            "acceptedAnswer": {"@type": "Answer", "text": "No. Supported images are rendered and re-encoded locally in your browser memory using HTML5 Canvas APIs. Zero image files are ever uploaded across the network."}
           },
           {
             "@type": "Question",
-            "name": "Which image formats are supported?",
-            "acceptedAnswer": {"@type": "Answer", "text": "The converter supports JPG, PNG and WebP input and output in modern browsers."}
+            "name": "Which format should I convert to: JPG, PNG, or WebP?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Choose WebP for websites and blogs (smallest size with high visual quality). Choose PNG for graphics, screenshots, and transparent backgrounds. Choose JPG for photographs and legacy system compatibility."}
+          },
+          {
+            "@type": "Question",
+            "name": "Does converting PNG to JPG preserve transparent backgrounds?",
+            "acceptedAnswer": {"@type": "Answer", "text": "No. The JPG specification does not support alpha channel transparency. Converting a transparent PNG to JPG will fill the background with solid white or black. To preserve transparency, convert to WebP or keep PNG."}
+          },
+          {
+            "@type": "Question",
+            "name": "Why is WebP recommended for modern websites?",
+            "acceptedAnswer": {"@type": "Answer", "text": "WebP produces files that are 25% to 35% smaller than equivalent JPGs and up to 80% smaller than PNGs while supporting both 24-bit RGB color and 8-bit alpha transparency. It is supported by over 97% of modern web browsers."}
+          },
+          {
+            "@type": "Question",
+            "name": "Can I convert multiple images simultaneously?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can batch convert up to 20 images per session with up to 50 MB per file, all processed concurrently right in your browser."}
           }
         ]
       }
@@ -207,24 +222,25 @@
   <section class="content-section soft" aria-labelledby="why-title">
     <div class="section-inner">
       <div class="section-heading">
-        <h2 id="why-title">A private image converter for creators</h2>
-        <p>Designed to be fast, simple and useful on both desktop and mobile.</p>
+        <p class="eyebrow">Zero Server Uploads</p>
+        <h2 id="why-title">Private in-browser image conversion for creators</h2>
+        <p>Convert JPG, PNG, and WebP images instantly on desktop or mobile. Everything runs in local browser memory without uploading sensitive files to cloud servers.</p>
       </div>
       <div class="feature-grid">
         <article class="info-card">
-          <span class="step-number" aria-hidden="true">✓</span>
-          <h3>Private by design</h3>
-          <p>Your images stay on your device because conversion happens inside the browser.</p>
-        </article>
-        <article class="info-card">
-          <span class="step-number" aria-hidden="true">↻</span>
-          <h3>Batch conversion</h3>
-          <p>Convert multiple images in one session instead of repeating the same task.</p>
+          <span class="step-number" aria-hidden="true">🛡️</span>
+          <h3>100% Private &amp; Device-Local</h3>
+          <p>Your photos never leave your device. All image re-encoding executes inside your web browser's RAM sandbox, keeping client work and personal documents secure.</p>
         </article>
         <article class="info-card">
           <span class="step-number" aria-hidden="true">⚡</span>
-          <h3>No account needed</h3>
-          <p>Start immediately with no registration, subscription or added watermark.</p>
+          <h3>Batch Process up to 20 Files</h3>
+          <p>Convert multiple images in a single batch session. Add up to 20 files (50 MB each) and download all converted images instantly without queue wait times.</p>
+        </article>
+        <article class="info-card">
+          <span class="step-number" aria-hidden="true">🚫</span>
+          <h3>No Watermarks &amp; No Accounts</h3>
+          <p>Start immediately without registration, subscription paywalls, or added branding. Professional-grade conversions free forever.</p>
         </article>
       </div>
     </div>
@@ -233,41 +249,105 @@
   <section id="formats" class="content-section" aria-labelledby="formats-title">
     <div class="section-inner">
       <div class="section-heading">
-        <h2 id="formats-title">Choose the right image format</h2>
-        <p>Each format works best for a different kind of image or publishing workflow.</p>
+        <p class="eyebrow">Technical Comparison</p>
+        <h2 id="formats-title">WebP vs JPG vs PNG: Choosing the right format</h2>
+        <p>Understanding the strengths and trade-offs of each image format helps you balance download speed, visual quality, and transparency.</p>
       </div>
       <table class="format-table">
-        <thead><tr><th>Format</th><th>Best for</th><th>Key benefit</th></tr></thead>
+        <thead>
+          <tr>
+            <th>Image Format</th>
+            <th>Transparency Support</th>
+            <th>Compression Type</th>
+            <th>Relative File Weight</th>
+            <th>Best Use Cases</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td><strong>WebP</strong></td><td>Websites, blogs and online stores</td><td>Small files with strong visual quality</td></tr>
-          <tr><td><strong>JPG</strong></td><td>Photos and widely compatible sharing</td><td>Works almost everywhere</td></tr>
-          <tr><td><strong>PNG</strong></td><td>Graphics, screenshots and transparency</td><td>Lossless output and transparent backgrounds</td></tr>
+          <tr>
+            <td><strong>WebP</strong></td>
+            <td>Full 8-bit Alpha Channel</td>
+            <td>Both Lossy &amp; Lossless</td>
+            <td><strong>Smallest</strong> (25–35% lighter than JPG, up to 80% lighter than PNG)</td>
+            <td>Modern websites, online stores, blogs, and Core Web Vitals optimization.</td>
+          </tr>
+          <tr>
+            <td><strong>JPG (JPEG)</strong></td>
+            <td>No (Solid background only)</td>
+            <td>Lossy only</td>
+            <td><strong>Medium</strong></td>
+            <td>Photographs, digital camera captures, legacy software, and email templates.</td>
+          </tr>
+          <tr>
+            <td><strong>PNG</strong></td>
+            <td>Full 8-bit Alpha Channel</td>
+            <td>Lossless only</td>
+            <td><strong>Largest</strong></td>
+            <td>Logos, sharp UI screenshots, transparent product cutouts, and crisp line art.</td>
+          </tr>
         </tbody>
       </table>
     </div>
   </section>
 
-  <section id="faq" class="content-section soft" aria-labelledby="faq-title">
+  <section id="transparency-guide" class="content-section soft" aria-labelledby="transparency-title">
     <div class="section-inner">
       <div class="section-heading">
+        <p class="eyebrow">Preserving Transparency</p>
+        <h2 id="transparency-title">How to handle transparent backgrounds during conversion</h2>
+        <p>Avoid common conversion pitfalls like blackened or white-filled backgrounds when converting graphic assets.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="info-card">
+          <span class="step-number" aria-hidden="true">⚠️</span>
+          <h3>The JPG Transparency Trap</h3>
+          <p>JPG does not have an alpha transparency channel. If you convert a transparent PNG logo or product cutout to JPG, the browser canvas fills all transparent pixels with solid white or black, ruining the transparent cutout.</p>
+        </article>
+        <article class="info-card">
+          <span class="step-number" aria-hidden="true">✨</span>
+          <h3>Switching PNG to WebP for Speed</h3>
+          <p>WebP fully supports 8-bit alpha channel transparency while cutting PNG file size by up to 80%. If you have heavy transparent PNGs on your website, converting them to WebP gives you the best of both worlds.</p>
+        </article>
+        <article class="info-card">
+          <span class="step-number" aria-hidden="true">🔍</span>
+          <h3>Lossless vs Lossy Encoding</h3>
+          <p>JPG always applies lossy quantization. PNG preserves every single pixel losslessly. When converting to WebP, modern browsers apply advanced prediction algorithms that keep fine details razor-sharp while discarding unnoticeable noise.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="content-section" aria-labelledby="faq-title">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">Help &amp; FAQs</p>
         <h2 id="faq-title">Frequently asked questions</h2>
+        <p>Everything you need to know about browser-based image conversion.</p>
       </div>
       <div class="faq-list">
         <details>
           <summary>Is CreatorNew Image Converter free?</summary>
-          <p>Yes. You can convert supported images for free without creating an account or adding a watermark.</p>
+          <p>Yes. You can convert JPG, PNG, and WebP images completely free with no registration, no subscription fees, and no watermark added.</p>
         </details>
         <details>
-          <summary>Are my images uploaded to a server?</summary>
-          <p>No. Supported images are processed locally in your browser and are not uploaded to CreatorNew.</p>
+          <summary>Are my images uploaded to an external server?</summary>
+          <p>No. Supported images are rendered and re-encoded locally in your browser memory using HTML5 Canvas APIs. Zero image files are ever uploaded across the network.</p>
         </details>
         <details>
-          <summary>Which image formats are supported?</summary>
-          <p>The converter supports JPG, PNG and WebP input and output in modern browsers.</p>
+          <summary>Which format should I convert to: JPG, PNG, or WebP?</summary>
+          <p>Choose WebP for websites and blogs (smallest size with high visual quality). Choose PNG for graphics, screenshots, and transparent backgrounds. Choose JPG for photographs and legacy system compatibility.</p>
         </details>
         <details>
-          <summary>Can I convert several images at once?</summary>
-          <p>Yes. You can add up to 20 images per session, with a maximum size of 50 MB per image.</p>
+          <summary>Does converting PNG to JPG preserve transparent backgrounds?</summary>
+          <p>No. The JPG specification does not support alpha channel transparency. Converting a transparent PNG to JPG will fill the background with solid white or black. To preserve transparency, convert to WebP or keep PNG.</p>
+        </details>
+        <details>
+          <summary>Why is WebP recommended for modern websites?</summary>
+          <p>WebP produces files that are 25% to 35% smaller than equivalent JPGs and up to 80% smaller than PNGs while supporting both 24-bit RGB color and 8-bit alpha transparency. It is supported by over 97% of modern web browsers.</p>
+        </details>
+        <details>
+          <summary>Can I convert multiple images simultaneously?</summary>
+          <p>Yes. You can batch convert up to 20 images per session with up to 50 MB per file, all processed concurrently right in your browser.</p>
         </details>
       </div>
     </div>
@@ -300,7 +380,30 @@
   </section>
 
   <section class="content-section soft" aria-labelledby="related-guides-title">
-    <div class="section-inner"><div class="section-heading"><p class="eyebrow">Related Guides</p><h2 id="related-guides-title">Learn more about image conversion</h2></div><div class="guide-grid"><article class="guide-card"><div class="guide-card-body"><span class="guide-label">Image guide</span><h3><a href="../how-to-convert-images-online-free/">How to Convert Images Online for Free</a></h3><p>Compare JPG, PNG and WebP, then follow a simple private conversion workflow.</p><a class="tool-link" href="../how-to-convert-images-online-free/">Read the guide &rarr;</a></div></article></div></div>
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">Related Guides &amp; Comparisons</p>
+        <h2 id="related-guides-title">Learn more about image optimization</h2>
+      </div>
+      <div class="guide-grid">
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Image Guide</span>
+            <h3><a href="../how-to-convert-images-online-free/">How to Convert Images Online for Free</a></h3>
+            <p>Compare JPG, PNG and WebP, then follow a simple private conversion workflow.</p>
+            <a class="tool-link" href="../how-to-convert-images-online-free/">Read the guide &rarr;</a>
+          </div>
+        </article>
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Tool Comparison</span>
+            <h3><a href="../creatornew-vs-remove-bg/">CreatorNew vs Remove.bg Comparison</a></h3>
+            <p>Compare full resolution, privacy guarantees, and pricing between on-device AI and cloud tools.</p>
+            <a class="tool-link" href="../creatornew-vs-remove-bg/">Read comparison &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </div>
   </section>
 
   <footer class="site-footer">

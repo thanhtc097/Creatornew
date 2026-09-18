@@ -7,7 +7,66 @@
   <link rel="icon" type="image/png" href="../creatornew-icon.png"><link rel="apple-touch-icon" href="../creatornew-icon.png"><link rel="canonical" href="https://creatornew.com/split-pdf/">
   <meta property="og:type" content="website"><meta property="og:site_name" content="CreatorNew"><meta property="og:title" content="Split PDF Online Free | CreatorNew"><meta property="og:description" content="Select and extract PDF pages directly in your browser."><meta property="og:url" content="https://creatornew.com/split-pdf/">
   <title>Split PDF Online Free - Extract PDF Pages | CreatorNew</title><link rel="stylesheet" href="../css/style.css">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://creatornew.com/split-pdf/#app","name":"CreatorNew Split PDF","url":"https://creatornew.com/split-pdf/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript and a modern web browser","description":"A free browser-based tool for selecting and extracting PDF pages privately without server uploads.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Custom page range extraction","Interactive thumbnail preview","Full document preview","100% private in-browser processing","No watermark or registration required"]},{"@type":"FAQPage","@id":"https://creatornew.com/split-pdf/#faq","mainEntity":[{"@type":"Question","name":"Is Split PDF free?","acceptedAnswer":{"@type":"Answer","text":"Yes. CreatorNew Split PDF is free and requires no account."}},{"@type":"Question","name":"Are PDF files uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. Files are processed locally in your browser with zero server uploads."}},{"@type":"Question","name":"How do I select pages to extract?","acceptedAnswer":{"@type":"Answer","text":"You can enter page numbers and ranges (e.g., 1-3, 5) or click thumbnails directly."}}]}]}</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://creatornew.com/split-pdf/#app",
+        "name": "CreatorNew Split PDF",
+        "url": "https://creatornew.com/split-pdf/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript and a modern web browser",
+        "description": "A free browser-based tool for selecting and extracting PDF pages privately without server uploads.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Custom page range extraction",
+          "Interactive thumbnail preview",
+          "Full document preview",
+          "100% private in-browser processing",
+          "No watermark or registration required"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://creatornew.com/split-pdf/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is Split PDF free to use?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Yes. CreatorNew Split PDF is completely free with no registration, no subscription limits, and no watermarks."}
+          },
+          {
+            "@type": "Question",
+            "name": "Are my PDF files uploaded to any server?",
+            "acceptedAnswer": {"@type": "Answer", "text": "No. All PDF page extraction runs locally in your web browser's RAM sandbox. Zero documents are uploaded to CreatorNew."}
+          },
+          {
+            "@type": "Question",
+            "name": "How do I select which pages to extract?",
+            "acceptedAnswer": {"@type": "Answer", "text": "You can enter page numbers and comma-separated ranges (such as 1-3, 5, 8-10) or click individual page thumbnails directly in the interactive grid."}
+          },
+          {
+            "@type": "Question",
+            "name": "Does splitting a PDF damage vector text or links?",
+            "acceptedAnswer": {"@type": "Answer", "text": "No. The tool extracts original vector streams losslessly, preserving searchable text, internal hyperlinks, and crisp vector fonts."}
+          },
+          {
+            "@type": "Question",
+            "name": "Can I extract pages from password-protected PDFs?",
+            "acceptedAnswer": {"@type": "Answer", "text": "No. You must remove password encryption before loading the document for in-browser processing."}
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body class="pdf-tool-page"><a class="skip-link" href="#split-tool">Skip to Split PDF</a>
   <header class="topbar"><nav class="nav" aria-label="Main navigation"><a class="brand" href="../"><img class="brand-logo" src="../creatornew-logo.png" alt="CreatorNew" width="2075" height="758"></a><div class="nav-links"><details class="nav-dropdown"><summary>Image Converter <span>⌄</span></summary><div class="nav-dropdown-menu"><a href="../image-converter/"><strong>Image Converter</strong><small>Convert JPG, PNG and WebP</small></a><a href="../background-remover/"><strong>Background Remover</strong><small>Create transparent PNGs</small></a><a href="../image-compressor/"><strong>Image Compressor</strong><small>Reduce image file size</small></a><a href="../image-resize/"><strong>Image Resizer</strong><small>Resize images</small></a></div></details><details class="nav-dropdown pdf-nav-dropdown"><summary>PDF Tools <span>⌄</span></summary><div class="nav-dropdown-menu"><a href="../images-to-pdf/"><strong>Images to PDF</strong><small>Combine images into one PDF</small></a><a href="../merge-pdf/"><strong>Merge PDF</strong><small>Combine multiple PDFs</small></a><a href="./"><strong>Split PDF</strong><small>Extract selected pages</small></a></div></details><a href="#faq">FAQ</a></div></nav></header>
@@ -16,6 +75,8 @@
       <div id="splitWorkspace" class="workspace pdf-workspace split-workspace" hidden><div class="workspace-head"><div><h2 id="splitFileName" class="workspace-title"></h2><p id="splitFileMeta" class="pdf-order-hint"></p></div><div class="workspace-actions merge-workspace-actions"><button id="splitReplaceBtn" class="secondary-btn merge-action-btn" type="button">Replace PDF</button><button id="splitClearBtn" class="secondary-btn merge-action-btn danger" type="button">Clear</button></div></div><div class="split-controls"><label for="splitPageRange">Pages to extract</label><div class="split-range-row"><input id="splitPageRange" type="text" inputmode="text" placeholder="Example: 1-3, 5, 8-10"><button id="splitAllPagesBtn" class="secondary-btn" type="button">Select All</button><button id="splitClearSelectionBtn" class="secondary-btn" type="button">Clear Selection</button></div><p id="splitRangeHelp" class="preset-help"></p></div><section class="split-thumbnail-section" aria-labelledby="page-selection-title"><div class="split-thumbnail-head"><div><h3 id="page-selection-title">Select pages</h3><p>Click a page to select or remove it.</p></div></div><div id="splitThumbnailGrid" class="split-thumbnail-grid"></div></section><details class="split-full-preview"><summary>Open full PDF preview</summary><iframe id="splitSourcePreview" title="Source PDF preview"></iframe></details><button id="splitPdfBtn" class="primary-btn convert-btn" type="button" disabled>Extract Selected Pages</button><p id="splitStatus" class="status" role="status" aria-live="polite"></p><section id="splitResult" class="merge-result" hidden><div class="merge-result-head"><div><p class="merge-result-label">Split PDF ready</p><h3>Review extracted pages</h3><p id="splitResultMeta"></p></div><button id="downloadSplitPdfBtn" class="primary-btn" type="button">Download PDF</button></div><iframe id="splitResultPreview" title="Extracted PDF preview"></iframe></section></div><input id="splitFileInput" class="pdf-hidden-input" type="file" accept="application/pdf,.pdf"></section>
   </main>
   <section class="content-section"><div class="section-inner"><div class="section-heading"><h2>How to split a PDF</h2></div><div class="steps"><article class="info-card"><span class="step-number">1</span><h3>Add one PDF</h3><p>Select the document containing pages you need.</p></article><article class="info-card"><span class="step-number">2</span><h3>Choose page ranges</h3><p>Enter pages such as 1-3, 5, 8-10.</p></article><article class="info-card"><span class="step-number">3</span><h3>Review and download</h3><p>Preview the extracted document before saving it.</p></article></div></div></section>
-  <section id="faq" class="content-section soft"><div class="section-inner"><div class="section-heading"><h2>Frequently asked questions</h2></div><div class="faq-list"><details><summary>Is Split PDF free?</summary><p>Yes. It is free with no registration or watermark.</p></details><details><summary>Are PDFs uploaded?</summary><p>No. Processing happens locally in your browser.</p></details><details><summary>How do I select pages?</summary><p>Use page numbers and ranges separated by commas, such as 1-3, 5, 8-10.</p></details><details><summary>Are password-protected PDFs supported?</summary><p>No. Unlock the PDF before adding it.</p></details></div></div></section>
+  <section id="faq" class="content-section soft"><div class="section-inner"><div class="section-heading"><h2>Frequently asked questions</h2></div><div class="faq-list"><details><summary>Is Split PDF free to use?</summary><p>Yes. CreatorNew Split PDF is completely free with no registration, no subscription limits, and no watermarks.</p></details><details><summary>Are my PDF files uploaded to any server?</summary><p>No. All PDF page extraction runs locally in your web browser's RAM sandbox. Zero documents are uploaded to CreatorNew.</p></details><details><summary>How do I select which pages to extract?</summary><p>You can enter page numbers and comma-separated ranges (such as 1-3, 5, 8-10) or click individual page thumbnails directly in the interactive grid.</p></details><details><summary>Does splitting a PDF damage vector text or links?</summary><p>No. The tool extracts original vector streams losslessly, preserving searchable text, internal hyperlinks, and crisp vector fonts.</p></details><details><summary>Can I extract pages from password-protected PDFs?</summary><p>No. You must remove password encryption before loading the document for in-browser processing.</p></details></div></div></section>
+  <section class="content-section" aria-labelledby="related-title"><div class="section-inner"><div class="section-heading"><h2 id="related-title">Related creator tools</h2><p>Explore more private, in-browser utilities on CreatorNew.</p></div><div class="related-grid"><a class="info-card related-card" href="../merge-pdf/"><span class="step-number">PDF</span><h3>Merge PDF</h3><p>Combine multiple PDF documents into one.</p></a><a class="info-card related-card" href="../delete-pdf-pages/"><span class="step-number">DEL</span><h3>Delete PDF Pages</h3><p>Remove unwanted or blank pages from any PDF.</p></a><a class="info-card related-card" href="../images-to-pdf/"><span class="step-number">IMG</span><h3>Images to PDF</h3><p>Combine JPG, PNG, and WebP images into a PDF.</p></a></div></div></section>
+  <section class="content-section soft" aria-labelledby="related-guides-title"><div class="section-inner"><div class="section-heading"><p class="eyebrow">Related Guides &amp; Comparisons</p><h2 id="related-guides-title">Optimize your digital media workflow</h2></div><div class="guide-grid"><article class="guide-card"><div class="guide-card-body"><span class="guide-label">Image Guide</span><h3><a href="../how-to-convert-images-online-free/">How to Convert Images Online for Free</a></h3><p>Learn when to convert, compress, or merge documents for professional workflows.</p><a class="tool-link" href="../how-to-convert-images-online-free/">Read the guide &rarr;</a></div></article><article class="guide-card"><div class="guide-card-body"><span class="guide-label">Tool Comparison</span><h3><a href="../creatornew-vs-remove-bg/">CreatorNew vs Remove.bg Comparison</a></h3><p>Discover why creators choose on-device AI for full-resolution exports without paying for credits.</p><a class="tool-link" href="../creatornew-vs-remove-bg/">Read comparison &rarr;</a></div></article></div></div></section>
   <footer class="site-footer"><div class="footer-inner"><span>© 2026 CreatorNew. Free tools for creators.</span><div class="footer-links"><a href="../">Home</a><a href="../about/">About</a><a href="../privacy-policy/">Privacy</a><a href="../terms/">Terms</a><a href="#split-tool">Back to Split PDF ↑</a></div></div></footer><script type="module" src="../js/site-i18n.js"></script><script type="module" src="../js/split-pdf.js"></script>
 </body></html>

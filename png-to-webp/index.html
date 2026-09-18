@@ -59,17 +59,27 @@
           {
             "@type": "Question",
             "name": "Is the PNG to WebP converter free?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can convert PNG images to WebP for free without creating an account or adding a watermark."}
+            "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can convert PNG images to WebP completely free without registration, credit cards, or watermarks."}
           },
           {
             "@type": "Question",
-            "name": "Are my images uploaded to a server?",
-            "acceptedAnswer": {"@type": "Answer", "text": "No. Supported images are processed locally in your browser and are not uploaded to CreatorNew."}
+            "name": "Are my images uploaded to any remote server?",
+            "acceptedAnswer": {"@type": "Answer", "text": "No. All conversions execute locally inside your web browser using HTML5 Canvas. Zero data is uploaded to CreatorNew or third-party servers."}
           },
           {
             "@type": "Question",
-            "name": "Why should I convert PNG to WebP?",
-            "acceptedAnswer": {"@type": "Answer", "text": "WebP often creates smaller files than PNG while maintaining strong visual quality, making it useful for websites and online publishing."}
+            "name": "Does WebP preserve PNG transparent backgrounds?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Yes! WebP fully supports 8-bit alpha channel transparency just like PNG. Your cutouts, logos, and stickers remain perfectly transparent with crisp edges."}
+          },
+          {
+            "@type": "Question",
+            "name": "How much file size reduction can I expect from PNG to WebP?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Converting lossless PNGs to WebP typically reduces file size by 60% to 85% with no perceptible loss in visual clarity."}
+          },
+          {
+            "@type": "Question",
+            "name": "Are WebP images supported in all web browsers?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Yes. Modern versions of Google Chrome, Apple Safari (iOS & macOS), Mozilla Firefox, Microsoft Edge, and Opera all support WebP natively (over 97% global market share)."}
           }
         ]
       }
@@ -229,44 +239,106 @@
     </div>
   </section>
 
-  <section id="formats" class="content-section" aria-labelledby="formats-title">
+  <section id="comparison" class="content-section" aria-labelledby="comparison-title">
     <div class="section-inner">
       <div class="section-heading">
-        <h2 id="formats-title">Choose the right image format</h2>
-        <p>Each format works best for a different kind of image or publishing workflow.</p>
+        <p class="eyebrow">Format Comparison</p>
+        <h2 id="comparison-title">Why convert PNG to WebP?</h2>
+        <p>WebP delivers massive bandwidth savings while fully supporting the transparent backgrounds creators rely on.</p>
       </div>
       <table class="format-table">
-        <thead><tr><th>Format</th><th>Best for</th><th>Key benefit</th></tr></thead>
+        <thead>
+          <tr>
+            <th>Feature / Metric</th>
+            <th>Original PNG</th>
+            <th>Converted WebP</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td><strong>WebP</strong></td><td>Websites, blogs and online stores</td><td>Small files with strong visual quality</td></tr>
-          <tr><td><strong>JPG</strong></td><td>Photos and widely compatible sharing</td><td>Works almost everywhere</td></tr>
-          <tr><td><strong>PNG</strong></td><td>Graphics, screenshots and transparency</td><td>Lossless output and transparent backgrounds</td></tr>
+          <tr>
+            <td><strong>Average File Size</strong></td>
+            <td>500 KB – 2 MB (Heavy)</td>
+            <td><strong>60 KB – 300 KB</strong> (Up to 80% reduction)</td>
+          </tr>
+          <tr>
+            <td><strong>Alpha Channel Transparency</strong></td>
+            <td>Yes (Full 8-bit alpha)</td>
+            <td><strong>Yes</strong> (Full 8-bit alpha preserved)</td>
+          </tr>
+          <tr>
+            <td><strong>Compression Mode</strong></td>
+            <td>Lossless only (DEFLATE algorithm)</td>
+            <td>Advanced lossy &amp; lossless predictive coding</td>
+          </tr>
+          <tr>
+            <td><strong>Impact on Core Web Vitals</strong></td>
+            <td>Can trigger slow LCP warnings</td>
+            <td>Fast loading, improves Google PageSpeed</td>
+          </tr>
+          <tr>
+            <td><strong>Browser Support</strong></td>
+            <td>Universal</td>
+            <td>97%+ across Chrome, Safari, Firefox, Edge</td>
+          </tr>
         </tbody>
       </table>
     </div>
   </section>
 
-  <section id="faq" class="content-section soft" aria-labelledby="faq-title">
+  <section id="benefits" class="content-section soft" aria-labelledby="benefits-title">
     <div class="section-inner">
       <div class="section-heading">
+        <p class="eyebrow">Key Advantages</p>
+        <h2 id="benefits-title">Keep transparency, lose the bloat</h2>
+        <p>Why modern creators convert their transparent PNG libraries to WebP.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="info-card">
+          <span class="step-number" aria-hidden="true">💎</span>
+          <h3>Preserves Clean Transparent Edges</h3>
+          <p>Unlike JPG which fills empty areas with solid white or black, WebP keeps your transparent shadows, cutout outlines, and logo backgrounds 100% transparent.</p>
+        </article>
+        <article class="info-card">
+          <span class="step-number" aria-hidden="true">⚡</span>
+          <h3>Boosts Mobile Loading Speeds</h3>
+          <p>Cutting your graphics payload by up to 80% drastically speeds up mobile page rendering, lowering bounce rates for blogs and e-commerce stores.</p>
+        </article>
+        <article class="info-card">
+          <span class="step-number" aria-hidden="true">🔒</span>
+          <h3>Private In-Browser Conversion</h3>
+          <p>Your transparent assets, proprietary illustrations, and brand graphics are re-encoded locally in your browser RAM without cloud server uploads.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="content-section" aria-labelledby="faq-title">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">Help &amp; FAQs</p>
         <h2 id="faq-title">Frequently asked questions</h2>
+        <p>Everything you need to know about converting PNG to WebP.</p>
       </div>
       <div class="faq-list">
         <details>
           <summary>Is the PNG to WebP converter free?</summary>
-          <p>Yes. You can convert PNG images to WebP for free without creating an account or adding a watermark.</p>
+          <p>Yes. You can convert PNG images to WebP completely free without registration, credit cards, or watermarks.</p>
         </details>
         <details>
-          <summary>Are my images uploaded to a server?</summary>
-          <p>No. Supported images are processed locally in your browser and are not uploaded to CreatorNew.</p>
+          <summary>Are my images uploaded to any remote server?</summary>
+          <p>No. All conversions execute locally inside your web browser using HTML5 Canvas. Zero data is uploaded to CreatorNew or third-party servers.</p>
         </details>
         <details>
-          <summary>Why should I convert PNG to WebP?</summary>
-          <p>WebP often produces smaller files than PNG while retaining strong visual quality, which can help web pages load faster.</p>
+          <summary>Does WebP preserve PNG transparent backgrounds?</summary>
+          <p>Yes! WebP fully supports 8-bit alpha channel transparency just like PNG. Your cutouts, logos, and stickers remain perfectly transparent with crisp edges.</p>
         </details>
         <details>
-          <summary>Can I convert several images at once?</summary>
-          <p>Yes. You can add up to 20 images per session, with a maximum size of 50 MB per image.</p>
+          <summary>How much file size reduction can I expect from PNG to WebP?</summary>
+          <p>Converting lossless PNGs to WebP typically reduces file size by 60% to 85% with no perceptible loss in visual clarity.</p>
+        </details>
+        <details>
+          <summary>Are WebP images supported in all web browsers?</summary>
+          <p>Yes. Modern versions of Google Chrome, Apple Safari (iOS &amp; macOS), Mozilla Firefox, Microsoft Edge, and Opera all support WebP natively (over 97% global market share).</p>
         </details>
       </div>
     </div>
@@ -294,6 +366,31 @@
           <h3>Background Remover</h3>
           <p>Remove backgrounds and erase unwanted objects with local AI.</p>
         </a>
+      </div>
+    </div>
+  <section class="content-section soft" aria-labelledby="related-guides-title">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">Related Guides &amp; Comparisons</p>
+        <h2 id="related-guides-title">Optimize your digital media workflow</h2>
+      </div>
+      <div class="guide-grid">
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Image Guide</span>
+            <h3><a href="../how-to-convert-images-online-free/">How to Convert Images Online for Free</a></h3>
+            <p>Learn when to convert, compress, or use transparent PNG vs WebP for web development.</p>
+            <a class="tool-link" href="../how-to-convert-images-online-free/">Read the guide &rarr;</a>
+          </div>
+        </article>
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Tool Comparison</span>
+            <h3><a href="../creatornew-vs-remove-bg/">CreatorNew vs Remove.bg Comparison</a></h3>
+            <p>Discover how on-device AI generates full-resolution transparent cutouts without paywalls.</p>
+            <a class="tool-link" href="../creatornew-vs-remove-bg/">Read comparison &rarr;</a>
+          </div>
+        </article>
       </div>
     </div>
   </section>

@@ -60,17 +60,32 @@
           {
             "@type": "Question",
             "name": "Is CreatorNew Image Resizer free?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can resize supported images for free without creating an account or adding a watermark."}
+            "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can resize JPG, PNG and WebP images completely free with no registration, no subscription fees, and no watermark added."}
           },
           {
             "@type": "Question",
-            "name": "Are my images uploaded to a server?",
-            "acceptedAnswer": {"@type": "Answer", "text": "No. Supported images are processed locally in your browser and are not uploaded to CreatorNew."}
+            "name": "Are my images uploaded to any remote server?",
+            "acceptedAnswer": {"@type": "Answer", "text": "No. Supported images are rendered and rescaled locally in your browser RAM using HTML5 Canvas. No image data is ever transferred across the internet."}
           },
           {
             "@type": "Question",
-            "name": "Which image formats are supported?",
-            "acceptedAnswer": {"@type": "Answer", "text": "The converter supports JPG, PNG and WebP input and output in modern browsers."}
+            "name": "How do I resize an image without distorting or squishing it?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Keep the 'Maintain aspect ratio' option enabled. Entering either a target width or height will automatically calculate the proportional opposite dimension to prevent stretching."}
+          },
+          {
+            "@type": "Question",
+            "name": "What are the standard social media image sizes in 2026?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Popular dimensions include 1080x1080 (Instagram Square), 1080x1350 (Instagram Portrait 4:5), 1080x1920 (Instagram Reels & TikTok Stories 9:16), 1280x720 (YouTube Thumbnails), and 1200x630 (Facebook & OpenGraph link shares)."}
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between resizing pixels and compressing file size?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Resizing changes the physical pixel width and height (e.g., from 4000x3000 to 1200x900). Compressing reduces the file byte weight (e.g., from 5MB to 200KB) through quantization without necessarily altering the pixel dimensions."}
+          },
+          {
+            "@type": "Question",
+            "name": "Can I resize multiple images at once?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can batch upload up to 20 images at a time and resize them in a single batch session directly in your browser."}
           }
         ]
       }
@@ -247,67 +262,164 @@
   <section class="content-section soft" aria-labelledby="why-title">
     <div class="section-inner">
       <div class="section-heading">
-        <h2 id="why-title">A private image resizer for creators</h2>
-        <p>Prepare image dimensions for websites and content platforms on desktop or mobile.</p>
+        <p class="eyebrow">Local Browser Execution</p>
+        <h2 id="why-title">High-precision image resizing without server uploads</h2>
+        <p>Scale photos and graphics to exact pixel dimensions directly inside your browser. Enjoy full privacy, zero waiting queues, and sharp downsampling.</p>
       </div>
       <div class="feature-grid">
         <article class="info-card">
-          <span class="step-number" aria-hidden="true">✓</span>
-          <h3>Private by design</h3>
-          <p>Your images stay on your device because conversion happens inside the browser.</p>
+          <span class="step-number" aria-hidden="true">🔒</span>
+          <h3>100% Client-Side Privacy</h3>
+          <p>Your photos are rescaled in local RAM using HTML5 Canvas rendering contexts. No files are ever sent across the network to external servers.</p>
         </article>
         <article class="info-card">
-          <span class="step-number" aria-hidden="true">↻</span>
-          <h3>Batch conversion</h3>
-          <p>Convert multiple images in one session instead of repeating the same task.</p>
+          <span class="step-number" aria-hidden="true">📐</span>
+          <h3>Smart Aspect Ratio Locking</h3>
+          <p>Preserve your image proportions automatically. Type a target width or height, and the opposite dimension calculates instantly to prevent squishing.</p>
         </article>
         <article class="info-card">
           <span class="step-number" aria-hidden="true">⚡</span>
-          <h3>No account needed</h3>
-          <p>Start immediately with no registration, subscription or added watermark.</p>
+          <h3>Batch Processing up to 20 Files</h3>
+          <p>Resize dozens of product photos or social assets at once without paying for expensive SaaS credits or installing desktop software.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="formats" class="content-section" aria-labelledby="formats-title">
+  <section id="dimensions" class="content-section" aria-labelledby="cheatsheet-title">
     <div class="section-inner">
       <div class="section-heading">
-        <h2 id="formats-title">Choose the right image format</h2>
-        <p>Each format works best for a different kind of image or publishing workflow.</p>
+        <p class="eyebrow">2026 Reference Guide</p>
+        <h2 id="cheatsheet-title">Social media &amp; e-commerce dimensions cheat sheet</h2>
+        <p>Use these platform-tested pixel resolutions to avoid unwanted automatic cropping, compression artifacts, and blurry feeds.</p>
       </div>
       <table class="format-table">
-        <thead><tr><th>Format</th><th>Best for</th><th>Key benefit</th></tr></thead>
+        <thead>
+          <tr>
+            <th>Platform / Channel</th>
+            <th>Asset Type</th>
+            <th>Recommended Pixels (W &times; H)</th>
+            <th>Aspect Ratio</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td><strong>WebP</strong></td><td>Websites, blogs and online stores</td><td>Small files with strong visual quality</td></tr>
-          <tr><td><strong>JPG</strong></td><td>Photos and widely compatible sharing</td><td>Works almost everywhere</td></tr>
-          <tr><td><strong>PNG</strong></td><td>Graphics, screenshots and transparency</td><td>Lossless output and transparent backgrounds</td></tr>
+          <tr>
+            <td><strong>Instagram Feed</strong></td>
+            <td>Square Post</td>
+            <td>1080 &times; 1080 px</td>
+            <td>1:1</td>
+          </tr>
+          <tr>
+            <td><strong>Instagram Feed</strong></td>
+            <td>Portrait / Vertical Post</td>
+            <td>1080 &times; 1350 px</td>
+            <td>4:5 (Takes maximum feed screen area)</td>
+          </tr>
+          <tr>
+            <td><strong>Instagram &amp; TikTok</strong></td>
+            <td>Stories, Reels &amp; Fullscreen Shorts</td>
+            <td>1080 &times; 1920 px</td>
+            <td>9:16 vertical</td>
+          </tr>
+          <tr>
+            <td><strong>YouTube</strong></td>
+            <td>Video Thumbnail</td>
+            <td>1280 &times; 720 px (Min 640px)</td>
+            <td>16:9 widescreen</td>
+          </tr>
+          <tr>
+            <td><strong>YouTube</strong></td>
+            <td>Channel Banner Header</td>
+            <td>2560 &times; 1440 px</td>
+            <td>16:9 (Safe area: 1546 &times; 423 px)</td>
+          </tr>
+          <tr>
+            <td><strong>Facebook &amp; OpenGraph</strong></td>
+            <td>Feed Share &amp; Link Preview</td>
+            <td>1200 &times; 630 px</td>
+            <td>1.91:1</td>
+          </tr>
+          <tr>
+            <td><strong>X (formerly Twitter)</strong></td>
+            <td>In-Stream Single Image</td>
+            <td>1600 &times; 900 px</td>
+            <td>16:9</td>
+          </tr>
+          <tr>
+            <td><strong>LinkedIn</strong></td>
+            <td>Shared Post Image</td>
+            <td>1200 &times; 627 px</td>
+            <td>1.91:1</td>
+          </tr>
+          <tr>
+            <td><strong>Shopify &amp; Amazon</strong></td>
+            <td>Product Listing Hero</td>
+            <td>2000 &times; 2000 px</td>
+            <td>1:1 (Enables crisp hover-to-zoom)</td>
+          </tr>
         </tbody>
       </table>
     </div>
   </section>
 
-  <section id="faq" class="content-section soft" aria-labelledby="faq-title">
+  <section id="principles" class="content-section soft" aria-labelledby="principles-title">
     <div class="section-inner">
       <div class="section-heading">
+        <p class="eyebrow">Best Practices</p>
+        <h2 id="principles-title">How to resize images without losing quality</h2>
+        <p>Avoid pixelation, blur, and accidental aspect ratio distortion with these key principles.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="info-card">
+          <span class="step-number" aria-hidden="true">1</span>
+          <h3>Downscale Rather than Upscale</h3>
+          <p>Downscaling (shrinking a 4000px camera photo to 1200px) preserves razor-sharp details because the browser blends adjacent pixels. Upscaling (enlarging a 400px thumbnail to 2000px) forces the computer to invent missing data, causing blur and pixelation.</p>
+        </article>
+        <article class="info-card">
+          <span class="step-number" aria-hidden="true">2</span>
+          <h3>Lock Proportions to Avoid Distortion</h3>
+          <p>Always keep aspect ratio locking enabled unless your design specifically calls for an intentional stretch. If an original photo has a 3:2 ratio, changing it to 1:1 without cropping will squish your subjects horizontally or vertically.</p>
+        </article>
+        <article class="info-card">
+          <span class="step-number" aria-hidden="true">3</span>
+          <h3>Pixels for Screens, DPI for Print</h3>
+          <p>For websites, social media, and digital presentations, only the exact pixel dimensions matter (e.g. 1920 &times; 1080). DPI (dots per inch) is merely a print metadata tag that indicates physical printing density on paper.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="content-section" aria-labelledby="faq-title">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">Help &amp; FAQs</p>
         <h2 id="faq-title">Frequently asked questions</h2>
+        <p>Everything you need to know about resizing images online.</p>
       </div>
       <div class="faq-list">
         <details>
           <summary>Is CreatorNew Image Resizer free?</summary>
-          <p>Yes. You can resize supported images for free without creating an account or adding a watermark.</p>
+          <p>Yes. You can resize JPG, PNG and WebP images completely free with no registration, no subscription fees, and no watermark added.</p>
         </details>
         <details>
-          <summary>Are my images uploaded to a server?</summary>
-          <p>No. Supported images are processed locally in your browser and are not uploaded to CreatorNew.</p>
+          <summary>Are my images uploaded to any remote server?</summary>
+          <p>No. Supported images are rendered and rescaled locally in your browser RAM using HTML5 Canvas. No image data is ever transferred across the internet.</p>
         </details>
         <details>
-          <summary>Which image formats are supported?</summary>
-          <p>The converter supports JPG, PNG and WebP input and output in modern browsers.</p>
+          <summary>How do I resize an image without distorting or squishing it?</summary>
+          <p>Keep the "Maintain aspect ratio" option enabled. Entering either a target width or height will automatically calculate the proportional opposite dimension to prevent stretching.</p>
         </details>
         <details>
-          <summary>Can I convert several images at once?</summary>
-          <p>Yes. You can add up to 20 images per session, with a maximum size of 50 MB per image.</p>
+          <summary>What are the standard social media image sizes in 2026?</summary>
+          <p>Popular dimensions include 1080x1080 (Instagram Square), 1080x1350 (Instagram Portrait 4:5), 1080x1920 (Instagram Reels &amp; TikTok Stories 9:16), 1280x720 (YouTube Thumbnails), and 1200x630 (Facebook &amp; OpenGraph link shares).</p>
+        </details>
+        <details>
+          <summary>What is the difference between resizing pixels and compressing file size?</summary>
+          <p>Resizing changes the physical pixel width and height (e.g., from 4000x3000 to 1200x900). Compressing reduces the file byte weight (e.g., from 5MB to 200KB) through quantization without necessarily altering the pixel dimensions.</p>
+        </details>
+        <details>
+          <summary>Can I resize multiple images at once?</summary>
+          <p>Yes. You can batch upload up to 20 images at a time and resize them in a single batch session directly in your browser.</p>
         </details>
       </div>
     </div>
@@ -335,6 +447,31 @@
           <h3>Background Remover</h3>
           <p>Remove backgrounds and erase unwanted objects with local AI.</p>
         </a>
+      </div>
+    </div>
+  <section class="content-section soft" aria-labelledby="related-guides-title">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">Related Guides &amp; Comparisons</p>
+        <h2 id="related-guides-title">Optimize your digital media workflow</h2>
+      </div>
+      <div class="guide-grid">
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Image Guide</span>
+            <h3><a href="../how-to-convert-images-online-free/">How to Convert Images Online for Free</a></h3>
+            <p>Learn when to resize, compress, or convert between JPG, PNG and WebP for websites and social feeds.</p>
+            <a class="tool-link" href="../how-to-convert-images-online-free/">Read the guide &rarr;</a>
+          </div>
+        </article>
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Tool Comparison</span>
+            <h3><a href="../creatornew-vs-remove-bg/">CreatorNew vs Remove.bg Comparison</a></h3>
+            <p>Discover why creators are choosing private in-browser AI over credit paywalls and watermarks.</p>
+            <a class="tool-link" href="../creatornew-vs-remove-bg/">Read comparison &rarr;</a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
