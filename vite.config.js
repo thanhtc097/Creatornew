@@ -40,6 +40,8 @@ export default defineConfig({
         creatornewVsEzgif: 'creatornew-vs-ezgif/index.html',
         creatornewVsConvertio: 'creatornew-vs-convertio/index.html',
         webpVsPngVsJpg: 'webp-vs-png-vs-jpg/index.html',
+        howToMergePdfSecurely: 'how-to-merge-pdf-files-securely/index.html',
+        creatornewVsCanva: 'creatornew-vs-canva/index.html',
         notFound: '404.html',
       },
     },

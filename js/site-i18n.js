@@ -534,9 +534,18 @@
     }
   }
 
+  function registerServiceWorker() {
+    if ('serviceWorker' in navigator && (window.location.protocol === 'https:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(() => {})
+      })
+    }
+  }
+
   function init() {
     createSwitcher()
     setupNavDropdowns()
+    registerServiceWorker()
     const saved = localStorage.getItem(STORAGE_KEY)
     const language = saved === 'vi' || saved === 'en' ? saved : (navigator.language || '').toLowerCase().startsWith('vi') ? 'vi' : 'en'
     applyLanguage(language)
