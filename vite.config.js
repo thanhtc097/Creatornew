@@ -39,6 +39,7 @@ export default defineConfig({
         creatornewVsSmallpdf: 'creatornew-vs-smallpdf/index.html',
         creatornewVsEzgif: 'creatornew-vs-ezgif/index.html',
         creatornewVsConvertio: 'creatornew-vs-convertio/index.html',
+        webpVsPngVsJpg: 'webp-vs-png-vs-jpg/index.html',
         notFound: '404.html',
       },
     },
