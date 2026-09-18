@@ -542,10 +542,55 @@
     }
   }
 
+  function setupPwaInstallPrompt() {
+    let deferredPrompt = null
+    const DISMISS_KEY = 'creatornew-pwa-dismissed'
+    if (localStorage.getItem(DISMISS_KEY)) return
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault()
+      deferredPrompt = e
+
+      if (document.querySelector('.pwa-install-banner')) return
+
+      const banner = document.createElement('div')
+      banner.className = 'pwa-install-banner'
+      banner.setAttribute('role', 'dialog')
+      banner.setAttribute('aria-label', 'Install App')
+      banner.innerHTML = `
+        <span>⚡ Install CreatorNew for Offline Use</span>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <button class="pwa-install-btn" type="button">Install</button>
+          <button class="pwa-dismiss-btn" type="button" aria-label="Dismiss">✕</button>
+        </div>
+      `
+
+      banner.querySelector('.pwa-install-btn').addEventListener('click', async () => {
+        banner.remove()
+        if (deferredPrompt) {
+          deferredPrompt.prompt()
+          const choice = await deferredPrompt.userChoice
+          deferredPrompt = null
+          if (choice && choice.outcome === 'accepted') {
+            localStorage.setItem(DISMISS_KEY, '1')
+          }
+        }
+      })
+
+      banner.querySelector('.pwa-dismiss-btn').addEventListener('click', () => {
+        banner.remove()
+        localStorage.setItem(DISMISS_KEY, '1')
+      })
+
+      document.body.appendChild(banner)
+    })
+  }
+
   function init() {
     createSwitcher()
     setupNavDropdowns()
     registerServiceWorker()
+    setupPwaInstallPrompt()
     const saved = localStorage.getItem(STORAGE_KEY)
     const language = saved === 'vi' || saved === 'en' ? saved : (navigator.language || '').toLowerCase().startsWith('vi') ? 'vi' : 'en'
     applyLanguage(language)

@@ -42,6 +42,7 @@ export default defineConfig({
         webpVsPngVsJpg: 'webp-vs-png-vs-jpg/index.html',
         howToMergePdfSecurely: 'how-to-merge-pdf-files-securely/index.html',
         creatornewVsCanva: 'creatornew-vs-canva/index.html',
+        creatornewVsEpidemicSound: 'creatornew-vs-epidemic-sound/index.html',
         notFound: '404.html',
       },
     },
