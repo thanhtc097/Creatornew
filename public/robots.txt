@@ -1,4 +1,15 @@
 User-agent: *
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+Disallow: /wp-content/
+Disallow: /wp-includes/
+Disallow: /feed/
+Disallow: /trackback/
+Disallow: /comments/
+Disallow: /old-version/
+Disallow: /404.html
+Disallow: /*?*
+Disallow: /*?
 Allow: /
 
 Sitemap: https://creatornew.com/tools-sitemap.xml

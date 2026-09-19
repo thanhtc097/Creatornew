@@ -25,6 +25,20 @@ function isNoindex(html) {
 }
 
 const entriesMap = new Map()
+
+// Always include the root homepage if index.html exists and is indexable
+try {
+  const rootIndex = join(projectRoot, 'index.html')
+  const rootHtml = await readFile(rootIndex, 'utf8')
+  if (!isNoindex(rootHtml)) {
+    const rootLoc = canonicalFromHtml(rootHtml) || 'https://creatornew.com/'
+    const rootStat = await stat(rootIndex)
+    entriesMap.set(rootLoc, { loc: rootLoc, lastmod: rootStat.mtime.toISOString() })
+  }
+} catch (e) {
+  console.warn('Could not add root homepage to sitemap:', e.message)
+}
+
 const toolSlugs = JSON.parse(await readFile(toolsConfig, 'utf8'))
 for (const slug of toolSlugs) {
   const relativeIndex = join(slug, 'index.html')
