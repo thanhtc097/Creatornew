@@ -18,6 +18,8 @@ ErrorDocument 404 /404.html
   RewriteRule ^audio-search/?$ https://creatornew.com/free-sounds/ [R=301,L,NE]
   RewriteRule ^video-search/?$ https://creatornew.com/free-videos/ [R=301,L,NE]
   RewriteRule ^old-version/?$ https://creatornew.com/ [R=301,L,NE]
+  RewriteRule ^prompt-library/?$ https://creatornew.com/ai-prompt-builder/ [R=301,L,NE]
+  RewriteRule ^best-ai-coding-assistant-in-2026-chatgpt-claude-gem/?$ https://creatornew.com/ai-tools/ [R=301,L,NE]
 
   # Root duplicate guides to canonical blog URLs
   RewriteRule ^how-to-convert-images-online-free/?$ https://creatornew.com/blog/how-to-convert-images-online-free/ [R=301,L,NE]
