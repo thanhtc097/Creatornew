@@ -12,7 +12,27 @@ DirectoryIndex index.html index.php
   RewriteCond %{HTTP:X-Forwarded-Proto} !^https$ [NC]
   RewriteRule ^ https://creatornew.com%{REQUEST_URI} [R=301,L,NE]
 
+  # Legacy utility stubs
   RewriteRule ^audio-search/?$ https://creatornew.com/free-sounds/ [R=301,L,NE]
   RewriteRule ^video-search/?$ https://creatornew.com/free-videos/ [R=301,L,NE]
   RewriteRule ^old-version/?$ https://creatornew.com/ [R=301,L,NE]
+
+  # Root duplicate guides to canonical blog URLs
+  RewriteRule ^how-to-convert-images-online-free/?$ https://creatornew.com/blog/how-to-convert-images-online-free/ [R=301,L,NE]
+  RewriteRule ^webp-vs-png-vs-jpg/?$ https://creatornew.com/blog/webp-vs-png-vs-jpg/ [R=301,L,NE]
+  RewriteRule ^how-to-compress-images-without-losing-quality/?$ https://creatornew.com/blog/how-to-compress-images/ [R=301,L,NE]
+  RewriteRule ^social-media-image-sizes-guide-2026/?$ https://creatornew.com/blog/social-media-image-sizes-2026-guide/ [R=301,L,NE]
+  RewriteRule ^how-to-merge-pdf-files-securely/?$ https://creatornew.com/blog/are-online-pdf-tools-safe/ [R=301,L,NE]
+
+  # Merged cannibalizing blog articles
+  RewriteRule ^blog/how-to-compress-images-online/?$ https://creatornew.com/blog/how-to-compress-images/ [R=301,L,NE]
+  RewriteRule ^blog/how-to-reduce-image-file-size/?$ https://creatornew.com/blog/how-to-compress-images/ [R=301,L,NE]
+  RewriteRule ^blog/png-vs-jpg-vs-webp-guide/?$ https://creatornew.com/blog/webp-vs-png-vs-jpg/ [R=301,L,NE]
+  RewriteRule ^blog/resize-image-social-media-2026/?$ https://creatornew.com/blog/social-media-image-sizes-2026-guide/ [R=301,L,NE]
+  RewriteRule ^blog/how-to-merge-pdf-without-losing-quality/?$ https://creatornew.com/blog/how-to-merge-pdf/ [R=301,L,NE]
+  RewriteRule ^blog/how-to-merge-pdf-files-online/?$ https://creatornew.com/blog/how-to-merge-pdf/ [R=301,L,NE]
+  RewriteRule ^blog/how-to-merge-pdfs-without-uploading/?$ https://creatornew.com/blog/are-online-pdf-tools-safe/ [R=301,L,NE]
+  RewriteRule ^blog/how-to-convert-jpg-to-pdf/?$ https://creatornew.com/blog/how-to-combine-images-into-one-pdf/ [R=301,L,NE]
+  RewriteRule ^blog/ai-prompt-builder-tips/?$ https://creatornew.com/blog/prompt-engineering-for-beginners/ [R=301,L,NE]
+  RewriteRule ^blog/chatgpt-prompts-for-content-creators/?$ https://creatornew.com/blog/ai-prompts-for-content-creators/ [R=301,L,NE]
 </IfModule>

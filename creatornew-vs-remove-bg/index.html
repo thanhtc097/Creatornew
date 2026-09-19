@@ -255,15 +255,15 @@
 
       <p>With CreatorNew, if your original photograph is 4000 &times; 3000 pixels, your exported transparent PNG will be exactly 4000 &times; 3000 pixels. We never downsample, clip, or compress your resolution.</p>
 
-      <h2>3. Privacy, Confidentiality &amp; Compliance (GDPR/HIPAA)</h2>
-      <p>When you upload an image to Remove.bg, that file traverses the public internet to a third-party server cluster. For casual vacation photos, this may seem harmless. However, for professionals handling sensitive material, cloud uploads pose significant security and regulatory risks:</p>
+      <h2>3. Privacy &amp; Data Handling: Cloud vs Client-Side</h2>
+      <p>When you upload an image to Remove.bg, that file traverses the public internet to a third-party server cluster. For casual vacation photos, this may seem harmless. However, for professionals handling sensitive material, cloud uploads pose significant security and confidentiality considerations:</p>
       <ul>
         <li><strong>Confidential Business Documents:</strong> Scanned legal agreements, company seals, and executive signatures.</li>
         <li><strong>Identity Verification Photos:</strong> Government passports, driver's licenses, employee badges, and medical headshots.</li>
         <li><strong>Unreleased Product Prototypes:</strong> Proprietary product designs and commercial client photography prior to launch.</li>
       </ul>
 
-      <p>CreatorNew provides a <strong>Zero Server Upload Guarantee</strong>. All neural network segmentation is executed in your browser's local sandbox memory (RAM) via WebAssembly and ONNX Runtime. Once you close the tab or reload, the memory is purged. No server logs exist, no databases store your photos, and no machine learning models train on your personal intellectual property.</p>
+      <p>CreatorNew operates on a <strong>client-side processing model</strong>. All neural network segmentation is executed in your browser's local sandbox memory (RAM) via WebAssembly and ONNX Runtime. Once you close the tab or reload, the memory is purged. No server logs exist, no databases store your photos, and no external servers process your image data.</p>
 
       <h2>4. Speed, Bandwidth &amp; Offline Functionality</h2>
       <p>Traditional cloud tools require two network round-trips for every single edit: uploading the high-resolution source file (often 10MB–25MB per RAW or high-res JPG), waiting for remote queue processing, and downloading the resulting PNG.</p>

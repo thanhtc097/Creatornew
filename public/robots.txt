@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://creatornew.com/sitemap_index.xml
 Sitemap: https://creatornew.com/tools-sitemap.xml
 Sitemap: https://creatornew.com/sitemap.xml
