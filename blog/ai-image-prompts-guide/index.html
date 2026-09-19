@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master AI image prompts with our complete syntax guide. Control lighting, camera angles, aspect ratios, artistic styles, and negative prompts.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://creatornew.com/blog/ai-image-prompts-guide/">
+  <link rel="alternate" hreflang="en" href="https://creatornew.com/blog/ai-image-prompts-guide/">
+  <link rel="alternate" hreflang="x-default" href="https://creatornew.com/blog/ai-image-prompts-guide/">
+  <link rel="icon" type="image/png" href="../../creatornew-icon.png">
+  <link rel="apple-touch-icon" href="../../creatornew-icon.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CreatorNew">
+  <meta property="og:title" content="AI Image Prompts Guide: Syntax for Midjourney, DALL-E 3 & Flux | CreatorNew">
+  <meta property="og:description" content="Master AI image prompts with our complete syntax guide. Control lighting, camera angles, aspect ratios, artistic styles, and negative prompts.">
+  <meta property="og:url" content="https://creatornew.com/blog/ai-image-prompts-guide/">
+  <meta property="og:image" content="https://creatornew.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Image Prompts Guide: Syntax for Midjourney, DALL-E 3 & Flux | CreatorNew">
+  <meta name="twitter:description" content="Master AI image prompts with our complete syntax guide. Control lighting, camera angles, aspect ratios, artistic styles, and negative prompts.">
+  <meta name="twitter:image" content="https://creatornew.com/og-image.png">
+  <title>AI Image Prompts Guide: Syntax for Midjourney, DALL-E 3 & Flux | CreatorNew</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="preload" as="image" href="../../creatornew-logo.webp" type="image/webp" fetchpriority="high">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://creatornew.com/blog/ai-image-prompts-guide/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://creatornew.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://creatornew.com/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "AI Image Prompts Guide: How to Prompt Midjourney, DALL-E 3 & Flux",
+          "item": "https://creatornew.com/blog/ai-image-prompts-guide/"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://creatornew.com/blog/ai-image-prompts-guide/#article",
+      "headline": "AI Image Prompts Guide: How to Prompt Midjourney, DALL-E 3 & Flux",
+      "description": "Master AI image prompts with our complete syntax guide. Control lighting, camera angles, aspect ratios, artistic styles, and negative prompts.",
+      "author": {
+        "@type": "Organization",
+        "name": "CreatorNew Editorial Team",
+        "url": "https://creatornew.com/about/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "CreatorNew",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://creatornew.com/creatornew-icon.png"
+        }
+      },
+      "datePublished": "2026-09-19",
+      "dateModified": "2026-09-19",
+      "mainEntityOfPage": "https://creatornew.com/blog/ai-image-prompts-guide/"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://creatornew.com/blog/ai-image-prompts-guide/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why do AI models struggle with rendering realistic hands and fingers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hands are articulated in hundreds of complex 3D poses that are frequently occluded in 2D training data. Modern engines like Midjourney v6 and Flux have dramatically improved anatomical accuracy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I generate an image with transparent background in Midjourney?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Midjourney renders a solid raster pixel canvas. Generate your subject on a simple plain backdrop and use CreatorNew Background Remover to create a true transparent PNG."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best aspect ratio for YouTube thumbnails in Midjourney?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Always append --ar 16:9 to your prompt in Midjourney to generate native 16:9 images suitable for 1280x720 thumbnail sizing."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#article">Skip to content</a>
+  <header class="topbar">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="../../" aria-label="CreatorNew home">
+        <picture>
+          <source srcset="../../creatornew-logo.webp" type="image/webp">
+          <img class="brand-logo" src="../../creatornew-logo.png" alt="CreatorNew" width="2075" height="758" fetchpriority="high" decoding="async">
+        </picture>
+      </a>
+      <div class="nav-links">
+        <details class="nav-dropdown" name="site-nav-dropdown">
+          <summary>Image Tools <span aria-hidden="true">⌄</span></summary>
+          <div class="nav-dropdown-menu">
+            <a href="../../background-remover/"><strong>Background Remover</strong><small>Create transparent PNGs</small></a>
+            <a href="../../image-compressor/"><strong>Image Compressor</strong><small>Reduce image file size</small></a>
+            <a href="../../image-converter/"><strong>Image Converter</strong><small>Convert JPG, PNG &amp; WebP</small></a>
+            <a href="../../png-to-webp/"><strong>PNG to WebP</strong><small>Lightweight web images</small></a>
+            <a href="../../jpg-to-webp/"><strong>JPG to WebP</strong><small>Optimize photos for web</small></a>
+            <a href="../../image-resize/"><strong>Image Resizer</strong><small>Resize for creator platforms</small></a>
+          </div>
+        </details>
+        <details class="nav-dropdown" name="site-nav-dropdown">
+          <summary>PDF Tools <span aria-hidden="true">⌄</span></summary>
+          <div class="nav-dropdown-menu">
+            <a href="../../merge-pdf/"><strong>Merge PDF</strong><small>Combine multiple PDF files</small></a>
+            <a href="../../split-pdf/"><strong>Split PDF</strong><small>Extract selected pages</small></a>
+            <a href="../../images-to-pdf/"><strong>Images to PDF</strong><small>Convert JPG/PNG to PDF</small></a>
+            <a href="../../delete-pdf-pages/"><strong>Delete PDF Pages</strong><small>Remove unwanted pages</small></a>
+          </div>
+        </details>
+        <a href="../" class="nav-link-active">Blog</a>
+        <a href="../../about/">About</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="article" class="article-main">
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <ol class="breadcrumb-list">
+        <li><a href="../../">Home</a></li>
+        <li class="breadcrumb-separator" aria-hidden="true">›</li>
+        <li><a href="../">Blog</a></li>
+        <li class="breadcrumb-separator" aria-hidden="true">›</li>
+        <li aria-current="page">AI Image Prompts Guide: How to Prompt Midjourney, DALL-E 3 & Flux</li>
+      </ol>
+    </nav>
+
+    <header class="article-hero">
+      <div class="article-hero-inner">
+        <p class="eyebrow">Generative AI · Practical Guide</p>
+        <h1>AI Image Prompts Guide: How to Prompt Midjourney, DALL-E 3 & Flux</h1>
+        <p class="lead">Want stunning AI-generated imagery instead of weird plastic-looking renders with deformed hands? Here is the ultimate prompt engineering guide for Midjourney, DALL-E 3, Stable Diffusion, and Flux.</p>
+        <p class="article-meta">Published September 19, 2026 · 7 min read · By CreatorNew Editorial Team</p>
+      </div>
+    </header>
+
+    <article class="article-layout">
+      <!-- Comparison Matrix -->
+      <section class="article-section">
+        <h2>Technical Comparison &amp; Benchmarks</h2>
+        <div class="table-responsive">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Prompt Parameter</th>
+                <th>Syntax / Modifier Examples</th>
+                <th>Visual Effect Produced</th>
+                <th>Supported Engine</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Lighting Modifier</strong></td>
+                <td>"Golden hour rim lighting", "Moody chiaroscuro", "Cyberpunk neon diffused"</td>
+                <td>Establishes contrast, shadow depth, and emotional atmosphere</td>
+                <td>Universal (Midjourney, Flux, DALL-E)</td>
+              </tr>
+              <tr>
+                <td><strong>Camera & Lens</strong></td>
+                <td>"Shot on Hasselblad H6D-100c, 85mm f/1.4 lens, shallow depth of field"</td>
+                <td>Delivers authentic photographic bokeh and natural facial proportions</td>
+                <td>Midjourney v6, Flux.1, SDXL</td>
+              </tr>
+              <tr>
+                <td><strong>Aspect Ratio Tag</strong></td>
+                <td>--ar 16:9, --ar 4:5, --ar 9:16</td>
+                <td>Sets physical canvas proportions to match YouTube, Insta, or TikTok</td>
+                <td>Midjourney, Stable Diffusion</td>
+              </tr>
+              <tr>
+                <td><strong>Art Medium / Style</strong></td>
+                <td>"Risograph print", "Bauhaus vintage lithograph", "Cinematic 35mm grain"</td>
+                <td>Replaces generic digital art aesthetic with tactile textures</td>
+                <td>Universal</td>
+              </tr>
+              <tr>
+                <td><strong>Negative Prompting</strong></td>
+                <td>--no blurry, plastic skin, oversaturated, text, watermark</td>
+                <td>Instructs model which artifacts to avoid</td>
+                <td>Midjourney (--no), SDXL</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Tool CTA Banner -->
+      <div class="tool-cta-box">
+        <h3>Try our free in-browser tool now</h3>
+        <p>Experience 100% private, client-side WebAssembly speed. No server uploads, no email signups, and zero file size caps.</p>
+        <div class="cta-buttons">
+          <a class="primary-btn" href="../../ai-prompt-builder/">AI Image Prompt Builder &rarr;</a>
+          <a class="secondary-btn" href="../../background-remover/">Cutout AI Backgrounds &rarr;</a>
+        </div>
+      </div>
+
+      <section class="article-section">
+        <h2>The 5-Part Formula for Photorealistic AI Images</h2>
+        <p>To create realistic, cinematic photography rather than obvious digital illustrations, structure your prompts using this 5-stage formula:</p>
+<ol>
+  <li><strong>Subject Description:</strong> Specific details about age, ethnicity, expression, attire, and posture (e.g., "A weathered 50-year-old carpenter inspecting a wooden joint with intense focus").</li>
+  <li><strong>Environment & Background:</strong> Realistic setting with textural depth (e.g., "In a sunlit rustic woodworking workshop with sawdust particles floating in the air").</li>
+  <li><strong>Lighting & Mood:</strong> Natural lighting source (e.g., "Dramatic directional morning sunlight streaming through dusty industrial windows").</li>
+  <li><strong>Camera & Technical Specs:</strong> Camera body, lens length, and aperture (e.g., "35mm film photography, Kodak Portra 400, natural color grading, soft vignette").</li>
+  <li><strong>Parameters:</strong> Aspect ratio and stylize flags (e.g., <code>--ar 16:9 --style raw --v 6.0</code>).</li>
+</ol>
+      </section>
+
+      <section class="article-section">
+        <h2>How to Remove Unwanted AI Backgrounds</h2>
+        <p>Generative AI image models are notoriously poor at creating clean, transparent cutouts—even when you ask for "transparent background", they render white or checkerboard patterns into the pixels!</p>
+<p>The solution: Prompt the AI with a clean, high-contrast solid background (like pure solid white or lime green), then pass the generated image through CreatorNew’s free <a href="../../background-remover/">AI Background Remover</a> to generate a flawless transparent PNG in 2 seconds.</p>
+      </section>
+
+      <section class="article-section">
+        <h2>Build Production-Ready Image Prompts</h2>
+        <p>Check out our <a href="../../ai-prompt-builder/">AI Prompt Builder</a> to configure Midjourney, DALL-E, and Stable Diffusion prompt strings with zero guesswork.</p>
+      </section>
+
+      <section class="article-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <details>
+            <summary>Why do AI models struggle with rendering realistic hands and fingers?</summary>
+            <p>Hands are articulated in hundreds of complex 3D poses that are frequently occluded in 2D training data. Modern engines like Midjourney v6 and Flux have dramatically improved anatomical accuracy.</p>
+          </details>
+          <details>
+            <summary>Can I generate an image with transparent background in Midjourney?</summary>
+            <p>No. Midjourney renders a solid raster pixel canvas. Generate your subject on a simple plain backdrop and use CreatorNew Background Remover to create a true transparent PNG.</p>
+          </details>
+          <details>
+            <summary>What is the best aspect ratio for YouTube thumbnails in Midjourney?</summary>
+            <p>Always append --ar 16:9 to your prompt in Midjourney to generate native 16:9 images suitable for 1280x720 thumbnail sizing.</p>
+          </details>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <picture>
+          <source srcset="../../creatornew-logo.webp" type="image/webp">
+          <img class="footer-logo" src="../../creatornew-logo.png" alt="CreatorNew" width="2075" height="758" loading="lazy" decoding="async">
+        </picture>
+        <p class="footer-tagline">100% free, private, client-side tools for digital creators. Zero server uploads.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Image Tools</h4>
+          <ul>
+            <li><a href="../../image-compressor/">Image Compressor</a></li>
+            <li><a href="../../image-converter/">Image Converter</a></li>
+            <li><a href="../../png-to-webp/">PNG to WebP</a></li>
+            <li><a href="../../jpg-to-webp/">JPG to WebP</a></li>
+            <li><a href="../../webp-to-jpg/">WebP to JPG</a></li>
+            <li><a href="../../image-resize/">Image Resizer</a></li>
+            <li><a href="../../background-remover/">Background Remover</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>PDF Tools</h4>
+          <ul>
+            <li><a href="../../merge-pdf/">Merge PDF</a></li>
+            <li><a href="../../split-pdf/">Split PDF</a></li>
+            <li><a href="../../delete-pdf-pages/">Delete PDF Pages</a></li>
+            <li><a href="../../rotate-pdf/">Rotate PDF</a></li>
+            <li><a href="../../pdf-to-jpg/">PDF to JPG</a></li>
+            <li><a href="../../pdf-to-png/">PDF to PNG</a></li>
+            <li><a href="../../images-to-pdf/">Images to PDF</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Related Guides</h4>
+          <ul>
+            <li><a href="../">Blog Home</a></li>
+            <li><a href="../webp-vs-avif-2026/">WebP vs AVIF</a></li>
+            <li><a href="../compress-image-under-200kb/">Compress Under 200KB</a></li>
+            <li><a href="../how-to-merge-pdf-without-losing-quality/">Merge PDF Losslessly</a></li>
+            <li><a href="../ai-prompt-builder-tips/">AI Prompt Tips</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 CreatorNew. All rights reserved. Processed locally in your browser with private WebAssembly technology.</p>
+    </div>
+  </footer>
+  <script type="module" src="../../js/site-i18n.js"></script>
+</body>
+</html>
