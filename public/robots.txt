@@ -8,6 +8,9 @@ Disallow: /trackback/
 Disallow: /comments/
 Disallow: /old-version/
 Disallow: /tdb_templates/
+Disallow: /category/
+Disallow: /tag/
+Disallow: /author/
 Disallow: /404.html
 Disallow: /*?*
 Disallow: /*?
