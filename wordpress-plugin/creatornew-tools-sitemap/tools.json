@@ -1,4 +1,7 @@
 [
+  "image-tools",
+  "pdf-tools",
+  "ai-tools",
   "ai-prompt-builder",
   "image-converter",
   "png-to-webp",

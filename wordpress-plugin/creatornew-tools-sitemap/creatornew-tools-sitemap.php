@@ -24,8 +24,12 @@ final class CreatorNew_Tools_Sitemap_Provider implements \RankMath\Sitemap\Provi
 	private function get_links() {
 		$links = array();
 
-		foreach ( $this->get_tools() as $slug ) {
-			$slug       = sanitize_title( $slug );
+		foreach ( $this->get_tools() as $raw_slug ) {
+			$segments = array_map( 'sanitize_title', explode( '/', trim( (string) $raw_slug, '/' ) ) );
+			$slug     = implode( '/', array_filter( $segments, 'strlen' ) );
+			if ( empty( $slug ) ) {
+				continue;
+			}
 			$index_file = trailingslashit( ABSPATH ) . $slug . '/index.html';
 
 			// Only publish URLs whose static tool entry file exists on this hosting account.

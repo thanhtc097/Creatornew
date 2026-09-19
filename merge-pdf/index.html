@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Merge multiple PDF files online for free. Arrange PDF order and combine documents privately in your browser with CreatorNew.">
+  <meta name="description" content="Merge multiple PDF files online for free. Arrange document order and combine PDF pages privately in your browser with zero server uploads.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#5d5fef">
   <link rel="icon" type="image/png" href="../creatornew-icon.png">
@@ -13,16 +13,17 @@
   <link rel="alternate" hreflang="en" href="https://creatornew.com/merge-pdf/">
   <link rel="alternate" hreflang="vi" href="https://creatornew.com/vi/merge-pdf/">
   <link rel="alternate" hreflang="x-default" href="https://creatornew.com/merge-pdf/">
-  <meta property="og:type" content="website"><meta property="og:site_name" content="CreatorNew">
-  <meta property="og:title" content="Merge PDF Online Free — Combine Multiple PDF Files | CreatorNew">
-  <meta property="og:description" content="Combine multiple PDFs in your chosen order directly in your browser. 100% private with zero server uploads.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CreatorNew">
+  <meta property="og:title" content="Merge PDF Online Free – Combine Multiple PDF Files">
+  <meta property="og:description" content="Merge multiple PDF files online for free. Arrange document order and combine PDF pages privately in your browser with zero server uploads.">
   <meta property="og:url" content="https://creatornew.com/merge-pdf/">
   <meta property="og:image" content="https://creatornew.com/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Merge PDF Online Free | CreatorNew">
-  <meta name="twitter:description" content="Combine multiple PDFs in your chosen order directly in your browser. Zero server uploads.">
+  <meta name="twitter:title" content="Merge PDF Online Free – Combine Multiple PDF Files | CreatorNew">
+  <meta name="twitter:description" content="Merge multiple PDF files online for free. Arrange document order and combine PDF pages privately in your browser with zero server uploads.">
   <meta name="twitter:image" content="https://creatornew.com/og-image.png">
-  <title>Merge PDF Online Free - Combine PDF Files | CreatorNew</title>
+  <title>Merge PDF Online Free – Combine Multiple PDF Files | CreatorNew</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -46,7 +47,7 @@
                     "@type": "ListItem",
                     "position": 2,
                     "name": "PDF Tools",
-                    "item": "https://creatornew.com/#tools"
+                    "item": "https://creatornew.com/pdf-tools/"
             },
             {
                     "@type": "ListItem",
@@ -57,12 +58,12 @@
     ]
 },
       {
-        "@type": "SoftwareApplication",
+        "@type": "WebApplication",
         "@id": "https://creatornew.com/merge-pdf/#app",
         "name": "CreatorNew Merge PDF",
         "url": "https://creatornew.com/merge-pdf/",
         "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "Any",
+        "operatingSystem": "Web Browser",
         "browserRequirements": "Requires JavaScript and a modern web browser",
         "description": "A free browser-based tool for merging multiple PDF documents privately in your browser without server uploads.",
         "offers": {
@@ -128,13 +129,13 @@
     <ol class="breadcrumb-list">
       <li><a href="../">Home</a></li>
       <li class="breadcrumb-separator" aria-hidden="true">›</li>
-      <li><a href="../#tools">PDF Tools</a></li>
+      <li><a href="../pdf-tools/">PDF Tools</a></li>
       <li class="breadcrumb-separator" aria-hidden="true">›</li>
       <li aria-current="page">Merge PDF</li>
     </ol>
   </nav>
   <main class="hero pdf-hero">
-    <section class="hero-copy"><p class="eyebrow">Free PDF tool</p><h1>Merge PDFs <span>in your browser</span></h1><p class="lead">Combine several PDF documents in your preferred order. No registration, no watermark and no file uploads to CreatorNew.</p><div class="benefits"><div class="benefit"><span class="check">✓</span> Up to 20 PDFs</div><div class="benefit"><span class="check">✓</span> Keep every page</div><div class="benefit"><span class="check">✓</span> Reorder documents</div><div class="benefit"><span class="check">✓</span> Private processing</div></div></section>
+    <section class="hero-copy"><p class="eyebrow">Free PDF tool</p><h1>Merge PDF Online Free — <span>Combine Multiple PDF Files</span></h1><p class="lead">Combine several PDF documents in your preferred order. No registration, no watermark and no file uploads to CreatorNew.</p><div class="benefits"><div class="benefit"><span class="check">✓</span> Up to 20 PDFs</div><div class="benefit"><span class="check">✓</span> Keep every page</div><div class="benefit"><span class="check">✓</span> Reorder documents</div><div class="benefit"><span class="check">✓</span> Private processing</div></div></section>
     <section id="merge-tool" class="tool-card pdf-tool-card" aria-label="Merge PDF tool">
       <div id="mergeDropZone" class="drop-zone" role="button" tabindex="0" aria-label="Choose PDF files or drag them here"><div class="upload-visual" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M15 36h22a8 8 0 0 0 .5-15.98A13 13 0 0 0 12.37 17 9.5 9.5 0 0 0 15 36Z" stroke="currentColor" stroke-width="2.8"/><path d="m24 31V17m0 0-5 5m5-5 5 5" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h2>Drop your PDF files here</h2><p>Select at least two PDF documents to combine</p><button id="mergeChooseBtn" class="primary-btn" type="button">+ Add PDF Files</button><p class="privacy">🔒 Files are processed only on your device</p></div>
       <div id="mergeWorkspace" class="workspace pdf-workspace merge-workspace" hidden><div class="workspace-head"><h2 class="workspace-title"><span id="mergeFileCount">0</span> PDFs selected</h2><div class="workspace-actions merge-workspace-actions"><button id="mergeAddMoreBtn" class="secondary-btn merge-action-btn" type="button">+ Add More PDFs</button><button id="mergeClearBtn" class="secondary-btn merge-action-btn danger" type="button">Clear All</button></div></div><p class="pdf-order-hint">PDFs are combined from left to right, then top to bottom. Use the arrows to change their order.</p><div id="mergeFiles" class="pdf-files cam-page-grid merge-pdf-grid"></div><button id="mergePdfBtn" class="primary-btn convert-btn" type="button" disabled>Merge PDF Files</button><p id="mergeStatus" class="status" role="status" aria-live="polite"></p><section id="mergeResult" class="merge-result" aria-labelledby="merge-result-title" hidden><div class="merge-result-head"><div><p class="merge-result-label">Merged PDF ready</p><h3 id="merge-result-title">Review your PDF</h3><p id="mergeResultMeta"></p></div><button id="downloadMergedPdfBtn" class="primary-btn" type="button">Download PDF</button></div><iframe id="mergedPreview" title="Preview of merged PDF"></iframe><p class="merge-preview-note">If your browser cannot display the preview, use Download PDF to open the file on your device.</p></section></div>
@@ -280,24 +281,39 @@
   <section class="content-section" aria-labelledby="related-title">
     <div class="section-inner">
       <div class="section-heading">
-        <h2 id="related-title">Related creator tools</h2>
-        <p>Explore more private, in-browser utilities on CreatorNew.</p>
+        <h2 id="related-title">Explore Related PDF Tools</h2>
+        <p>Manage, organize, and convert PDF documents privately inside your browser with zero server uploads.</p>
       </div>
       <div class="related-grid">
-        <a class="info-card related-card" href="../images-to-pdf/">
-          <span class="step-number">PDF</span>
-          <h3>Images to PDF</h3>
-          <p>Combine JPG, PNG, and WebP images into a clean single PDF.</p>
-        </a>
         <a class="info-card related-card" href="../split-pdf/">
           <span class="step-number">CUT</span>
           <h3>Split PDF</h3>
-          <p>Extract selected pages from multi-page documents privately.</p>
+          <p>Extract specific page ranges or break a document into individual PDF files.</p>
         </a>
         <a class="info-card related-card" href="../delete-pdf-pages/">
           <span class="step-number">DEL</span>
           <h3>Delete PDF Pages</h3>
-          <p>Remove unwanted or blank pages from any PDF document.</p>
+          <p>Remove blank, duplicate, or sensitive pages from any PDF document.</p>
+        </a>
+        <a class="info-card related-card" href="../rotate-pdf/">
+          <span class="step-number">ROT</span>
+          <h3>Rotate PDF</h3>
+          <p>Permanently fix orientation for sideways or upside-down scanned sheets.</p>
+        </a>
+        <a class="info-card related-card" href="../images-to-pdf/">
+          <span class="step-number">IMG</span>
+          <h3>Images to PDF</h3>
+          <p>Combine JPG, PNG, and WebP images into a clean single PDF file.</p>
+        </a>
+        <a class="info-card related-card" href="../pdf-to-jpg/">
+          <span class="step-number">JPG</span>
+          <h3>PDF to JPG</h3>
+          <p>Convert PDF pages into high-resolution JPG images for presentations.</p>
+        </a>
+        <a class="info-card related-card" href="../pdf-tools/">
+          <span class="step-number">ALL</span>
+          <h3>All PDF Tools</h3>
+          <p>Browse our complete suite of 100% private in-browser document tools.</p>
         </a>
       </div>
     </div>

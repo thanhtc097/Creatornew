@@ -2,16 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Split PDF files online for free. Select page ranges, preview the result and extract pages privately in your browser.">
+  <meta name="description" content="Split PDF files online for free. Select custom page ranges, preview thumbnails, and extract PDF pages privately in your browser with zero server uploads.">
   <meta name="robots" content="index,follow,max-image-preview:large"><meta name="theme-color" content="#5d5fef">
   <link rel="icon" type="image/png" href="../creatornew-icon.png"><link rel="manifest" href="../site.webmanifest">
   <link rel="apple-touch-icon" href="../creatornew-icon.png"><link rel="canonical" href="https://creatornew.com/split-pdf/">
   <link rel="alternate" hreflang="en" href="https://creatornew.com/split-pdf/">
   <link rel="alternate" hreflang="vi" href="https://creatornew.com/vi/split-pdf/">
   <link rel="alternate" hreflang="x-default" href="https://creatornew.com/split-pdf/">
-  <meta property="og:type" content="website"><meta property="og:site_name" content="CreatorNew"><meta property="og:title" content="Split PDF Online Free | CreatorNew"><meta property="og:description" content="Select and extract PDF pages directly in your browser."><meta property="og:image" content="https://creatornew.com/og-image.png">
+  <meta property="og:type" content="website"><meta property="og:site_name" content="CreatorNew">
+  <meta property="og:title" content="Split PDF Online Free – Extract PDF Pages">
+  <meta property="og:description" content="Split PDF files online for free. Select custom page ranges, preview thumbnails, and extract PDF pages privately in your browser with zero server uploads.">
+  <meta property="og:image" content="https://creatornew.com/og-image.png">
   <meta property="og:url" content="https://creatornew.com/split-pdf/">
-  <title>Split PDF Online Free - Extract PDF Pages | CreatorNew</title>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Split PDF Online Free – Extract PDF Pages | CreatorNew">
+  <meta name="twitter:description" content="Split PDF files online for free. Select custom page ranges, preview thumbnails, and extract PDF pages privately in your browser with zero server uploads.">
+  <meta name="twitter:image" content="https://creatornew.com/og-image.png">
+  <title>Split PDF Online Free – Extract PDF Pages | CreatorNew</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -35,7 +42,7 @@
                     "@type": "ListItem",
                     "position": 2,
                     "name": "PDF Tools",
-                    "item": "https://creatornew.com/#tools"
+                    "item": "https://creatornew.com/pdf-tools/"
             },
             {
                     "@type": "ListItem",
@@ -46,12 +53,12 @@
     ]
 },
       {
-        "@type": "SoftwareApplication",
+        "@type": "WebApplication",
         "@id": "https://creatornew.com/split-pdf/#app",
         "name": "CreatorNew Split PDF",
         "url": "https://creatornew.com/split-pdf/",
         "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "Any",
+        "operatingSystem": "Web Browser",
         "browserRequirements": "Requires JavaScript and a modern web browser",
         "description": "A free browser-based tool for selecting and extracting PDF pages privately without server uploads.",
         "offers": {
@@ -108,18 +115,57 @@
     <ol class="breadcrumb-list">
       <li><a href="../">Home</a></li>
       <li class="breadcrumb-separator" aria-hidden="true">›</li>
-      <li><a href="../#tools">PDF Tools</a></li>
+      <li><a href="../pdf-tools/">PDF Tools</a></li>
       <li class="breadcrumb-separator" aria-hidden="true">›</li>
       <li aria-current="page">Split PDF</li>
     </ol>
   </nav>
-  <main class="hero pdf-hero"><section class="hero-copy"><p class="eyebrow">Free PDF tool</p><h1>Split PDF <span>your way</span></h1><p class="lead">Choose exactly which pages to extract from a PDF. Preview the source and result without uploading your document.</p><div class="benefits"><div class="benefit"><span class="check">✓</span> Custom page ranges</div><div class="benefit"><span class="check">✓</span> PDF preview</div><div class="benefit"><span class="check">✓</span> No registration</div><div class="benefit"><span class="check">✓</span> Private processing</div></div></section>
+  <main class="hero pdf-hero"><section class="hero-copy"><p class="eyebrow">Free PDF tool</p><h1>Split PDF Online Free — <span>Extract PDF Pages Privately</span></h1><p class="lead">Choose exactly which pages to extract from a PDF. Preview the source and result without uploading your document.</p><div class="benefits"><div class="benefit"><span class="check">✓</span> Custom page ranges</div><div class="benefit"><span class="check">✓</span> PDF preview</div><div class="benefit"><span class="check">✓</span> No registration</div><div class="benefit"><span class="check">✓</span> Private processing</div></div></section>
     <section id="split-tool" class="tool-card pdf-tool-card" aria-label="Split PDF tool"><div id="splitDropZone" class="drop-zone" role="button" tabindex="0" aria-label="Choose one PDF or drag it here"><div class="upload-visual" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M15 36h22a8 8 0 0 0 .5-15.98A13 13 0 0 0 12.37 17 9.5 9.5 0 0 0 15 36Z" stroke="currentColor" stroke-width="2.8"/><path d="m24 31V17m0 0-5 5m5-5 5 5" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/></svg></div><h2>Drop one PDF here</h2><p>Select a PDF up to 100 MB</p><button id="splitChooseBtn" class="primary-btn" type="button">+ Choose PDF</button><p class="privacy">🔒 Your PDF stays on your device</p></div>
       <div id="splitWorkspace" class="workspace pdf-workspace split-workspace" hidden><div class="workspace-head"><div><h2 id="splitFileName" class="workspace-title"></h2><p id="splitFileMeta" class="pdf-order-hint"></p></div><div class="workspace-actions merge-workspace-actions"><button id="splitReplaceBtn" class="secondary-btn merge-action-btn" type="button">Replace PDF</button><button id="splitClearBtn" class="secondary-btn merge-action-btn danger" type="button">Clear</button></div></div><div class="split-controls"><label for="splitPageRange">Pages to extract</label><div class="split-range-row"><input id="splitPageRange" type="text" inputmode="text" placeholder="Example: 1-3, 5, 8-10"><button id="splitAllPagesBtn" class="secondary-btn" type="button">Select All</button><button id="splitClearSelectionBtn" class="secondary-btn" type="button">Clear Selection</button></div><p id="splitRangeHelp" class="preset-help"></p></div><section class="split-thumbnail-section" aria-labelledby="page-selection-title"><div class="split-thumbnail-head"><div><h3 id="page-selection-title">Select pages</h3><p>Click a page to select or remove it.</p></div></div><div id="splitThumbnailGrid" class="split-thumbnail-grid"></div></section><details class="split-full-preview"><summary>Open full PDF preview</summary><iframe id="splitSourcePreview" title="Source PDF preview"></iframe></details><button id="splitPdfBtn" class="primary-btn convert-btn" type="button" disabled>Extract Selected Pages</button><p id="splitStatus" class="status" role="status" aria-live="polite"></p><section id="splitResult" class="merge-result" hidden><div class="merge-result-head"><div><p class="merge-result-label">Split PDF ready</p><h3>Review extracted pages</h3><p id="splitResultMeta"></p></div><button id="downloadSplitPdfBtn" class="primary-btn" type="button">Download PDF</button></div><iframe id="splitResultPreview" title="Extracted PDF preview"></iframe></section></div><input id="splitFileInput" class="pdf-hidden-input" type="file" accept="application/pdf,.pdf"></section>
   </main>
   <section class="content-section"><div class="section-inner"><div class="section-heading"><h2>How to split a PDF</h2></div><div class="steps"><article class="info-card"><span class="step-number">1</span><h3>Add one PDF</h3><p>Select the document containing pages you need.</p></article><article class="info-card"><span class="step-number">2</span><h3>Choose page ranges</h3><p>Enter pages such as 1-3, 5, 8-10.</p></article><article class="info-card"><span class="step-number">3</span><h3>Review and download</h3><p>Preview the extracted document before saving it.</p></article></div></div></section>
   <section id="faq" class="content-section soft"><div class="section-inner"><div class="section-heading"><h2>Frequently asked questions</h2></div><div class="faq-list"><details><summary>Is Split PDF free to use?</summary><p>Yes. CreatorNew Split PDF is completely free with no registration, no subscription limits, and no watermarks.</p></details><details><summary>Are my PDF files uploaded to any server?</summary><p>No. All PDF page extraction runs locally in your web browser's RAM sandbox. Zero documents are uploaded to CreatorNew.</p></details><details><summary>How do I select which pages to extract?</summary><p>You can enter page numbers and comma-separated ranges (such as 1-3, 5, 8-10) or click individual page thumbnails directly in the interactive grid.</p></details><details><summary>Does splitting a PDF damage vector text or links?</summary><p>No. The tool extracts original vector streams losslessly, preserving searchable text, internal hyperlinks, and crisp vector fonts.</p></details><details><summary>Can I extract pages from password-protected PDFs?</summary><p>No. You must remove password encryption before loading the document for in-browser processing.</p></details></div></div></section>
-  <section class="content-section" aria-labelledby="related-title"><div class="section-inner"><div class="section-heading"><h2 id="related-title">Related creator tools</h2><p>Explore more private, in-browser utilities on CreatorNew.</p></div><div class="related-grid"><a class="info-card related-card" href="../merge-pdf/"><span class="step-number">PDF</span><h3>Merge PDF</h3><p>Combine multiple PDF documents into one.</p></a><a class="info-card related-card" href="../delete-pdf-pages/"><span class="step-number">DEL</span><h3>Delete PDF Pages</h3><p>Remove unwanted or blank pages from any PDF.</p></a><a class="info-card related-card" href="../images-to-pdf/"><span class="step-number">IMG</span><h3>Images to PDF</h3><p>Combine JPG, PNG, and WebP images into a PDF.</p></a></div></div></section>
+  <section class="content-section" aria-labelledby="related-title">
+    <div class="section-inner">
+      <div class="section-heading">
+        <h2 id="related-title">Explore Related PDF Tools</h2>
+        <p>Manage, organize, and convert PDF documents privately inside your browser with zero server uploads.</p>
+      </div>
+      <div class="related-grid">
+        <a class="info-card related-card" href="../merge-pdf/">
+          <span class="step-number">PDF</span>
+          <h3>Merge PDF</h3>
+          <p>Combine multiple PDF documents in your chosen order into one file.</p>
+        </a>
+        <a class="info-card related-card" href="../delete-pdf-pages/">
+          <span class="step-number">DEL</span>
+          <h3>Delete PDF Pages</h3>
+          <p>Remove unwanted or blank scanner pages from your extracted file.</p>
+        </a>
+        <a class="info-card related-card" href="../rotate-pdf/">
+          <span class="step-number">ROT</span>
+          <h3>Rotate PDF</h3>
+          <p>Permanently correct sideways or inverted page orientations.</p>
+        </a>
+        <a class="info-card related-card" href="../images-to-pdf/">
+          <span class="step-number">IMG</span>
+          <h3>Images to PDF</h3>
+          <p>Combine JPG, PNG, and WebP images into a single PDF document.</p>
+        </a>
+        <a class="info-card related-card" href="../pdf-to-png/">
+          <span class="step-number">PNG</span>
+          <h3>PDF to PNG</h3>
+          <p>Convert extracted PDF pages into clean, sharp PNG images.</p>
+        </a>
+        <a class="info-card related-card" href="../pdf-tools/">
+          <span class="step-number">ALL</span>
+          <h3>All PDF Tools</h3>
+          <p>Browse our complete suite of 100% private in-browser document tools.</p>
+        </a>
+      </div>
+    </div>
+  </section>
   <section class="content-section soft" aria-labelledby="related-guides-title"><div class="section-inner"><div class="section-heading"><p class="eyebrow">Related Guides &amp; Comparisons</p><h2 id="related-guides-title">Optimize your digital media workflow</h2></div><div class="guide-grid"><article class="guide-card"><div class="guide-card-body"><span class="guide-label">Tool Comparison</span><h3><a href="../creatornew-vs-ilovepdf/">CreatorNew vs iLovePDF (2026)</a></h3><p>Compare privacy guarantees, client-side WebAssembly RAM processing, and file limits against cloud PDF services.</p><a class="tool-link" href="../creatornew-vs-ilovepdf/">Read comparison &rarr;</a></div></article><article class="guide-card"><div class="guide-card-body"><span class="guide-label">Tool Comparison</span><h3><a href="../creatornew-vs-tinypng/">CreatorNew vs TinyPNG Comparison</a></h3><p>Bypass the 5MB file cap and compress large graphics with 100% device privacy.</p><a class="tool-link" href="../creatornew-vs-tinypng/">Read comparison &rarr;</a></div></article><article class="guide-card"><div class="guide-card-body"><span class="guide-label">Image Guide</span><h3><a href="../how-to-convert-images-online-free/">How to Convert Images Online for Free</a></h3><p>Learn when to convert, compress, or merge documents for professional workflows.</p><a class="tool-link" href="../how-to-convert-images-online-free/">Read the guide &rarr;</a></div></article></div></div></section>
   <footer class="site-footer"><div class="footer-inner"><span>© 2026 CreatorNew. Free tools for creators.</span><div class="footer-links"><a href="../">Home</a><a href="../about/">About</a><a href="../privacy-policy/">Privacy</a><a href="../terms/">Terms</a><a href="#split-tool">Back to Split PDF ↑</a></div></div></footer><script type="module" src="../js/site-i18n.js"></script><script type="module" src="../js/split-pdf.js"></script>
 </body></html>

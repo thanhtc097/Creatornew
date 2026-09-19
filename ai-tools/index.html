@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free client-side AI tools for creators. Remove image backgrounds and erase objects with local neural networks, or craft expert prompts with the CREATE framework.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#5d5fef">
+  <link rel="canonical" href="https://creatornew.com/ai-tools/">
+  <link rel="alternate" hreflang="en" href="https://creatornew.com/ai-tools/">
+  <link rel="alternate" hreflang="x-default" href="https://creatornew.com/ai-tools/">
+  <link rel="icon" type="image/png" href="../creatornew-icon.png">
+  <link rel="apple-touch-icon" href="../creatornew-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CreatorNew">
+  <meta property="og:title" content="Free AI Tools for Creators – Background Removal &amp; Prompt Engineering | CreatorNew">
+  <meta property="og:description" content="Free client-side AI tools for creators. Remove image backgrounds and erase objects with local neural networks, or craft expert prompts with the CREATE framework.">
+  <meta property="og:url" content="https://creatornew.com/ai-tools/">
+  <meta property="og:image" content="https://creatornew.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free AI Tools for Creators | CreatorNew">
+  <meta name="twitter:description" content="Remove backgrounds and craft expert AI prompts privately in your browser.">
+  <meta name="twitter:image" content="https://creatornew.com/og-image.png">
+  <title>Free AI Tools for Creators – Background Removal & Prompt Engineering | CreatorNew</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preload" as="image" href="../creatornew-logo.webp" type="image/webp" fetchpriority="high">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://creatornew.com/ai-tools/#breadcrumbs",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://creatornew.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "AI Tools",
+            "item": "https://creatornew.com/ai-tools/"
+          }
+        ]
+      },
+      {
+        "@type": "CollectionPage",
+        "@id": "https://creatornew.com/ai-tools/#page",
+        "url": "https://creatornew.com/ai-tools/",
+        "name": "CreatorNew AI Tools Directory",
+        "description": "Collection of private on-device artificial intelligence tools for image segmentation, inpainting, and LLM prompt engineering."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://creatornew.com/ai-tools/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does CreatorNew run AI models without server uploads?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CreatorNew uses ONNX Runtime Web and WebAssembly to execute lightweight computer vision models directly on your computer's GPU or CPU. Once the model weights are loaded into your browser cache, processing happens 100% locally with zero data sent to external servers."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are there credit limits or paywalls on CreatorNew AI tools?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Unlike commercial SaaS tools (e.g. remove.bg or Canva) that charge per image or cap free exports at low resolution, CreatorNew is completely free with unlimited high-resolution exports."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which AI models does the Prompt Builder support?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The AI Prompt Builder supports OpenAI ChatGPT (GPT-4o/o1), Anthropic Claude 3.5 & 3.7 Sonnet (with XML tags), Google Gemini 2.0, DeepSeek, and image generation models like Midjourney and Flux."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are my prompts or generated texts stored or shared?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All prompt drafting, variable assembly, and copying take place solely inside your web browser. Nothing is logged or shared."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need a high-end graphics card to run these AI tools?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Our on-device neural networks are quantized for fast execution on standard laptops, desktop processors, and modern mobile devices without requiring a dedicated graphics card."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <a class="brand" href="../">
+        <picture>
+          <source srcset="../creatornew-logo.webp" type="image/webp">
+          <img class="logo" src="../creatornew-logo.png" alt="CreatorNew" width="2075" height="758" fetchpriority="high">
+        </picture>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="../">Home</a>
+        <a href="../image-tools/">Image Tools</a>
+        <a href="../pdf-tools/">PDF Tools</a>
+        <a href="../ai-tools/" class="active">AI Tools</a>
+        <a href="../blog/">Blog</a>
+        <a href="../about/">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <nav class="breadcrumb-container" aria-label="Breadcrumb">
+    <ol class="breadcrumb-list">
+      <li><a href="../">Home</a></li>
+      <li class="breadcrumb-separator" aria-hidden="true">&rsaquo;</li>
+      <li aria-current="page">AI Tools</li>
+    </ol>
+  </nav>
+
+  <main class="hero" style="text-align: left; padding-bottom: 20px;">
+    <section class="hero-copy" style="max-width: 960px; margin: 0 auto;">
+      <p class="eyebrow">Client-Side Artificial Intelligence</p>
+      <h1>Free AI Tools for Creators — <span>Private, On-Device Artificial Intelligence</span></h1>
+      <p class="lead">
+        Harness cutting-edge neural vision and prompt engineering frameworks directly in your browser. 
+        Zero cloud API subscriptions, zero image uploads to third parties, and total data privacy.
+      </p>
+    </section>
+  </main>
+
+  <!-- AI Tools Directory Grid -->
+  <section class="content-section">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">AI Tool Directory</p>
+        <h2>Select an AI Tool</h2>
+        <p>Accelerate your creative workflow with free, private artificial intelligence utilities.</p>
+      </div>
+
+      <div class="guide-grid">
+        <!-- Tool 1: Background Remover -->
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label" style="background: rgba(16,185,129,0.15); color: #10b981;">Computer Vision</span>
+            <h3><a href="../background-remover/">AI Background &amp; Object Remover</a></h3>
+            <p>Isolate human subjects, products, and pets with on-device neural networks. Erase unwanted objects with AI inpainting. Full HD export with zero credit limits.</p>
+            <a class="tool-link" href="../background-remover/">Remove backgrounds &rarr;</a>
+          </div>
+        </article>
+
+        <!-- Tool 2: AI Prompt Builder -->
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label" style="background: rgba(99,102,241,0.15); color: #6366f1;">Prompt Engineering</span>
+            <h3><a href="../ai-prompt-builder/">AI Prompt Builder</a></h3>
+            <p>Generate high-performing, structured prompts for ChatGPT, Claude 3.7, and Google Gemini using the C.R.E.A.T.E. framework and XML tag formatting.</p>
+            <a class="tool-link" href="../ai-prompt-builder/">Build AI prompts &rarr;</a>
+          </div>
+        </article>
+
+        <!-- Tool 3: Free Sounds -->
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Audio Library</span>
+            <h3><a href="../free-sounds/">Free Sounds Directory</a></h3>
+            <p>Browse curated, royalty-free audio tracks, background ambient textures, and sound effects cleared for commercial video and podcast production.</p>
+            <a class="tool-link" href="../free-sounds/">Browse sounds &rarr;</a>
+          </div>
+        </article>
+
+        <!-- Tool 4: Free Videos -->
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Video Library</span>
+            <h3><a href="../free-videos/">Free Stock Videos</a></h3>
+            <p>Search copyright-safe 4K and HD stock footage, motion overlays, and background loops with verified commercial use licensing details.</p>
+            <a class="tool-link" href="../free-videos/">Explore videos &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology Deep Dive -->
+  <section class="content-section soft">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">Local Neural Execution</p>
+        <h2>How Client-Side AI Protects Your Creative Privacy</h2>
+        <p>Why local ONNX Runtime Web is revolutionizing creative tools.</p>
+      </div>
+
+      <div class="guide-grid">
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <h3>No Cloud Data Hoarding</h3>
+            <p>When you upload personal photos to cloud background removers, files are stored on remote servers for model training. CreatorNew runs neural networks exclusively in your local browser sandbox.</p>
+          </div>
+        </article>
+
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <h3>Zero Latency After Cache</h3>
+            <p>Once the model binary is cached locally by your browser, segmenting images takes under 1.5 seconds with zero round-trip network lag, even when working offline.</p>
+          </div>
+        </article>
+
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <h3>No Subscription Paywalls</h3>
+            <p>Cloud AI tools charge high monthly subscription fees to cover expensive GPU server clusters. By using your device's own hardware, CreatorNew remains 100% free forever.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Curated AI Guides -->
+  <section class="content-section">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">AI Masterclasses</p>
+        <h2>Master Prompt Architecture &amp; AI Workflows</h2>
+        <p>Expert guides to unlock peak performance from modern LLMs and neural tools.</p>
+      </div>
+
+      <div class="guide-grid">
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Prompt Engineering</span>
+            <h3><a href="../blog/ai-prompt-builder-tips/">How to Write Effective AI Prompts: ChatGPT, Claude &amp; Gemini</a></h3>
+            <p>Actionable prompt engineering architectures: C.R.E.A.T.E. framework, few-shot examples, XML tag structuring, and hallucination reduction.</p>
+            <a class="tool-link" href="../blog/ai-prompt-builder-tips/">Read prompt guide &rarr;</a>
+          </div>
+        </article>
+
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Tool Comparison</span>
+            <h3><a href="../blog/best-free-ai-background-remover-2026/">Best Free AI Background Remover 2026: remove.bg vs Canva vs CreatorNew</a></h3>
+            <p>In-depth comparison of full-resolution exports, credit paywalls, WebAssembly speed, and absolute privacy guarantees.</p>
+            <a class="tool-link" href="../blog/best-free-ai-background-remover-2026/">Read comparison &rarr;</a>
+          </div>
+        </article>
+
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Licensing</span>
+            <h3><a href="../blog/free-stock-video-license-guide/">How to Find Free Stock Videos Without Copyright Strikes</a></h3>
+            <p>Master CC0, Creative Commons licenses, YouTube Content ID audio traps, and commercial model releases.</p>
+            <a class="tool-link" href="../blog/free-stock-video-license-guide/">Read license guide &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="content-section soft" id="faq">
+    <div class="section-inner">
+      <div class="section-heading">
+        <h2>Frequently Asked Questions</h2>
+        <p>Common questions about CreatorNew's private artificial intelligence utilities.</p>
+      </div>
+
+      <div class="faq-accordion">
+        <details class="faq-item">
+          <summary class="faq-question">How does CreatorNew run AI models without server uploads?</summary>
+          <div class="faq-answer">
+            <p>CreatorNew uses ONNX Runtime Web and WebAssembly to execute lightweight computer vision models directly on your computer's GPU or CPU. Once the model weights are loaded into your browser cache, processing happens 100% locally with zero data sent to external servers.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Are there credit limits or paywalls on CreatorNew AI tools?</summary>
+          <div class="faq-answer">
+            <p>No. Unlike commercial SaaS tools (e.g. remove.bg or Canva) that charge per image or cap free exports at low resolution, CreatorNew is completely free with unlimited high-resolution exports.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Which AI models does the Prompt Builder support?</summary>
+          <div class="faq-answer">
+            <p>The AI Prompt Builder supports OpenAI ChatGPT (GPT-4o/o1), Anthropic Claude 3.5 &amp; 3.7 Sonnet (with XML tags), Google Gemini 2.0, DeepSeek, and image generation models like Midjourney and Flux.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Are my prompts or generated texts stored or shared?</summary>
+          <div class="faq-answer">
+            <p>No. All prompt drafting, variable assembly, and copying take place solely inside your web browser. Nothing is logged or shared.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Do I need a high-end graphics card to run these AI tools?</summary>
+          <div class="faq-answer">
+            <p>No. Our on-device neural networks are quantized for fast execution on standard laptops, desktop processors, and modern mobile devices without requiring a dedicated graphics card.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <picture>
+          <source srcset="../creatornew-logo.webp" type="image/webp">
+          <img class="footer-logo" src="../creatornew-logo.png" alt="CreatorNew" width="2075" height="758" loading="lazy" decoding="async">
+        </picture>
+        <p class="footer-tagline">100% free, private, client-side tools for digital creators. Zero server uploads.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>AI Tools</h4>
+          <ul>
+            <li><a href="../background-remover/">Background Remover</a></li>
+            <li><a href="../ai-prompt-builder/">AI Prompt Builder</a></li>
+            <li><a href="../free-sounds/">Free Sounds</a></li>
+            <li><a href="../free-videos/">Free Videos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Image Tools</h4>
+          <ul>
+            <li><a href="../image-tools/">All Image Tools</a></li>
+            <li><a href="../image-compressor/">Image Compressor</a></li>
+            <li><a href="../image-resize/">Image Resizer</a></li>
+            <li><a href="../image-converter/">Image Converter</a></li>
+            <li><a href="../png-to-webp/">PNG to WebP</a></li>
+            <li><a href="../jpg-to-webp/">JPG to WebP</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>PDF Tools</h4>
+          <ul>
+            <li><a href="../pdf-tools/">All PDF Tools</a></li>
+            <li><a href="../merge-pdf/">Merge PDF</a></li>
+            <li><a href="../split-pdf/">Split PDF</a></li>
+            <li><a href="../delete-pdf-pages/">Delete PDF Pages</a></li>
+            <li><a href="../rotate-pdf/">Rotate PDF</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="../about/">About</a></li>
+            <li><a href="../privacy-policy/">Privacy Policy</a></li>
+            <li><a href="../terms/">Terms of Service</a></li>
+            <li><a href="../blog/">Blog &amp; Guides</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 CreatorNew. All rights reserved. Processed locally in your browser with private WebAssembly technology.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../js/site-i18n.js"></script>
+</body>
+</html>
