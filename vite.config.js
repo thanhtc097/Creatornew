@@ -27,6 +27,8 @@ export default defineConfig({
           "pdfToPng": "pdf-to-png/index.html",
           "deletePdfPages": "delete-pdf-pages/index.html",
           "aiPromptBuilder": "ai-prompt-builder/index.html",
+          "autoSubtitle": "auto-subtitle/index.html",
+          "viTaoPhuDeVideo": "vi/tao-phu-de-video/index.html",
           "imageToolsHub": "image-tools/index.html",
           "pdfToolsHub": "pdf-tools/index.html",
           "aiToolsHub": "ai-tools/index.html",
