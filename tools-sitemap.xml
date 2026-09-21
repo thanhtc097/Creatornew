@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://creatornew.com/</loc>
-    <lastmod>2026-09-20T01:17:21.967Z</lastmod>
+    <lastmod>2026-09-21T00:35:05.869Z</lastmod>
   </url>
   <url>
     <loc>https://creatornew.com/about/</loc>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://creatornew.com/ai-tools/</loc>
-    <lastmod>2026-09-20T01:17:07.356Z</lastmod>
+    <lastmod>2026-09-21T00:34:38.795Z</lastmod>
   </url>
   <url>
     <loc>https://creatornew.com/auto-subtitle/</loc>
@@ -222,7 +222,11 @@
   </url>
   <url>
     <loc>https://creatornew.com/image-tools/</loc>
-    <lastmod>2026-09-19T14:14:25.300Z</lastmod>
+    <lastmod>2026-09-21T00:34:34.635Z</lastmod>
+  </url>
+  <url>
+    <loc>https://creatornew.com/image-upscaler/</loc>
+    <lastmod>2026-09-21T00:33:57.229Z</lastmod>
   </url>
   <url>
     <loc>https://creatornew.com/images-to-pdf/</loc>
@@ -270,7 +274,7 @@
   </url>
   <url>
     <loc>https://creatornew.com/vi/</loc>
-    <lastmod>2026-09-20T01:17:28.268Z</lastmod>
+    <lastmod>2026-09-21T00:35:16.200Z</lastmod>
   </url>
   <url>
     <loc>https://creatornew.com/vi/background-remover/</loc>
@@ -299,6 +303,10 @@
   <url>
     <loc>https://creatornew.com/vi/image-resize/</loc>
     <lastmod>2026-09-19T14:14:25.314Z</lastmod>
+  </url>
+  <url>
+    <loc>https://creatornew.com/vi/image-upscaler/</loc>
+    <lastmod>2026-09-21T00:34:14.407Z</lastmod>
   </url>
   <url>
     <loc>https://creatornew.com/vi/jpg-to-webp/</loc>
