@@ -4,11 +4,13 @@
  * - NASA Image and Video Library (100% US Public Domain, no key required)
  * - Pexels Video API (Free commercial license, supports API key or curated showcase)
  * - Pixabay Video API (Free Pixabay license, supports API key or curated showcase)
+ * - Coverr Video API (Cinematic/aerial footage, supports API key or curated showcase)
  * - Wikimedia Commons (Creative Commons, no key required)
  */
 
 import { searchPexelsShowcase } from '../data/pexels-showcase.js'
 import { searchPixabayShowcase } from '../data/pixabay-showcase.js'
+import { searchCoverrShowcase } from '../data/coverr-showcase.js'
 
 const NASA_API = 'https://images-api.nasa.gov/search'
 const WIKIMEDIA_API = 'https://commons.wikimedia.org/w/api.php'
@@ -173,9 +175,6 @@ export async function searchWikimediaVideos({ query, pageSize = 12, continueToke
   return { items, continueToken: data.continue || null }
 }
 
-/**
- * Format raw Pexels video item
- */
 export function formatPexelsVideoItem(v) {
   const files = v.video_files || []
   const bestFile =
@@ -204,9 +203,6 @@ export function formatPexelsVideoItem(v) {
   }
 }
 
-/**
- * Search Pexels Videos using API key or curated showcase
- */
 export async function searchPexelsVideos({ query = '', page = 1, pageSize = 12, apiKey = '' }) {
   if (apiKey) {
     try {
@@ -218,11 +214,10 @@ export async function searchPexelsVideos({ query = '', page = 1, pageSize = 12, 
         return { items, total: data.total_results || items.length, isLive: true }
       }
     } catch {
-      // fallback to showcase on error
+      // fallback
     }
   }
 
-  // Fallback to Curated Pexels Showcase
   const matches = searchPexelsShowcase(query)
   const start = (page - 1) * pageSize
   return {
@@ -233,9 +228,6 @@ export async function searchPexelsVideos({ query = '', page = 1, pageSize = 12, 
   }
 }
 
-/**
- * Format raw Pixabay video hit
- */
 export function formatPixabayVideoItem(hit) {
   const v = hit.videos || {}
   const bestUrl = v.medium?.url || v.large?.url || v.small?.url || v.tiny?.url || ''
@@ -261,9 +253,6 @@ export function formatPixabayVideoItem(hit) {
   }
 }
 
-/**
- * Search Pixabay Videos using API key or curated showcase
- */
 export async function searchPixabayVideos({ query = '', page = 1, pageSize = 12, apiKey = '' }) {
   if (apiKey) {
     try {
@@ -275,12 +264,51 @@ export async function searchPixabayVideos({ query = '', page = 1, pageSize = 12,
         return { items, total: data.totalHits || items.length, isLive: true }
       }
     } catch {
-      // fallback to showcase on error
+      // fallback
     }
   }
 
-  // Fallback to Curated Pixabay Showcase
   const matches = searchPixabayShowcase(query)
+  const start = (page - 1) * pageSize
+  return {
+    items: matches.slice(start, start + pageSize),
+    total: matches.length,
+    isLive: false,
+    requiresKeyForLive: !apiKey,
+  }
+}
+
+export async function searchCoverrVideos({ query = '', page = 1, pageSize = 12, apiKey = '' }) {
+  if (apiKey) {
+    try {
+      const url = `https://api.coverr.co/videos?query=${encodeURIComponent(query.trim() || 'cinematic')}&api_key=${encodeURIComponent(apiKey)}`
+      const response = await fetch(url)
+      if (response.ok) {
+        const data = await response.json()
+        const rawHits = data.hits || data.videos || []
+        const items = rawHits.map((h) => ({
+          id: `coverr-${h.id}`,
+          title: h.title || 'Coverr Footage',
+          creator: 'Coverr Filmmaker',
+          thumb: h.poster || h.thumbnail || '',
+          videoUrl: h.urls?.mp4 || h.urls?.mp4_download || '',
+          landing_url: h.urls?.landing || 'https://coverr.co/',
+          source: 'coverr',
+          source_name: 'Coverr Video',
+          license: 'Coverr License',
+          license_type: 'free',
+          requires_attribution: false,
+          filetype: 'MP4',
+          attribution: `“${h.title || 'Footage'}” via Coverr.co. Coverr License (Free commercial use, no attribution required).`,
+        }))
+        return { items, total: items.length, isLive: true, requiresKeyForLive: false }
+      }
+    } catch {
+      // fallback
+    }
+  }
+
+  const matches = searchCoverrShowcase(query)
   const start = (page - 1) * pageSize
   return {
     items: matches.slice(start, start + pageSize),
@@ -299,12 +327,16 @@ export function filterVideoByLicense(item, filter) {
     return item.requires_attribution
   }
   if (filter === 'commercial') {
-    if (item.source === 'nasa' || item.source === 'pexels' || item.source === 'pixabay') return true
+    if (item.source === 'nasa' || item.source === 'pexels' || item.source === 'pixabay' || item.source === 'coverr') {
+      return true
+    }
     if (item.raw) return isWikimediaCommercial(item.raw)
     return true
   }
   if (filter === 'modify') {
-    if (item.source === 'nasa' || item.source === 'pexels' || item.source === 'pixabay') return true
+    if (item.source === 'nasa' || item.source === 'pexels' || item.source === 'pixabay' || item.source === 'coverr') {
+      return true
+    }
     if (item.raw) return isWikimediaModifiable(item.raw)
     return true
   }
@@ -352,30 +384,48 @@ export async function searchVideos({
     }
   }
 
+  if (source === 'coverr') {
+    const covRes = await searchCoverrVideos({ query, page, pageSize, apiKey: apiKeys.coverr })
+    const filtered = covRes.items.filter((item) => filterVideoByLicense(item, licenseFilter))
+    return {
+      items: filtered,
+      continueToken: null,
+      total: covRes.total,
+      isLive: covRes.isLive,
+      requiresKeyForLive: covRes.requiresKeyForLive,
+    }
+  }
+
   if (source === 'wikimedia') {
     const wikiRes = await searchWikimediaVideos({ query, pageSize, continueToken })
     const filtered = wikiRes.items.filter((item) => filterVideoByLicense(item, licenseFilter))
     return { items: filtered, continueToken: wikiRes.continueToken, total: filtered.length }
   }
 
-  // source === 'all': combine NASA, Pexels, Pixabay, Wikimedia
-  const segmentSize = Math.max(Math.floor(pageSize / 3), 4)
-  const [nasaResult, pexResult, wikiResult] = await Promise.allSettled([
+  // source === 'all': combine NASA, Pexels, Pixabay, Coverr, Wikimedia
+  const segmentSize = Math.max(Math.floor(pageSize / 5), 3)
+  const [nasaResult, pexResult, pixResult, covResult, wikiResult] = await Promise.allSettled([
     searchNasaVideos({ query, page, pageSize: segmentSize }),
     searchPexelsVideos({ query, page, pageSize: segmentSize, apiKey: apiKeys.pexels }),
+    searchPixabayVideos({ query, page, pageSize: segmentSize, apiKey: apiKeys.pixabay }),
+    searchCoverrVideos({ query, page, pageSize: segmentSize, apiKey: apiKeys.coverr }),
     searchWikimediaVideos({ query, pageSize: segmentSize, continueToken }),
   ])
 
   const nasaItems = nasaResult.status === 'fulfilled' ? nasaResult.value.items : []
   const pexItems = pexResult.status === 'fulfilled' ? pexResult.value.items : []
+  const pixItems = pixResult.status === 'fulfilled' ? pixResult.value.items : []
+  const covItems = covResult.status === 'fulfilled' ? covResult.value.items : []
   const wikiItems = wikiResult.status === 'fulfilled' ? wikiResult.value.items : []
   const newContinueToken = wikiResult.status === 'fulfilled' ? wikiResult.value.continueToken : null
 
   const results = []
-  const maxLen = Math.max(nasaItems.length, pexItems.length, wikiItems.length)
+  const maxLen = Math.max(nasaItems.length, pexItems.length, pixItems.length, covItems.length, wikiItems.length)
   for (let i = 0; i < maxLen; i++) {
     if (i < pexItems.length) results.push(pexItems[i])
     if (i < nasaItems.length) results.push(nasaItems[i])
+    if (i < pixItems.length) results.push(pixItems[i])
+    if (i < covItems.length) results.push(covItems[i])
     if (i < wikiItems.length) results.push(wikiItems[i])
   }
 

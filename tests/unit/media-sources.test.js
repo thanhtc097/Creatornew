@@ -4,6 +4,7 @@ import { INCOMPETECH_TRACKS, searchIncompetechTracks } from '../../src/data/inco
 import { PEXELS_SHOWCASE, searchPexelsShowcase } from '../../src/data/pexels-showcase.js'
 import { PIXABAY_SHOWCASE, searchPixabayShowcase } from '../../src/data/pixabay-showcase.js'
 import { FREESOUND_SHOWCASE, searchFreesoundShowcase } from '../../src/data/freesound-showcase.js'
+import { COVERR_SHOWCASE, searchCoverrShowcase } from '../../src/data/coverr-showcase.js'
 import {
   getApiKeys,
   setApiKey,
@@ -21,6 +22,7 @@ import {
   searchVideos,
   searchPexelsVideos,
   searchPixabayVideos,
+  searchCoverrVideos,
 } from '../../src/services/video-sources.js'
 import {
   formatOpenverseTrack,
@@ -29,6 +31,14 @@ import {
   searchAudio,
   searchFreesoundAudio,
 } from '../../src/services/audio-sources.js'
+import {
+  getSavedMedia,
+  isMediaSaved,
+  toggleSaveMedia,
+  removeSavedMedia,
+  clearSavedMedia,
+  generateBatchAttribution,
+} from '../../src/services/saved-media.js'
 
 describe('API Keys Service', () => {
   beforeEach(() => {
@@ -484,5 +494,197 @@ describe('Audio Sources Service', () => {
 
     expect(res.results.length).toBeGreaterThan(0)
     expect(res.results[0].title).toBe('Sneaky Snitch')
+  })
+})
+
+describe('Coverr Video Showcase & Search', () => {
+  it('contains valid curated Coverr video items with commercial license', () => {
+    expect(COVERR_SHOWCASE.length).toBeGreaterThanOrEqual(5)
+    for (const item of COVERR_SHOWCASE) {
+      expect(item.id).toMatch(/^coverr-/)
+      expect(item.title).toBeTruthy()
+      expect(item.creator).toBeTruthy()
+      expect(item.source).toBe('coverr')
+      expect(item.source_name).toBe('Coverr Video')
+      expect(item.license).toBe('Coverr License')
+      expect(item.requires_attribution).toBe(false)
+      expect(item.videoUrl).toMatch(/^https:\/\/.+\.(webm|mp4)$/)
+      expect(item.thumb).toMatch(/^https:\/\/.+/)
+      expect(item.landing_url).toMatch(/^https:\/\/coverr\.co/)
+      expect(item.attribution).toContain('Coverr License')
+    }
+  })
+
+  it('filters Coverr showcase by query keyword', () => {
+    const drone = searchCoverrShowcase('drone')
+    expect(drone.length).toBeGreaterThan(0)
+    expect(drone.some((d) => d.title.toLowerCase().includes('drone') || d.tags.includes('drone'))).toBe(true)
+
+    const city = searchCoverrShowcase('city')
+    expect(city.length).toBeGreaterThan(0)
+
+    const nonexistent = searchCoverrShowcase('nonexistentxyz123')
+    expect(nonexistent).toEqual([])
+  })
+
+  it('uses showcase fallback when searching Coverr without API key', async () => {
+    const res = await searchCoverrVideos({
+      query: 'drone',
+      apiKey: '',
+    })
+
+    expect(res.items.length).toBeGreaterThan(0)
+    expect(res.items.every((r) => r.source === 'coverr')).toBe(true)
+    expect(res.requiresKeyForLive).toBe(true)
+  })
+
+  it('fetches live Coverr API results when valid API key is present', async () => {
+    globalThis.fetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({
+        hits: [
+          {
+            id: 'mock-coverr-101',
+            title: 'Mock Ocean Aerial',
+            author: { name: 'AerialPro' },
+            thumbnail: 'https://example.com/ocean.jpg',
+            urls: { mp4: 'https://example.com/ocean.mp4' },
+            duration: 18,
+          },
+        ],
+        total: 1,
+      }),
+    })
+
+    const res = await searchCoverrVideos({
+      query: 'ocean',
+      apiKey: 'valid-coverr-token',
+    })
+
+    expect(res.items.length).toBe(1)
+    expect(res.items[0].id).toBe('coverr-mock-coverr-101')
+    expect(res.items[0].title).toBe('Mock Ocean Aerial')
+    expect(res.items[0].creator).toBe('Coverr Filmmaker')
+    expect(res.requiresKeyForLive).toBe(false)
+  })
+
+  it('searches Coverr exclusively through searchVideos when source="coverr"', async () => {
+    const res = await searchVideos({
+      query: 'drone',
+      source: 'coverr',
+    })
+
+    expect(res.items.length).toBeGreaterThan(0)
+    expect(res.items.every((r) => r.source === 'coverr')).toBe(true)
+  })
+})
+
+describe('Saved Media (Project Bookmarks) & Batch Attribution', () => {
+  beforeEach(() => {
+    window.localStorage.clear()
+    vi.restoreAllMocks()
+  })
+
+  it('toggles saving and removing media items', () => {
+    const sampleVideo = {
+      id: 'coverr-1',
+      title: 'Cinematic Mountain Drone',
+      creator: 'DronePilot',
+      source: 'coverr',
+      source_name: 'Coverr',
+      license: 'Coverr License',
+      requires_attribution: false,
+      landing_url: 'https://coverr.co/videos/sample',
+      attribution: '“Cinematic Mountain Drone” by DronePilot, Coverr License',
+    }
+
+    expect(isMediaSaved('coverr-1', 'video')).toBe(false)
+    expect(getSavedMedia('video')).toEqual([])
+
+    // Save
+    const res1 = toggleSaveMedia(sampleVideo, 'video')
+    expect(res1.saved).toBe(true)
+    expect(res1.count).toBe(1)
+    expect(isMediaSaved('coverr-1', 'video')).toBe(true)
+    expect(getSavedMedia('video').length).toBe(1)
+
+    // Toggle off (remove)
+    const res2 = toggleSaveMedia(sampleVideo, 'video')
+    expect(res2.saved).toBe(false)
+    expect(res2.count).toBe(0)
+    expect(isMediaSaved('coverr-1', 'video')).toBe(false)
+  })
+
+  it('isolates saved audio and video collections independently', () => {
+    const sampleAudio = {
+      id: 'kenney-click',
+      title: 'UI Click 1',
+      creator: 'Kenney',
+      source: 'kenney',
+      source_name: 'Kenney SFX',
+      license: 'cc0',
+      requires_attribution: false,
+    }
+
+    const sampleVideo = {
+      id: 'pexels-123',
+      title: 'Forest Creek',
+      creator: 'NatureCam',
+      source: 'pexels',
+      source_name: 'Pexels',
+      license: 'Pexels License',
+      requires_attribution: false,
+    }
+
+    toggleSaveMedia(sampleAudio, 'audio')
+    toggleSaveMedia(sampleVideo, 'video')
+
+    expect(isMediaSaved('kenney-click', 'audio')).toBe(true)
+    expect(isMediaSaved('kenney-click', 'video')).toBe(false)
+    expect(isMediaSaved('pexels-123', 'video')).toBe(true)
+    expect(isMediaSaved('pexels-123', 'audio')).toBe(false)
+
+    expect(getSavedMedia('audio').length).toBe(1)
+    expect(getSavedMedia('video').length).toBe(1)
+
+    clearSavedMedia('audio')
+    expect(getSavedMedia('audio')).toEqual([])
+    expect(getSavedMedia('video').length).toBe(1)
+
+    removeSavedMedia('pexels-123', 'video')
+    expect(getSavedMedia('video')).toEqual([])
+  })
+
+  it('generates 1-click batch attribution blocks for YouTube/TikTok descriptions', () => {
+    const items = [
+      {
+        id: 'incompetech-1',
+        title: 'Sneaky Snitch',
+        creator: 'Kevin MacLeod',
+        license: 'CC BY 4.0',
+        requires_attribution: true,
+        attribution: '“Sneaky Snitch” Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons: By Attribution 4.0 License',
+      },
+      {
+        id: 'coverr-2',
+        title: 'Sunset Beach Flight',
+        creator: 'CoastalVisuals',
+        license: 'Coverr License',
+        requires_attribution: false,
+        landing_url: 'https://coverr.co/videos/beach',
+        attribution: '',
+      },
+    ]
+
+    const text = generateBatchAttribution(items)
+    expect(text).toContain('MUSIC & FOOTAGE CREDITS (YouTube / Commercial Safe)')
+    expect(text).toContain('1. “Sneaky Snitch” Kevin MacLeod')
+    expect(text).toContain('2. “Sunset Beach Flight” by CoastalVisuals')
+    expect(text).toContain('Coverr License (No attribution required)')
+    expect(text).toContain('Source: https://coverr.co/videos/beach')
+    expect(text).toContain('Verified royalty-free & copyright strike safe via CreatorNew')
+
+    // Empty list returns empty string
+    expect(generateBatchAttribution([])).toBe('')
   })
 })

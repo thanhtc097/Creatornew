@@ -140,8 +140,27 @@ h1 em { color: #17865e; }
 .audio-attr-pill.is-req { color: #b54708; }
 .audio-source-select { width: 220px; }
 .audio-license-select { width: 230px; }
-.audio-nav-config {
+.audio-nav-saved {
   margin-left: auto;
+  margin-right: 10px;
+  padding: 6px 14px;
+  border: 1px solid #fedf89;
+  border-radius: 8px;
+  background: #fffaeb;
+  color: #b54708;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: 0.15s;
+}
+.audio-nav-saved:hover {
+  background: #fef08a;
+  border-color: #f59e0b;
+}
+.audio-nav-config {
   margin-right: 18px;
   padding: 6px 12px;
   border: 1px solid #d0d5dd;
@@ -156,6 +175,66 @@ h1 em { color: #17865e; }
 .audio-nav-config:hover {
   background: #f8fafc;
   border-color: #98a2b3;
+}
+.track-bookmark-btn {
+  margin-left: auto;
+  border: 1px solid #eaecf0;
+  background: #f8f9fc;
+  color: #98a2b3;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.track-bookmark-btn:hover {
+  background: #fff1f2;
+  color: #e11d48;
+  border-color: #fda4af;
+  transform: scale(1.1);
+}
+.track-bookmark-btn.is-bookmarked {
+  background: #e11d48;
+  color: #ffffff;
+  border-color: #e11d48;
+  box-shadow: 0 2px 6px rgba(225, 29, 72, 0.3);
+}
+.audio-category-pills {
+  position: relative;
+  margin: 18px auto 0;
+  max-width: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cat-pill {
+  padding: 6px 14px;
+  border: 1px solid #d0d5dd;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #475467;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+.cat-pill:hover {
+  border-color: #12845a;
+  color: #12845a;
+  background: #edfff6;
+}
+.cat-pill.is-active {
+  background: linear-gradient(135deg, #12845a, #31bd85);
+  color: #ffffff;
+  border-color: #12845a;
+  box-shadow: 0 2px 6px rgba(18, 132, 90, 0.25);
 }
 .showcase-notice-banner.audio-notice {
   margin-bottom: 20px;

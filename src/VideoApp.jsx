@@ -2,15 +2,29 @@ import { useState, useEffect } from 'react'
 import './VideoApp.css'
 import { searchVideos, fetchNasaVideoStream } from './services/video-sources.js'
 import { getApiKeys } from './services/api-keys.js'
+import { getSavedMedia, isMediaSaved, toggleSaveMedia } from './services/saved-media.js'
 import SourceSettingsModal from './components/SourceSettingsModal.jsx'
+import SavedMediaDrawer from './components/SavedMediaDrawer.jsx'
 
 const PAGE_SIZE = 12
-const suggestions = ['earth', 'waterfall', 'beach drone', 'city timelapse', 'forest sunlight', 'clouds', 'fire', 'mars']
+
+const categories = [
+  { id: 'all', label: 'All Categories', query: '' },
+  { id: 'aerial', label: '🚁 Drone & Aerial', query: 'aerial drone' },
+  { id: 'nature', label: '🌲 Nature & Waterfalls', query: 'nature landscape' },
+  { id: 'space', label: '🚀 Space & Astronomy', query: 'space galaxy' },
+  { id: 'city', label: '🏙️ City & Architecture', query: 'city urban' },
+  { id: 'tech', label: '⚡ Cyber & Tech', query: 'cyberpunk neon' },
+  { id: 'animals', label: '🦁 Wildlife', query: 'wildlife animals' },
+]
+
+const suggestions = ['waterfall', 'beach drone', 'space station', 'city timelapse', 'forest sunlight', 'clouds', 'fire', 'mars']
 
 const sourceOptions = [
   { value: 'all', label: 'All Video Sources' },
   { value: 'pexels', label: 'Pexels Video (Free Commercial)' },
   { value: 'pixabay', label: 'Pixabay Video (Free Commercial)' },
+  { value: 'coverr', label: 'Coverr (Cinematic & Aerial)' },
   { value: 'nasa', label: 'NASA Video (100% Public Domain)' },
   { value: 'wikimedia', label: 'Wikimedia Commons (CC)' },
 ]
@@ -22,7 +36,7 @@ const licenseFilters = [
   { value: 'commercial', label: 'Commercial Use Allowed' },
 ]
 
-function VideoCard({ item, onPreview, onCopy, copied }) {
+function VideoCard({ item, onPreview, onCopy, copied, isSaved, onToggleSave }) {
   const isNoAttr = !item.requires_attribution
   return (
     <article className="video-card">
@@ -38,6 +52,18 @@ function VideoCard({ item, onPreview, onCopy, copied }) {
         )}
         <i aria-hidden="true">▶</i>
         <span className={`source-badge source-${item.source}`}>{item.source_name}</span>
+        <button
+          type="button"
+          className={`bookmark-btn ${isSaved ? 'is-bookmarked' : ''}`}
+          onClick={(e) => {
+            e.stopPropagation()
+            onToggleSave(item)
+          }}
+          title={isSaved ? 'Remove from project collection' : 'Save to project collection'}
+          aria-label={isSaved ? 'Remove from saved' : 'Save video'}
+        >
+          {isSaved ? '♥' : '♡'}
+        </button>
       </button>
       <div className="video-body">
         <div className="video-tags">
@@ -77,6 +103,7 @@ export default function VideoApp() {
   const [query, setQuery] = useState('')
   const [source, setSource] = useState('all')
   const [filter, setFilter] = useState('all')
+  const [activeCategory, setActiveCategory] = useState('all')
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -88,11 +115,14 @@ export default function VideoApp() {
   const [resolvingStream, setResolvingStream] = useState(false)
   const [copiedId, setCopiedId] = useState(null)
   const [isSettingsOpen, setIsSettingsOpen] = useState(false)
+  const [isSavedDrawerOpen, setIsSavedDrawerOpen] = useState(false)
   const [apiKeys, setApiKeys] = useState(getApiKeys())
   const [sourceNotice, setSourceNotice] = useState('')
+  const [savedCount, setSavedCount] = useState(0)
 
   useEffect(() => {
     setApiKeys(getApiKeys())
+    setSavedCount(getSavedMedia('video').length)
   }, [])
 
   async function search(term = query, append = false, newPage = 1) {
@@ -115,7 +145,7 @@ export default function VideoApp() {
       })
 
       if (res.requiresKeyForLive) {
-        setSourceNotice(`Showing curated showcase for ${source.toUpperCase()}. To unlock unlimited live search, add your free API key in Settings.`)
+        setSourceNotice(`Showing curated showcase for ${source.toUpperCase()}. To unlock live search across millions of clips, add your free API key in Settings.`)
       }
 
       setItems((current) => (append ? [...current, ...res.items] : res.items))
@@ -138,17 +168,31 @@ export default function VideoApp() {
     search(term, false, 1)
   }
 
+  function handleCategoryClick(cat) {
+    setActiveCategory(cat.id)
+    if (cat.query) {
+      setQuery(cat.query)
+      search(cat.query, false, 1)
+    } else {
+      choose('waterfall')
+    }
+  }
+
   async function copy(item) {
     await navigator.clipboard.writeText(item.attribution)
     setCopiedId(item.id)
     setTimeout(() => setCopiedId(null), 2000)
   }
 
+  function handleToggleSave(item) {
+    const res = toggleSaveMedia(item, 'video')
+    setSavedCount(res.count)
+  }
+
   async function handlePreview(item) {
     setPreview(item)
     setPreviewStreamUrl(item.videoUrl || null)
 
-    // For NASA videos, resolve mp4 stream URL from collectionUrl if not already known
     if (item.source === 'nasa' && item.collectionUrl && !item.videoUrl) {
       setResolvingStream(true)
       const stream = await fetchNasaVideoStream(item.collectionUrl)
@@ -182,6 +226,15 @@ export default function VideoApp() {
         <span>
           <b></b> Open video library
         </span>
+
+        <button
+          type="button"
+          className="video-nav-saved"
+          onClick={() => setIsSavedDrawerOpen(true)}
+        >
+          ♥ Saved {savedCount > 0 && <span className="nav-saved-badge">{savedCount}</span>}
+        </button>
+
         <button
           type="button"
           className="video-nav-config"
@@ -189,6 +242,7 @@ export default function VideoApp() {
         >
           ⚙️ Sources &amp; API Keys
         </button>
+
         <a
           href="https://creativecommons.org/share-your-work/cclicenses/"
           target="_blank"
@@ -200,17 +254,18 @@ export default function VideoApp() {
 
       <main>
         <section className="video-hero">
-          <div className="video-eyebrow">PEXELS, PIXABAY, NASA &amp; WIKIMEDIA VIDEO SEARCH</div>
+          <div className="video-eyebrow">PEXELS, PIXABAY, COVERR, NASA &amp; WIKIMEDIA VIDEO SEARCH</div>
           <h1>
             Free stock videos.
             <br />
             <em>Footage for every creator project.</em>
           </h1>
           <p>
-            Search 100% commercial-safe stock videos from Pexels, Pixabay, NASA Public Domain &amp; Wikimedia.
+            Search 100% commercial-safe stock videos from Pexels, Pixabay, Coverr, NASA Public Domain &amp; Wikimedia.
             <br />
-            No copyright strikes on YouTube/TikTok, verified usage rights, and 1-click legal attribution.
+            Collect clips for your edit and export all YouTube description credits in 1 click.
           </p>
+
           <form onSubmit={submit} className="video-search">
             <label>
               <span aria-hidden="true">⌕</span>
@@ -250,8 +305,22 @@ export default function VideoApp() {
             </button>
           </form>
 
+          {/* Quick Category Pills */}
+          <div className="video-category-pills">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                type="button"
+                className={`cat-pill ${activeCategory === cat.id ? 'is-active' : ''}`}
+                onClick={() => handleCategoryClick(cat)}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+
           <div className="video-suggestions">
-            <span>Try:</span>
+            <span>Popular:</span>
             {suggestions.map((term) => (
               <button key={term} onClick={() => choose(term)}>
                 {term}
@@ -260,9 +329,9 @@ export default function VideoApp() {
           </div>
 
           <div className="video-trust">
-            <span>✓ Pexels &amp; Pixabay Free Commercial</span>
+            <span>✓ Pexels, Pixabay &amp; Coverr Commercial Free</span>
             <span>✓ NASA 100% Public Domain</span>
-            <span>✓ 1-Click Attribution</span>
+            <span>✓ Project Bookmark &amp; Batch Credits</span>
             <span>✓ 5 Active Sources Free</span>
           </div>
         </section>
@@ -273,19 +342,19 @@ export default function VideoApp() {
               <i>01</i>
               <b>⌕</b>
               <h2>Multi-source search</h2>
-              <p>Search Pexels, Pixabay, NASA, and Wikimedia Commons footage simultaneously.</p>
+              <p>Search Pexels, Pixabay, Coverr, NASA, and Wikimedia Commons footage in one place.</p>
             </article>
             <article>
               <i>02</i>
-              <b>▷</b>
-              <h2>Verify &amp; preview HD</h2>
-              <p>Inspect license terms, creator info, and watch fluid full-screen MP4 previews.</p>
+              <b>♥</b>
+              <h2>Bookmark project clips</h2>
+              <p>Click the heart on clips you like to build your video editing collection.</p>
             </article>
             <article>
               <i>03</i>
-              <b>CC</b>
-              <h2>1-click safe attribution</h2>
-              <p>Copy verified compliant credits ready to paste into YouTube video descriptions.</p>
+              <b>📋</b>
+              <h2>1-click batch credits</h2>
+              <p>Export all YouTube credits for your entire video project in a single click.</p>
             </article>
           </section>
         )}
@@ -302,7 +371,7 @@ export default function VideoApp() {
                 </h2>
               </div>
               <div className="source-indicators">
-                <span>Sources: Pexels, Pixabay, NASA Video &amp; Wikimedia Commons</span>
+                <span>Sources: Pexels, Pixabay, Coverr, NASA Video &amp; Wikimedia Commons</span>
               </div>
             </div>
 
@@ -335,6 +404,8 @@ export default function VideoApp() {
                   onPreview={handlePreview}
                   onCopy={copy}
                   copied={copiedId === item.id}
+                  isSaved={isMediaSaved(item.id, 'video')}
+                  onToggleSave={handleToggleSave}
                 />
               ))}
             </div>
@@ -364,7 +435,7 @@ export default function VideoApp() {
           />
         </picture>
         <p>
-          Video footage belongs to their respective uploaders. Pexels and Pixabay licenses permit free commercial use. NASA imagery is US Public Domain. Always verify licenses before publishing.
+          Video footage belongs to their respective creators. Pexels, Pixabay and Coverr licenses permit commercial use. NASA imagery is US Public Domain. Always verify licenses before publishing.
         </p>
       </footer>
 
@@ -404,11 +475,18 @@ export default function VideoApp() {
             </div>
             <div className="preview-info">
               <div className="preview-badge-row">
-                <span className={`source-badge source-${preview.source}`}>{preview.source_name}</span>
+                <span className={`source-badge-inline source-${preview.source}`}>{preview.source_name}</span>
                 <span className="license-tag">{preview.license}</span>
                 <span className={`attr-notice ${!preview.requires_attribution ? 'attr-none' : 'attr-req'}`}>
                   {!preview.requires_attribution ? '✓ No attribution required' : 'ℹ️ Attribution required'}
                 </span>
+                <button
+                  type="button"
+                  className={`preview-save-btn ${isMediaSaved(preview.id, 'video') ? 'is-saved' : ''}`}
+                  onClick={() => handleToggleSave(preview)}
+                >
+                  {isMediaSaved(preview.id, 'video') ? '♥ Saved' : '♡ Save to project'}
+                </button>
               </div>
               <h2>{preview.title}</h2>
               <p className="preview-author">{preview.creator}</p>
@@ -444,6 +522,15 @@ export default function VideoApp() {
         onClose={() => setIsSettingsOpen(false)}
         defaultTab="video"
         onKeysUpdated={(newKeys) => setApiKeys(newKeys)}
+      />
+
+      <SavedMediaDrawer
+        isOpen={isSavedDrawerOpen}
+        onClose={() => setIsSavedDrawerOpen(false)}
+        type="video"
+        onPlay={handlePreview}
+        activeId={preview?.id}
+        onItemChange={(count) => setSavedCount(count)}
       />
     </div>
   )

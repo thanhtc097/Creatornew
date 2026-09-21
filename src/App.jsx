@@ -6,8 +6,24 @@ import { INCOMPETECH_TRACKS } from './data/incompetech.js'
 import { KENNEY_TRACKS } from './data/kenney-sfx.js'
 import { FREESOUND_SHOWCASE } from './data/freesound-showcase.js'
 import SourceSettingsModal from './components/SourceSettingsModal.jsx'
+import SavedMediaDrawer from './components/SavedMediaDrawer.jsx'
+import {
+  getSavedMedia,
+  isMediaSaved,
+  toggleSaveMedia,
+} from './services/saved-media.js'
 
 const PAGE_SIZE = 12
+
+const audioCategories = [
+  { id: 'all', label: 'All Audio', query: '' },
+  { id: 'bgm', label: '🎵 Background Music', query: 'sneaky' },
+  { id: 'ui', label: '🖲️ UI & Buttons', query: 'click' },
+  { id: 'whoosh', label: '💨 Whoosh & Transitions', query: 'whoosh' },
+  { id: 'nature', label: '🌧️ Rain & Nature', query: 'rain' },
+  { id: 'foley', label: '💥 Foley & Impacts', query: 'impact' },
+  { id: 'gaming', label: '🎮 Gaming SFX', query: 'laser' },
+]
 
 const sourceOptions = [
   { value: 'all', label: 'All Audio Sources' },
@@ -116,7 +132,17 @@ function Waveform({ seed = '' }) {
   )
 }
 
-function TrackCard({ track, active, onPlay, onDownload, downloading, onCopy, copied }) {
+function TrackCard({
+  track,
+  active,
+  onPlay,
+  onDownload,
+  downloading,
+  onCopy,
+  copied,
+  isSaved,
+  onToggleSave,
+}) {
   const isCC0 = !track.requires_attribution
 
   return (
@@ -126,6 +152,15 @@ function TrackCard({ track, active, onPlay, onDownload, downloading, onCopy, cop
         <span className={`audio-attr-pill ${isCC0 ? 'is-free' : 'is-req'}`}>
           {isCC0 ? '✓ No credit needed' : 'ℹ️ Credit required'}
         </span>
+        <button
+          type="button"
+          className={`track-bookmark-btn ${isSaved ? 'is-bookmarked' : ''}`}
+          onClick={() => onToggleSave(track)}
+          title={isSaved ? 'Remove from saved project media' : 'Save to project media'}
+          aria-label={isSaved ? 'Remove from saved' : 'Save audio'}
+        >
+          {isSaved ? '♥' : '♡'}
+        </button>
       </div>
 
       <div className="track-top">
@@ -215,6 +250,9 @@ export default function App() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false)
   const [apiKeys, setApiKeys] = useState(getApiKeys())
   const [sourceNotice, setSourceNotice] = useState('')
+  const [activeCategory, setActiveCategory] = useState('all')
+  const [savedCount, setSavedCount] = useState(() => getSavedMedia('audio').length)
+  const [isSavedDrawerOpen, setIsSavedDrawerOpen] = useState(false)
   const audioRef = useRef(new Audio())
 
   useEffect(() => {
@@ -331,6 +369,21 @@ export default function App() {
     search(term, 1)
   }
 
+  function handleCategoryClick(cat) {
+    setActiveCategory(cat.id)
+    if (cat.query) {
+      setQuery(cat.query)
+      search(cat.query, 1)
+    } else {
+      pickSuggestion('comedy')
+    }
+  }
+
+  function handleToggleSave(track) {
+    const res = toggleSaveMedia(track, 'audio')
+    setSavedCount(res.count)
+  }
+
   return (
     <div className="app-shell">
       <header className="nav">
@@ -351,6 +404,15 @@ export default function App() {
         <div className="nav-note">
           <span></span> Open audio library
         </div>
+
+        <button
+          type="button"
+          className="audio-nav-saved"
+          onClick={() => setIsSavedDrawerOpen(true)}
+        >
+          ♥ Saved {savedCount > 0 && <span className="nav-saved-badge">{savedCount}</span>}
+        </button>
+
         <button
           type="button"
           className="audio-nav-config"
@@ -440,8 +502,22 @@ export default function App() {
             </button>
           </form>
 
+          {/* Quick Category Pills */}
+          <div className="audio-category-pills">
+            {audioCategories.map((cat) => (
+              <button
+                key={cat.id}
+                type="button"
+                className={`cat-pill ${activeCategory === cat.id ? 'is-active' : ''}`}
+                onClick={() => handleCategoryClick(cat)}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+
           <div className="suggestions">
-            <span>Try:</span>
+            <span>Popular:</span>
             {suggestions.map((item) => (
               <button key={item} onClick={() => pickSuggestion(item)}>
                 {item}
@@ -460,7 +536,7 @@ export default function App() {
               <b>✓</b> Freesound.org CC0 Integration
             </span>
             <span>
-              <b>✓</b> 1-Click Attribution Copy
+              <b>✓</b> Project Bookmarks &amp; Batch Credits
             </span>
           </div>
         </section>
@@ -498,6 +574,8 @@ export default function App() {
                     downloading={downloadingId === track.id}
                     onCopy={copyAttribution}
                     copied={copiedId === track.id}
+                    isSaved={isMediaSaved(track.id, 'audio')}
+                    onToggleSave={handleToggleSave}
                   />
                 ))}
               </div>
@@ -591,6 +669,8 @@ export default function App() {
                     downloading={downloadingId === track.id}
                     onCopy={copyAttribution}
                     copied={copiedId === track.id}
+                    isSaved={isMediaSaved(track.id, 'audio')}
+                    onToggleSave={handleToggleSave}
                   />
                 ))}
               </div>
@@ -648,6 +728,15 @@ export default function App() {
         onClose={() => setIsSettingsOpen(false)}
         defaultTab="audio"
         onKeysUpdated={(newKeys) => setApiKeys(newKeys)}
+      />
+
+      <SavedMediaDrawer
+        isOpen={isSavedDrawerOpen}
+        onClose={() => setIsSavedDrawerOpen(false)}
+        type="audio"
+        onPlay={playTrack}
+        activeId={activeId}
+        onItemChange={(count) => setSavedCount(count)}
       />
     </div>
   )
