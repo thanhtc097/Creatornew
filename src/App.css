@@ -127,8 +127,19 @@ h1 em { color: #17865e; }
 .how-it-works > div > span { color: #e9edf2; }
 .how-it-works h3,.results-head h2 { color: #101828; }
 .how-it-works p,.results-head > span { color: #667085; }
-.track-card { background: #fff; border-color: #e2e7ed; box-shadow: 0 8px 24px rgba(25,46,71,.06); }
+.track-card { background: #fff; border-color: #e2e7ed; box-shadow: 0 8px 24px rgba(25,46,71,.06); display: flex; flex-direction: column; }
 .track-card:hover,.track-card.is-playing { border-color: #8bd5b4; box-shadow: 0 15px 35px rgba(25,70,50,.1); }
+.track-source-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.audio-source-pill { padding: 3px 8px; border-radius: 6px; font-size: 9px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; }
+.audio-source-pill.source-kenney { background: #eff8ff; color: #175cd3; border: 1px solid #b2ddff; }
+.audio-source-pill.source-incompetech { background: #fdf2fa; color: #c11574; border: 1px solid #fccd4333; }
+.audio-source-pill.source-openverse { background: #f8f9fa; color: #344054; border: 1px solid #eaecf0; }
+.audio-attr-pill { font-size: 9px; font-weight: 700; }
+.audio-attr-pill.is-free { color: #027a48; }
+.audio-attr-pill.is-req { color: #b54708; }
+.audio-source-select { width: 220px; }
+.audio-license-select { width: 230px; }
+.attribution.is-copied { color: #027a48 !important; font-weight: 700; }
 .track-heading h3 { color: #101828; }
 .track-heading p,.wave-button,.attribution { color: #667085; }
 .waveform i { background: #d9e2e8; }
@@ -140,3 +151,4 @@ h1 em { color: #17865e; }
 .empty { border-color: #d8e0e6; }
 .empty h3 { color: #101828; }
 .pagination button { color: #475467; border-color: #d9dfe6; background: #fff; }
+
