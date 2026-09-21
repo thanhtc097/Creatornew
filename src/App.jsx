@@ -389,10 +389,10 @@ export default function App() {
       <header className="nav">
         <a className="brand" href="/" aria-label="CreatorNew home">
           <picture>
-            <source srcSet="/creatornew-logo.webp" type="image/webp" />
+            <source srcSet="/creatornew-logo.webp?v=2" type="image/webp" />
             <img
               className="creatornew-audio-logo"
-              src="/creatornew-logo.png"
+              src="/creatornew-logo.png?v=2"
               alt="CreatorNew"
               width="2075"
               height="758"
@@ -706,10 +706,10 @@ export default function App() {
       <footer>
         <a className="brand small" href="/" aria-label="CreatorNew home">
           <picture>
-            <source srcSet="/creatornew-logo.webp" type="image/webp" />
+            <source srcSet="/creatornew-logo.webp?v=2" type="image/webp" />
             <img
               className="creatornew-audio-logo"
-              src="/creatornew-logo.png"
+              src="/creatornew-logo.png?v=2"
               alt="CreatorNew"
               width="2075"
               height="758"

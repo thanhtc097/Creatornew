@@ -212,9 +212,9 @@ export default function VideoApp() {
       <header className="video-nav">
         <a href="/" aria-label="CreatorNew home">
           <picture>
-            <source srcSet="/creatornew-logo.webp" type="image/webp" />
+            <source srcSet="/creatornew-logo.webp?v=2" type="image/webp" />
             <img
-              src="/creatornew-logo.png"
+              src="/creatornew-logo.png?v=2"
               alt="CreatorNew"
               width="2075"
               height="758"
@@ -424,9 +424,9 @@ export default function VideoApp() {
 
       <footer className="video-footer">
         <picture>
-          <source srcSet="/creatornew-logo.webp" type="image/webp" />
+          <source srcSet="/creatornew-logo.webp?v=2" type="image/webp" />
           <img
-            src="/creatornew-logo.png"
+            src="/creatornew-logo.png?v=2"
             alt="CreatorNew"
             width="2075"
             height="758"
