@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import { searchAudio } from './services/audio-sources.js'
+import { getApiKeys } from './services/api-keys.js'
 import { INCOMPETECH_TRACKS } from './data/incompetech.js'
 import { KENNEY_TRACKS } from './data/kenney-sfx.js'
+import { FREESOUND_SHOWCASE } from './data/freesound-showcase.js'
+import SourceSettingsModal from './components/SourceSettingsModal.jsx'
 
 const PAGE_SIZE = 12
 
@@ -10,6 +13,7 @@ const sourceOptions = [
   { value: 'all', label: 'All Audio Sources' },
   { value: 'incompetech', label: 'Kevin MacLeod (Incompetech)' },
   { value: 'kenney', label: 'Kenney Audio (100% CC0 SFX)' },
+  { value: 'freesound', label: 'Freesound.org (700k+ SFX)' },
   { value: 'openverse', label: 'Openverse (Creative Commons)' },
 ]
 
@@ -25,11 +29,11 @@ const suggestions = [
   'Sneaky Snitch',
   'Monkeys Spinning Monkeys',
   'UI Click',
-  'Laser SFX',
-  'Relaxing piano',
-  'Rain sounds',
   'Whoosh',
-  'Podcast intro',
+  'Laser SFX',
+  'Thunder',
+  'Rainforest',
+  'Wind chimes',
 ]
 
 function Icon({ name, size = 20 }) {
@@ -75,6 +79,7 @@ function formatDuration(milliseconds) {
 function licenseBadgeLabel(item) {
   if (item.source === 'kenney') return 'CC0 1.0'
   if (item.source === 'incompetech') return 'CC BY 4.0'
+  if (item.source === 'freesound') return item.license_label || 'CC0'
   const key = (item.license || '').toLowerCase()
   const names = {
     cc0: 'CC0',
@@ -207,17 +212,24 @@ export default function App() {
   const [activeId, setActiveId] = useState(null)
   const [downloadingId, setDownloadingId] = useState(null)
   const [copiedId, setCopiedId] = useState(null)
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false)
+  const [apiKeys, setApiKeys] = useState(getApiKeys())
+  const [sourceNotice, setSourceNotice] = useState('')
   const audioRef = useRef(new Audio())
 
-  // Preload popular creator showcase (Kevin MacLeod + Kenney SFX + featured)
+  useEffect(() => {
+    setApiKeys(getApiKeys())
+  }, [])
+
+  // Preload popular creator showcase (Kevin MacLeod + Kenney SFX + Freesound showcase)
   useEffect(() => {
     const showcase = [
       INCOMPETECH_TRACKS[0], // Sneaky Snitch
       INCOMPETECH_TRACKS[1], // Monkeys Spinning Monkeys
-      INCOMPETECH_TRACKS[2], // Carefree
+      FREESOUND_SHOWCASE[0], // Deep Cinematic Whoosh
       KENNEY_TRACKS[0], // UI Click
+      FREESOUND_SHOWCASE[1], // Thunder
       KENNEY_TRACKS[15], // Digital Power Up 1
-      INCOMPETECH_TRACKS[4], // Scheming Weasel
     ].filter(Boolean)
 
     setPopularTracks(showcase)
@@ -236,6 +248,7 @@ export default function App() {
     setError('')
     setSearched(true)
     setActiveId(null)
+    setSourceNotice('')
     audioRef.current.pause()
 
     try {
@@ -245,7 +258,12 @@ export default function App() {
         license,
         page: nextPage,
         pageSize: PAGE_SIZE,
+        apiKeys,
       })
+
+      if (res.requiresKeyForLive) {
+        setSourceNotice(`Showing curated showcase for Freesound. To unlock live search across 700k+ sounds, add your free API key in Settings.`)
+      }
 
       setTracks(res.results)
       setPage(res.page)
@@ -333,6 +351,13 @@ export default function App() {
         <div className="nav-note">
           <span></span> Open audio library
         </div>
+        <button
+          type="button"
+          className="audio-nav-config"
+          onClick={() => setIsSettingsOpen(true)}
+        >
+          ⚙️ Sources &amp; API Keys
+        </button>
         <a
           className="about-link"
           href="https://creativecommons.org/share-your-work/cclicenses/"
@@ -356,7 +381,7 @@ export default function App() {
             <em>Music for every project.</em>
           </h1>
           <p className="hero-copy">
-            Search Kevin MacLeod iconic YouTube BGM (CC-BY), Kenney Audio UI &amp; game SFX (100% CC0), and Openverse.
+            Search Kevin MacLeod iconic YouTube BGM (CC-BY), Kenney Audio SFX (100% CC0), Freesound, and Openverse.
             <br />
             Preview audio, verify monetization rights, and copy ready-to-paste attribution in seconds.
           </p>
@@ -367,7 +392,7 @@ export default function App() {
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search sneaky snitch, monkeys spinning, ui click, laser, rain, piano..."
+                placeholder="Search sneaky snitch, monkeys spinning, ui click, whoosh, thunder..."
                 autoFocus
               />
               <button
@@ -432,10 +457,10 @@ export default function App() {
               <b>✓</b> Kevin MacLeod (CC-BY 4.0 BGM)
             </span>
             <span>
-              <b>✓</b> 1-Click Attribution Copy
+              <b>✓</b> Freesound.org CC0 Integration
             </span>
             <span>
-              <b>✓</b> Safe for YouTube Monetization
+              <b>✓</b> 1-Click Attribution Copy
             </span>
           </div>
         </section>
@@ -445,7 +470,7 @@ export default function App() {
             <div className="popular-heading">
               <div>
                 <p>FEATURED CREATOR TRACKS &amp; SFX</p>
-                <h2 id="popular-audio-title">Iconic BGM &amp; UI SFX for video creators</h2>
+                <h2 id="popular-audio-title">Iconic BGM, UI &amp; Cinematic SFX</h2>
               </div>
               <button onClick={() => pickSuggestion('comedy')}>View more music</button>
             </div>
@@ -486,7 +511,7 @@ export default function App() {
               <span>01</span>
               <Icon name="search" />
               <h3>Search verified libraries</h3>
-              <p>Find iconic YouTube background music, UI sound effects, and open audio.</p>
+              <p>Find iconic YouTube background music, UI sound effects, and Freesound audio.</p>
             </div>
             <div>
               <span>02</span>
@@ -517,9 +542,18 @@ export default function App() {
                 </h2>
               </div>
               <span>
-                Sources: Incompetech, Kenney Audio &amp; Openverse
+                Sources: Incompetech, Kenney Audio, Freesound &amp; Openverse
               </span>
             </div>
+
+            {sourceNotice && (
+              <div className="showcase-notice-banner audio-notice">
+                <span>ℹ️ {sourceNotice}</span>
+                <button type="button" onClick={() => setIsSettingsOpen(true)}>
+                  Open Settings ⚙️
+                </button>
+              </div>
+            )}
 
             {error && (
               <div className="message error">
@@ -605,9 +639,16 @@ export default function App() {
           </picture>
         </a>
         <p>
-          Audio tracks belong to their respective creators. Incompetech music is licensed under CC-BY 4.0; Kenney Audio is CC0. Always verify licenses before commercial broadcasting.
+          Audio tracks belong to their respective creators. Incompetech music is licensed under CC-BY 4.0; Kenney Audio is CC0; Freesound clips are filtered for CC0/CC. Always verify licenses before commercial broadcasting.
         </p>
       </footer>
+
+      <SourceSettingsModal
+        isOpen={isSettingsOpen}
+        onClose={() => setIsSettingsOpen(false)}
+        defaultTab="audio"
+        onKeysUpdated={(newKeys) => setApiKeys(newKeys)}
+      />
     </div>
   )
 }

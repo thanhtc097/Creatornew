@@ -1,18 +1,66 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { KENNEY_TRACKS, searchKenneyTracks } from '../../src/data/kenney-sfx.js'
 import { INCOMPETECH_TRACKS, searchIncompetechTracks } from '../../src/data/incompetech.js'
+import { PEXELS_SHOWCASE, searchPexelsShowcase } from '../../src/data/pexels-showcase.js'
+import { PIXABAY_SHOWCASE, searchPixabayShowcase } from '../../src/data/pixabay-showcase.js'
+import { FREESOUND_SHOWCASE, searchFreesoundShowcase } from '../../src/data/freesound-showcase.js'
+import {
+  getApiKeys,
+  setApiKey,
+  clearApiKey,
+  hasApiKey,
+  validateApiKey,
+} from '../../src/services/api-keys.js'
 import {
   formatNasaItem,
   formatWikimediaItem,
+  formatPexelsVideoItem,
+  formatPixabayVideoItem,
   fetchNasaVideoStream,
   filterVideoByLicense,
   searchVideos,
+  searchPexelsVideos,
+  searchPixabayVideos,
 } from '../../src/services/video-sources.js'
 import {
   formatOpenverseTrack,
+  formatFreesoundHit,
   matchesLicenseFilter,
   searchAudio,
+  searchFreesoundAudio,
 } from '../../src/services/audio-sources.js'
+
+describe('API Keys Service', () => {
+  beforeEach(() => {
+    window.localStorage.clear()
+    vi.restoreAllMocks()
+  })
+
+  it('stores, retrieves, and clears API keys in localStorage', () => {
+    expect(getApiKeys()).toEqual({ pexels: '', pixabay: '', freesound: '', coverr: '' })
+    expect(hasApiKey('pexels')).toBe(false)
+
+    setApiKey('pexels', 'test-pexels-key-123')
+    expect(hasApiKey('pexels')).toBe(true)
+    expect(getApiKeys().pexels).toBe('test-pexels-key-123')
+
+    clearApiKey('pexels')
+    expect(hasApiKey('pexels')).toBe(false)
+  })
+
+  it('validates API key with test queries', async () => {
+    globalThis.fetch = vi.fn().mockResolvedValue({ status: 200 })
+    const res = await validateApiKey('pexels', 'valid-key')
+    expect(res.valid).toBe(true)
+
+    globalThis.fetch = vi.fn().mockResolvedValue({ status: 401 })
+    const failRes = await validateApiKey('pexels', 'invalid-key')
+    expect(failRes.valid).toBe(false)
+
+    const emptyRes = await validateApiKey('pexels', '')
+    expect(emptyRes.valid).toBe(false)
+  })
+})
 
 describe('Kenney Audio SFX Catalog', () => {
   it('contains valid CC0 audio tracks with required metadata', () => {
@@ -78,7 +126,109 @@ describe('Incompetech Kevin MacLeod Music Catalog', () => {
   })
 })
 
-describe('NASA Video Sources Service', () => {
+describe('Pexels and Pixabay Showcases', () => {
+  it('contains valid Pexels showcase video clips', () => {
+    expect(PEXELS_SHOWCASE.length).toBeGreaterThanOrEqual(10)
+    for (const item of PEXELS_SHOWCASE) {
+      expect(item.id).toMatch(/^pexels-/)
+      expect(item.source).toBe('pexels')
+      expect(item.license).toBe('Pexels License')
+      expect(item.requires_attribution).toBe(false)
+      expect(item.videoUrl).toMatch(/^https:\/\/videos\.pexels\.com\/.+\.mp4$/)
+    }
+
+    const waterfall = searchPexelsShowcase('waterfall')
+    expect(waterfall.length).toBeGreaterThanOrEqual(1)
+  })
+
+  it('contains valid Pixabay showcase video clips', () => {
+    expect(PIXABAY_SHOWCASE.length).toBeGreaterThanOrEqual(5)
+    for (const item of PIXABAY_SHOWCASE) {
+      expect(item.id).toMatch(/^pixabay-/)
+      expect(item.source).toBe('pixabay')
+      expect(item.license).toBe('Pixabay License')
+      expect(item.requires_attribution).toBe(false)
+    }
+
+    const water = searchPixabayShowcase('water')
+    expect(water.length).toBeGreaterThanOrEqual(1)
+  })
+
+  it('formats raw Pexels video items correctly', () => {
+    const rawPexels = {
+      id: 999123,
+      image: 'https://images.pexels.com/test.jpg',
+      url: 'https://www.pexels.com/video/999123/',
+      user: { name: 'Pexels Videographer' },
+      video_files: [{ quality: 'hd', width: 1920, link: 'https://videos.pexels.com/test.mp4' }],
+    }
+    const item = formatPexelsVideoItem(rawPexels)
+    expect(item.id).toBe('pexels-999123')
+    expect(item.creator).toBe('Pexels Videographer')
+    expect(item.videoUrl).toBe('https://videos.pexels.com/test.mp4')
+    expect(item.requires_attribution).toBe(false)
+  })
+
+  it('formats raw Pixabay video items correctly', () => {
+    const rawPixabay = {
+      id: 888777,
+      tags: 'nature, forest, trees',
+      user: 'NatureFilm',
+      picture_id: '555',
+      pageURL: 'https://pixabay.com/videos/888777/',
+      videos: { medium: { url: 'https://pixabay.com/test.mp4' } },
+    }
+    const item = formatPixabayVideoItem(rawPixabay)
+    expect(item.id).toBe('pixabay-888777')
+    expect(item.creator).toBe('NatureFilm')
+    expect(item.title).toBe('nature, forest, trees')
+    expect(item.videoUrl).toBe('https://pixabay.com/test.mp4')
+  })
+})
+
+describe('Freesound Showcase and Audio Service', () => {
+  it('contains valid Freesound showcase audio tracks', () => {
+    expect(FREESOUND_SHOWCASE.length).toBeGreaterThanOrEqual(5)
+    for (const track of FREESOUND_SHOWCASE) {
+      expect(track.id).toMatch(/^freesound-/)
+      expect(track.source).toBe('freesound')
+      expect(track.license).toBe('cc0')
+      expect(track.requires_attribution).toBe(false)
+      expect(track.url).toMatch(/^https:\/\/cdn\.freesound\.org\/.+\.mp3$/)
+    }
+
+    const whoosh = searchFreesoundShowcase('whoosh')
+    expect(whoosh.length).toBeGreaterThanOrEqual(1)
+  })
+
+  it('formats raw Freesound hits correctly', () => {
+    const rawHit = {
+      id: 444333,
+      name: 'Cinematic_Sub_Hit.wav',
+      username: 'AudioCraft',
+      duration: 3.5,
+      license: 'https://creativecommons.org/publicdomain/zero/1.0/',
+      previews: { 'preview-hq-mp3': 'https://cdn.freesound.org/test.mp3' },
+    }
+    const track = formatFreesoundHit(rawHit)
+    expect(track.id).toBe('freesound-444333')
+    expect(track.title).toBe('Cinematic_Sub_Hit')
+    expect(track.creator).toBe('AudioCraft')
+    expect(track.license).toBe('cc0')
+    expect(track.requires_attribution).toBe(false)
+    expect(track.url).toBe('https://cdn.freesound.org/test.mp3')
+  })
+
+  it('searches Freesound audio with showcase fallback when no API key is provided', async () => {
+    const res = await searchFreesoundAudio({ query: 'whoosh', apiKey: '' })
+    expect(res.source).toBe('freesound')
+    expect(res.isLive).toBe(false)
+    expect(res.results.length).toBeGreaterThanOrEqual(1)
+    expect(res.results[0].title).toContain('Whoosh')
+  })
+})
+
+describe('NASA & Wikimedia Video Sources Service', () => {
   const sampleNasaRaw = {
     href: 'http://images-assets.nasa.gov/video/GSFC_Earth/collection.json',
     data: [
@@ -161,6 +311,7 @@ describe('NASA Video Sources Service', () => {
 
   it('filters video items correctly by license mode', () => {
     const nasaItem = formatNasaItem(sampleNasaRaw)
+    const pexelsItem = PEXELS_SHOWCASE[0]
     const ccByItem = {
       source: 'wikimedia',
       requires_attribution: true,
@@ -170,21 +321,35 @@ describe('NASA Video Sources Service', () => {
 
     // All licenses
     expect(filterVideoByLicense(nasaItem, 'all')).toBe(true)
+    expect(filterVideoByLicense(pexelsItem, 'all')).toBe(true)
     expect(filterVideoByLicense(ccByItem, 'all')).toBe(true)
 
     // No attribution
     expect(filterVideoByLicense(nasaItem, 'no-attribution')).toBe(true)
+    expect(filterVideoByLicense(pexelsItem, 'no-attribution')).toBe(true)
     expect(filterVideoByLicense(ccByItem, 'no-attribution')).toBe(false)
 
     // Attribution required
     expect(filterVideoByLicense(nasaItem, 'attribution')).toBe(false)
+    expect(filterVideoByLicense(pexelsItem, 'attribution')).toBe(false)
     expect(filterVideoByLicense(ccByItem, 'attribution')).toBe(true)
 
-    // Commercial allowed (NASA is always commercial allowed)
+    // Commercial allowed
     expect(filterVideoByLicense(nasaItem, 'commercial')).toBe(true)
+    expect(filterVideoByLicense(pexelsItem, 'commercial')).toBe(true)
   })
 
-  it('searches NASA and Wikimedia concurrently when source="all"', async () => {
+  it('searches Pexels and Pixabay with showcase fallback', async () => {
+    const pexRes = await searchPexelsVideos({ query: 'waterfall', apiKey: '' })
+    expect(pexRes.items.length).toBeGreaterThan(0)
+    expect(pexRes.isLive).toBe(false)
+
+    const pixRes = await searchPixabayVideos({ query: 'water', apiKey: '' })
+    expect(pixRes.items.length).toBeGreaterThan(0)
+    expect(pixRes.isLive).toBe(false)
+  })
+
+  it('searches multiple sources concurrently when source="all"', async () => {
     globalThis.fetch = vi.fn().mockImplementation(async (url) => {
       const urlStr = String(url)
       if (urlStr.includes('images-api.nasa.gov')) {
@@ -214,12 +379,10 @@ describe('NASA Video Sources Service', () => {
       }
     })
 
-    const res = await searchVideos({ query: 'space', source: 'all' })
-    expect(res.items.length).toBe(2)
-    expect(res.items.some((i) => i.source === 'nasa')).toBe(true)
-    expect(res.items.some((i) => i.source === 'wikimedia')).toBe(true)
+    const res = await searchVideos({ query: 'waterfall', source: 'all' })
+    expect(res.items.length).toBeGreaterThan(0)
+    expect(res.items.some((i) => i.source === 'pexels' || i.source === 'nasa' || i.source === 'wikimedia')).toBe(true)
   })
-
 })
 
 describe('Audio Sources Service', () => {
@@ -284,6 +447,17 @@ describe('Audio Sources Service', () => {
     expect(res.results.every((r) => r.source === 'kenney')).toBe(true)
   })
 
+  it('searches Freesound source exclusively when source="freesound"', async () => {
+    const res = await searchAudio({
+      query: 'whoosh',
+      source: 'freesound',
+    })
+
+    expect(res.source).toBe('freesound')
+    expect(res.results.length).toBeGreaterThan(0)
+    expect(res.results.every((r) => r.source === 'freesound')).toBe(true)
+  })
+
   it('combines local matches gracefully when source="all"', async () => {
     globalThis.fetch = vi.fn().mockResolvedValue({
       ok: true,
@@ -309,7 +483,6 @@ describe('Audio Sources Service', () => {
     })
 
     expect(res.results.length).toBeGreaterThan(0)
-    // Sneaky Snitch from incompetech should be at front
     expect(res.results[0].title).toBe('Sneaky Snitch')
   })
 })

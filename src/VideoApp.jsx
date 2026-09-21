@@ -1,19 +1,23 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './VideoApp.css'
 import { searchVideos, fetchNasaVideoStream } from './services/video-sources.js'
+import { getApiKeys } from './services/api-keys.js'
+import SourceSettingsModal from './components/SourceSettingsModal.jsx'
 
 const PAGE_SIZE = 12
-const suggestions = ['earth', 'mars', 'space station', 'nature', 'city', 'drone landscape', 'rocket launch']
+const suggestions = ['earth', 'waterfall', 'beach drone', 'city timelapse', 'forest sunlight', 'clouds', 'fire', 'mars']
 
 const sourceOptions = [
   { value: 'all', label: 'All Video Sources' },
+  { value: 'pexels', label: 'Pexels Video (Free Commercial)' },
+  { value: 'pixabay', label: 'Pixabay Video (Free Commercial)' },
   { value: 'nasa', label: 'NASA Video (100% Public Domain)' },
   { value: 'wikimedia', label: 'Wikimedia Commons (CC)' },
 ]
 
 const licenseFilters = [
   { value: 'all', label: 'All Free Licenses' },
-  { value: 'no-attribution', label: '✓ No Attribution Required (Public Domain / CC0)' },
+  { value: 'no-attribution', label: '✓ No Attribution Required (Public Domain / CC0 / Pexels)' },
   { value: 'attribution', label: 'ℹ️ Attribution Required (CC BY)' },
   { value: 'commercial', label: 'Commercial Use Allowed' },
 ]
@@ -83,6 +87,13 @@ export default function VideoApp() {
   const [previewStreamUrl, setPreviewStreamUrl] = useState(null)
   const [resolvingStream, setResolvingStream] = useState(false)
   const [copiedId, setCopiedId] = useState(null)
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false)
+  const [apiKeys, setApiKeys] = useState(getApiKeys())
+  const [sourceNotice, setSourceNotice] = useState('')
+
+  useEffect(() => {
+    setApiKeys(getApiKeys())
+  }, [])
 
   async function search(term = query, append = false, newPage = 1) {
     const q = term.trim()
@@ -90,6 +101,7 @@ export default function VideoApp() {
     setLoading(true)
     setError('')
     setSearched(true)
+    setSourceNotice('')
 
     try {
       const res = await searchVideos({
@@ -99,7 +111,12 @@ export default function VideoApp() {
         page: newPage,
         pageSize: PAGE_SIZE,
         continueToken: append ? continueToken : null,
+        apiKeys,
       })
+
+      if (res.requiresKeyForLive) {
+        setSourceNotice(`Showing curated showcase for ${source.toUpperCase()}. To unlock unlimited live search, add your free API key in Settings.`)
+      }
 
       setItems((current) => (append ? [...current, ...res.items] : res.items))
       setContinueToken(res.continueToken || null)
@@ -131,7 +148,7 @@ export default function VideoApp() {
     setPreview(item)
     setPreviewStreamUrl(item.videoUrl || null)
 
-    // For NASA videos, resolve the mp4 stream URL from collectionUrl if not already known
+    // For NASA videos, resolve mp4 stream URL from collectionUrl if not already known
     if (item.source === 'nasa' && item.collectionUrl && !item.videoUrl) {
       setResolvingStream(true)
       const stream = await fetchNasaVideoStream(item.collectionUrl)
@@ -165,27 +182,34 @@ export default function VideoApp() {
         <span>
           <b></b> Open video library
         </span>
+        <button
+          type="button"
+          className="video-nav-config"
+          onClick={() => setIsSettingsOpen(true)}
+        >
+          ⚙️ Sources &amp; API Keys
+        </button>
         <a
           href="https://creativecommons.org/share-your-work/cclicenses/"
           target="_blank"
           rel="noreferrer"
         >
-          About CC &amp; Public Domain licenses ↗
+          About Licenses ↗
         </a>
       </header>
 
       <main>
         <section className="video-hero">
-          <div className="video-eyebrow">NASA PUBLIC DOMAIN &amp; CREATIVE COMMONS VIDEO SEARCH</div>
+          <div className="video-eyebrow">PEXELS, PIXABAY, NASA &amp; WIKIMEDIA VIDEO SEARCH</div>
           <h1>
             Free stock videos.
             <br />
             <em>Footage for every creator project.</em>
           </h1>
           <p>
-            Search 100% Public Domain videos from NASA and Creative Commons clips from Wikimedia Commons.
+            Search 100% commercial-safe stock videos from Pexels, Pixabay, NASA Public Domain &amp; Wikimedia.
             <br />
-            Safe for YouTube monetization, check usage rights and copy attribution in one click.
+            No copyright strikes on YouTube/TikTok, verified usage rights, and 1-click legal attribution.
           </p>
           <form onSubmit={submit} className="video-search">
             <label>
@@ -193,7 +217,7 @@ export default function VideoApp() {
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search earth, mars, space, drone, nature, city..."
+                placeholder="Search waterfall, beach drone, city timelapse, clouds, space, forest..."
                 autoFocus
               />
             </label>
@@ -225,6 +249,7 @@ export default function VideoApp() {
               {loading ? 'Searching...' : 'Search videos'}
             </button>
           </form>
+
           <div className="video-suggestions">
             <span>Try:</span>
             {suggestions.map((term) => (
@@ -233,11 +258,12 @@ export default function VideoApp() {
               </button>
             ))}
           </div>
+
           <div className="video-trust">
-            <span>✓ NASA Public Domain included</span>
-            <span>✓ Clear license details</span>
-            <span>✓ 1-click ready attribution</span>
-            <span>✓ No registration</span>
+            <span>✓ Pexels &amp; Pixabay Free Commercial</span>
+            <span>✓ NASA 100% Public Domain</span>
+            <span>✓ 1-Click Attribution</span>
+            <span>✓ 5 Active Sources Free</span>
           </div>
         </section>
 
@@ -246,20 +272,20 @@ export default function VideoApp() {
             <article>
               <i>01</i>
               <b>⌕</b>
-              <h2>Search multiple sources</h2>
-              <p>Search NASA Video Library &amp; Wikimedia Commons footage with a single query.</p>
+              <h2>Multi-source search</h2>
+              <p>Search Pexels, Pixabay, NASA, and Wikimedia Commons footage simultaneously.</p>
             </article>
             <article>
               <i>02</i>
               <b>▷</b>
-              <h2>Preview and verify license</h2>
-              <p>Review footage with clear distinction between Public Domain (CC0) and CC BY attribution.</p>
+              <h2>Verify &amp; preview HD</h2>
+              <p>Inspect license terms, creator info, and watch fluid full-screen MP4 previews.</p>
             </article>
             <article>
               <i>03</i>
               <b>CC</b>
-              <h2>Copy 1-click attribution</h2>
-              <p>Generate copy-paste compliant credits for YouTube description or video credits.</p>
+              <h2>1-click safe attribution</h2>
+              <p>Copy verified compliant credits ready to paste into YouTube video descriptions.</p>
             </article>
           </section>
         )}
@@ -276,9 +302,19 @@ export default function VideoApp() {
                 </h2>
               </div>
               <div className="source-indicators">
-                <span>Sources: NASA Video Library &amp; Wikimedia Commons</span>
+                <span>Sources: Pexels, Pixabay, NASA Video &amp; Wikimedia Commons</span>
               </div>
             </div>
+
+            {sourceNotice && (
+              <div className="showcase-notice-banner">
+                <span>ℹ️ {sourceNotice}</span>
+                <button type="button" onClick={() => setIsSettingsOpen(true)}>
+                  Open Settings ⚙️
+                </button>
+              </div>
+            )}
+
             {error && (
               <div className="video-message">
                 <b>Unable to load results.</b> {error}{' '}
@@ -288,7 +324,7 @@ export default function VideoApp() {
             {!loading && !error && !items.length && (
               <div className="video-empty">
                 <b>No matching videos found</b>
-                <p>Try searching in English (e.g. &quot;earth&quot;, &quot;mars&quot;, &quot;galaxy&quot;) or changing the license filter.</p>
+                <p>Try searching in English (e.g. &quot;waterfall&quot;, &quot;ocean&quot;, &quot;clouds&quot;) or changing the license filter.</p>
               </div>
             )}
             <div className="video-grid">
@@ -302,7 +338,7 @@ export default function VideoApp() {
                 />
               ))}
             </div>
-            {(continueToken || (source === 'nasa' && items.length >= PAGE_SIZE)) && (
+            {continueToken && (
               <button
                 className="load-more"
                 disabled={loading}
@@ -328,7 +364,7 @@ export default function VideoApp() {
           />
         </picture>
         <p>
-          NASA imagery is in the public domain (US Government). Creative Commons videos belong to their respective authors. Always verify licenses before publishing.
+          Video footage belongs to their respective uploaders. Pexels and Pixabay licenses permit free commercial use. NASA imagery is US Public Domain. Always verify licenses before publishing.
         </p>
       </footer>
 
@@ -347,7 +383,7 @@ export default function VideoApp() {
             <div className="preview-player-wrap">
               {resolvingStream && (
                 <div className="preview-resolving">
-                  <span>Loading stream from NASA...</span>
+                  <span>Loading stream from source...</span>
                 </div>
               )}
               {previewStreamUrl ? (
@@ -402,6 +438,13 @@ export default function VideoApp() {
           </div>
         </div>
       )}
+
+      <SourceSettingsModal
+        isOpen={isSettingsOpen}
+        onClose={() => setIsSettingsOpen(false)}
+        defaultTab="video"
+        onKeysUpdated={(newKeys) => setApiKeys(newKeys)}
+      />
     </div>
   )
 }
