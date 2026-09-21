@@ -920,6 +920,18 @@ details p {
   color: var(--brand-lime);
 }
 
+.footer-logo {
+  width: 154px;
+  height: auto;
+  aspect-ratio: 2075 / 758;
+  display: block;
+  background: #ffffff;
+  padding: 6px 12px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+  margin-bottom: 12px;
+}
+
 /* Homepage */
 .nav-links .nav-cta {
   padding: 10px 15px;
