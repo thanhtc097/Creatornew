@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free AI Image Expander & Generative Fill. Uncrop photos to 16:9, 9:16, 1:1, expand backgrounds, and inpaint painted areas 100% privately in your browser without watermarks.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#5d5fef">
+  <link rel="icon" type="image/png" href="../creatornew-icon.png">
+  <link rel="apple-touch-icon" href="../creatornew-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
+  <link rel="canonical" href="https://creatornew.com/expand-image/">
+  <link rel="alternate" hreflang="en" href="https://creatornew.com/expand-image/">
+  <link rel="alternate" hreflang="vi" href="https://creatornew.com/vi/expand-image/">
+  <link rel="alternate" hreflang="x-default" href="https://creatornew.com/expand-image/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CreatorNew">
+  <meta property="og:title" content="Free AI Image Expander &amp; Generative Fill – AI Uncrop Online">
+  <meta property="og:description" content="Expand image aspect ratios to 16:9, 9:16, 1:1, uncrop boundaries, and generative fill with on-device AI. 100% private in-browser, no watermark.">
+  <meta property="og:url" content="https://creatornew.com/expand-image/">
+  <meta property="og:image" content="https://creatornew.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free AI Image Expander &amp; Generative Fill | CreatorNew">
+  <meta name="twitter:description" content="Uncrop photos, expand backgrounds, and inpaint with on-device Fourier neural AI. Free & private.">
+  <meta name="twitter:image" content="https://creatornew.com/og-image.png">
+  <title>Free AI Image Expander & Generative Fill – Uncrop & Outpaint Online | CreatorNew</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="../creatornew-logo.webp" type="image/webp" fetchpriority="high">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/expand-image.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://creatornew.com/expand-image/#breadcrumbs",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://creatornew.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "AI Tools",
+            "item": "https://creatornew.com/ai-tools/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "AI Image Expander",
+            "item": "https://creatornew.com/expand-image/"
+          }
+        ]
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://creatornew.com/expand-image/#app",
+        "name": "CreatorNew AI Image Expander & Generative Fill",
+        "url": "https://creatornew.com/expand-image/",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Web Browser",
+        "browserRequirements": "Requires JavaScript, WebAssembly/WebGPU, and a modern web browser",
+        "description": "Free on-device AI outpainting and uncropping tool that expands photo aspect ratios (16:9, 9:16, 1:1) and synthesizes missing backgrounds with Fourier neural inpainting locally in your browser.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "featureList": [
+          "Outpaint and expand aspect ratios to 16:9, 9:16, 1:1, 4:5, 21:9",
+          "Generative fill inpainting brush to remove and replace unwanted objects",
+          "On-device LaMa Fast Fourier Convolution neural network",
+          "100% private in-browser WebAssembly and WebGPU execution",
+          "Interactive before and after comparison split slider",
+          "No watermarks and no registration required"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://creatornew.com/expand-image/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is AI Image Expander (Uncrop)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "AI Image Expander extends the canvas of your photo beyond its original borders (outpainting), using deep neural networks to naturally continue the background scenery, lighting, and textures."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is CreatorNew AI Image Expander free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, 100% free with no subscriptions, credit systems, watermarks, or usage caps."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are my photos uploaded to external servers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The AI neural model executes entirely inside your browser memory via WebAssembly and WebGPU. Your photos never leave your device."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use Generative Fill to remove objects while expanding?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Switch on the Inpaint Brush and paint over any unwanted object or defect. The AI will simultaneously replace the painted region and synthesize the expanded borders seamlessly."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#expandTool">Skip to Image Expander</a>
+  <header class="topbar">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="../" aria-label="CreatorNew home">
+        <picture>
+          <source srcset="../creatornew-logo.webp" type="image/webp">
+          <img class="brand-logo" src="../creatornew-logo.png" alt="CreatorNew" width="2075" height="758" fetchpriority="high" decoding="async">
+        </picture>
+      </a>
+      <div class="nav-links">
+        <details class="nav-dropdown" name="site-nav-dropdown">
+          <summary>AI Tools <span aria-hidden="true">⌄</span></summary>
+          <div class="nav-dropdown-menu">
+            <a href="../expand-image/"><strong>AI Image Expander</strong><small>Uncrop &amp; generative fill</small></a>
+            <a href="../image-upscaler/"><strong>AI Image Upscaler</strong><small>Increase resolution 2X-8X</small></a>
+            <a href="../background-remover/"><strong>Background Remover</strong><small>Erase backgrounds &amp; objects</small></a>
+            <a href="../auto-subtitle/"><strong>Auto Subtitle Generator</strong><small>Viral animated captions</small></a>
+            <a href="../ai-prompt-builder/"><strong>AI Prompt Builder</strong><small>Prompt engineering suite</small></a>
+          </div>
+        </details>
+        <a href="../image-tools/">Image Tools</a>
+        <a href="../pdf-tools/">PDF Tools</a>
+        <a href="#faq">FAQ</a>
+        <a href="../blog/">Blog</a>
+      </div>
+    </nav>
+  </header>
+
+  <nav class="breadcrumb-container" aria-label="Breadcrumb">
+    <ol class="breadcrumb-list">
+      <li><a href="../">Home</a></li>
+      <li class="breadcrumb-separator" aria-hidden="true">&rsaquo;</li>
+      <li><a href="../ai-tools/">AI Tools</a></li>
+      <li class="breadcrumb-separator" aria-hidden="true">&rsaquo;</li>
+      <li aria-current="page">AI Image Expander</li>
+    </ol>
+  </nav>
+
+  <main class="hero" id="expandTool">
+    <section class="hero-copy" style="max-width: 900px; margin: 0 auto 1.5rem;">
+      <p class="eyebrow">On-Device Neural Outpainting &bull; 100% Free &bull; Zero Cloud Uploads</p>
+      <h1>Free AI Image Expander — <span>Generative Fill &amp; AI Uncrop Online</span></h1>
+      <p class="lead">
+        Expand your photos into 16:9 YouTube widescreen, 9:16 TikTok vertical, or 1:1 square. 
+        Our on-device Fourier neural network synthesizes natural background extensions and inpainting seamlessly in your browser with zero watermark.
+      </p>
+    </section>
+
+    <!-- Upload & Dropzone -->
+    <div class="expand-tool">
+      <div class="expand-dropzone" id="expandDropzone" tabindex="0" role="button" aria-label="Upload an image to expand and uncrop">
+        <div class="expand-drop-icon" aria-hidden="true">⛶</div>
+        <h2>Drop your image here, or browse</h2>
+        <p>Supports JPG, PNG, WebP, and AVIF up to 25 MB &bull; 100% Private in-browser AI</p>
+        <button type="button" class="expand-upload-btn" id="expandChooseBtn">Choose Image</button>
+        <input type="file" id="expandFileInput" accept="image/png,image/jpeg,image/webp,image/avif" class="sr-only">
+
+        <!-- Sample Photos -->
+        <div class="expand-samples">
+          <div class="expand-samples-title">Or try with instant sample photos:</div>
+          <div class="expand-samples-grid">
+            <button type="button" class="expand-sample-item" data-sample="../samples/sample-portrait.jpg">
+              <img src="../samples/sample-portrait.jpg" alt="Portrait sample" loading="lazy">
+              <span>Portrait (Square to 16:9)</span>
+            </button>
+            <button type="button" class="expand-sample-item" data-sample="../samples/sample-product.jpg">
+              <img src="../samples/sample-product.jpg" alt="Product sample" loading="lazy">
+              <span>Product Photography</span>
+            </button>
+            <button type="button" class="expand-sample-item" data-sample="../samples/sample-object.jpg">
+              <img src="../samples/sample-object.jpg" alt="Object sample" loading="lazy">
+              <span>Landscape &amp; Vintage</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="expandStatusAlert" class="status-alert" hidden></div>
+
+      <!-- Interactive Workspace -->
+      <div class="expand-workspace" id="expandWorkspace" hidden>
+        <!-- Left Column: Controls -->
+        <aside class="expand-controls" aria-label="Expand Controls">
+          <!-- Aspect Ratio Presets -->
+          <div>
+            <div class="control-group-title">
+              <span>1. Target Aspect Ratio</span>
+              <small>Canvas Preset</small>
+            </div>
+            <div class="aspect-grid" role="radiogroup" aria-label="Aspect Ratio Selection">
+              <button type="button" class="aspect-btn is-active" data-aspect="16:9" role="radio" aria-checked="true">
+                <strong>16:9</strong>
+                <span>YouTube</span>
+              </button>
+              <button type="button" class="aspect-btn" data-aspect="9:16" role="radio" aria-checked="false">
+                <strong>9:16</strong>
+                <span>Shorts/TikTok</span>
+              </button>
+              <button type="button" class="aspect-btn" data-aspect="1:1" role="radio" aria-checked="false">
+                <strong>1:1</strong>
+                <span>Square</span>
+              </button>
+              <button type="button" class="aspect-btn" data-aspect="4:5" role="radio" aria-checked="false">
+                <strong>4:5</strong>
+                <span>Instagram</span>
+              </button>
+              <button type="button" class="aspect-btn" data-aspect="21:9" role="radio" aria-checked="false">
+                <strong>21:9</strong>
+                <span>Cinema</span>
+              </button>
+              <button type="button" class="aspect-btn" data-aspect="custom" role="radio" aria-checked="false">
+                <strong>Custom</strong>
+                <span>Sliders</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Alignment -->
+          <div>
+            <div class="control-group-title">
+              <span>2. Image Alignment</span>
+              <small>Position Inside Canvas</small>
+            </div>
+            <div class="alignment-group" role="radiogroup" aria-label="Position Alignment">
+              <button type="button" class="align-btn is-active" data-align="center">Center</button>
+              <button type="button" class="align-btn" data-align="left">Left</button>
+              <button type="button" class="align-btn" data-align="right">Right</button>
+              <button type="button" class="align-btn" data-align="top">Top</button>
+              <button type="button" class="align-btn" data-align="bottom">Bottom</button>
+            </div>
+          </div>
+
+          <!-- Custom Margin Sliders (if Custom aspect ratio selected) -->
+          <details class="custom-margins-details" id="customMarginsDetails" hidden>
+            <summary>Custom Border Padding ▾</summary>
+            <div class="custom-margins-content">
+              <div class="margin-slider-row">
+                <div class="margin-slider-label"><span>Expand Left</span><span id="valMarginL">150px</span></div>
+                <input type="range" id="marginL" min="0" max="600" value="150" aria-label="Expand left pixels">
+              </div>
+              <div class="margin-slider-row">
+                <div class="margin-slider-label"><span>Expand Right</span><span id="valMarginR">150px</span></div>
+                <input type="range" id="marginR" min="0" max="600" value="150" aria-label="Expand right pixels">
+              </div>
+              <div class="margin-slider-row">
+                <div class="margin-slider-label"><span>Expand Top</span><span id="valMarginT">0px</span></div>
+                <input type="range" id="marginT" min="0" max="600" value="0" aria-label="Expand top pixels">
+              </div>
+              <div class="margin-slider-row">
+                <div class="margin-slider-label"><span>Expand Bottom</span><span id="valMarginB">0px</span></div>
+                <input type="range" id="marginB" min="0" max="600" value="0" aria-label="Expand bottom pixels">
+              </div>
+            </div>
+          </details>
+
+          <!-- Inpainting / Generative Fill Brush -->
+          <div class="brush-toolbar">
+            <div class="brush-controls-row">
+              <span style="font-size: 0.88rem; font-weight: 700; color: #fff;">Inpaint Brush</span>
+              <button type="button" class="brush-toggle-btn" id="btnToggleBrush">Enable Brush</button>
+              <button type="button" class="brush-clear-btn" id="btnClearBrush">Clear</button>
+            </div>
+            <div class="margin-slider-row" style="margin-top: 0.35rem;">
+              <div class="margin-slider-label"><span>Brush Size</span><span id="valBrushSize">30px</span></div>
+              <input type="range" id="brushSize" min="10" max="100" value="30" aria-label="Brush radius">
+            </div>
+          </div>
+
+          <!-- Stats Pill -->
+          <div class="expand-stats-pill">
+            <div>Original: <strong id="origDimsText">--</strong></div>
+            <div>Target: <strong id="targetDimsText">--</strong></div>
+            <div class="expand-diff-badge" id="expandBadge">+78% Expanded (16:9)</div>
+          </div>
+
+          <!-- Action Button -->
+          <div>
+            <button type="button" class="expand-action-btn" id="btnRunExpand">
+              <span>✦</span> Expand &amp; Generative Fill
+            </button>
+            <button type="button" class="secondary-action-btn" id="btnCancelExpand" style="width: 100%; margin-top: 0.5rem;" hidden>
+              Cancel
+            </button>
+          </div>
+        </aside>
+
+        <!-- Right Column: Visual Stage -->
+        <main class="expand-stage-panel" aria-label="Visual Stage">
+          <div class="stage-tabs" role="tablist">
+            <button type="button" class="stage-tab-btn is-active" id="btnTabEditor" role="tab" aria-selected="true">Layout &amp; Inpaint Editor</button>
+            <button type="button" class="stage-tab-btn" id="btnTabCompare" role="tab" aria-selected="false">Before / After Split</button>
+          </div>
+
+          <!-- Visual Layout Stage -->
+          <div class="canvas-stage-wrapper" id="expandEditorStage">
+            <div class="stage-viewport">
+              <img id="expandedCanvasPreview" class="expanded-canvas-preview" alt="Canvas layout preview" src="">
+              <canvas id="brushCanvasLayer" class="brush-canvas-layer" aria-label="Draw inpaint brush strokes"></canvas>
+            </div>
+          </div>
+
+          <!-- Split Slider Stage -->
+          <div class="expand-slider-container" id="expandSliderContainer" hidden>
+            <div class="expand-slider-frame" id="expandSliderFrame">
+              <img id="imgSliderAfter" class="slider-img" alt="Expanded result preview" src="">
+              <div class="slider-overlay-wrap">
+                <img id="imgSliderBefore" class="slider-img" alt="Original source preview" src="">
+              </div>
+              <div class="slider-divider-line" aria-hidden="true">
+                <div class="slider-divider-handle">⮜ ⮞</div>
+              </div>
+              <input type="range" class="slider-range-input" id="expandSliderRange" min="0" max="100" value="50" aria-label="Slide to compare original and expanded image">
+              <span class="slider-badge-left" id="sliderBadgeLeft">Original</span>
+              <span class="slider-badge-right" id="sliderBadgeRight">AI Expanded</span>
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="expand-progress-shell" id="expandProgressShell" hidden>
+            <div class="expand-progress-meta">
+              <span id="expandProgressStageText">Synthesizing AI background...</span>
+              <span id="expandProgressPercentText">0%</span>
+            </div>
+            <div class="expand-progress-track">
+              <div class="expand-progress-fill" id="expandProgressFill"></div>
+            </div>
+          </div>
+
+          <!-- Export & Download Bar -->
+          <div class="expand-export-bar">
+            <div class="export-format-group">
+              <label for="exportFormat">Format:</label>
+              <select id="exportFormat" class="export-select">
+                <option value="png">PNG (Lossless)</option>
+                <option value="jpeg">JPG (High Quality)</option>
+                <option value="webp">WebP (Optimized)</option>
+              </select>
+
+              <div id="qualityRow" hidden style="margin-left: 0.5rem; display: inline-flex; align-items: center; gap: 0.35rem;">
+                <label for="exportQuality"><small>Quality:</small></label>
+                <input type="range" id="exportQuality" min="70" max="100" value="95" style="width: 80px;">
+              </div>
+            </div>
+
+            <div class="export-actions">
+              <button type="button" class="secondary-action-btn" id="btnClear">Reset</button>
+              <button type="button" class="secondary-action-btn" id="btnShare">Share Tool</button>
+              <button type="button" class="download-btn" id="btnDownload" disabled>
+                <span>↓</span> Download Expanded Image
+              </button>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </main>
+
+  <!-- How It Works Section -->
+  <section class="content-section">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">3-Step Outpainting</p>
+        <h2>How to expand photos with AI online</h2>
+        <p>Zero software installs or cloud subscriptions. Uncrop and generative fill locally.</p>
+      </div>
+      <div class="guide-grid">
+        <div class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Step 1</span>
+            <h3>Upload Image</h3>
+            <p>Select any photo from your device or test with our instant portrait or product photography samples.</p>
+          </div>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Step 2</span>
+            <h3>Choose Ratio &amp; Brush</h3>
+            <p>Select your desired canvas aspect ratio (16:9, 9:16, 1:1, etc.) and optionally paint over any unwanted object to inpaint.</p>
+          </div>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Step 3</span>
+            <h3>Expand &amp; Export</h3>
+            <p>Click Expand to run the on-device Fourier neural model, inspect the results with the split slider, and download in full resolution.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Technology Benefits -->
+  <section class="content-section soft">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">Why CreatorNew AI Expander</p>
+        <h2>True generative inpainting with zero cloud risk</h2>
+      </div>
+      <div class="guide-grid">
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label" style="background: rgba(16,185,129,0.15); color: #10b981;">100% Private</span>
+            <h3>On-Device Neural Execution</h3>
+            <p>Your photos never leave your device. The Fast Fourier Convolution neural network executes inside your browser via WebAssembly/WebGPU.</p>
+          </div>
+        </article>
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label" style="background: rgba(99,68,245,0.15); color: #6344f5;">Content-Aware</span>
+            <h3>Seamless Scenery Continuation</h3>
+            <p>Our AI analyzes color gradients, lighting direction, and scene textures to extrapolate backgrounds smoothly without harsh seams.</p>
+          </div>
+        </article>
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label" style="background: rgba(245,158,11,0.15); color: #f59e0b;">Multi-Platform</span>
+            <h3>Ready for Social Media</h3>
+            <p>Instantly convert square images to 16:9 for YouTube thumbnails or 9:16 for TikTok, Instagram Reels, and YouTube Shorts without cropping your subject.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="content-section" id="faq">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">Frequently Asked Questions</p>
+        <h2>Everything you need to know about AI Image Expander</h2>
+      </div>
+      <div class="faq-list" style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem;">
+        <details class="faq-item" style="background: #141622; border: 1px solid #272a3d; border-radius: 12px; padding: 1rem 1.25rem;">
+          <summary style="font-weight: 700; color: #fff; cursor: pointer;">What is AI Uncropping or Outpainting?</summary>
+          <p style="margin-top: 0.75rem; color: #9496a8; line-height: 1.6;">
+            Outpainting extends an image beyond its original canvas boundaries. Rather than cropping or stretching your photo, the AI model generates realistic extensions of the background, sky, room, or scenery to fill the new space.
+          </p>
+        </details>
+        <details class="faq-item" style="background: #141622; border: 1px solid #272a3d; border-radius: 12px; padding: 1rem 1.25rem;">
+          <summary style="font-weight: 700; color: #fff; cursor: pointer;">How does Generative Fill work alongside expansion?</summary>
+          <p style="margin-top: 0.75rem; color: #9496a8; line-height: 1.6;">
+            If you want to remove an unwanted tourist, watermark, or object while expanding the canvas, activate the Inpaint Brush and paint over that area. The neural network will inpaint the brushed area and synthesize the outer borders in a single unified pass.
+          </p>
+        </details>
+        <details class="faq-item" style="background: #141622; border: 1px solid #272a3d; border-radius: 12px; padding: 1rem 1.25rem;">
+          <summary style="font-weight: 700; color: #fff; cursor: pointer;">Why does the first use take a few moments to load?</summary>
+          <p style="margin-top: 0.75rem; color: #9496a8; line-height: 1.6;">
+            On your first visit, your browser caches the lightweight neural model weights (92.6 MB). After the first run, the model remains cached in your browser and executes instantly, even offline.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Tools -->
+  <section class="content-section soft">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">Related AI Tools</p>
+        <h2>Explore our on-device suite</h2>
+      </div>
+      <div class="guide-grid">
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Super Resolution</span>
+            <h3><a href="../image-upscaler/">AI Image Upscaler</a></h3>
+            <p>Increase resolution 2X, 4X, 8X, fix blurry shots, and restore micro-textures with private AI.</p>
+            <a class="tool-link" href="../image-upscaler/">Upscale image &rarr;</a>
+          </div>
+        </article>
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Computer Vision</span>
+            <h3><a href="../background-remover/">AI Background Remover</a></h3>
+            <p>Remove backgrounds and erase unwanted objects from photos with zero cloud uploads.</p>
+            <a class="tool-link" href="../background-remover/">Remove background &rarr;</a>
+          </div>
+        </article>
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Video AI</span>
+            <h3><a href="../auto-subtitle/">AI Auto Subtitle Generator</a></h3>
+            <p>Generate animated bouncing captions for TikTok and YouTube Shorts in your browser.</p>
+            <a class="tool-link" href="../auto-subtitle/">Create subtitles &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© 2026 CreatorNew. Free tools for creators.</span>
+      <div class="footer-links">
+        <a href="../">Home</a>
+        <a href="../image-tools/">Image Tools</a>
+        <a href="../ai-tools/">AI Tools</a>
+        <a href="../about/">About</a>
+        <a href="../privacy-policy/">Privacy</a>
+        <a href="../terms/">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="../js/site-i18n.js"></script>
+  <script type="module" src="../js/expand-image.js"></script>
+</body>
+</html>

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mở rộng ảnh bằng AI và Generative Fill miễn phí 100%. Đổi ảnh vuông sang 16:9 cho YouTube, 9:16 cho TikTok Reels, tự động vẽ bù cảnh quan (AI uncrop / outpainting) trực tiếp trên trình duyệt, không watermark.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#5d5fef">
+  <link rel="icon" type="image/png" href="../../creatornew-icon.png">
+  <link rel="apple-touch-icon" href="../../creatornew-icon.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="canonical" href="https://creatornew.com/vi/expand-image/">
+  <link rel="alternate" hreflang="en" href="https://creatornew.com/expand-image/">
+  <link rel="alternate" hreflang="vi" href="https://creatornew.com/vi/expand-image/">
+  <link rel="alternate" hreflang="x-default" href="https://creatornew.com/expand-image/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CreatorNew">
+  <meta property="og:title" content="Mở Rộng Ảnh Bằng AI &amp; Generative Fill — AI Uncrop Online | CreatorNew">
+  <meta property="og:description" content="Mở rộng khung hình 16:9, 9:16, tự động vẽ tiếp phông nền và xóa vật thể bằng AI on-device miễn phí, không watermark.">
+  <meta property="og:url" content="https://creatornew.com/vi/expand-image/">
+  <meta property="og:image" content="https://creatornew.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mở Rộng Ảnh Bằng AI &amp; Generative Fill | CreatorNew">
+  <meta name="twitter:description" content="AI Uncrop &amp; outpainting mở rộng khung hình ảnh sang 16:9, 9:16 mượt mà không làm méo chủ thể.">
+  <meta name="twitter:image" content="https://creatornew.com/og-image.png">
+  <title>Mở Rộng Ảnh Bằng AI & Generative Fill — Tự Động Vẽ Bù Khung Hình Online Miễn Phí | CreatorNew</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="../../creatornew-logo.webp" type="image/webp" fetchpriority="high">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/expand-image.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://creatornew.com/vi/expand-image/#breadcrumbs",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Trang chủ",
+            "item": "https://creatornew.com/vi/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Công cụ AI",
+            "item": "https://creatornew.com/vi/#tools"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Mở rộng ảnh AI",
+            "item": "https://creatornew.com/vi/expand-image/"
+          }
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://creatornew.com/vi/expand-image/#software",
+        "name": "CreatorNew Mở Rộng Ảnh Bằng AI & Generative Fill",
+        "url": "https://creatornew.com/vi/expand-image/",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "VND" },
+        "featureList": [
+          "Mở rộng tỉ lệ ảnh sang 16:9, 9:16, 1:1, 4:5, 21:9",
+          "Tự động vẽ bù phông nền cảnh quan bằng AI LaMa Fourier",
+          "Cọ vẽ Generative Fill xóa vật thể thừa đồng thời",
+          "Xử lý trực tiếp trên trình duyệt, bảo mật 100%",
+          "Thanh trượt vuốt so sánh Before/After trực quan",
+          "Không watermark, không yêu cầu đăng ký tài khoản"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://creatornew.com/vi/expand-image/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Mở rộng ảnh bằng AI (Uncrop / Outpainting) là gì?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Đây là kỹ thuật mở rộng khung hình ra ngoài viền ảnh ban đầu. Thay vì kéo giãn làm biến dạng chủ thể, AI sẽ tự động phân tích bối cảnh và vẽ nối tiếp phần nền cảnh quan (bầu trời, phòng ốc, thiên nhiên) một cách tự nhiên."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Công cụ này có an toàn và miễn phí không?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Hoàn toàn miễn phí và bảo mật tuyệt đối. Thuật toán AI chạy cục bộ trong bộ nhớ trình duyệt của bạn (WebAssembly/WebGPU), ảnh không bao giờ bị tải lên bất kỳ máy chủ nào."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Làm thế nào để đổi ảnh vuông 1:1 sang ảnh bìa YouTube 16:9?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Bạn chỉ cần tải ảnh lên, chọn tỉ lệ '16:9' và bấm 'Mở Rộng & Điền Bằng AI'. AI sẽ mở rộng hai bên viền ảnh sang chuẩn 16:9 mà vẫn giữ nguyên đối tượng ở giữa."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#expandTool">Đi đến công cụ mở rộng ảnh</a>
+  <header class="topbar">
+    <nav class="nav" aria-label="Điều hướng chính">
+      <a class="brand" href="../../vi/" aria-label="Trang chủ CreatorNew">
+        <picture>
+          <source srcset="../../creatornew-logo.webp" type="image/webp">
+          <img class="brand-logo" src="../../creatornew-logo.png" alt="CreatorNew" width="2075" height="758" fetchpriority="high" decoding="async">
+        </picture>
+      </a>
+      <div class="nav-links">
+        <details class="nav-dropdown" name="site-nav-dropdown">
+          <summary>Công cụ AI <span aria-hidden="true">⌄</span></summary>
+          <div class="nav-dropdown-menu">
+            <a href="../../vi/expand-image/"><strong>Mở rộng ảnh AI</strong><small>AI Uncrop &amp; Generative Fill</small></a>
+            <a href="../../vi/image-upscaler/"><strong>Tăng chất lượng ảnh AI</strong><small>Phóng to 2X-8X, sửa mờ</small></a>
+            <a href="../../vi/background-remover/"><strong>Xóa phông ảnh AI</strong><small>Tách nền ảnh thẻ, sản phẩm</small></a>
+            <a href="../../vi/tao-phu-de-video/"><strong>Tạo phụ đề video AI</strong><small>Phụ đề nhảy chữ kiểu TikTok</small></a>
+          </div>
+        </details>
+        <a href="../../vi/#tools">Công cụ ảnh</a>
+        <a href="../../vi/merge-pdf/">Ghép PDF</a>
+        <a href="#faq">Hỏi đáp</a>
+        <a href="../../vi/guides/">Hướng dẫn</a>
+      </div>
+    </nav>
+  </header>
+
+  <nav class="breadcrumb-container" aria-label="Breadcrumb">
+    <ol class="breadcrumb-list">
+      <li><a href="../../vi/">Trang chủ</a></li>
+      <li class="breadcrumb-separator" aria-hidden="true">&rsaquo;</li>
+      <li><a href="../../vi/#tools">Công cụ AI</a></li>
+      <li class="breadcrumb-separator" aria-hidden="true">&rsaquo;</li>
+      <li aria-current="page">Mở rộng ảnh AI</li>
+    </ol>
+  </nav>
+
+  <main class="hero" id="expandTool">
+    <section class="hero-copy" style="max-width: 900px; margin: 0 auto 1.5rem;">
+      <p class="eyebrow">Trí Tuệ Nhân Tạo On-Device &bull; Miễn Phí 100% &bull; Không Tải Lên Máy Chủ</p>
+      <h1>Mở Rộng Ảnh Bằng AI — <span>Generative Fill &amp; Tự Động Vẽ Bù Khung Hình</span></h1>
+      <p class="lead">
+        Chuyển ảnh sang tỉ lệ 16:9 YouTube, 9:16 TikTok Reels hoặc 1:1 Instagram. 
+        Mô hình mạng nơ-ron cục bộ tự động vẽ nối tiếp cảnh quan tự nhiên mà không làm méo chủ thể. Miễn phí, không watermark.
+      </p>
+    </section>
+
+    <!-- Upload & Dropzone -->
+    <div class="expand-tool">
+      <div class="expand-dropzone" id="expandDropzone" tabindex="0" role="button" aria-label="Tải ảnh lên để mở rộng khung hình">
+        <div class="expand-drop-icon" aria-hidden="true">⛶</div>
+        <h2>Kéo thả ảnh vào đây, hoặc nhấn để chọn</h2>
+        <p>Hỗ trợ định dạng JPG, PNG, WebP, AVIF lên đến 25 MB &bull; Xử lý 100% riêng tư</p>
+        <button type="button" class="expand-upload-btn" id="expandChooseBtn">Chọn ảnh từ thiết bị</button>
+        <input type="file" id="expandFileInput" accept="image/png,image/jpeg,image/webp,image/avif" class="sr-only">
+
+        <!-- Sample Photos -->
+        <div class="expand-samples">
+          <div class="expand-samples-title">Hoặc thử nhanh với ảnh mẫu có sẵn:</div>
+          <div class="expand-samples-grid">
+            <button type="button" class="expand-sample-item" data-sample="../../samples/sample-portrait.jpg">
+              <img src="../../samples/sample-portrait.jpg" alt="Ảnh chân dung mẫu" loading="lazy">
+              <span>Chân Dung (Mở rộng sang 16:9)</span>
+            </button>
+            <button type="button" class="expand-sample-item" data-sample="../../samples/sample-product.jpg">
+              <img src="../../samples/sample-product.jpg" alt="Ảnh sản phẩm mẫu" loading="lazy">
+              <span>Ảnh Sản Phẩm</span>
+            </button>
+            <button type="button" class="expand-sample-item" data-sample="../../samples/sample-object.jpg">
+              <img src="../../samples/sample-object.jpg" alt="Ảnh đồ vật mẫu" loading="lazy">
+              <span>Ảnh Phong Cảnh / Vật Thể</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="expandStatusAlert" class="status-alert" hidden></div>
+
+      <!-- Interactive Workspace -->
+      <div class="expand-workspace" id="expandWorkspace" hidden>
+        <!-- Left Column: Controls -->
+        <aside class="expand-controls" aria-label="Bảng điều khiển">
+          <!-- Aspect Ratio Presets -->
+          <div>
+            <div class="control-group-title">
+              <span>1. Tỉ Lệ Khung Hình Đích</span>
+              <small>Tỉ lệ chuẩn</small>
+            </div>
+            <div class="aspect-grid" role="radiogroup" aria-label="Chọn tỉ lệ khung hình">
+              <button type="button" class="aspect-btn is-active" data-aspect="16:9" role="radio" aria-checked="true">
+                <strong>16:9</strong>
+                <span>YouTube Ngang</span>
+              </button>
+              <button type="button" class="aspect-btn" data-aspect="9:16" role="radio" aria-checked="false">
+                <strong>9:16</strong>
+                <span>TikTok / Shorts</span>
+              </button>
+              <button type="button" class="aspect-btn" data-aspect="1:1" role="radio" aria-checked="false">
+                <strong>1:1</strong>
+                <span>Ảnh Vuông</span>
+              </button>
+              <button type="button" class="aspect-btn" data-aspect="4:5" role="radio" aria-checked="false">
+                <strong>4:5</strong>
+                <span>Instagram Dọc</span>
+              </button>
+              <button type="button" class="aspect-btn" data-aspect="21:9" role="radio" aria-checked="false">
+                <strong>21:9</strong>
+                <span>Điện Ảnh Siêu Rộng</span>
+              </button>
+              <button type="button" class="aspect-btn" data-aspect="custom" role="radio" aria-checked="false">
+                <strong>Tự chỉnh</strong>
+                <span>Thanh trượt</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Alignment -->
+          <div>
+            <div class="control-group-title">
+              <span>2. Căn Vị Trí Ảnh Gốc</span>
+              <small>Vị trí trong khung mới</small>
+            </div>
+            <div class="alignment-group" role="radiogroup" aria-label="Căn vị trí">
+              <button type="button" class="align-btn is-active" data-align="center">Ở giữa</button>
+              <button type="button" class="align-btn" data-align="left">Căn trái</button>
+              <button type="button" class="align-btn" data-align="right">Căn phải</button>
+              <button type="button" class="align-btn" data-align="top">Căn trên</button>
+              <button type="button" class="align-btn" data-align="bottom">Căn dưới</button>
+            </div>
+          </div>
+
+          <!-- Custom Margin Sliders (if Custom aspect ratio selected) -->
+          <details class="custom-margins-details" id="customMarginsDetails" hidden>
+            <summary>Tùy chỉnh khoảng mở rộng ▾</summary>
+            <div class="custom-margins-content">
+              <div class="margin-slider-row">
+                <div class="margin-slider-label"><span>Mở rộng bên trái</span><span id="valMarginL">150px</span></div>
+                <input type="range" id="marginL" min="0" max="600" value="150" aria-label="Mở rộng trái">
+              </div>
+              <div class="margin-slider-row">
+                <div class="margin-slider-label"><span>Mở rộng bên phải</span><span id="valMarginR">150px</span></div>
+                <input type="range" id="marginR" min="0" max="600" value="150" aria-label="Mở rộng phải">
+              </div>
+              <div class="margin-slider-row">
+                <div class="margin-slider-label"><span>Mở rộng phía trên</span><span id="valMarginT">0px</span></div>
+                <input type="range" id="marginT" min="0" max="600" value="0" aria-label="Mở rộng trên">
+              </div>
+              <div class="margin-slider-row">
+                <div class="margin-slider-label"><span>Mở rộng phía dưới</span><span id="valMarginB">0px</span></div>
+                <input type="range" id="marginB" min="0" max="600" value="0" aria-label="Mở rộng dưới">
+              </div>
+            </div>
+          </details>
+
+          <!-- Inpainting / Generative Fill Brush -->
+          <div class="brush-toolbar">
+            <div class="brush-controls-row">
+              <span style="font-size: 0.88rem; font-weight: 700; color: #fff;">Cọ Generative Fill</span>
+              <button type="button" class="brush-toggle-btn" id="btnToggleBrush">Bật Cọ Vẽ</button>
+              <button type="button" class="brush-clear-btn" id="btnClearBrush">Xóa nét vẽ</button>
+            </div>
+            <div class="margin-slider-row" style="margin-top: 0.35rem;">
+              <div class="margin-slider-label"><span>Kích thước cọ</span><span id="valBrushSize">30px</span></div>
+              <input type="range" id="brushSize" min="10" max="100" value="30" aria-label="Kích thước cọ vẽ">
+            </div>
+          </div>
+
+          <!-- Stats Pill -->
+          <div class="expand-stats-pill">
+            <div>Ảnh ban đầu: <strong id="origDimsText">--</strong></div>
+            <div>Khung hình mới: <strong id="targetDimsText">--</strong></div>
+            <div class="expand-diff-badge" id="expandBadge">+78% Diện tích (16:9)</div>
+          </div>
+
+          <!-- Action Button -->
+          <div>
+            <button type="button" class="expand-action-btn" id="btnRunExpand">
+              <span>✦</span> Mở Rộng &amp; Điền Bằng AI
+            </button>
+            <button type="button" class="secondary-action-btn" id="btnCancelExpand" style="width: 100%; margin-top: 0.5rem;" hidden>
+              Hủy xử lý
+            </button>
+          </div>
+        </aside>
+
+        <!-- Right Column: Visual Stage -->
+        <main class="expand-stage-panel" aria-label="Khung làm việc">
+          <div class="stage-tabs" role="tablist">
+            <button type="button" class="stage-tab-btn is-active" id="btnTabEditor" role="tab" aria-selected="true">Xem trước bố cục &amp; Vẽ cọ</button>
+            <button type="button" class="stage-tab-btn" id="btnTabCompare" role="tab" aria-selected="false">Thanh so sánh Trước/Sau</button>
+          </div>
+
+          <!-- Visual Layout Stage -->
+          <div class="canvas-stage-wrapper" id="expandEditorStage">
+            <div class="stage-viewport">
+              <img id="expandedCanvasPreview" class="expanded-canvas-preview" alt="Xem trước bố cục khung hình" src="">
+              <canvas id="brushCanvasLayer" class="brush-canvas-layer" aria-label="Vẽ cọ inpaint lên ảnh"></canvas>
+            </div>
+          </div>
+
+          <!-- Split Slider Stage -->
+          <div class="expand-slider-container" id="expandSliderContainer" hidden>
+            <div class="expand-slider-frame" id="expandSliderFrame">
+              <img id="imgSliderAfter" class="slider-img" alt="Ảnh đã mở rộng" src="">
+              <div class="slider-overlay-wrap">
+                <img id="imgSliderBefore" class="slider-img" alt="Ảnh gốc ban đầu" src="">
+              </div>
+              <div class="slider-divider-line" aria-hidden="true">
+                <div class="slider-divider-handle">⮜ ⮞</div>
+              </div>
+              <input type="range" class="slider-range-input" id="expandSliderRange" min="0" max="100" value="50" aria-label="Kéo để so sánh ảnh gốc và ảnh đã mở rộng">
+              <span class="slider-badge-left" id="sliderBadgeLeft">Ảnh Gốc</span>
+              <span class="slider-badge-right" id="sliderBadgeRight">Ảnh AI Mở Rộng</span>
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="expand-progress-shell" id="expandProgressShell" hidden>
+            <div class="expand-progress-meta">
+              <span id="expandProgressStageText">Đang vẽ nối tiếp cảnh quan bằng AI...</span>
+              <span id="expandProgressPercentText">0%</span>
+            </div>
+            <div class="expand-progress-track">
+              <div class="expand-progress-fill" id="expandProgressFill"></div>
+            </div>
+          </div>
+
+          <!-- Export & Download Bar -->
+          <div class="expand-export-bar">
+            <div class="export-format-group">
+              <label for="exportFormat">Định dạng tải về:</label>
+              <select id="exportFormat" class="export-select">
+                <option value="png">PNG (Giữ độ sắc nét tối đa)</option>
+                <option value="jpeg">JPG (Chất lượng cao)</option>
+                <option value="webp">WebP (Dung lượng nhẹ)</option>
+              </select>
+
+              <div id="qualityRow" hidden style="margin-left: 0.5rem; display: inline-flex; align-items: center; gap: 0.35rem;">
+                <label for="exportQuality"><small>Chất lượng:</small></label>
+                <input type="range" id="exportQuality" min="70" max="100" value="95" style="width: 80px;">
+              </div>
+            </div>
+
+            <div class="export-actions">
+              <button type="button" class="secondary-action-btn" id="btnClear">Làm mới</button>
+              <button type="button" class="secondary-action-btn" id="btnShare">Chia sẻ</button>
+              <button type="button" class="download-btn" id="btnDownload" disabled>
+                <span>↓</span> Tải Ảnh Đã Mở Rộng
+              </button>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </main>
+
+  <!-- How It Works Section -->
+  <section class="content-section">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">3 Bước Đơn Giản</p>
+        <h2>Cách mở rộng ảnh và tự động vẽ bù phông nền online</h2>
+        <p>Không cần phần mềm phức tạp, không cần tài khoản. Mọi tác vụ chạy mượt mà trên trình duyệt.</p>
+      </div>
+      <div class="guide-grid">
+        <div class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Bước 1</span>
+            <h3>Tải Ảnh Cần Mở Rộng</h3>
+            <p>Chọn ảnh từ thiết bị của bạn hoặc thử nghiệm với các ảnh chụp mẫu có sẵn.</p>
+          </div>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Bước 2</span>
+            <h3>Chọn Tỉ Lệ &amp; Quét Cọ</h3>
+            <p>Chọn tỉ lệ bạn muốn chuyển đổi (16:9 cho YouTube, 9:16 cho TikTok Reels) và có thể quét cọ xóa vật thể thừa nếu muốn.</p>
+          </div>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Bước 3</span>
+            <h3>Nhận Ảnh Đã Vẽ Bù</h3>
+            <p>Nhấn Mở Rộng, kiểm tra độ liền mạch của phông nền qua thanh vuốt Before/After và tải ảnh về máy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Technology Benefits -->
+  <section class="content-section soft">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">Ưu Điểm Vượt Trội</p>
+        <h2>Công nghệ mở rộng ảnh AI thông minh, không rủi ro</h2>
+      </div>
+      <div class="guide-grid">
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label" style="background: rgba(16,185,129,0.15); color: #10b981;">Bảo Mật Tuyệt Đối</span>
+            <h3>Xử Lý Trên Máy Người Dùng</h3>
+            <p>Ảnh của bạn không bao giờ bị tải lên cloud. Mạng nơ-ron LaMa chạy trực tiếp trên card đồ họa máy tính hoặc chip điện thoại của bạn.</p>
+          </div>
+        </article>
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label" style="background: rgba(99,68,245,0.15); color: #6344f5;">Cảnh Quan Tự Nhiên</span>
+            <h3>Nối Tiếp Bối Cảnh Mượt Mà</h3>
+            <p>AI phân tích ánh sáng, vân nền và góc chiếu để vẽ tiếp bầu trời, mặt đất, sàn nhà liền lạc không thấy vết ghép.</p>
+          </div>
+        </article>
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label" style="background: rgba(245,158,11,0.15); color: #f59e0b;">Tối Ưu Nền Tảng</span>
+            <h3>Chuẩn Kích Thước Mạng Xã Hội</h3>
+            <p>Dễ dàng biến ảnh dọc thành ảnh bìa video ngang 16:9 hoặc biến ảnh ngang thành video dọc 9:16 Shorts/TikTok mà không bị cắt mất chi tiết quan trọng.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="content-section" id="faq">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">Giải Đáp Thắc Mắc</p>
+        <h2>Câu hỏi thường gặp</h2>
+      </div>
+      <div class="faq-list" style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem;">
+        <details class="faq-item" style="background: #141622; border: 1px solid #272a3d; border-radius: 12px; padding: 1rem 1.25rem;">
+          <summary style="font-weight: 700; color: #fff; cursor: pointer;">Mở rộng ảnh AI (Uncrop / Outpainting) khác gì phóng to ảnh?</summary>
+          <p style="margin-top: 0.75rem; color: #9496a8; line-height: 1.6;">
+            Phóng to (Upscale) chỉ làm sắc nét và tăng số pixel của nội dung hiện tại. Trong khi đó, Mở rộng ảnh (Uncrop/Outpainting) sẽ mở rộng thêm không gian viền bên ngoài và AI sẽ tự động "sáng tạo" vẽ tiếp phần bối cảnh bị thiếu.
+          </p>
+        </details>
+        <details class="faq-item" style="background: #141622; border: 1px solid #272a3d; border-radius: 12px; padding: 1rem 1.25rem;">
+          <summary style="font-weight: 700; color: #fff; cursor: pointer;">Cọ Generative Fill dùng để làm gì?</summary>
+          <p style="margin-top: 0.75rem; color: #9496a8; line-height: 1.6;">
+            Khi bạn muốn xóa một người đi đường, xóa logo, rác hoặc một chi tiết thừa trong ảnh, bạn chỉ cần bật cọ vẽ và quét lên vùng đó. AI sẽ vừa mở rộng khung hình vừa xóa và vẽ lấp vùng đó một cách tự nhiên.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Tools -->
+  <section class="content-section soft">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">Công Cụ AI Khác</p>
+        <h2>Khám phá hệ sinh thái CreatorNew</h2>
+      </div>
+      <div class="guide-grid">
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Tăng Nét AI</span>
+            <h3><a href="../../vi/image-upscaler/">Tăng Chất Lượng Ảnh AI</a></h3>
+            <p>Phóng to ảnh 2X, 4X, 8X, cứu ảnh mờ nhòe và khử hạt nén với AI on-device.</p>
+            <a class="tool-link" href="../../vi/image-upscaler/">Làm nét ảnh &rarr;</a>
+          </div>
+        </article>
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Tách Nền AI</span>
+            <h3><a href="../../vi/background-remover/">Xóa Phông Ảnh AI</a></h3>
+            <p>Tách nền ảnh thẻ, ảnh sản phẩm bán hàng tự động với độ chính xác cao.</p>
+            <a class="tool-link" href="../../vi/background-remover/">Xóa phông ngay &rarr;</a>
+          </div>
+        </article>
+        <article class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label">Video AI</span>
+            <h3><a href="../../vi/tao-phu-de-video/">Tạo Phụ Đề Video AI</a></h3>
+            <p>Tạo phụ đề nhảy chữ hoạt họa tự động cho video ngắn TikTok, Shorts.</p>
+            <a class="tool-link" href="../../vi/tao-phu-de-video/">Tạo phụ đề &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© 2026 CreatorNew. Công cụ trực tuyến miễn phí cho nhà sáng tạo.</span>
+      <div class="footer-links">
+        <a href="../../vi/">Trang chủ</a>
+        <a href="../../vi/#tools">Công cụ ảnh</a>
+        <a href="../../about/">Giới thiệu</a>
+        <a href="../../privacy-policy/">Bảo mật</a>
+        <a href="../../terms/">Điều khoản</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="../../js/site-i18n.js"></script>
+  <script type="module" src="../../js/expand-image.js"></script>
+</body>
+</html>
