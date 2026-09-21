@@ -117,7 +117,13 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
 
 .nav-links a:hover { color: var(--primary); }
 
-.nav-dropdown { position: relative; }
+.nav-dropdown {
+  position: relative;
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
 
 .breadcrumb-nav {
   width: min(1180px, calc(100% - 40px));
@@ -165,20 +171,35 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
   padding: 0 14px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: #fff;
+  gap: 7px;
+  color: #fff !important;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 700;
+  letter-spacing: 0.01em;
   list-style: none;
   border-radius: 10px;
-  background: linear-gradient(135deg, var(--primary), #7251ee 58%, var(--cyan));
-  box-shadow: 0 8px 20px rgba(93,95,239,.22);
+  background: #0f172a !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.16) !important;
   cursor: pointer;
+  transition: all 0.18s ease;
+  user-select: none;
 }
 
 .nav-dropdown summary::-webkit-details-marker { display: none; }
-.nav-dropdown summary span { font-size: 17px; transition: transform .2s ease; }
-.nav-dropdown[open] summary span { transform: rotate(180deg); }
+.nav-dropdown summary span { font-size: 13px; color: #94a3b8; transition: transform .2s ease; }
+.nav-dropdown[open] summary span { transform: rotate(180deg); color: #fff; }
+.nav-dropdown summary:hover {
+  background: #1e293b !important;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.25) !important;
+  transform: translateY(-1px);
+}
+.nav-dropdown[open] summary {
+  background: #000000 !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35) !important;
+  transform: none;
+}
 
 .nav-dropdown-menu {
   position: absolute;
@@ -1309,22 +1330,11 @@ details p {
 .pdf-row-actions button:disabled { opacity: .35; cursor: not-allowed; }
 .pdf-settings { grid-template-columns: repeat(3, 1fr); }
 .pdf-nav-dropdown .nav-dropdown-menu { width: 275px; }
-.audio-nav-dropdown summary { color: #fff; background: linear-gradient(135deg, #12845a, #27b77e 58%, #6de0b0); border-color: transparent; box-shadow: 0 8px 20px rgba(23,134,94,.22); }
-.audio-nav-dropdown summary::before { background: linear-gradient(90deg, #2bc488, #6de0b0); }
 .audio-nav-dropdown .nav-dropdown-menu { width: 285px; }
-.video-nav-dropdown summary { color: #fff; background: linear-gradient(135deg, #5743d2, #6d5ce5 58%, #9488f4); box-shadow: 0 8px 20px rgba(87,67,210,.22); }
 .video-nav-dropdown .nav-dropdown-menu { width: 300px; right: 0; left: auto; }
-.ai-nav-dropdown summary { color: #fff; border-color: transparent; background: linear-gradient(135deg, var(--ai-start), var(--ai-end)); box-shadow: 0 8px 20px rgba(91,33,182,.22); }
 .ai-nav-dropdown .nav-dropdown-menu { width: 285px; right: 0; left: auto; }
-.audio-tool-card { background: linear-gradient(145deg, #f0fff8, #f7fffc); }
-.audio-tool-card .tool-card-icon, .audio-quick-tool .quick-tab-icon { background: linear-gradient(135deg, #17865e, #6de0b0); }
-.video-tool-card { background: linear-gradient(145deg, #f5f2ff, #fbfaff); }
-.video-tool-card .tool-card-icon, .video-quick-tool .quick-tab-icon { background: linear-gradient(135deg, #5743d2, #9488f4); }
-
-/* Tool category palette */
-.image-nav-dropdown summary { background: linear-gradient(135deg, var(--image-start), var(--image-end)); box-shadow: 0 8px 20px rgba(124,58,237,.22); }
-.pdf-nav-dropdown summary { background: linear-gradient(135deg, var(--pdf-start), var(--pdf-end)); box-shadow: 0 8px 20px rgba(239,68,68,.2); }
-.audio-nav-dropdown summary { background: linear-gradient(135deg, var(--audio-start), var(--audio-end)); box-shadow: 0 8px 20px rgba(6,182,212,.2); }
+.blog-nav-dropdown .nav-dropdown-menu { width: 440px; }
+.image-nav-dropdown .nav-dropdown-menu { width: 390px; }
 
 .quick-tool-item.category-image { border-color: #eadcff; background: linear-gradient(115deg, #faf7ff, #fff6fb); }
 .quick-tool-item.category-pdf { border-color: #fed9c7; background: linear-gradient(115deg, #fff8f1, #fff5f5); }
