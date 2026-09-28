@@ -939,6 +939,16 @@
   color: #fff;
 }
 
+[hidden],
+.verify-modal-overlay[hidden],
+.model-download-card[hidden],
+.model-ready-badge[hidden],
+.expand-workspace[hidden],
+.status-alert[hidden],
+.expansion-warning-box[hidden] {
+  display: none !important;
+}
+
 .verify-modal-overlay {
   position: fixed;
   inset: 0;

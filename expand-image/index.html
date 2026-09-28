@@ -437,36 +437,10 @@
               <button type="button" class="download-btn" id="btnDownload" disabled>
                 <span>↓</span> Download Expanded Image
               </button>
-            </div>
           </div>
         </main>
       </div>
     </div>
-
-    <!-- Verification Modal -->
-    <div class="verify-modal-overlay" id="verifyModalOverlay" hidden>
-      <div class="verify-modal-card" role="dialog" aria-modal="true" aria-labelledby="verifyModalTitle">
-        <div class="verify-modal-header">
-          <h3 id="verifyModalTitle">🔍 How to Verify 100% On-Device Privacy</h3>
-          <button type="button" class="verify-modal-close" id="btnCloseVerifyModal" aria-label="Close">&times;</button>
-        </div>
-        <div class="verify-modal-steps">
-          <div class="verify-step-item">
-            <span class="verify-step-num">1</span>
-            <div>Press <strong>F12</strong> (or right-click and select <em>Inspect</em>) to open your browser DevTools.</div>
-          </div>
-          <div class="verify-step-item">
-            <span class="verify-step-num">2</span>
-            <div>Navigate to the <strong>Network</strong> tab and filter by <strong>Fetch/XHR</strong>.</div>
-          </div>
-          <div class="verify-step-item">
-            <span class="verify-step-num">3</span>
-            <div>Click Expand: You will see <strong>zero POST requests transmitting your image data</strong>. You can even disconnect your Wi-Fi after loading the model, and the tool continues to operate 100% offline!</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
   </main>
 
   <!-- Showcase Before / After Section -->
@@ -700,6 +674,30 @@
       </div>
     </div>
   </footer>
+
+  <!-- Verification Modal -->
+  <div class="verify-modal-overlay" id="verifyModalOverlay" hidden>
+    <div class="verify-modal-card" role="dialog" aria-modal="true" aria-labelledby="verifyModalTitle">
+      <div class="verify-modal-header">
+        <h3 id="verifyModalTitle">🔍 How to Verify 100% On-Device Privacy</h3>
+        <button type="button" class="verify-modal-close" id="btnCloseVerifyModal" aria-label="Close">&times;</button>
+      </div>
+      <div class="verify-modal-steps">
+        <div class="verify-step-item">
+          <span class="verify-step-num">1</span>
+          <div>Press <strong>F12</strong> (or right-click and select <em>Inspect</em>) to open your browser DevTools.</div>
+        </div>
+        <div class="verify-step-item">
+          <span class="verify-step-num">2</span>
+          <div>Navigate to the <strong>Network</strong> tab and filter by <strong>Fetch/XHR</strong>.</div>
+        </div>
+        <div class="verify-step-item">
+          <span class="verify-step-num">3</span>
+          <div>Click Expand: You will see <strong>zero POST requests transmitting your image data</strong>. You can even disconnect your Wi-Fi after loading the model, and the tool continues to operate 100% offline!</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script type="module" src="../js/site-i18n.js"></script>
   <script type="module" src="../js/expand-image.js"></script>

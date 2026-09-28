@@ -436,36 +436,10 @@
               <button type="button" class="download-btn" id="btnDownload" disabled>
                 <span>↓</span> Tải Ảnh Đã Mở Rộng
               </button>
-            </div>
           </div>
         </main>
       </div>
     </div>
-
-    <!-- Verification Modal -->
-    <div class="verify-modal-overlay" id="verifyModalOverlay" hidden>
-      <div class="verify-modal-card" role="dialog" aria-modal="true" aria-labelledby="verifyModalTitle">
-        <div class="verify-modal-header">
-          <h3 id="verifyModalTitle">🔍 Cách tự kiểm chứng 100% On-Device</h3>
-          <button type="button" class="verify-modal-close" id="btnCloseVerifyModal" aria-label="Đóng">&times;</button>
-        </div>
-        <div class="verify-modal-steps">
-          <div class="verify-step-item">
-            <span class="verify-step-num">1</span>
-            <div>Nhấn <strong>F12</strong> trên bàn phím (hoặc chuột phải chọn <em>Kiểm tra / Inspect</em>) để mở Trình duyệt DevTools.</div>
-          </div>
-          <div class="verify-step-item">
-            <span class="verify-step-num">2</span>
-            <div>Chuyển sang tab <strong>Network (Mạng)</strong> và lọc mục <strong>Fetch/XHR</strong>.</div>
-          </div>
-          <div class="verify-step-item">
-            <span class="verify-step-num">3</span>
-            <div>Thực hiện mở rộng ảnh: Bạn sẽ thấy <strong>hoàn toàn không có bất kỳ request POST nào gửi dữ liệu ảnh</strong> lên máy chủ. Bạn thậm chí có thể ngắt kết nối Wi-Fi sau khi tải mô hình, công cụ vẫn chạy 100% mượt mà!</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
   </main>
 
   <!-- Showcase Before / After Section -->
@@ -619,6 +593,30 @@
       </div>
     </div>
   </footer>
+
+  <!-- Verification Modal -->
+  <div class="verify-modal-overlay" id="verifyModalOverlay" hidden>
+    <div class="verify-modal-card" role="dialog" aria-modal="true" aria-labelledby="verifyModalTitle">
+      <div class="verify-modal-header">
+        <h3 id="verifyModalTitle">🔍 Cách tự kiểm chứng 100% On-Device</h3>
+        <button type="button" class="verify-modal-close" id="btnCloseVerifyModal" aria-label="Đóng">&times;</button>
+      </div>
+      <div class="verify-modal-steps">
+        <div class="verify-step-item">
+          <span class="verify-step-num">1</span>
+          <div>Nhấn <strong>F12</strong> trên bàn phím (hoặc chuột phải chọn <em>Kiểm tra / Inspect</em>) để mở Trình duyệt DevTools.</div>
+        </div>
+        <div class="verify-step-item">
+          <span class="verify-step-num">2</span>
+          <div>Chuyển sang tab <strong>Network (Mạng)</strong> và lọc mục <strong>Fetch/XHR</strong>.</div>
+        </div>
+        <div class="verify-step-item">
+          <span class="verify-step-num">3</span>
+          <div>Thực hiện mở rộng ảnh: Bạn sẽ thấy <strong>hoàn toàn không có bất kỳ request POST nào gửi dữ liệu ảnh</strong> lên máy chủ. Bạn thậm chí có thể ngắt kết nối Wi-Fi sau khi tải mô hình, công cụ vẫn chạy 100% mượt mà!</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script type="module" src="../../js/site-i18n.js"></script>
   <script type="module" src="../../js/expand-image.js"></script>
