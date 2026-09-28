@@ -61,6 +61,7 @@ export default defineConfig({
           "viJpgToWebp": "vi/jpg-to-webp/index.html",
           "viGuidesHub": "vi/guides/index.html",
           "viGuideNenAnh": "vi/guides/huong-dan-nen-anh-nop-ho-so/index.html",
+          "viGuideMoRongAnhAI": "vi/guides/mo-rong-anh-bang-ai/index.html",
           "viGuideWebpVsPngVsJpg": "vi/guides/so-sanh-webp-png-jpg/index.html",
           "blogHub": "blog/index.html",
           "blogHowToCompressImages": "blog/how-to-compress-images/index.html",

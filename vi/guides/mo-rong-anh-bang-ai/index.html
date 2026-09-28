@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Meta Title & Description tối ưu SEO theo tiêu chuẩn (<60 ký tự title, <155 ký tự description) -->
+  <title>Mở Rộng Ảnh Bằng AI Online Miễn Phí (Outpainting &amp; Uncrop) | CreatorNew</title>
+  <meta name="description" content="Hướng dẫn mở rộng ảnh bằng AI (outpainting) miễn phí, đổi ảnh vuông sang 16:9, 9:16 không vỡ nét. Xử lý trực tiếp trên trình duyệt bằng WebGPU, bảo mật 100%.">
+  <meta name="keywords" content="mở rộng ảnh bằng AI, AI uncrop online, outpainting miễn phí, mở rộng ảnh sang 16:9, đổi ảnh vuông thành ảnh ngang, xóa vật thể khỏi ảnh bằng AI, generative fill miễn phí, inpainting">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#5d5fef">
+  <link rel="icon" type="image/png" href="../../../creatornew-icon.png?v=2">
+  <link rel="apple-touch-icon" href="../../../creatornew-icon.png?v=2">
+  <link rel="manifest" href="../../../site.webmanifest">
+  <link rel="canonical" href="https://creatornew.com/vi/guides/mo-rong-anh-bang-ai/">
+  <link rel="alternate" hreflang="vi" href="https://creatornew.com/vi/guides/mo-rong-anh-bang-ai/">
+  <link rel="alternate" hreflang="en" href="https://creatornew.com/expand-image/">
+  <link rel="alternate" hreflang="x-default" href="https://creatornew.com/expand-image/">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CreatorNew">
+  <meta property="og:title" content="Mở Rộng Ảnh Bằng AI Online Miễn Phí (Outpainting &amp; Uncrop) | CreatorNew">
+  <meta property="og:description" content="Khám phá cách mở rộng viền ảnh bằng AI, chuyển đổi tỉ lệ 1:1 sang 16:9, 9:16 cực mượt và riêng tư 100% trên trình duyệt.">
+  <meta property="og:url" content="https://creatornew.com/vi/guides/mo-rong-anh-bang-ai/">
+  <meta property="og:image" content="https://creatornew.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mở Rộng Ảnh Bằng AI: Hướng Dẫn Outpainting Chi Tiết | CreatorNew">
+  <meta name="twitter:description" content="Đổi tỉ lệ ảnh sang 16:9, 9:16 và xóa vật thể thừa trực tiếp trên máy tính mà không tải ảnh lên máy chủ.">
+  <meta name="twitter:image" content="https://creatornew.com/og-image.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="../../../creatornew-logo.webp?v=2" type="image/webp" fetchpriority="high">
+  <link rel="stylesheet" href="../../../css/style.css">
+  
+  <style>
+    .article-container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-body, #344054);
+    }
+    .article-header {
+      margin-bottom: 36px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border, #eaecf0);
+    }
+    .article-header h1 {
+      font-size: 2.25rem;
+      line-height: 1.28;
+      color: var(--text-heading, #101828);
+      margin: 12px 0 16px;
+    }
+    .article-meta {
+      font-size: 0.9rem;
+      color: var(--text-muted, #667085);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 16px;
+      align-items: center;
+    }
+    .article-content h2 {
+      font-size: 1.6rem;
+      color: var(--text-heading, #101828);
+      margin: 40px 0 16px;
+      scroll-margin-top: 80px;
+    }
+    .article-content h3 {
+      font-size: 1.25rem;
+      color: var(--text-heading, #101828);
+      margin: 28px 0 12px;
+    }
+    .article-content p {
+      margin-bottom: 18px;
+    }
+    .article-content ul, .article-content ol {
+      margin: 0 0 22px 24px;
+    }
+    .article-content li {
+      margin-bottom: 8px;
+    }
+    .featured-snippet-box {
+      background: #f8f9fc;
+      border-left: 4px solid var(--primary, #5d5fef);
+      padding: 20px 24px;
+      border-radius: 0 12px 12px 0;
+      margin: 28px 0;
+      font-size: 1.05rem;
+    }
+    .featured-snippet-box strong {
+      color: var(--text-heading, #101828);
+    }
+    .tool-cta-box {
+      background: linear-gradient(135deg, rgba(93, 95, 239, 0.08), rgba(46, 144, 250, 0.08));
+      border: 2px solid var(--primary, #5d5fef);
+      border-radius: 16px;
+      padding: 28px 24px;
+      margin: 36px 0;
+      text-align: center;
+    }
+    .tool-cta-box h3 {
+      margin: 0 0 10px;
+      font-size: 1.4rem;
+      color: var(--text-heading, #101828);
+    }
+    .tool-cta-box p {
+      margin: 0 0 20px;
+      color: var(--text-muted, #667085);
+      font-size: 0.98rem;
+    }
+    .guide-table-wrapper {
+      overflow-x: auto;
+      margin: 24px 0 32px;
+      border: 1px solid var(--border, #eaecf0);
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .guide-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    .guide-table th {
+      background: #f8f9fa;
+      color: var(--text-heading, #101828);
+      padding: 14px 16px;
+      font-weight: 600;
+      border-bottom: 2px solid var(--border, #eaecf0);
+    }
+    .guide-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border, #eaecf0);
+      vertical-align: top;
+    }
+    .guide-table tr:last-child td {
+      border-bottom: none;
+    }
+    .guide-table tr:nth-child(even) {
+      background: #fcfcfd;
+    }
+    .info-callout {
+      background: #eff8ff;
+      border: 1px solid #b2ddff;
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin: 24px 0;
+      color: #175cd3;
+      font-size: 0.96rem;
+    }
+    .warning-callout {
+      background: #fef6ee;
+      border: 1px solid #f9dbaf;
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin: 24px 0;
+      color: #b54708;
+      font-size: 0.96rem;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border, #eaecf0);
+      padding: 18px 0;
+    }
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+    .faq-question {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text-heading, #101828);
+      margin-bottom: 8px;
+    }
+    .faq-answer {
+      color: var(--text-body, #344054);
+      margin-bottom: 0;
+    }
+  </style>
+
+  <!-- Schema Markup: Article, FAQPage, SoftwareApplication, BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://creatornew.com/vi/guides/mo-rong-anh-bang-ai/#breadcrumbs",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Trang chủ",
+            "item": "https://creatornew.com/vi/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Cẩm nang",
+            "item": "https://creatornew.com/vi/guides/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Mở rộng ảnh bằng AI",
+            "item": "https://creatornew.com/vi/guides/mo-rong-anh-bang-ai/"
+          }
+        ]
+      },
+      {
+        "@type": "Article",
+        "@id": "https://creatornew.com/vi/guides/mo-rong-anh-bang-ai/#article",
+        "headline": "Mở Rộng Ảnh Bằng AI: Hướng Dẫn Uncrop & Outpainting Trực Tiếp Trên Trình Duyệt",
+        "description": "Hướng dẫn chi tiết cách mở rộng ảnh bằng AI (outpainting) miễn phí, đổi tỉ lệ ảnh vuông sang 16:9 hoặc 9:16 mà không bị kéo giãn méo hình. Bảo mật 100% với WebGPU.",
+        "datePublished": "2026-09-28T22:00:00+07:00",
+        "dateModified": "2026-09-28T22:00:00+07:00",
+        "author": {
+          "@type": "Organization",
+          "name": "CreatorNew AI Team"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "CreatorNew",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://creatornew.com/creatornew-logo.png?v=2"
+          }
+        },
+        "mainEntityOfPage": "https://creatornew.com/vi/guides/mo-rong-anh-bang-ai/"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://creatornew.com/vi/expand-image/#app",
+        "name": "AI Image Expander (CreatorNew)",
+        "operatingSystem": "All (Web Browser)",
+        "applicationCategory": "MultimediaApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "Công cụ mở rộng ảnh bằng AI (Outpainting & Uncrop) miễn phí chạy hoàn toàn trên trình duyệt, không gửi ảnh lên máy chủ."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://creatornew.com/vi/guides/mo-rong-anh-bang-ai/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Mở rộng ảnh bằng AI có phải trả phí hay bị gắn hình mờ (watermark) không?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Hoàn toàn miễn phí 100% và không có bất kỳ watermark nào. Toàn bộ quá trình tính toán outpainting diễn ra trực tiếp trên trình duyệt của bạn thông qua WebGPU/WebAssembly mà không tiêu tốn tài nguyên máy chủ đám mây đắt đỏ."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Công cụ này có an toàn và bảo mật ảnh cá nhân không?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tuyệt đối an toàn. Ảnh của bạn không bao giờ được upload lên bất kỳ máy chủ nào. Bạn có thể tự mở F12 (DevTools) > tab Network để kiểm tra: không hề có gói tin ảnh nào rời khỏi máy của bạn."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Tại sao lần đầu mở công cụ lại mất khoảng 10-30 giây để tải?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Lần đầu truy cập, trình duyệt cần tải tệp trọng số mô hình AI Fast Fourier Convolution (~92.6 MB). Sau khi tải xong, mô hình được lưu trong bộ nhớ đệm (Cache Storage) của trình duyệt để sử dụng tức thì cho những lần sau mà không cần tải lại."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Nên mở rộng thêm bao nhiêu phần trăm để đạt chất lượng ảnh đẹp nhất?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Mức mở rộng lý tưởng nhất là từ +20% đến +50% diện tích viền xung quanh mỗi lần chạy. Nếu cần mở rộng sang khung hình quá rộng (như từ vuông 1:1 sang siêu rộng 21:9), bạn nên mở rộng dần từng bước để AI suy luận bối cảnh tự nhiên nhất."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Công cụ có thể tạo thêm khuôn mặt người hoàn chỉnh ở vùng mở rộng không?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Mô hình Fast Fourier Convolution (LaMa) được tối ưu chuyên sâu để vẽ bù phông nền, chất liệu, bầu trời, cây cối, ánh sáng và bối cảnh mở rộng. Nó không phải mô hình tạo hình người mới từ đầu (diffusion), nên không phù hợp để yêu cầu vẽ thêm nửa người hoặc khuôn mặt cận cảnh bị cắt."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Tôi có thể dùng công cụ này khi không có kết nối Internet (Offline) được không?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Có. Sau khi bạn đã truy cập lần đầu và mô hình AI đã tải xong vào bộ nhớ cache, bạn hoàn toàn có thể tắt Wi-Fi, ngắt mạng và tiếp tục mở rộng ảnh hoặc xóa vật thể ngoại tuyến mượt mà."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Điều hướng chính">
+      <a class="brand" href="../../../vi/" aria-label="CreatorNew trang chủ">
+        <picture>
+          <source srcset="../../../creatornew-logo.webp?v=2" type="image/webp">
+          <img class="brand-logo" src="../../../creatornew-logo.png?v=2" alt="CreatorNew" width="2075" height="758" fetchpriority="high" decoding="async">
+        </picture>
+      </a>
+      <div class="nav-links">
+        <details class="nav-dropdown" name="site-nav-dropdown">
+          <summary>Công cụ Ảnh <span aria-hidden="true">⌄</span></summary>
+          <div class="nav-dropdown-menu">
+            <a href="../../expand-image/"><strong>Mở rộng ảnh AI</strong><small>Outpainting &amp; Uncrop</small></a>
+            <a href="../../background-remover/"><strong>Xóa phông ảnh AI</strong><small>Tách nền ảnh thẻ</small></a>
+            <a href="../../nen-anh-duoi-200kb/"><strong>Nén ảnh dưới 200KB</strong><small>Nộp hồ sơ công chức</small></a>
+            <a href="../../image-compressor/"><strong>Nén ảnh online</strong><small>Giảm dung lượng ảnh</small></a>
+            <a href="../../image-converter/"><strong>Chuyển đổi định dạng</strong><small>JPG, PNG, WebP</small></a>
+            <a href="../../image-resize/"><strong>Đổi kích thước ảnh</strong><small>Resize theo pixel</small></a>
+          </div>
+        </details>
+        <details class="nav-dropdown" name="site-nav-dropdown">
+          <summary>Công cụ PDF <span aria-hidden="true">⌄</span></summary>
+          <div class="nav-dropdown-menu">
+            <a href="../../merge-pdf/"><strong>Gộp file PDF</strong><small>Ghép nhiều file PDF</small></a>
+            <a href="../../split-pdf/"><strong>Tách file PDF</strong><small>Trích xuất trang lẻ</small></a>
+          </div>
+        </details>
+        <a href="../">Cẩm nang</a>
+        <a href="../../../about/">Giới thiệu</a>
+      </div>
+    </nav>
+  </header>
+
+  <nav class="breadcrumb-container" aria-label="Breadcrumb">
+    <ol class="breadcrumb-list">
+      <li><a href="../../../vi/">Trang chủ</a></li>
+      <li class="breadcrumb-separator" aria-hidden="true">›</li>
+      <li><a href="../">Cẩm nang</a></li>
+      <li class="breadcrumb-separator" aria-hidden="true">›</li>
+      <li aria-current="page">Mở rộng ảnh bằng AI</li>
+    </ol>
+  </nav>
+
+  <main class="article-container">
+    <header class="article-header">
+      <p class="eyebrow">Cẩm Nang Sáng Tạo Nội Dung &amp; Đồ Họa AI</p>
+      <h1>Mở Rộng Ảnh Bằng AI: Hướng Dẫn Uncrop &amp; Outpainting Trực Tiếp Trên Trình Duyệt</h1>
+      <div class="article-meta">
+        <span>Cập nhật: Tháng 9/2026</span>
+        <span>•</span>
+        <span>Thời gian đọc: 8 phút</span>
+        <span>•</span>
+        <span>Tác giả: Đội ngũ Kỹ thuật CreatorNew</span>
+      </div>
+    </header>
+
+    <article class="article-content">
+      <!-- Mở bài (100-150 từ) -->
+      <p>
+        Là một nhà sáng tạo nội dung (Content Creator), chuyên viên thiết kế hay người bán hàng trực tuyến, chắc hẳn bạn đã từng gặp tình huống "dở khóc dở cười": 
+        bạn có một bức ảnh chụp dọc rất đẹp nhưng cần đưa vào <strong>thumbnail YouTube 16:9</strong>, hoặc một bức ảnh vuông trên Instagram cần biến thành 
+        <strong>Story 9:16</strong> để đăng TikTok và Reels. Nếu dùng cách crop (cắt bớt) truyền thống, bức ảnh sẽ bị mất chủ thể quan trọng; 
+        còn nếu kéo giãn (stretch), hình ảnh sẽ bị méo mó và biến dạng mất thẩm mỹ.
+      </p>
+      <p>
+        Giải pháp hoàn hảo nhất hiện nay chính là <strong>mở rộng ảnh bằng AI</strong> (hay còn gọi là kỹ thuật <em>AI Outpainting</em> hoặc <em>AI Uncrop</em>). 
+        Không cần cài đặt phần mềm nặng hàng chục Gigabyte, bạn có thể biến đổi mọi tỉ lệ khung hình ngay trên trình duyệt mà không lo bị lộ dữ liệu riêng tư.
+      </p>
+
+      <div class="tool-cta-box">
+        <h3>Trải nghiệm mở rộng ảnh ngay bây giờ</h3>
+        <p>Tự động điền đầy bối cảnh với mô hình Fast Fourier Convolution siêu tốc. 100% miễn phí, không đóng dấu watermark.</p>
+        <a class="primary-btn" href="../../expand-image/">✨ Trải Nghiệm Mở Rộng Ảnh Bằng AI Ngay &rarr;</a>
+      </div>
+
+      <!-- Phần 4: Mở rộng ảnh bằng AI là gì? -->
+      <h2>1. Mở rộng ảnh bằng AI (Outpainting / AI Uncrop) là gì?</h2>
+      
+      <div class="featured-snippet-box">
+        <p>
+          <strong>Mở rộng ảnh bằng AI (AI Outpainting / Uncrop)</strong> là kỹ thuật sử dụng trí tuệ nhân tạo để phân tích ngữ cảnh, ánh sáng, màu sắc và cấu trúc bề mặt của bức ảnh gốc, từ đó tự động vẽ thêm các chi tiết hợp lý xung quanh viền ảnh nhằm mở rộng khung hình sang tỉ lệ mới mà không làm thay đổi hay biến dạng chủ thể trung tâm.
+        </p>
+      </div>
+
+      <p>
+        Để hiểu rõ sự khác biệt mang tính cách mạng này, hãy so sánh 3 phương pháp xử lý kích thước ảnh phổ biến:
+      </p>
+      <ul>
+        <li><strong>Crop (Cắt xén):</strong> Cắt bỏ các phần cạnh ngoài của ảnh để đạt tỉ lệ mong muốn. Nhược điểm lớn là làm mất bố cục và thu nhỏ vùng nhìn thấy của chủ thể.</li>
+        <li><strong>Stretch / Pad (Kéo giãn / Thêm viền đen):</strong> Kéo dẹt hoặc thêm hai thanh màu đen/trắng ở hai bên. Bức ảnh trông rất thô và làm giảm chất lượng thị giác của bài đăng.</li>
+        <li><strong>Outpainting / Uncrop (Mở rộng AI):</strong> Giữ nguyên 100% vùng ảnh gốc ở độ phân giải gốc, sau đó AI đóng vai trò như một họa sĩ vẽ tiếp bầu trời, mặt đất, tường phòng hoặc thiên nhiên nối dài ra ngoài mép ảnh.</li>
+      </ul>
+
+      <!-- Phần 5: Hướng dẫn 3 bước -->
+      <h2>2. Hướng dẫn mở rộng ảnh bằng AI trong 3 bước đơn giản</h2>
+      <p>
+        Với công cụ <a href="../../expand-image/">AI Image Expander của CreatorNew</a>, bạn chỉ mất chưa đầy 30 giây để hoàn thành một tác phẩm outpainting hoàn chỉnh:
+      </p>
+      
+      <ol>
+        <li>
+          <strong>Bước 1: Tải ảnh lên công cụ.</strong><br>
+          Kéo thả hoặc chọn bức ảnh bạn cần mở rộng (hỗ trợ các định dạng phổ biến như JPG, PNG, WebP, AVIF với dung lượng tệp tối đa lên đến 25 MB).
+        </li>
+        <li>
+          <strong>Bước 2: Chọn tỉ lệ khung hình &amp; căn chỉnh bố cục.</strong><br>
+          Chọn tỉ lệ cài sẵn phù hợp với kênh xuất bản của bạn (như <code>16:9</code>, <code>9:16</code>, <code>1:1</code>, <code>4:5</code>, <code>21:9</code>) hoặc kéo thanh trượt tùy chỉnh kích thước theo ý muốn. Bạn có thể dùng chuột hoặc ngón tay để kéo vị trí ảnh gốc sang trái, phải hoặc đặt ở chính giữa khung hình.
+        </li>
+        <li>
+          <strong>Bước 3: Bấm "Mở rộng ảnh bằng AI" và tải về.</strong><br>
+          Mô hình AI sẽ tự động tính toán và lấp đầy vùng viền trong vài giây. Bạn có thể kéo thanh trượt Before/After (Trước/Sau) để so sánh chi tiết, sau đó chọn định dạng mong muốn (<a href="../../image-converter/">PNG, JPG hoặc WebP</a>) và bấm nút <em>Tải ảnh về</em>.
+        </li>
+      </ol>
+
+      <!-- Phần 6: Chọn tỉ lệ nào cho nền tảng nào? -->
+      <h2>3. Hướng dẫn chọn tỉ lệ khung hình chuẩn cho từng nền tảng mạng xã hội</h2>
+      <p>
+        Mỗi nền tảng kỹ thuật số đều có thuật toán ưu tiên hiển thị cho các tỉ lệ khung hình riêng. Bảng tổng hợp dưới đây sẽ giúp bạn chọn đúng kích thước tối ưu ngay từ đầu:
+      </p>
+
+      <div class="guide-table-wrapper">
+        <table class="guide-table">
+          <thead>
+            <tr>
+              <th>Tỉ lệ</th>
+              <th>Độ phân giải gợi ý (Pixel)</th>
+              <th>Nền tảng &amp; Mục đích sử dụng</th>
+              <th>Mẹo căn chỉnh bố cục</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>16:9</strong> (Ngang)</td>
+              <td>1920 × 1080 hoặc 2560 × 1440</td>
+              <td>Thumbnail YouTube, Video ngang, Màn hình TV, Slide trình chiếu</td>
+              <td>Đặt chủ thể vào 1/3 bên trái hoặc bên phải để chừa khoảng trống 2/3 cho chữ tiêu đề (Text overlay).</td>
+            </tr>
+            <tr>
+              <td><strong>9:16</strong> (Dọc)</td>
+              <td>1080 × 1920</td>
+              <td>TikTok, YouTube Shorts, Instagram Reels, Facebook Story</td>
+              <td>Căn chủ thể vào vị trí giữa khung hình (tránh mép trên cùng và mép dưới chứa nút like/caption của app).</td>
+            </tr>
+            <tr>
+              <td><strong>1:1</strong> (Vuông)</td>
+              <td>1080 × 1080 hoặc 2048 × 2048</td>
+              <td>Instagram Feed, Avatar đại diện, Ảnh sản phẩm Shopee/Lazada</td>
+              <td>Chủ thể nằm ở trung tâm điểm nhìn, AI vẽ mở rộng đều 4 cạnh tạo cảm giác thoáng đãng.</td>
+            </tr>
+            <tr>
+              <td><strong>4:5</strong> (Dọc vừa)</td>
+              <td>1080 × 1350</td>
+              <td>Instagram Portrait Post, Bài đăng Facebook Feed nhiều tương tác</td>
+              <td>Tỉ lệ vàng chiếm diện tích màn hình điện thoại lớn nhất trên bảng tin mà không bị cắt góc.</td>
+            </tr>
+            <tr>
+              <td><strong>21:9</strong> (Siêu rộng)</td>
+              <td>2560 × 1080</td>
+              <td>Ảnh bìa (Cover) Facebook Fanpage/Group, Banner Header Website</td>
+              <td>Đặt thông điệp chính ở vùng an toàn trung tâm (Safe Zone) để hiển thị tốt cả trên mobile và PC.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Phần 7: Inpaint brush -->
+      <h2>4. Bí quyết kết hợp cọ Inpaint: Xóa vật thể thừa trước khi mở rộng</h2>
+      <p>
+        Một trong những tính năng hữu ích nhất được tích hợp sẵn trong công cụ là <strong>Cọ vẽ Inpaint (Inpaint Brush)</strong>. 
+        Tại sao bạn nên xóa vật thể thừa trước khi tiến hành uncrop?
+      </p>
+      <p>
+        Khi AI thực hiện mở rộng bối cảnh, nó sẽ quét các pixel nằm ở sát mép viền của ảnh gốc. 
+        Nếu sát mép ảnh vô tình có một mảnh rác, một người đi bộ dở dang, cành cây gãy hoặc một logo watermark, AI có thể hiểu nhầm đó là họa tiết chủ đạo và "vẽ nối dài" lỗi đó ra toàn bộ vùng mới.
+      </p>
+      <ul>
+        <li><strong>Xóa Watermark &amp; Logo:</strong> Dùng cọ tô kín vùng chữ mờ ở góc ảnh, AI sẽ làm mịn và đồng bộ lại nền trước.</li>
+        <li><strong>Xóa người qua đường &amp; rác nền:</strong> Tô cọ lên các vật thể không mong muốn ở rìa ảnh.</li>
+        <li><strong>Kết quả:</strong> Khi mép ảnh sạch sẽ, quá trình mở rộng ảnh bằng AI sẽ tạo ra phông nền tự nhiên, không tì vết.</li>
+      </ul>
+
+      <!-- Phần 8: Vì sao bảo mật 100% -->
+      <h2>5. Vì sao ảnh của bạn an toàn tuyệt đối và không bị tải lên máy chủ?</h2>
+      <p>
+        Hầu hết các dịch vụ chỉnh sửa ảnh AI trên thị trường hiện nay đều hoạt động theo mô hình <em>Cloud Processing</em>: 
+        bạn tải ảnh lên máy chủ của nhà cung cấp, máy chủ xử lý rồi gửi ảnh trả về. Điều này tiềm ẩn nguy cơ rò rỉ hình ảnh cá nhân, tài liệu nội bộ hoặc hình ảnh sản phẩm chưa ra mắt.
+      </p>
+      <p>
+        <strong>CreatorNew áp dụng kiến trúc Client-Side AI 100%</strong>:
+      </p>
+      <ul>
+        <li>
+          Sử dụng công nghệ <a href="https://www.w3.org/TR/webgpu/" target="_blank" rel="noopener noreferrer">W3C WebGPU</a> và 
+          <a href="https://webassembly.org/" target="_blank" rel="noopener noreferrer">WebAssembly (WASM)</a> để trực tiếp tận dụng chip đồ họa (GPU/NPU) ngay trên thiết bị của bạn.
+        </li>
+        <li>
+          Tệp mô hình AI được tải về một lần và chạy trong luồng Web Worker cô lập trên trình duyệt của bạn. Toàn bộ pixel ảnh chỉ nằm trong bộ nhớ RAM tạm thời của máy.
+        </li>
+      </ul>
+
+      <div class="info-callout">
+        <strong>🔍 Cách tự kiểm chứng tính bảo mật (3 bước đơn giản):</strong>
+        <ol style="margin: 8px 0 0 18px;">
+          <li>Trên trình duyệt Chrome/Edge, nhấn phím <code>F12</code> (hoặc chuột phải chọn <em>Kiểm tra / Inspect</em>) và chuyển sang tab <strong>Network (Mạng)</strong>.</li>
+          <li>Kéo một bức ảnh vào công cụ và bấm <em>"Mở rộng ảnh bằng AI"</em>.</li>
+          <li>Quan sát danh sách truyền tải: Bạn sẽ thấy <strong>hoàn toàn không có bất kỳ yêu cầu POST hay upload tệp ảnh nào</strong> được gửi ra bên ngoài Internet.</li>
+        </ol>
+      </div>
+
+      <!-- Phần 9: Phù hợp và chưa phù hợp -->
+      <h2>6. Đánh giá khách quan: Khi nào nên và không nên dùng công cụ này?</h2>
+      <p>
+        Để bạn không mất thời gian thử nghiệm sai mục đích, chúng tôi luôn minh bạch về khả năng thực tế của công nghệ inpainting Fast Fourier Convolution (dòng LaMa):
+      </p>
+
+      <h3>✅ Trường hợp hoạt động xuất sắc nhất:</h3>
+      <ul>
+        <li><strong>Phong cảnh thiên nhiên:</strong> Bầu trời xanh, mây trắng, mặt biển, bãi cát, rừng cây, ngọn núi. AI nối tiếp mượt mà như ảnh chụp ống kính góc rộng.</li>
+        <li><strong>Phông nền phòng &amp; studio:</strong> Tường sơn đơn sắc, nền gỗ, mặt bàn đá, rèm vải, thảm trải sàn.</li>
+        <li><strong>Ảnh sản phẩm thương mại:</strong> Mở rộng không gian xung quanh chai lọ, mỹ phẩm, giày dép để lấy diện tích chèn bảng giá hoặc banner khuyến mãi.</li>
+        <li><strong>Họa tiết lặp (Texture):</strong> Nền cỏ, lá cây, gạch hoa, hoa văn trừu tượng.</li>
+      </ul>
+
+      <div class="warning-callout">
+        <strong>⚠️ Trường hợp chưa phù hợp (Hạn chế hiện tại):</strong>
+        <ul style="margin: 8px 0 0 18px;">
+          <li><strong>Khuôn mặt người cận cảnh:</strong> AI không có khả năng tự sáng tạo một khuôn mặt người mới từ hư vô nếu ảnh gốc bị cắt ngang trán hay má.</li>
+          <li><strong>Công trình kiến trúc đối xứng vi mô:</strong> Các tòa nhà có nhiều đường chỉ phào, lưới cửa sổ phức tạp có thể bị uốn cong nhẹ ở vùng nối mép.</li>
+          <li><strong>Văn bản, chữ viết &amp; số liệu:</strong> AI sẽ xem chữ như một dạng hoa văn và tạo ra các nét vẽ không đọc được. Không nên dùng để mở rộng tài liệu pháp lý.</li>
+          <li><strong>Mở rộng quá lớn trong 1 lần (&gt;100%):</strong> Nếu mở rộng khung hình gấp đôi ngay lập tức, vùng biên xa có thể bị lặp lại texture hoặc giảm độ tương phản.</li>
+        </ul>
+      </div>
+
+      <!-- Phần 10: So sánh với Photoshop, Canva, Clipdrop -->
+      <h2>7. Bảng so sánh khách quan với Photoshop, Canva và Clipdrop</h2>
+      <p>
+        Để giúp bạn lựa chọn công cụ phù hợp nhất với nhu cầu và túi tiền của mình, hãy xem bảng so sánh chi tiết dưới đây:
+      </p>
+
+      <div class="guide-table-wrapper">
+        <table class="guide-table">
+          <thead>
+            <tr>
+              <th>Tiêu chí so sánh</th>
+              <th>CreatorNew AI Expander</th>
+              <th>Adobe Photoshop (Generative Fill)</th>
+              <th>Canva (Magic Expand)</th>
+              <th>Clipdrop (Uncrop)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Chi phí sử dụng</strong></td>
+              <td><span style="color: #027a48; font-weight: 600;">Miễn phí 100%</span></td>
+              <td>Thu phí định kỳ (~$22.99/tháng)</td>
+              <td>Yêu cầu gói Canva Pro (~$12.99/tháng)</td>
+              <td>Gói miễn phí giới hạn lượt / Trả phí</td>
+            </tr>
+            <tr>
+              <td><strong>Đăng ký tài khoản</strong></td>
+              <td><span style="color: #027a48; font-weight: 600;">Không cần tài khoản</span></td>
+              <td>Bắt buộc Adobe ID</td>
+              <td>Bắt buộc đăng nhập Canva</td>
+              <td>Bắt buộc đăng nhập</td>
+            </tr>
+            <tr>
+              <td><strong>Đóng dấu Watermark</strong></td>
+              <td><span style="color: #027a48; font-weight: 600;">Không có Watermark</span></td>
+              <td>Không có</td>
+              <td>Không có (bản Pro)</td>
+              <td>Có watermark ở bản free</td>
+            </tr>
+            <tr>
+              <td><strong>Bảo mật &amp; Riêng tư</strong></td>
+              <td><span style="color: #027a48; font-weight: 600;">Chạy trên máy (Client-side)</span></td>
+              <td>Tải ảnh lên Adobe Cloud</td>
+              <td>Tải ảnh lên Canva Server</td>
+              <td>Tải ảnh lên Jasper/Clipdrop Server</td>
+            </tr>
+            <tr>
+              <td><strong>Khả năng chạy Offline</strong></td>
+              <td><span style="color: #027a48; font-weight: 600;">Có (sau khi cache model)</span></td>
+              <td>Không (Cần kết nối mạng liên tục)</td>
+              <td>Không</td>
+              <td>Không</td>
+            </tr>
+            <tr>
+              <td><strong>Tạo vật thể phức tạp mới</strong></td>
+              <td>Vẽ bù bối cảnh (Inpainting)</td>
+              <td>Mạnh nhất (Text-to-Image Prompt)</td>
+              <td>Khá tốt (Diffusion model)</td>
+              <td>Tốt (Stable Diffusion)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Phần 11: Mẹo để có kết quả tốt hơn -->
+      <h2>8. 5 mẹo chuyên sâu để mở rộng ảnh bằng AI đạt chất lượng cao nhất</h2>
+      
+      <h3>Mẹo 1: Mở rộng từng bước (+30% đến +50%) thay vì kéo cực đại</h3>
+      <p>
+        Nếu bạn muốn mở rộng từ ảnh vuông <code>1:1</code> sang ảnh siêu rộng <code>21:9</code>, hãy thực hiện qua 2 lần mở rộng: lần 1 sang <code>16:9</code>, sau đó tải ảnh kết quả và đưa vào mở rộng tiếp sang <code>21:9</code>. Thuật toán sẽ có thêm dữ liệu đệm để liên kết bối cảnh mượt mà hơn gấp 3 lần.
+      </p>
+
+      <h3>Mẹo 2: Dọn sạch mép viền bằng cọ Inpaint trước khi bấm xử lý</h3>
+      <p>
+        Hãy phóng to ảnh và dùng cọ Inpaint xóa bỏ những chi tiết lem nhem, một phần cánh tay người lạ bị lọt vào góc ảnh, hoặc các vệt sáng chói sát viền. Mép ảnh càng đồng nhất, AI càng vẽ nối tiếp chân thực.
+      </p>
+
+      <h3>Mẹo 3: Tải model bằng kết nối Wi-Fi ổn định trong lần đầu</h3>
+      <p>
+        Ở lần đầu tiên truy cập trang, trình duyệt sẽ tải tệp dữ liệu mô hình AI xấp xỉ <strong>92.6 MB</strong>. 
+        Bạn nên kết nối mạng Wi-Fi tốc độ tốt để quá trình tải diễn ra nhanh chóng (khoảng 5-10 giây). Sau khi hoàn tất, trình duyệt sẽ lưu vĩnh viễn vào bộ nhớ Cache, các lần sử dụng tiếp theo sẽ mở lên tức thì.
+      </p>
+
+      <h3>Mẹo 4: Bật tính năng Tăng tốc phần cứng trên trình duyệt</h3>
+      <p>
+        Để tận dụng tối đa sức mạnh của WebGPU, hãy đảm bảo tính năng <em>"Use graphics acceleration when available" (Sử dụng tính năng tăng tốc đồ họa khi khả dụng)</em> trong phần Cài đặt của Chrome/Edge/Brave đang được BẬT. Điều này giúp giảm thời gian xử lý từ 8 giây xuống chỉ còn 1-2 giây trên các dòng máy có card đồ họa.
+      </p>
+
+      <h3>Mẹo 5: Kết hợp với các công cụ tối ưu hóa hình ảnh tiếp theo</h3>
+      <p>
+        Sau khi mở rộng ảnh thành công, nếu bạn muốn đưa ảnh lên website hoặc nộp hồ sơ, bạn có thể:
+      </p>
+      <ul>
+        <li>Dùng <a href="../../image-compressor/">Công cụ Nén Ảnh Online</a> để giảm dung lượng file giúp trang web tải nhanh chuẩn SEO Core Web Vitals.</li>
+        <li>Dùng <a href="../../nen-anh-duoi-200kb/">Công cụ Nén Ảnh Dưới 200KB</a> nếu cần nộp cổng dịch vụ công trực tuyến hoặc đính kèm email.</li>
+        <li>Dùng <a href="../../image-resize/">Công cụ Thay Đổi Kích Thước Ảnh</a> để đưa về đúng độ phân giải pixel chính xác theo yêu cầu thiết kế.</li>
+      </ul>
+
+      <!-- Phần 12: FAQ -->
+      <h2>9. Các câu hỏi thường gặp (FAQ)</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">1. Mở rộng ảnh bằng AI có phải trả phí hay bị giới hạn số lần không?</div>
+        <p class="faq-answer">
+          Không. Công cụ AI Image Expander của CreatorNew hoàn toàn miễn phí 100%, không yêu cầu đăng ký thẻ tín dụng và không giới hạn số lượng ảnh bạn có thể xử lý mỗi ngày.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">2. Ảnh tải lên có bị lưu lại trên máy chủ của trang web không?</div>
+        <p class="faq-answer">
+          Không bao giờ. Khác với các website thông thường, CreatorNew chạy mô hình AI trực tiếp trong môi trường trình duyệt của bạn (Client-side). Dữ liệu ảnh không rời khỏi máy tính hay điện thoại của bạn dù chỉ 1 byte.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">3. Tại sao Safari trên iPhone đôi khi phải tải lại mô hình sau vài ngày?</div>
+        <p class="faq-answer">
+          Đây là chính sách ITP (Intelligent Tracking Prevention) của Apple trên trình duyệt Safari iOS, tự động dọn dẹp bộ nhớ đệm (Cache) của các trang web sau 7 ngày không truy cập. Nếu bạn dùng Chrome trên máy tính hoặc Android, mô hình sẽ được lưu trữ lâu dài trong Cache Storage.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">4. Công cụ hỗ trợ những định dạng ảnh nào và dung lượng tối đa là bao nhiêu?</div>
+        <p class="faq-answer">
+          Công cụ hỗ trợ đầy đủ các định dạng ảnh phổ biến nhất: <code>JPG, JPEG, PNG, WebP, AVIF</code> với kích thước tệp tải lên tối đa lên tới <strong>25 MB</strong>.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">5. Sự khác biệt giữa mô hình Fast Fourier Convolution (LaMa) và Midjourney/DALL-E là gì?</div>
+        <p class="faq-answer">
+          Midjourney và DALL-E là các mô hình Diffusion tạo hình ảnh mới hoàn toàn dựa trên văn bản mô tả (Text-to-Image), đòi hỏi máy chủ đám mây GPU rất đắt đỏ. Trong khi đó, Fast Fourier Convolution (LaMa) là mô hình chuyên sâu về inpainting/outpainting, phân tích trực tiếp tần số không gian của ảnh để lấp đầy vùng trống với tốc độ cực nhanh ngay trên máy cá nhân.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">6. Tôi có thể xuất ảnh ra những định dạng nào sau khi mở rộng?</div>
+        <p class="faq-answer">
+          Bạn có thể tùy chọn xuất ra định dạng <strong>PNG</strong> (giữ nguyên độ nét chất lượng cao nhất), <strong>JPG</strong> (nhẹ nhàng, phổ thông) hoặc <strong>WebP</strong> (tối ưu nén dung lượng cho website).
+        </p>
+      </div>
+
+      <!-- Phần 13: Kết bài + CTA -->
+      <h2>10. Lời kết</h2>
+      <p>
+        Kỹ thuật <strong>mở rộng ảnh bằng AI</strong> đã thay đổi hoàn toàn cách chúng ta xử lý bố cục hình ảnh trong kỷ nguyên đa nền tảng số. Giờ đây, bạn không còn phải chấp nhận những bức ảnh bị cắt xén méo mó hay tốn hàng giờ chỉnh sửa Photoshop thủ công phức tạp.
+      </p>
+      <p>
+        Hãy biến những bức ảnh chụp dọc thành banner YouTube chuẩn 16:9, hoặc nâng cấp ảnh sản phẩm vuông thành bài đăng Story bắt mắt ngay hôm nay với công cụ an toàn, bảo mật và miễn phí của CreatorNew.
+      </p>
+
+      <div class="tool-cta-box">
+        <h3>Sẵn sàng nâng tầm hình ảnh của bạn?</h3>
+        <p>Không cần đăng nhập • Không watermark • Xử lý bảo mật 100% trên trình duyệt</p>
+        <a class="primary-btn" href="../../expand-image/">🚀 Bắt Đầu Mở Rộng Ảnh Miễn Phí Ngay &rarr;</a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© 2026 CreatorNew. Bộ công cụ sáng tạo nội dung miễn phí &amp; bảo mật.</span>
+      <div class="footer-links">
+        <a href="../../../vi/">Trang chủ</a>
+        <a href="../../expand-image/">Mở rộng ảnh AI</a>
+        <a href="../../background-remover/">Xóa phông AI</a>
+        <a href="../../nen-anh-duoi-200kb/">Nén dưới 200KB</a>
+        <a href="../">Cẩm nang</a>
+        <a href="#breadcrumbs">Lên đầu trang ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="../../../js/site-i18n.js"></script>
+</body>
+</html>
