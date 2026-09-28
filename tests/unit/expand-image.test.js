@@ -70,11 +70,14 @@ describe("Expand Image Engine", () => {
   });
 
   describe("ASPECT_RATIOS", () => {
-    it("contains 16:9, 9:16, 1:1, 4:5, 4:3, 21:9", () => {
+    it("contains 16:9, 9:16, 1:1, 4:5, 4:3, 3:2, 2:3, 21:9", () => {
       expect(ASPECT_RATIOS["16:9"]).toBeDefined();
       expect(ASPECT_RATIOS["9:16"]).toBeDefined();
       expect(ASPECT_RATIOS["1:1"]).toBeDefined();
       expect(ASPECT_RATIOS["4:5"]).toBeDefined();
+      expect(ASPECT_RATIOS["4:3"]).toBeDefined();
+      expect(ASPECT_RATIOS["3:2"]).toBeDefined();
+      expect(ASPECT_RATIOS["2:3"]).toBeDefined();
       expect(ASPECT_RATIOS["21:9"]).toBeDefined();
     });
   });

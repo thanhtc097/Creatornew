@@ -1206,6 +1206,17 @@ details p {
   border-color: #cbd5e1;
   box-shadow: 0 4px 20px rgba(12, 14, 20, .04);
 }
+.tool-link-card.flagship-tool {
+  border-color: #6344f5;
+  background: linear-gradient(180deg, #ffffff 0%, #f9f8ff 100%);
+  box-shadow: 0 6px 24px rgba(99, 68, 245, 0.12);
+  position: relative;
+}
+.tool-link-card.flagship-tool:hover {
+  transform: translateY(-3px);
+  border-color: #502ee6;
+  box-shadow: 0 14px 36px rgba(99, 68, 245, 0.22);
+}
 .tool-link-card:nth-child(2) { grid-column: span 3; }
 .tool-link-card:nth-child(n+6) { grid-column: span 3; }
 .tool-link-card.coming-soon { background: #fbfcfe; }
@@ -1213,6 +1224,14 @@ details p {
 .tool-link-card p { margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.55; }
 .tool-card-icon { width: 44px; height: 44px; border-radius: 12px; }
 .tool-badge { position: absolute; top: 18px; right: 18px; color: #0c0e14; font-size: 10.5px; font-weight: 800; text-transform: uppercase; padding: 4px 8px; border-radius: 6px; background: rgba(194, 248, 52, .3); border: 1px solid rgba(194, 248, 52, .6); }
+.tool-badge.flagship-badge {
+  background: linear-gradient(135deg, #c2f834 0%, #a3e635 100%);
+  color: #0c0e14;
+  border: 1px solid rgba(194, 248, 52, 0.9);
+  box-shadow: 0 2px 8px rgba(194, 248, 52, 0.45);
+  font-weight: 850;
+  letter-spacing: 0.2px;
+}
 .tool-link { margin-top: 16px; display: inline-block; color: var(--primary); font-size: 13px; font-weight: 800; }
 
 .home-cta {

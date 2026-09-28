@@ -10,6 +10,8 @@ export const ASPECT_RATIOS = {
   "1:1": { label: "1:1 Square (Instagram Feed)", ratio: 1 / 1 },
   "4:5": { label: "4:5 Portrait (Instagram Post)", ratio: 4 / 5 },
   "4:3": { label: "4:3 Standard Photo", ratio: 4 / 3 },
+  "3:2": { label: "3:2 Camera Photo", ratio: 3 / 2 },
+  "2:3": { label: "2:3 Portrait Photo", ratio: 2 / 3 },
   "21:9": { label: "21:9 Ultrawide Cinema", ratio: 21 / 9 },
   "custom": { label: "Custom Expand", ratio: null },
 };

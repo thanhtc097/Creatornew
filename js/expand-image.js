@@ -75,6 +75,79 @@ const elements = {
   statusAlert: $("expandStatusAlert"),
 };
 
+const isVi = document.documentElement.lang === "vi";
+
+const I18N = {
+  validImageError: isVi
+    ? "Vui lòng tải lên tệp hình ảnh hợp lệ (JPG, PNG, WebP, AVIF)."
+    : "Please upload a valid image file (JPG, PNG, WebP, AVIF).",
+  decodeError: isVi
+    ? "Không thể đọc tệp ảnh. Vui lòng thử lại với ảnh khác."
+    : "Could not decode image file.",
+  loadingSample: isVi
+    ? "Đang tải ảnh mẫu..."
+    : "Loading sample image...",
+  sampleLoaded: isVi
+    ? "Đã tải ảnh mẫu. Hãy chọn tỉ lệ mong muốn và nhấn 'Mở Rộng & Điền Bằng AI'!"
+    : "Sample image loaded. Select aspect ratio and click 'Expand & Generative Fill'!",
+  sampleError: isVi
+    ? "Không thể tải ảnh mẫu. Vui lòng thử lại."
+    : "Could not load sample image.",
+  brushOn: isVi
+    ? "✦ Chế độ Cọ Vẽ BẬT: Quét ngón tay hoặc chuột lên vật thể thừa để AI tự động vẽ bù."
+    : "Brush Mode On: Paint on unwanted objects or areas to fill them with AI.",
+  brushOff: isVi
+    ? "Chế độ Cọ Vẽ TẮT."
+    : "Brush Mode Off.",
+  brushCleared: isVi
+    ? "Đã xóa toàn bộ nét vẽ cọ."
+    : "Brush mask cleared.",
+  buildingCanvas: isVi
+    ? "Đang thiết lập khung hình mở rộng và chuẩn bị AI..."
+    : "Building expanded canvas and neural mask...",
+  scalingTensor: isVi
+    ? "Đang chuẩn hóa tensor cho mạng nơ-ron Fourier LaMa..."
+    : "Scaling tensor for LaMa Fourier neural model...",
+  executingModel: isVi
+    ? "Đang chạy mô hình AI vẽ nối tiếp cảnh quan trực tiếp trên máy..."
+    : "Executing on-device AI outpainting neural network...",
+  blendingComposite: isVi
+    ? "Đang hòa trộn ghép nối cảnh quan liền mạch..."
+    : "Blending seamless AI generative composite...",
+  expandSuccess: (w, h) =>
+    isVi
+      ? `Đã mở rộng ảnh thành công sang kích thước ${w} × ${h}px!`
+      : `Image expanded successfully to ${w}×${h}px!`,
+  expandCancel: isVi
+    ? "Đã hủy tiến trình mở rộng ảnh."
+    : "Expansion cancelled.",
+  expandError: isVi
+    ? "Xử lý mở rộng AI cục bộ gặp lỗi. Vui lòng thử tỉ lệ khác hoặc dùng trình duyệt hiện đại hơn."
+    : "Local neural expansion failed. Try a smaller aspect ratio or another browser.",
+  linkCopied: isVi
+    ? "Đã sao chép liên kết công cụ vào khay nhớ tạm! Hãy chia sẻ cho bạn bè."
+    : "Tool link copied to clipboard! Share with your friends.",
+  downloadSuccess: (name) =>
+    isVi
+      ? `Đã tải về ${name} thành công!`
+      : `Downloaded ${name} successfully!`,
+  noImageError: isVi
+    ? "Vui lòng mở rộng ảnh trước khi tải về."
+    : "Please expand an image first.",
+  modelDownload: isVi
+    ? "Đang tải trọng số mô hình AI (92.6 MB, lưu bộ nhớ đệm)..."
+    : "Downloading neural network weights (92.6 MB)...",
+  modelInit: isVi
+    ? "Đang khởi tạo mô hình WebGPU/WASM tăng tốc phần cứng..."
+    : "Initializing on-device WebGPU/WASM model...",
+  modelProcessing: isVi
+    ? "Đang tổng hợp bối cảnh cảnh quan AI..."
+    : "Synthesizing AI background extensions...",
+  processingDefault: isVi
+    ? "Đang xử lý trên thiết bị của bạn..."
+    : "Processing on your device...",
+};
+
 // Internal State
 let currentFile = null;
 let currentImage = null;
@@ -144,8 +217,12 @@ function initEvents() {
   // Aspect Ratio Buttons
   elements.aspectBtns?.forEach((btn) => {
     btn.addEventListener("click", () => {
-      elements.aspectBtns.forEach((b) => b.classList.remove("is-active"));
+      elements.aspectBtns.forEach((b) => {
+        b.classList.remove("is-active");
+        b.setAttribute("aria-checked", "false");
+      });
       btn.classList.add("is-active");
+      btn.setAttribute("aria-checked", "true");
       currentAspect = btn.dataset.aspect || "16:9";
       if (elements.customMarginsDetails) {
         elements.customMarginsDetails.hidden = currentAspect !== "custom";
@@ -213,7 +290,7 @@ function initEvents() {
   elements.btnShare?.addEventListener("click", () => {
     if (navigator.clipboard) {
       navigator.clipboard.writeText(window.location.href);
-      showStatus("Tool link copied to clipboard! Share with your friends.", "success");
+      showStatus(I18N.linkCopied, "success");
     }
   });
 
@@ -229,7 +306,7 @@ function initEvents() {
  */
 async function handleFileSelected(file) {
   if (!file.type.startsWith("image/")) {
-    showStatus("Please upload a valid image file (JPG, PNG, WebP).", "error");
+    showStatus(I18N.validImageError, "error");
     return;
   }
   clearStatus();
@@ -260,7 +337,7 @@ async function handleFileSelected(file) {
     elements.workspace?.scrollIntoView({ behavior: "smooth", block: "start" });
   } catch (err) {
     console.error("Failed to load image:", err);
-    showStatus("Could not decode image file.", "error");
+    showStatus(I18N.decodeError, "error");
   }
 }
 
@@ -269,16 +346,16 @@ async function handleFileSelected(file) {
  */
 async function loadSampleImage(url) {
   try {
-    showStatus("Loading sample image...", "info");
+    showStatus(I18N.loadingSample, "info");
     const res = await fetch(url);
     if (!res.ok) throw new Error("Could not fetch sample.");
     const blob = await res.blob();
     const file = new File([blob], "sample-expand.jpg", { type: "image/jpeg" });
     await handleFileSelected(file);
-    showStatus("Sample image loaded. Select aspect ratio and click 'Expand & Generative Fill'!", "success");
+    showStatus(I18N.sampleLoaded, "success");
   } catch (err) {
     console.error(err);
-    showStatus("Could not load sample image.", "error");
+    showStatus(I18N.sampleError, "error");
   }
 }
 
@@ -303,7 +380,10 @@ function updatePreviewLayout() {
   // Update Stats text
   if (elements.origDimsText) elements.origDimsText.textContent = `${dims.sourceWidth} × ${dims.sourceHeight}px`;
   if (elements.targetDimsText) elements.targetDimsText.textContent = `${dims.targetWidth} × ${dims.targetHeight}px`;
-  if (elements.expandBadge) elements.expandBadge.textContent = `+${dims.expansionPercent}% Expanded (${dims.aspectKey})`;
+  if (elements.expandBadge) {
+    const actionLabel = isVi ? "Diện tích" : "Expanded";
+    elements.expandBadge.textContent = `+${dims.expansionPercent}% ${actionLabel} (${dims.aspectKey})`;
+  }
 
   // Render visual canvas preview showing expanded layout frame
   renderVisualPreview(dims);
@@ -355,34 +435,38 @@ function renderVisualPreview(dims) {
 }
 
 /**
- * Setup brush drawing on the brush canvas layer
+ * Setup brush drawing on the brush canvas layer (mouse & touch support)
  */
 function setupBrushDrawing() {
   const canvas = elements.brushCanvas;
   if (!canvas) return;
   const ctx = canvas.getContext("2d");
 
-  const startDraw = (e) => {
-    if (!isBrushActive || !currentImage) return;
-    isDrawing = true;
+  const getCanvasPos = (clientX, clientY) => {
     const rect = canvas.getBoundingClientRect();
     const scaleX = canvas.width / rect.width;
     const scaleY = canvas.height / rect.height;
-    lastX = (e.clientX - rect.left) * scaleX;
-    lastY = (e.clientY - rect.top) * scaleY;
+    return {
+      x: (clientX - rect.left) * scaleX,
+      y: (clientY - rect.top) * scaleY,
+    };
+  };
+
+  const startDraw = (pt) => {
+    if (!isBrushActive || !currentImage) return;
+    isDrawing = true;
+    const pos = getCanvasPos(pt.clientX, pt.clientY);
+    lastX = pos.x;
+    lastY = pos.y;
     drawStroke(lastX, lastY);
   };
 
-  const moveDraw = (e) => {
+  const moveDraw = (pt) => {
     if (!isDrawing || !isBrushActive) return;
-    const rect = canvas.getBoundingClientRect();
-    const scaleX = canvas.width / rect.width;
-    const scaleY = canvas.height / rect.height;
-    const x = (e.clientX - rect.left) * scaleX;
-    const y = (e.clientY - rect.top) * scaleY;
-    drawStroke(x, y);
-    lastX = x;
-    lastY = y;
+    const pos = getCanvasPos(pt.clientX, pt.clientY);
+    drawStroke(pos.x, pos.y);
+    lastX = pos.x;
+    lastY = pos.y;
   };
 
   const endDraw = () => {
@@ -392,17 +476,34 @@ function setupBrushDrawing() {
     }
   };
 
-  canvas.addEventListener("mousedown", startDraw);
-  canvas.addEventListener("mousemove", moveDraw);
+  canvas.addEventListener("mousedown", (e) => startDraw(e));
+  canvas.addEventListener("mousemove", (e) => moveDraw(e));
   window.addEventListener("mouseup", endDraw);
 
-  canvas.addEventListener("touchstart", (e) => {
-    if (e.touches[0]) startDraw(e.touches[0]);
-  }, { passive: true });
-  canvas.addEventListener("touchmove", (e) => {
-    if (e.touches[0]) moveDraw(e.touches[0]);
-  }, { passive: true });
+  canvas.addEventListener(
+    "touchstart",
+    (e) => {
+      if (isBrushActive && e.touches[0]) {
+        e.preventDefault();
+        startDraw(e.touches[0]);
+      }
+    },
+    { passive: false }
+  );
+
+  canvas.addEventListener(
+    "touchmove",
+    (e) => {
+      if (isBrushActive && e.touches[0]) {
+        e.preventDefault();
+        moveDraw(e.touches[0]);
+      }
+    },
+    { passive: false }
+  );
+
   window.addEventListener("touchend", endDraw);
+  window.addEventListener("touchcancel", endDraw);
 
   function drawStroke(x, y) {
     const radius = Number(elements.brushSize?.value) || 30;
@@ -460,16 +561,16 @@ function syncBrushToUserMask() {
 function toggleBrush() {
   isBrushActive = !isBrushActive;
   elements.btnToggleBrush?.classList.toggle("is-active", isBrushActive);
+  if (elements.btnToggleBrush) {
+    elements.btnToggleBrush.textContent = isBrushActive
+      ? (isVi ? "Tắt Cọ Vẽ" : "Disable Brush")
+      : (isVi ? "Bật Cọ Vẽ" : "Enable Brush");
+  }
   if (elements.brushCanvas) {
     elements.brushCanvas.style.pointerEvents = isBrushActive ? "auto" : "none";
     elements.brushCanvas.style.cursor = isBrushActive ? "crosshair" : "default";
   }
-  showStatus(
-    isBrushActive
-      ? "Brush Mode On: Paint on unwanted objects or areas to fill them with AI."
-      : "Brush Mode Off.",
-    "info"
-  );
+  showStatus(isBrushActive ? I18N.brushOn : I18N.brushOff, "info");
 }
 
 /**
@@ -485,7 +586,7 @@ function clearBrush() {
     ctx.clearRect(0, 0, elements.brushCanvas.width, elements.brushCanvas.height);
   }
   updatePreviewLayout();
-  showStatus("Brush mask cleared.", "info");
+  showStatus(I18N.brushCleared, "info");
 }
 
 /**
@@ -512,7 +613,7 @@ async function startExpanding() {
   if (elements.btnRunExpand) elements.btnRunExpand.disabled = true;
   if (elements.btnCancelExpand) elements.btnCancelExpand.hidden = false;
   if (elements.progressShell) elements.progressShell.hidden = false;
-  updateProgress(10, "Building expanded canvas and neural mask...");
+  updateProgress(10, I18N.buildingCanvas);
 
   try {
     // Step 1: Build expanded source canvas
@@ -539,7 +640,7 @@ async function startExpanding() {
     );
 
     // Step 3: Resample to 512x512 for LaMa neural model
-    updateProgress(25, "Scaling tensor for LaMa Fourier neural model...");
+    updateProgress(25, I18N.scalingTensor);
     const modelSize = 512;
 
     const scaledImageCanvas = document.createElement("canvas");
@@ -558,7 +659,7 @@ async function startExpanding() {
     const planarImage = rgbaToPlanarRgb(scaledImgData, modelSize);
     const floatMask = maskToFloatArray(scaledMaskData, modelSize);
 
-    updateProgress(45, "Executing on-device AI outpainting neural network...");
+    updateProgress(45, I18N.executingModel);
 
     // Step 4: Run LaMa Inpaint Service
     const resultMessage = await inpaint.process({
@@ -571,7 +672,7 @@ async function startExpanding() {
 
     if (activeJobId !== jobId) return;
 
-    updateProgress(90, "Blending seamless AI generative composite...");
+    updateProgress(90, I18N.blendingComposite);
 
     // Step 5: Unpack result Float32Array into 512x512 canvas
     const inpaintCanvas512 = document.createElement("canvas");
@@ -612,21 +713,23 @@ async function startExpanding() {
       if (elements.previewImg) elements.previewImg.src = afterObjectUrl;
 
       // Update comparison slider badges
-      if (elements.sliderBadgeLeft) elements.sliderBadgeLeft.textContent = `Original (${w}×${h})`;
-      if (elements.sliderBadgeRight) elements.sliderBadgeRight.textContent = `Expanded (${dims.targetWidth}×${dims.targetHeight})`;
+      if (elements.sliderBadgeLeft) {
+        elements.sliderBadgeLeft.textContent = `${isVi ? "Ảnh gốc" : "Original"} (${w}×${h})`;
+      }
+      if (elements.sliderBadgeRight) {
+        elements.sliderBadgeRight.textContent = `${isVi ? "AI Mở Rộng" : "Expanded"} (${dims.targetWidth}×${dims.targetHeight})`;
+      }
 
       resetProcessingState();
       switchTab("compare");
-      showStatus(`Image expanded successfully to ${dims.targetWidth}×${dims.targetHeight}px!`, "success");
+      showStatus(I18N.expandSuccess(dims.targetWidth, dims.targetHeight), "success");
 
       if (elements.btnDownload) elements.btnDownload.disabled = false;
     }, "image/png");
   } catch (err) {
     console.error("Expand failed:", err);
     showStatus(
-      err?.name === "AbortError"
-        ? "Expansion cancelled."
-        : "Local neural expansion failed. Try a smaller aspect ratio or another browser.",
+      err?.name === "AbortError" ? I18N.expandCancel : I18N.expandError,
       err?.name === "AbortError" ? "info" : "error"
     );
     resetProcessingState();
@@ -639,7 +742,7 @@ async function startExpanding() {
 function cancelExpanding() {
   if (!isProcessing) return;
   inpaint.cancel(activeJobId);
-  showStatus("Expansion process cancelled.", "info");
+  showStatus(I18N.expandCancel, "info");
   resetProcessingState();
 }
 
@@ -648,11 +751,11 @@ function cancelExpanding() {
  */
 function handleInpaintStatus(message) {
   const labels = {
-    "model-download": "Downloading neural network weights (92.6 MB)...",
-    "model-initialize": "Initializing on-device WebGPU/WASM model...",
-    processing: "Synthesizing AI background extensions...",
+    "model-download": I18N.modelDownload,
+    "model-initialize": I18N.modelInit,
+    processing: I18N.modelProcessing,
   };
-  updateProgress(message.progress ?? 50, labels[message.stage] || "Processing on your device...");
+  updateProgress(message.progress ?? 50, labels[message.stage] || I18N.processingDefault);
 }
 
 /**
@@ -661,7 +764,7 @@ function handleInpaintStatus(message) {
 function updateProgress(percent, message) {
   if (elements.progressFill) elements.progressFill.style.width = `${percent}%`;
   if (elements.progressPercentText) elements.progressPercentText.textContent = `${percent}%`;
-  if (elements.progressStageText) elements.progressStageText.textContent = message || "Processing...";
+  if (elements.progressStageText) elements.progressStageText.textContent = message || I18N.processingDefault;
 }
 
 /**
@@ -680,12 +783,16 @@ function resetProcessingState() {
 function switchTab(tab) {
   if (tab === "editor") {
     elements.btnTabEditor?.classList.add("is-active");
+    elements.btnTabEditor?.setAttribute("aria-selected", "true");
     elements.btnTabCompare?.classList.remove("is-active");
+    elements.btnTabCompare?.setAttribute("aria-selected", "false");
     if (elements.editorStage) elements.editorStage.hidden = false;
     if (elements.sliderContainer) elements.sliderContainer.hidden = true;
   } else {
     elements.btnTabEditor?.classList.remove("is-active");
+    elements.btnTabEditor?.setAttribute("aria-selected", "false");
     elements.btnTabCompare?.classList.add("is-active");
+    elements.btnTabCompare?.setAttribute("aria-selected", "true");
     if (elements.editorStage) elements.editorStage.hidden = true;
     if (elements.sliderContainer) elements.sliderContainer.hidden = false;
   }
@@ -696,16 +803,17 @@ function switchTab(tab) {
  */
 function downloadResult() {
   if (!finalResultCanvas) {
-    showStatus("Please expand an image first.", "error");
+    showStatus(I18N.noImageError, "error");
     return;
   }
 
   const format = elements.exportFormat?.value || "png";
   const mimeType = format === "jpeg" ? "image/jpeg" : format === "webp" ? "image/webp" : "image/png";
-  const quality = (Number(elements.exportQuality?.value) || 92) / 100;
+  const quality = (Number(elements.exportQuality?.value) || 95) / 100;
 
   const baseName = currentFile?.name?.replace(/\.[^/.]+$/, "") || "image";
-  const fileName = `${baseName}-expanded-${currentAspect.replace(":", "x")}.${format === "jpeg" ? "jpg" : format}`;
+  const prefix = isVi ? "mo-rong" : "expanded";
+  const fileName = `${baseName}-${prefix}-${currentAspect.replace(":", "x")}.${format === "jpeg" ? "jpg" : format}`;
 
   finalResultCanvas.toBlob(
     (blob) => {
@@ -718,7 +826,7 @@ function downloadResult() {
       a.click();
       document.body.removeChild(a);
       setTimeout(() => URL.revokeObjectURL(url), 2000);
-      showStatus(`Downloaded ${fileName} successfully!`, "success");
+      showStatus(I18N.downloadSuccess(fileName), "success");
     },
     mimeType,
     quality
@@ -771,3 +879,4 @@ if (document.readyState === "loading") {
 } else {
   initEvents();
 }
+
