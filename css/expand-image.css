@@ -214,15 +214,19 @@
   color: var(--expand-lime);
 }
 
-/* Alignment Controls */
-.alignment-group {
-  display: flex;
+/* Alignment Controls & 9-Point Matrix Grid */
+.alignment-group,
+.alignment-matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 0.4rem;
 }
 
 .align-btn {
-  flex: 1;
-  padding: 0.55rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.35rem;
   background: #1a1d2e;
   border: 1px solid var(--expand-border);
   border-radius: 10px;
@@ -230,13 +234,20 @@
   font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.align-btn:hover {
+  border-color: rgba(93, 95, 239, 0.6);
+  background: #202438;
 }
 
 .align-btn.is-active {
-  background: var(--expand-primary);
-  border-color: var(--expand-primary);
+  background: var(--expand-primary, #5d5fef);
+  border-color: var(--expand-primary, #5d5fef);
   color: #fff;
+  box-shadow: 0 0 10px rgba(93, 95, 239, 0.4);
 }
 
 /* Custom Margins Accordion */

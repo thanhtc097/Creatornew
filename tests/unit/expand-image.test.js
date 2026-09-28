@@ -29,7 +29,7 @@ describe("Expand Image Engine", () => {
       expect(stats.expansionPercent).toBe(78);
     });
 
-    it("handles alignment options (left, right, top, bottom)", () => {
+    it("handles 9-point alignment matrix options (left, right, top, bottom, top-left, bottom-right, etc.)", () => {
       const leftStats = calculateExpandedDimensions(1000, 1000, "16:9", "left");
       expect(leftStats.offsetX).toBe(0);
 
@@ -41,6 +41,14 @@ describe("Expand Image Engine", () => {
 
       const bottomStats = calculateExpandedDimensions(1000, 1000, "9:16", "bottom");
       expect(bottomStats.offsetY).toBe(778);
+
+      const topLeftStats = calculateExpandedDimensions(1000, 1000, "16:9", "top-left");
+      expect(topLeftStats.offsetX).toBe(0);
+      expect(topLeftStats.offsetY).toBe(0);
+
+      const bottomRightStats = calculateExpandedDimensions(1000, 1000, "16:9", "bottom-right");
+      expect(bottomRightStats.offsetX).toBe(778);
+      expect(bottomRightStats.offsetY).toBe(0);
     });
 
     it("handles custom padding expansion", () => {

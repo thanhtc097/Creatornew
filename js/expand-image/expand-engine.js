@@ -65,32 +65,31 @@ export function calculateExpandedDimensions(
       // Need to expand width horizontally
       targetH = srcH;
       targetW = Math.round(srcH * targetRatio);
-      const diffW = targetW - srcW;
-
-      if (alignment === "left") {
-        offsetX = 0;
-      } else if (alignment === "right") {
-        offsetX = diffW;
-      } else {
-        // center
-        offsetX = Math.round(diffW / 2);
-      }
-      offsetY = 0;
     } else {
       // Need to expand height vertically
       targetW = srcW;
       targetH = Math.round(srcW / targetRatio);
-      const diffH = targetH - srcH;
+    }
 
+    const diffW = Math.max(0, targetW - srcW);
+    const diffH = Math.max(0, targetH - srcH);
+
+    // Horizontal placement
+    if (alignment.includes("left")) {
       offsetX = 0;
-      if (alignment === "top") {
-        offsetY = 0;
-      } else if (alignment === "bottom") {
-        offsetY = diffH;
-      } else {
-        // center
-        offsetY = Math.round(diffH / 2);
-      }
+    } else if (alignment.includes("right")) {
+      offsetX = diffW;
+    } else {
+      offsetX = Math.round(diffW / 2);
+    }
+
+    // Vertical placement
+    if (alignment.includes("top")) {
+      offsetY = 0;
+    } else if (alignment.includes("bottom")) {
+      offsetY = diffH;
+    } else {
+      offsetY = Math.round(diffH / 2);
     }
   }
 

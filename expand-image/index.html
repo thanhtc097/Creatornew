@@ -277,18 +277,24 @@
             </div>
           </div>
 
-          <!-- Alignment -->
+          <!-- Alignment (9-Point Matrix) -->
           <div>
             <div class="control-group-title">
-              <span>2. Image Alignment</span>
-              <small>Position Inside Canvas</small>
+              <span>2. Placement &amp; Alignment</span>
+              <small>9-Point Matrix</small>
             </div>
-            <div class="alignment-group" role="radiogroup" aria-label="Position Alignment">
-              <button type="button" class="align-btn is-active" data-align="center">Center</button>
-              <button type="button" class="align-btn" data-align="left">Left</button>
-              <button type="button" class="align-btn" data-align="right">Right</button>
-              <button type="button" class="align-btn" data-align="top">Top</button>
-              <button type="button" class="align-btn" data-align="bottom">Bottom</button>
+            <div class="alignment-matrix-grid" role="radiogroup" aria-label="9-Point Position Alignment">
+              <button type="button" class="align-btn" data-align="top-left" title="Top Left (Northwest)">↖ Top-L</button>
+              <button type="button" class="align-btn" data-align="top" title="Top Center (North)">↑ Top</button>
+              <button type="button" class="align-btn" data-align="top-right" title="Top Right (Northeast)">↗ Top-R</button>
+              
+              <button type="button" class="align-btn" data-align="left" title="Middle Left (West)">← Left</button>
+              <button type="button" class="align-btn is-active" data-align="center" title="Center (Middle)">⏺ Center</button>
+              <button type="button" class="align-btn" data-align="right" title="Middle Right (East)">→ Right</button>
+              
+              <button type="button" class="align-btn" data-align="bottom-left" title="Bottom Left (Southwest)">↙ Btm-L</button>
+              <button type="button" class="align-btn" data-align="bottom" title="Bottom Center (South)">↓ Bottom</button>
+              <button type="button" class="align-btn" data-align="bottom-right" title="Bottom Right (Southeast)">↘ Btm-R</button>
             </div>
           </div>
 
