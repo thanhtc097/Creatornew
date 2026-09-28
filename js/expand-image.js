@@ -17,6 +17,13 @@ const elements = {
   chooseBtn: $("expandChooseBtn"),
   workspace: $("expandWorkspace"),
 
+  // Model Preload & Status Card
+  modelDownloadCard: $("modelDownloadCard"),
+  modelDownloadFill: $("modelDownloadFill"),
+  modelDownloadMetaText: $("modelDownloadMetaText"),
+  btnPauseModelDownload: $("btnPauseModelDownload"),
+  modelReadyBadge: $("modelReadyBadge"),
+
   // Aspect & Alignment Controls
   aspectBtns: document.querySelectorAll(".aspect-btn"),
   alignBtns: document.querySelectorAll(".align-btn"),
@@ -41,7 +48,7 @@ const elements = {
   btnClearBrush: $("btnClearBrush"),
   brushCanvas: $("brushCanvasLayer"),
 
-  // Stats Pill & Warning
+  // Stats Pill, 3-color Level & Warning
   origDimsText: $("origDimsText"),
   targetDimsText: $("targetDimsText"),
   expandBadge: $("expandBadge"),
@@ -52,6 +59,8 @@ const elements = {
   btnRunExpand: $("btnRunExpand"),
   btnCancelExpand: $("btnCancelExpand"),
   btnReExpand: $("btnReExpand"),
+  btnContinueEdit: $("btnContinueEdit"),
+  btnUndoResult: $("btnUndoResult"),
 
   // Progress
   progressShell: $("expandProgressShell"),
@@ -59,9 +68,10 @@ const elements = {
   progressStageText: $("expandProgressStageText"),
   progressPercentText: $("expandProgressPercentText"),
 
-  // Stage Area & Tabs
+  // Stage Area, Tabs & Zoom
   btnTabEditor: $("btnTabEditor"),
   btnTabCompare: $("btnTabCompare"),
+  btnZoomToggle: $("btnZoomToggle"),
   editorStage: $("expandEditorStage"),
   sliderContainer: $("expandSliderContainer"),
   previewImg: $("expandedCanvasPreview"),
@@ -71,6 +81,11 @@ const elements = {
   imgAfter: $("imgSliderAfter"),
   sliderBadgeLeft: $("sliderBadgeLeft"),
   sliderBadgeRight: $("sliderBadgeRight"),
+  resultMetaText: $("resultMetaText"),
+
+  // Feedback buttons
+  btnFeedbackGood: $("btnFeedbackGood"),
+  btnFeedbackBad: $("btnFeedbackBad"),
 
   // Export
   exportFormat: $("exportFormat"),
@@ -80,6 +95,11 @@ const elements = {
   btnClear: $("btnClear"),
   btnShare: $("btnShare"),
   statusAlert: $("expandStatusAlert"),
+
+  // Trust & Verification Modal
+  btnOpenVerifyModal: $("btnOpenVerifyModal"),
+  btnCloseVerifyModal: $("btnCloseVerifyModal"),
+  verifyModalOverlay: $("verifyModalOverlay"),
 };
 
 const isVi = document.documentElement.lang === "vi";
@@ -114,18 +134,9 @@ const I18N = {
     : "Brush mask cleared.",
   undoSuccess: isVi ? "Đã hoàn tác nét vẽ (Undo)." : "Undo brush stroke.",
   redoSuccess: isVi ? "Đã làm lại nét vẽ (Redo)." : "Redo brush stroke.",
-  buildingCanvas: isVi
-    ? "Đang thiết lập khung hình mở rộng và chuẩn bị AI..."
-    : "Building expanded canvas and neural mask...",
-  scalingTensor: isVi
-    ? "Đang chuẩn hóa tensor cho mạng nơ-ron Fourier LaMa..."
-    : "Scaling tensor for LaMa Fourier neural model...",
-  executingModel: isVi
-    ? "Đang chạy mô hình AI vẽ nối tiếp cảnh quan trực tiếp trên máy..."
-    : "Executing on-device AI outpainting neural network...",
-  blendingComposite: isVi
-    ? "Đang hòa trộn ghép nối cảnh quan liền mạch..."
-    : "Blending seamless AI generative composite...",
+  step1: isVi ? "1/3 Chuẩn bị ảnh & cấu trúc Tensor..." : "1/3 Building canvas & neural tensor...",
+  step2: isVi ? "2/3 Chạy mạng nơ-ron Fourier LaMa on-device..." : "2/3 Executing LaMa Fourier neural network on-device...",
+  step3: isVi ? "3/3 Hòa trộn viền & Ghép lớp phân giải cao..." : "3/3 Blending seamless full-res composite...",
   expandSuccess: (w, h) =>
     isVi
       ? `Đã mở rộng ảnh thành công sang kích thước ${w} × ${h}px!`
@@ -146,23 +157,23 @@ const I18N = {
   noImageError: isVi
     ? "Vui lòng mở rộng ảnh trước khi tải về."
     : "Please expand an image first.",
-  modelDownload: isVi
-    ? "Đang tải trọng số mô hình AI (92.6 MB, lưu bộ nhớ đệm)..."
-    : "Downloading neural network weights (92.6 MB)...",
-  modelInit: isVi
-    ? "Đang khởi tạo mô hình WebGPU/WASM tăng tốc phần cứng..."
-    : "Initializing on-device WebGPU/WASM model...",
-  modelProcessing: isVi
-    ? "Đang tổng hợp bối cảnh cảnh quan AI..."
-    : "Synthesizing AI background extensions...",
-  processingDefault: isVi
-    ? "Đang xử lý trên thiết bị của bạn..."
-    : "Processing on your device...",
+  modelDownloading: (loadedMB, totalMB, pct, speed) =>
+    isVi
+      ? `Đang tải AI (một lần duy nhất): ${loadedMB} / ${totalMB} MB (${pct}%) • ${speed} MB/s`
+      : `Downloading on-device AI model: ${loadedMB} / ${totalMB} MB (${pct}%) • ${speed} MB/s`,
+  modelReady: isVi ? "🟢 AI Sẵn Sàng (Offline)" : "🟢 AI Ready (Offline)",
+  feedbackThanks: isVi ? "Cảm ơn bạn đã gửi phản hồi!" : "Thank you for your feedback!",
+  pasteDetected: isVi ? "Đã nhận diện ảnh từ clipboard!" : "Image pasted from clipboard!",
+  continueEditReady: isVi
+    ? "Đã chuyển ảnh kết quả sang bảng vẽ để bạn tiếp tục mở rộng hoặc xóa vật thể!"
+    : "Result set as new input image. You can continue expanding or inpainting!",
+  undoResultSuccess: isVi ? "Đã quay lại ảnh trước đó." : "Reverted to previous image state.",
 };
 
 // Internal State
 let currentFile = null;
 let currentImage = null;
+let previousImage = null; // for Undo Result
 let currentAspect = "16:9";
 let currentAlign = "center";
 let activeJobId = 0;
@@ -172,6 +183,7 @@ let brushToolMode = "paint"; // 'paint' | 'eraser'
 let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
+let isZoomed = false;
 
 let beforeObjectUrl = null;
 let afterObjectUrl = null;
@@ -184,10 +196,17 @@ let brushHistoryStep = -1;
 const MAX_BRUSH_HISTORY = 20;
 
 // Initialize Inpaint Service
-const inpaint = new InpaintService({ onStatus: handleInpaintStatus });
+const inpaint = new InpaintService({
+  onStatus: handleInpaintStatus,
+  onDownloadProgress: handleModelDownloadProgress,
+});
 
 function initEvents() {
   detectHardwareAcceleration();
+  checkAndPreloadModel();
+
+  // Clipboard Paste Support (Ctrl+V)
+  window.addEventListener("paste", handlePasteEvent);
 
   // File Picker
   elements.chooseBtn?.addEventListener("click", (e) => {
@@ -294,17 +313,30 @@ function initEvents() {
   elements.btnRunExpand?.addEventListener("click", startExpanding);
   elements.btnReExpand?.addEventListener("click", startExpanding);
   elements.btnCancelExpand?.addEventListener("click", cancelExpanding);
+  elements.btnContinueEdit?.addEventListener("click", continueEditingWithResult);
+  elements.btnUndoResult?.addEventListener("click", undoResultToPrevious);
   elements.btnClear?.addEventListener("click", resetAll);
   elements.btnDownload?.addEventListener("click", downloadResult);
 
-  // Stage Tabs
+  // Model Download Pause / Resume
+  elements.btnPauseModelDownload?.addEventListener("click", () => {
+    inpaint.cancelDownload();
+    if (elements.modelDownloadCard) elements.modelDownloadCard.hidden = true;
+  });
+
+  // Stage Tabs & Zoom 100%
   elements.btnTabEditor?.addEventListener("click", () => switchTab("editor"));
   elements.btnTabCompare?.addEventListener("click", () => switchTab("compare"));
+  elements.btnZoomToggle?.addEventListener("click", toggleZoom100);
 
-  // Slider Input
+  // Split Slider Input
   elements.sliderRange?.addEventListener("input", (e) => {
     elements.sliderFrame?.style.setProperty("--slider-pos", `${e.target.value}%`);
   });
+
+  // Feedback Buttons
+  elements.btnFeedbackGood?.addEventListener("click", () => submitFeedback("good"));
+  elements.btnFeedbackBad?.addEventListener("click", () => submitFeedback("bad"));
 
   // Export format & quality
   elements.exportFormat?.addEventListener("change", (e) => {
@@ -320,11 +352,67 @@ function initEvents() {
     }
   });
 
+  // Trust & Verification Modal
+  elements.btnOpenVerifyModal?.addEventListener("click", () => {
+    if (elements.verifyModalOverlay) elements.verifyModalOverlay.hidden = false;
+  });
+  elements.btnCloseVerifyModal?.addEventListener("click", () => {
+    if (elements.verifyModalOverlay) elements.verifyModalOverlay.hidden = true;
+  });
+  elements.verifyModalOverlay?.addEventListener("click", (e) => {
+    if (e.target === elements.verifyModalOverlay) elements.verifyModalOverlay.hidden = true;
+  });
+
   window.addEventListener("beforeunload", () => {
     inpaint.dispose();
     if (beforeObjectUrl) URL.revokeObjectURL(beforeObjectUrl);
     if (afterObjectUrl) URL.revokeObjectURL(afterObjectUrl);
   });
+}
+
+/**
+ * Check connection and start background preloading if on Wi-Fi / fast connection
+ */
+function checkAndPreloadModel() {
+  const conn = navigator.connection;
+  if (conn?.saveData || conn?.effectiveType === "2g" || conn?.effectiveType === "3g") {
+    // Mobile Data saver on -> do not background preload automatically
+    return;
+  }
+
+  const startPreload = () => {
+    inpaint.initialize().then((res) => {
+      if (res?.fromCache || res?.cached) {
+        showModelReady();
+      }
+    }).catch((e) => {
+      console.warn("Background model preload non-blocking note:", e);
+    });
+  };
+
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(startPreload, { timeout: 2500 });
+  } else {
+    setTimeout(startPreload, 1500);
+  }
+}
+
+/**
+ * Handle Paste Event (Ctrl+V)
+ */
+function handlePasteEvent(e) {
+  const items = e.clipboardData?.items;
+  if (!items) return;
+  for (let i = 0; i < items.length; i++) {
+    if (items[i].type.startsWith("image/")) {
+      const file = items[i].getAsFile();
+      if (file) {
+        handleFileSelected(file);
+        showStatus(I18N.pasteDetected, "success");
+        break;
+      }
+    }
+  }
 }
 
 /**
@@ -344,12 +432,12 @@ async function detectHardwareAcceleration() {
   if (elements.hardwareBadge) {
     if (isWebGPU) {
       elements.hardwareBadge.innerHTML = isVi
-        ? `⚡ <strong>WebGPU Tăng Tốc</strong> &bull; Xử lý: ~1-2s`
-        : `⚡ <strong>WebGPU Accelerated</strong> &bull; Speed: ~1-2s`;
+        ? `⚡ <strong>WebGPU GPU</strong> &bull; Tốc độ: ~1-2s`
+        : `⚡ <strong>WebGPU GPU</strong> &bull; Speed: ~1-2s`;
       elements.hardwareBadge.className = "hardware-badge is-gpu";
     } else {
       elements.hardwareBadge.innerHTML = isVi
-        ? `⚙️ <strong>WASM SIMD</strong> &bull; Xử lý: ~3-5s`
+        ? `⚙️ <strong>WASM SIMD</strong> &bull; Tốc độ: ~3-5s`
         : `⚙️ <strong>WASM SIMD Fallback</strong> &bull; Speed: ~3-5s`;
       elements.hardwareBadge.className = "hardware-badge is-cpu";
     }
@@ -420,7 +508,7 @@ async function loadSampleImage(url) {
 }
 
 /**
- * Update the visual preview of the expanded canvas layout
+ * Update the visual preview of the expanded canvas layout with 3-color traffic light and striped overlay
  */
 function updatePreviewLayout() {
   if (!currentImage) return;
@@ -440,29 +528,48 @@ function updatePreviewLayout() {
   // Update Stats text
   if (elements.origDimsText) elements.origDimsText.textContent = `${dims.sourceWidth} × ${dims.sourceHeight}px`;
   if (elements.targetDimsText) elements.targetDimsText.textContent = `${dims.targetWidth} × ${dims.targetHeight}px`;
+  
+  // 3-Color Expansion Level Indicator: Green (<30%), Yellow (30-60%), Red (>60%)
   if (elements.expandBadge) {
-    const actionLabel = isVi ? "Diện tích" : "Expanded";
-    elements.expandBadge.textContent = `+${dims.expansionPercent}% ${actionLabel} (${dims.aspectKey})`;
+    const pct = dims.expansionPercent;
+    let levelClass = "level-low";
+    let levelLabel = isVi ? "Lý tưởng" : "Ideal";
+
+    if (pct > 60) {
+      levelClass = "level-high";
+      levelLabel = isVi ? "Mở rộng lớn" : "Heavy expand";
+    } else if (pct >= 30) {
+      levelClass = "level-mid";
+      levelLabel = isVi ? "Trung bình" : "Moderate";
+    }
+
+    elements.expandBadge.className = `expand-diff-badge ${levelClass}`;
+    elements.expandBadge.textContent = `+${pct}% (${levelLabel} • ${dims.aspectKey})`;
   }
 
-  // Expansion warning for large expansion (>50%)
+  // Expansion warning / suggestion
   if (elements.expansionWarning) {
-    if (dims.expansionPercent >= 50) {
+    if (dims.expansionPercent >= 60) {
       elements.expansionWarning.textContent = isVi
-        ? `💡 Mẹo: Mở rộng trên ${dims.expansionPercent}% diện tích cho kết quả tốt nhất với phong cảnh, tường phòng, bầu trời hoặc phông nền đơn giản.`
-        : `💡 Pro-tip: Expanding over ${dims.expansionPercent}% works best with scenery, textures, sky, or studio backgrounds.`;
+        ? `💡 Mẹo: Mở rộng trên 60% diện tích cho kết quả đẹp nhất với ảnh phong cảnh, bầu trời, phòng ốc hoặc phông nền đơn giản.`
+        : `💡 Pro-tip: Expanding over 60% works best with landscape scenery, sky, rooms, or simple studio backdrops.`;
+      elements.expansionWarning.hidden = false;
+    } else if (dims.expansionPercent >= 30) {
+      elements.expansionWarning.textContent = isVi
+        ? `✨ Tỉ lệ mở rộng tối ưu: AI sẽ vẽ nối tiếp liền lạc màu sắc và kết cấu nền xung quanh.`
+        : `✨ Optimal expansion ratio: AI will extrapolate textures and lighting seamlessly.`;
       elements.expansionWarning.hidden = false;
     } else {
       elements.expansionWarning.hidden = true;
     }
   }
 
-  // Render visual canvas preview showing expanded layout frame
+  // Render visual canvas preview showing expanded layout frame & striped outpaint pattern
   renderVisualPreview(dims);
 }
 
 /**
- * Render preview canvas showing the padded bounds and original photo
+ * Render preview canvas with diagonal striped pattern on outpaint region
  */
 function renderVisualPreview(dims) {
   const canvas = document.createElement("canvas");
@@ -470,26 +577,39 @@ function renderVisualPreview(dims) {
   canvas.height = dims.targetHeight;
   const ctx = canvas.getContext("2d");
 
-  // Draw extrapolated background texture
+  // 1. Draw extrapolated blurred background
   ctx.save();
-  ctx.filter = "blur(14px) brightness(0.7)";
+  ctx.filter = "blur(14px) brightness(0.65)";
   ctx.drawImage(currentImage, 0, 0, dims.targetWidth, dims.targetHeight);
   ctx.restore();
 
-  // Darken expanded area slightly to indicate outpaint border
-  ctx.fillStyle = "rgba(10, 12, 18, 0.4)";
-  ctx.fillRect(0, 0, dims.targetWidth, dims.targetHeight);
+  // 2. Draw subtle diagonal stripes on outpaint margin
+  const stripeCanvas = document.createElement("canvas");
+  stripeCanvas.width = 16;
+  stripeCanvas.height = 16;
+  const sCtx = stripeCanvas.getContext("2d");
+  sCtx.strokeStyle = "rgba(255, 255, 255, 0.08)";
+  sCtx.lineWidth = 2;
+  sCtx.beginPath();
+  sCtx.moveTo(0, 16);
+  sCtx.lineTo(16, 0);
+  sCtx.stroke();
+  const pattern = ctx.createPattern(stripeCanvas, "repeat");
+  if (pattern) {
+    ctx.fillStyle = pattern;
+    ctx.fillRect(0, 0, dims.targetWidth, dims.targetHeight);
+  }
 
-  // Draw original image crisp in its position
+  // 3. Draw original crisp image in position
   ctx.drawImage(currentImage, dims.offsetX, dims.offsetY, dims.sourceWidth, dims.sourceHeight);
 
-  // Draw dashed outline around original image to guide the user
+  // 4. Draw dashed outline to clearly delineate source vs outpainted boundary
   ctx.strokeStyle = "rgba(194, 248, 52, 0.9)";
   ctx.lineWidth = Math.max(2, Math.round(dims.targetWidth / 400));
   ctx.setLineDash([8, 8]);
   ctx.strokeRect(dims.offsetX, dims.offsetY, dims.sourceWidth, dims.sourceHeight);
 
-  // Draw user brush mask if any
+  // 5. Draw user inpaint brush mask if any
   if (userMaskCanvas) {
     ctx.drawImage(userMaskCanvas, dims.offsetX, dims.offsetY);
   }
@@ -507,35 +627,37 @@ function renderVisualPreview(dims) {
 }
 
 /**
- * Setup brush drawing on the brush canvas layer (mouse & touch support + eraser + history)
+ * Setup brush drawing on the brush canvas layer (mouse & touch offset + eraser + history)
  */
 function setupBrushDrawing() {
   const canvas = elements.brushCanvas;
   if (!canvas) return;
   const ctx = canvas.getContext("2d");
 
-  const getCanvasPos = (clientX, clientY) => {
+  const getCanvasPos = (clientX, clientY, isTouch = false) => {
     const rect = canvas.getBoundingClientRect();
     const scaleX = canvas.width / rect.width;
     const scaleY = canvas.height / rect.height;
+    // Apply -30px touch Y-offset on mobile so fingertip doesn't obstruct drawing
+    const touchOffsetY = isTouch ? -28 : 0;
     return {
       x: (clientX - rect.left) * scaleX,
-      y: (clientY - rect.top) * scaleY,
+      y: (clientY + touchOffsetY - rect.top) * scaleY,
     };
   };
 
-  const startDraw = (pt) => {
+  const startDraw = (pt, isTouch = false) => {
     if (!isBrushActive || !currentImage) return;
     isDrawing = true;
-    const pos = getCanvasPos(pt.clientX, pt.clientY);
+    const pos = getCanvasPos(pt.clientX, pt.clientY, isTouch);
     lastX = pos.x;
     lastY = pos.y;
     drawStroke(lastX, lastY);
   };
 
-  const moveDraw = (pt) => {
+  const moveDraw = (pt, isTouch = false) => {
     if (!isDrawing || !isBrushActive) return;
-    const pos = getCanvasPos(pt.clientX, pt.clientY);
+    const pos = getCanvasPos(pt.clientX, pt.clientY, isTouch);
     drawStroke(pos.x, pos.y);
     lastX = pos.x;
     lastY = pos.y;
@@ -549,8 +671,8 @@ function setupBrushDrawing() {
     }
   };
 
-  canvas.addEventListener("mousedown", (e) => startDraw(e));
-  canvas.addEventListener("mousemove", (e) => moveDraw(e));
+  canvas.addEventListener("mousedown", (e) => startDraw(e, false));
+  canvas.addEventListener("mousemove", (e) => moveDraw(e, false));
   window.addEventListener("mouseup", endDraw);
 
   canvas.addEventListener(
@@ -558,7 +680,7 @@ function setupBrushDrawing() {
     (e) => {
       if (isBrushActive && e.touches[0]) {
         e.preventDefault();
-        startDraw(e.touches[0]);
+        startDraw(e.touches[0], true);
       }
     },
     { passive: false }
@@ -569,7 +691,7 @@ function setupBrushDrawing() {
     (e) => {
       if (isBrushActive && e.touches[0]) {
         e.preventDefault();
-        moveDraw(e.touches[0]);
+        moveDraw(e.touches[0], true);
       }
     },
     { passive: false }
@@ -587,8 +709,8 @@ function setupBrushDrawing() {
       ctx.fillStyle = "rgba(0, 0, 0, 1)";
     } else {
       ctx.globalCompositeOperation = "source-over";
-      ctx.strokeStyle = "rgba(255, 60, 60, 0.85)";
-      ctx.fillStyle = "rgba(255, 60, 60, 0.85)";
+      ctx.strokeStyle = "rgba(255, 60, 60, 0.65)";
+      ctx.fillStyle = "rgba(255, 60, 60, 0.65)";
     }
 
     ctx.lineCap = "round";
@@ -604,13 +726,12 @@ function setupBrushDrawing() {
     ctx.arc(x, y, radius, 0, Math.PI * 2);
     ctx.fill();
 
-    // Reset composite operation
     ctx.globalCompositeOperation = "source-over";
   }
 }
 
 /**
- * Transfer strokes drawn on stage canvas into userMaskCanvas (at source coordinates)
+ * Transfer strokes drawn on stage canvas into userMaskCanvas
  */
 function syncBrushToUserMask() {
   if (!currentImage || !userMaskCanvas || !elements.brushCanvas) return;
@@ -626,7 +747,6 @@ function syncBrushToUserMask() {
 
   const uCtx = userMaskCanvas.getContext("2d");
   uCtx.clearRect(0, 0, w, h);
-  // Copy region corresponding to original photo from brushCanvas
   uCtx.drawImage(
     elements.brushCanvas,
     dims.offsetX,
@@ -645,7 +765,6 @@ function syncBrushToUserMask() {
  */
 function pushBrushHistory() {
   if (!userMaskCanvas) return;
-  // Truncate future steps
   brushHistory = brushHistory.slice(0, brushHistoryStep + 1);
   const uCtx = userMaskCanvas.getContext("2d");
   const imgData = uCtx.getImageData(0, 0, userMaskCanvas.width, userMaskCanvas.height);
@@ -657,9 +776,6 @@ function pushBrushHistory() {
   updateUndoRedoButtons();
 }
 
-/**
- * Undo brush stroke
- */
 function undoBrush() {
   if (!userMaskCanvas || brushHistoryStep < 0) return;
   if (brushHistoryStep > 0) {
@@ -673,9 +789,6 @@ function undoBrush() {
   showStatus(I18N.undoSuccess, "info");
 }
 
-/**
- * Redo brush stroke
- */
 function redoBrush() {
   if (!userMaskCanvas || brushHistoryStep >= brushHistory.length - 1) return;
   brushHistoryStep++;
@@ -684,23 +797,16 @@ function redoBrush() {
   showStatus(I18N.redoSuccess, "info");
 }
 
-/**
- * Restore mask state from ImageData
- */
 function restoreBrushState(imgData) {
   if (!userMaskCanvas || !imgData) return;
   const uCtx = userMaskCanvas.getContext("2d");
   uCtx.clearRect(0, 0, userMaskCanvas.width, userMaskCanvas.height);
   uCtx.putImageData(imgData, 0, 0);
 
-  // Redraw onto visual brushCanvas
   syncUserMaskToBrushCanvas();
   updatePreviewLayout();
 }
 
-/**
- * Sync userMaskCanvas back onto stage brushCanvas
- */
 function syncUserMaskToBrushCanvas() {
   if (!currentImage || !userMaskCanvas || !elements.brushCanvas) return;
   const w = currentImage.naturalWidth;
@@ -718,9 +824,6 @@ function syncUserMaskToBrushCanvas() {
   bCtx.drawImage(userMaskCanvas, dims.offsetX, dims.offsetY);
 }
 
-/**
- * Update disabled states of Undo/Redo buttons
- */
 function updateUndoRedoButtons() {
   if (elements.btnUndoBrush) {
     elements.btnUndoBrush.disabled = brushHistoryStep < 0;
@@ -730,9 +833,6 @@ function updateUndoRedoButtons() {
   }
 }
 
-/**
- * Toggle brush mode
- */
 function toggleBrush() {
   isBrushActive = !isBrushActive;
   elements.btnToggleBrush?.classList.toggle("is-active", isBrushActive);
@@ -750,9 +850,6 @@ function toggleBrush() {
   showStatus(isBrushActive ? I18N.brushOn : I18N.brushOff, "info");
 }
 
-/**
- * Switch tool between Paint (cọ vẽ) and Eraser (cọ tẩy)
- */
 function setBrushMode(mode) {
   brushToolMode = mode;
   if (!isBrushActive) toggleBrush();
@@ -769,9 +866,6 @@ function setBrushMode(mode) {
   showStatus(mode === "eraser" ? I18N.eraserOn : I18N.brushOn, "info");
 }
 
-/**
- * Clear mask only without resetting whole history
- */
 function clearBrushMaskOnly() {
   if (userMaskCanvas) {
     const ctx = userMaskCanvas.getContext("2d");
@@ -784,9 +878,6 @@ function clearBrushMaskOnly() {
   updatePreviewLayout();
 }
 
-/**
- * Clear all brush masks and history
- */
 function clearBrush() {
   clearBrushMaskOnly();
   brushHistory = [];
@@ -795,9 +886,8 @@ function clearBrush() {
   showStatus(I18N.brushCleared, "info");
 }
 
-
 /**
- * Start Expanding & Generative Inpainting
+ * Start Expanding & Generative Inpainting with Transparent Steps
  */
 async function startExpanding() {
   if (!currentImage || isProcessing) return;
@@ -816,14 +906,18 @@ async function startExpanding() {
   activeJobId++;
   const jobId = activeJobId;
 
+  // Save previous image state for Undo Result
+  previousImage = currentImage;
+  if (elements.btnUndoResult) elements.btnUndoResult.hidden = false;
+
   // UI state
   if (elements.btnRunExpand) elements.btnRunExpand.disabled = true;
   if (elements.btnCancelExpand) elements.btnCancelExpand.hidden = false;
   if (elements.progressShell) elements.progressShell.hidden = false;
-  updateProgress(10, I18N.buildingCanvas);
+  updateProgress(15, I18N.step1);
 
   try {
-    // Step 1: Build expanded source canvas
+    // Step 1: Build expanded source canvas & neural mask
     const expandedCanvas = buildExpandedSourceCanvas(
       currentImage,
       dims.targetWidth,
@@ -834,7 +928,6 @@ async function startExpanding() {
       h
     );
 
-    // Step 2: Build outpaint mask canvas
     const maskCanvas = buildOutpaintMaskCanvas(
       dims.targetWidth,
       dims.targetHeight,
@@ -846,8 +939,8 @@ async function startExpanding() {
       6
     );
 
-    // Step 3: Resample to 512x512 for LaMa neural model
-    updateProgress(25, I18N.scalingTensor);
+    // Step 2: Resample tensor for LaMa Fourier Model
+    updateProgress(35, I18N.step2);
     const modelSize = 512;
 
     const scaledImageCanvas = document.createElement("canvas");
@@ -866,9 +959,7 @@ async function startExpanding() {
     const planarImage = rgbaToPlanarRgb(scaledImgData, modelSize);
     const floatMask = maskToFloatArray(scaledMaskData, modelSize);
 
-    updateProgress(45, I18N.executingModel);
-
-    // Step 4: Run LaMa Inpaint Service
+    // Step 3: Run Inpaint Service inference
     const resultMessage = await inpaint.process({
       jobId,
       image: planarImage,
@@ -879,9 +970,9 @@ async function startExpanding() {
 
     if (activeJobId !== jobId) return;
 
-    updateProgress(90, I18N.blendingComposite);
+    updateProgress(85, I18N.step3);
 
-    // Step 5: Unpack result Float32Array into 512x512 canvas
+    // Step 4: Unpack result Float32Array into 512x512 canvas
     const inpaintCanvas512 = document.createElement("canvas");
     inpaintCanvas512.width = modelSize;
     inpaintCanvas512.height = modelSize;
@@ -898,7 +989,7 @@ async function startExpanding() {
     }
     ipCtx.putImageData(outImgData, 0, 0);
 
-    // Step 6: Final seamless composite
+    // Step 5: Final seamless composite (Full-resolution preserved)
     finalResultCanvas = compositeExpandedResult(
       currentImage,
       inpaintCanvas512,
@@ -919,7 +1010,7 @@ async function startExpanding() {
       if (elements.imgAfter) elements.imgAfter.src = afterObjectUrl;
       if (elements.previewImg) elements.previewImg.src = afterObjectUrl;
 
-      // Update comparison slider badges
+      // Update comparison slider badges & metadata
       if (elements.sliderBadgeLeft) {
         elements.sliderBadgeLeft.textContent = `${isVi ? "Ảnh gốc" : "Original"} (${w}×${h})`;
       }
@@ -927,11 +1018,18 @@ async function startExpanding() {
         elements.sliderBadgeRight.textContent = `${isVi ? "AI Mở Rộng" : "Expanded"} (${dims.targetWidth}×${dims.targetHeight})`;
       }
 
+      // Display estimated file size & resolution
+      if (elements.resultMetaText) {
+        const sizeMB = (blob.size / (1024 * 1024)).toFixed(1);
+        elements.resultMetaText.innerHTML = `${dims.targetWidth} × ${dims.targetHeight} px &bull; <strong>~${sizeMB} MB</strong>`;
+      }
+
       resetProcessingState();
       switchTab("compare");
       showStatus(I18N.expandSuccess(dims.targetWidth, dims.targetHeight), "success");
 
       if (elements.btnDownload) elements.btnDownload.disabled = false;
+      if (elements.btnContinueEdit) elements.btnContinueEdit.hidden = false;
     }, "image/png");
   } catch (err) {
     console.error("Expand failed:", err);
@@ -944,8 +1042,65 @@ async function startExpanding() {
 }
 
 /**
- * Cancel expanding
+ * Use current expanded result as new input image for continuous editing
  */
+async function continueEditingWithResult() {
+  if (!finalResultCanvas) return;
+  try {
+    finalResultCanvas.toBlob(async (blob) => {
+      if (!blob) return;
+      const file = new File([blob], "continued-expanded.png", { type: "image/png" });
+      await handleFileSelected(file);
+      switchTab("editor");
+      showStatus(I18N.continueEditReady, "success");
+    }, "image/png");
+  } catch (e) {
+    console.error("Continue editing error:", e);
+  }
+}
+
+/**
+ * Undo result to previous image state
+ */
+function undoResultToPrevious() {
+  if (!previousImage) return;
+  currentImage = previousImage;
+  finalResultCanvas = null;
+  updatePreviewLayout();
+  switchTab("editor");
+  if (elements.btnUndoResult) elements.btnUndoResult.hidden = true;
+  showStatus(I18N.undoResultSuccess, "info");
+}
+
+/**
+ * Toggle Zoom 100% vs Fit for inspecting seams
+ */
+function toggleZoom100() {
+  isZoomed = !isZoomed;
+  elements.btnZoomToggle?.classList.toggle("is-active", isZoomed);
+  elements.sliderContainer?.classList.toggle("is-zoomed-100", isZoomed);
+  elements.editorStage?.classList.toggle("is-zoomed-100", isZoomed);
+  if (elements.btnZoomToggle) {
+    elements.btnZoomToggle.innerHTML = isZoomed
+      ? `🔍 ${isVi ? "Thu vừa khung (Fit)" : "Fit View"}`
+      : `🔍 ${isVi ? "Soi 100% (Zoom)" : "Zoom 100%"}`;
+  }
+}
+
+/**
+ * Handle quick feedback (thumbs up / down)
+ */
+function submitFeedback(type) {
+  try {
+    localStorage.setItem(`expand_feedback_${Date.now()}`, type);
+    if (elements.btnFeedbackGood) elements.btnFeedbackGood.classList.toggle("is-voted", type === "good");
+    if (elements.btnFeedbackBad) elements.btnFeedbackBad.classList.toggle("is-voted", type === "bad");
+    showStatus(I18N.feedbackThanks, "success");
+  } catch (e) {
+    console.warn("Feedback save note:", e);
+  }
+}
+
 function cancelExpanding() {
   if (!isProcessing) return;
   inpaint.cancel(activeJobId);
@@ -953,30 +1108,39 @@ function cancelExpanding() {
   resetProcessingState();
 }
 
-/**
- * Handle inpaint service status
- */
-function handleInpaintStatus(message) {
-  const labels = {
-    "model-download": I18N.modelDownload,
-    "model-initialize": I18N.modelInit,
-    processing: I18N.modelProcessing,
-  };
-  updateProgress(message.progress ?? 50, labels[message.stage] || I18N.processingDefault);
+function handleModelDownloadProgress(data) {
+  if (elements.modelDownloadCard) elements.modelDownloadCard.hidden = false;
+  if (elements.modelDownloadFill) elements.modelDownloadFill.style.width = `${data.percent}%`;
+  if (elements.modelDownloadMetaText) {
+    const loadedMB = (data.loaded / (1024 * 1024)).toFixed(1);
+    const totalMB = (data.total / (1024 * 1024)).toFixed(1);
+    elements.modelDownloadMetaText.textContent = I18N.modelDownloading(loadedMB, totalMB, data.percent, data.speedMBps);
+  }
+  if (data.percent >= 99) {
+    showModelReady();
+  }
 }
 
-/**
- * Update progress bar
- */
+function showModelReady() {
+  if (elements.modelDownloadCard) elements.modelDownloadCard.hidden = true;
+  if (elements.modelReadyBadge) {
+    elements.modelReadyBadge.textContent = I18N.modelReady;
+    elements.modelReadyBadge.hidden = false;
+  }
+}
+
+function handleInpaintStatus(message) {
+  if (message.stage === "model-initialize") {
+    updateProgress(message.progress ?? 50, isVi ? "Khởi tạo mô hình AI trên thiết bị..." : "Initializing on-device AI model...");
+  }
+}
+
 function updateProgress(percent, message) {
   if (elements.progressFill) elements.progressFill.style.width = `${percent}%`;
   if (elements.progressPercentText) elements.progressPercentText.textContent = `${percent}%`;
-  if (elements.progressStageText) elements.progressStageText.textContent = message || I18N.processingDefault;
+  if (elements.progressStageText) elements.progressStageText.textContent = message || I18N.step1;
 }
 
-/**
- * Reset processing UI state
- */
 function resetProcessingState() {
   isProcessing = false;
   if (elements.btnRunExpand) elements.btnRunExpand.disabled = false;
@@ -984,9 +1148,6 @@ function resetProcessingState() {
   if (elements.progressShell) elements.progressShell.hidden = true;
 }
 
-/**
- * Switch Tab (Editor vs Compare)
- */
 function switchTab(tab) {
   if (tab === "editor") {
     elements.btnTabEditor?.classList.add("is-active");
@@ -1005,9 +1166,6 @@ function switchTab(tab) {
   }
 }
 
-/**
- * Download Result
- */
 function downloadResult() {
   if (!finalResultCanvas) {
     showStatus(I18N.noImageError, "error");
@@ -1040,12 +1198,10 @@ function downloadResult() {
   );
 }
 
-/**
- * Reset everything
- */
 function resetAll() {
   currentFile = null;
   currentImage = null;
+  previousImage = null;
   finalResultCanvas = null;
   if (beforeObjectUrl) URL.revokeObjectURL(beforeObjectUrl);
   if (afterObjectUrl) URL.revokeObjectURL(afterObjectUrl);
@@ -1058,15 +1214,14 @@ function resetAll() {
   if (elements.previewImg) elements.previewImg.src = "";
   if (elements.workspace) elements.workspace.hidden = true;
   if (elements.btnDownload) elements.btnDownload.disabled = true;
+  if (elements.btnContinueEdit) elements.btnContinueEdit.hidden = true;
+  if (elements.btnUndoResult) elements.btnUndoResult.hidden = true;
 
   resetProcessingState();
   switchTab("editor");
   clearStatus();
 }
 
-/**
- * Status message display helper
- */
 function showStatus(message, type = "info") {
   if (!elements.statusAlert) return;
   elements.statusAlert.textContent = message;
@@ -1080,10 +1235,10 @@ function clearStatus() {
   elements.statusAlert.hidden = true;
 }
 
-// Initialize on DOMContentLoaded
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", initEvents);
 } else {
   initEvents();
 }
+
 

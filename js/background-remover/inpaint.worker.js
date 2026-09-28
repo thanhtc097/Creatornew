@@ -5,6 +5,18 @@ let activeJobId = null;
 let backend = null;
 let modelConfig = null;
 
+// Configure multi-threading if crossOriginIsolated
+try {
+  if (self.crossOriginIsolated) {
+    ort.env.wasm.numThreads = Math.min(4, Math.max(1, (self.navigator?.hardwareConcurrency || 2) - 1));
+  } else {
+    ort.env.wasm.numThreads = 1;
+  }
+  ort.env.wasm.proxy = false;
+} catch (e) {
+  console.warn("ORT env config warning:", e);
+}
+
 self.onmessage = async ({ data }) => {
   try {
     if (data.type === "initialize") await initialize(data);
@@ -26,15 +38,37 @@ self.onmessage = async ({ data }) => {
 async function initialize(data) {
   modelConfig = data.model;
   if (session) return self.postMessage({ type: "initialized", backend, modelId: data.model.id });
-  self.postMessage({ type: "status", jobId: null, stage: "model-initialize", progress: 0, messageKey: "model-initialize" });
+  self.postMessage({ type: "status", jobId: null, stage: "model-initialize", progress: 99, messageKey: "model-initialize" });
+
   const candidates = data.preferredBackends || ["webgpu", "wasm"];
+  const modelSource = data.modelBuffer || data.model.publicUrl;
   let lastError;
+
   for (const candidate of candidates) {
     try {
       if (candidate === "webgpu" && !self.navigator?.gpu) continue;
-      session = await ort.InferenceSession.create(data.model.publicUrl, { executionProviders: [candidate] });
+      session = await ort.InferenceSession.create(modelSource, {
+        executionProviders: [candidate],
+        graphOptimizationLevel: "all",
+      });
       backend = candidate;
-      self.postMessage({ type: "initialized", backend, modelId: data.model.id });
+
+      // Free buffer immediately to avoid peak RAM duplicate
+      data.modelBuffer = null;
+
+      // Warm-up run with dummy tensors to compile WebGPU shaders / WASM threads ahead of user action
+      try {
+        const dummyImg = new Float32Array(3 * 512 * 512);
+        const dummyMask = new Float32Array(512 * 512);
+        const feeds = {};
+        feeds[session.inputNames[0]] = new ort.Tensor("float32", dummyImg, [1, 3, 512, 512]);
+        feeds[session.inputNames[1]] = new ort.Tensor("float32", dummyMask, [1, 1, 512, 512]);
+        await session.run(feeds);
+      } catch (warmupErr) {
+        console.warn("Model warm-up completed with non-fatal note:", warmupErr);
+      }
+
+      self.postMessage({ type: "initialized", backend, modelId: data.model.id, ready: true });
       return;
     } catch (error) {
       lastError = error;
@@ -81,3 +115,4 @@ function dispose() {
   session = null;
   close();
 }
+

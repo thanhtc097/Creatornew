@@ -169,9 +169,31 @@
 
     <!-- Upload & Dropzone -->
     <div class="expand-tool">
+      <!-- Model Preload & Status Card -->
+      <div class="model-download-card" id="modelDownloadCard" hidden>
+        <div class="model-card-header">
+          <div class="model-card-title">
+            <span>⚡</span>
+            <span>Downloading On-Device AI Model (92.6 MB)</span>
+          </div>
+          <div class="model-card-actions">
+            <button type="button" class="model-card-btn" id="btnPauseModelDownload">Pause</button>
+          </div>
+        </div>
+        <div class="expand-progress-track" style="height: 6px;">
+          <div class="expand-progress-fill" id="modelDownloadFill" style="width: 0%;"></div>
+        </div>
+        <div class="model-card-meta">
+          <span id="modelDownloadMetaText">Preparing on-device neural model cache...</span>
+        </div>
+        <div class="model-card-note">
+          * Model is stored locally in your browser memory for offline use (may reload if Safari clears cache after 7 days).
+        </div>
+      </div>
+
       <div class="expand-dropzone" id="expandDropzone" tabindex="0" role="button" aria-label="Upload an image to expand and uncrop">
         <div class="expand-drop-icon" aria-hidden="true">⛶</div>
-        <h2>Drop your image here, or browse</h2>
+        <h2>Drop your image here, paste (Ctrl+V) or browse</h2>
         <p>Supports JPG, PNG, WebP, and AVIF up to 25 MB &bull; 100% Private in-browser AI</p>
         <button type="button" class="expand-upload-btn" id="expandChooseBtn">Choose Image</button>
         <input type="file" id="expandFileInput" accept="image/png,image/jpeg,image/webp,image/avif" class="sr-only">
@@ -193,6 +215,13 @@
               <span>Landscape &amp; Vintage</span>
             </button>
           </div>
+        </div>
+
+        <!-- Trust Badge & Verify Link -->
+        <div class="trust-badge-row">
+          <span>🔒 Your photos 100% never leave your device</span>
+          &bull;
+          <button type="button" class="trust-verify-link" id="btnOpenVerifyModal">How to verify</button>
         </div>
       </div>
 
@@ -312,8 +341,9 @@
           <div class="expand-stats-pill">
             <div>Original: <strong id="origDimsText">--</strong></div>
             <div>Target: <strong id="targetDimsText">--</strong></div>
-            <div class="expand-diff-badge" id="expandBadge">+78% Expanded (16:9)</div>
+            <div class="expand-diff-badge level-low" id="expandBadge">+78% Expanded (16:9)</div>
             <div id="hardwareBadge" class="hardware-badge is-gpu" hidden>⚡ WebGPU GPU &bull; Processing: ~1-2s</div>
+            <div id="modelReadyBadge" class="model-ready-badge" hidden>🟢 AI Ready (Offline)</div>
             <div id="expansionWarning" class="expansion-warning-box" hidden></div>
           </div>
 
@@ -331,8 +361,11 @@
         <!-- Right Column: Visual Stage -->
         <main class="expand-stage-panel" aria-label="Visual Stage">
           <div class="stage-tabs" role="tablist">
-            <button type="button" class="stage-tab-btn is-active" id="btnTabEditor" role="tab" aria-selected="true">Layout &amp; Inpaint Editor</button>
+            <button type="button" class="stage-tab-btn is-active" id="btnTabEditor" role="tab" aria-selected="true">Layout &amp; Inpaint</button>
             <button type="button" class="stage-tab-btn" id="btnTabCompare" role="tab" aria-selected="false">Before / After Split</button>
+            <div class="stage-toolbar-actions">
+              <button type="button" class="stage-action-pill-btn" id="btnZoomToggle" title="Zoom 100% to inspect seams">🔍 Zoom 100%</button>
+            </div>
           </div>
 
           <!-- Visual Layout Stage -->
@@ -384,12 +417,23 @@
                 <label for="exportQuality"><small>Quality:</small></label>
                 <input type="range" id="exportQuality" min="70" max="100" value="95" style="width: 80px;">
               </div>
+
+              <div class="result-meta-pill" id="resultMetaPill">
+                <span id="resultMetaText">-- px &bull; ~0 MB</span>
+              </div>
             </div>
 
             <div class="export-actions">
+              <div class="feedback-row">
+                <span>Feedback:</span>
+                <button type="button" class="feedback-btn" id="btnFeedbackGood" title="Looks great">👍</button>
+                <button type="button" class="feedback-btn" id="btnFeedbackBad" title="Needs improvement">👎</button>
+              </div>
+              <button type="button" class="secondary-action-btn" id="btnContinueEdit" title="Use expanded result as new input image to expand further" hidden>🔄 Continue Editing</button>
+              <button type="button" class="secondary-action-btn" id="btnUndoResult" title="Revert to previous image state" hidden>↶ Undo Result</button>
               <button type="button" class="secondary-action-btn" id="btnReExpand" title="Re-run image expansion with current settings">✦ Re-Expand</button>
               <button type="button" class="secondary-action-btn" id="btnClear">Reset</button>
-              <button type="button" class="secondary-action-btn" id="btnShare" title="Copy tool link to share with others (Your photo is never uploaded)">🔗 Share Tool</button>
+              <button type="button" class="secondary-action-btn" id="btnShare" title="Copy tool link">🔗 Share</button>
               <button type="button" class="download-btn" id="btnDownload" disabled>
                 <span>↓</span> Download Expanded Image
               </button>
@@ -398,6 +442,31 @@
         </main>
       </div>
     </div>
+
+    <!-- Verification Modal -->
+    <div class="verify-modal-overlay" id="verifyModalOverlay" hidden>
+      <div class="verify-modal-card" role="dialog" aria-modal="true" aria-labelledby="verifyModalTitle">
+        <div class="verify-modal-header">
+          <h3 id="verifyModalTitle">🔍 How to Verify 100% On-Device Privacy</h3>
+          <button type="button" class="verify-modal-close" id="btnCloseVerifyModal" aria-label="Close">&times;</button>
+        </div>
+        <div class="verify-modal-steps">
+          <div class="verify-step-item">
+            <span class="verify-step-num">1</span>
+            <div>Press <strong>F12</strong> (or right-click and select <em>Inspect</em>) to open your browser DevTools.</div>
+          </div>
+          <div class="verify-step-item">
+            <span class="verify-step-num">2</span>
+            <div>Navigate to the <strong>Network</strong> tab and filter by <strong>Fetch/XHR</strong>.</div>
+          </div>
+          <div class="verify-step-item">
+            <span class="verify-step-num">3</span>
+            <div>Click Expand: You will see <strong>zero POST requests transmitting your image data</strong>. You can even disconnect your Wi-Fi after loading the model, and the tool continues to operate 100% offline!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
   </main>
 
   <!-- Showcase Before / After Section -->

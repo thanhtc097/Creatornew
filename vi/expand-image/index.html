@@ -168,10 +168,32 @@
 
     <!-- Upload & Dropzone -->
     <div class="expand-tool">
+      <!-- Model Preload & Status Card -->
+      <div class="model-download-card" id="modelDownloadCard" hidden>
+        <div class="model-card-header">
+          <div class="model-card-title">
+            <span>⚡</span>
+            <span>Tải mô hình AI On-Device (92.6 MB)</span>
+          </div>
+          <div class="model-card-actions">
+            <button type="button" class="model-card-btn" id="btnPauseModelDownload">Tạm dừng</button>
+          </div>
+        </div>
+        <div class="expand-progress-track" style="height: 6px;">
+          <div class="expand-progress-fill" id="modelDownloadFill" style="width: 0%;"></div>
+        </div>
+        <div class="model-card-meta">
+          <span id="modelDownloadMetaText">Đang chuẩn bị tải mô hình AI vào bộ nhớ đệm trình duyệt...</span>
+        </div>
+        <div class="model-card-note">
+          * Mô hình lưu an toàn trong trình duyệt của bạn để chạy offline vĩnh viễn (có thể cần tải lại nếu Safari tự dọn dữ liệu sau 7 ngày).
+        </div>
+      </div>
+
       <div class="expand-dropzone" id="expandDropzone" tabindex="0" role="button" aria-label="Tải ảnh lên để mở rộng khung hình">
         <div class="expand-drop-icon" aria-hidden="true">⛶</div>
-        <h2>Kéo thả ảnh vào đây, hoặc nhấn để chọn</h2>
-        <p>Hỗ trợ định dạng JPG, PNG, WebP, AVIF lên đến 25 MB &bull; Xử lý 100% riêng tư on-device</p>
+        <h2>Kéo thả ảnh vào đây, dán (Ctrl+V) hoặc nhấn để chọn</h2>
+        <p>Hỗ trợ JPG, PNG, WebP, AVIF lên đến 25 MB &bull; Xử lý 100% riêng tư on-device</p>
         <button type="button" class="expand-upload-btn" id="expandChooseBtn">Chọn ảnh từ thiết bị</button>
         <input type="file" id="expandFileInput" accept="image/png,image/jpeg,image/webp,image/avif" class="sr-only">
 
@@ -192,6 +214,13 @@
               <span>Phong Cảnh &amp; Đồ Vật</span>
             </button>
           </div>
+        </div>
+
+        <!-- Trust Badge & Verify Link -->
+        <div class="trust-badge-row">
+          <span>🔒 Ảnh của bạn 100% không rời khỏi máy tính</span>
+          &bull;
+          <button type="button" class="trust-verify-link" id="btnOpenVerifyModal">Cách tự kiểm chứng</button>
         </div>
       </div>
 
@@ -311,8 +340,9 @@
           <div class="expand-stats-pill">
             <div>Ảnh ban đầu: <strong id="origDimsText">--</strong></div>
             <div>Khung hình mới: <strong id="targetDimsText">--</strong></div>
-            <div class="expand-diff-badge" id="expandBadge">+78% Diện tích (16:9)</div>
+            <div class="expand-diff-badge level-low" id="expandBadge">+78% Diện tích (16:9)</div>
             <div id="hardwareBadge" class="hardware-badge is-gpu" hidden>⚡ WebGPU GPU &bull; Xử lý: ~1-2s</div>
+            <div id="modelReadyBadge" class="model-ready-badge" hidden>🟢 AI Sẵn Sàng (Offline)</div>
             <div id="expansionWarning" class="expansion-warning-box" hidden></div>
           </div>
 
@@ -330,8 +360,11 @@
         <!-- Right Column: Visual Stage -->
         <main class="expand-stage-panel" aria-label="Khung làm việc">
           <div class="stage-tabs" role="tablist">
-            <button type="button" class="stage-tab-btn is-active" id="btnTabEditor" role="tab" aria-selected="true">Xem trước bố cục &amp; Vẽ cọ</button>
+            <button type="button" class="stage-tab-btn is-active" id="btnTabEditor" role="tab" aria-selected="true">Bố cục &amp; Cọ vẽ</button>
             <button type="button" class="stage-tab-btn" id="btnTabCompare" role="tab" aria-selected="false">Thanh so sánh Trước/Sau</button>
+            <div class="stage-toolbar-actions">
+              <button type="button" class="stage-action-pill-btn" id="btnZoomToggle" title="Soi đường nối chi tiết 100%">🔍 Soi 100%</button>
+            </div>
           </div>
 
           <!-- Visual Layout Stage -->
@@ -372,9 +405,9 @@
           <!-- Export & Download Bar -->
           <div class="expand-export-bar">
             <div class="export-format-group">
-              <label for="exportFormat">Định dạng tải về:</label>
+              <label for="exportFormat">Định dạng:</label>
               <select id="exportFormat" class="export-select">
-                <option value="png">PNG (Giữ độ sắc nét tối đa)</option>
+                <option value="png">PNG (Giữ nét 100%)</option>
                 <option value="jpeg">JPG (Chất lượng cao)</option>
                 <option value="webp">WebP (Dung lượng nhẹ)</option>
               </select>
@@ -383,12 +416,23 @@
                 <label for="exportQuality"><small>Chất lượng:</small></label>
                 <input type="range" id="exportQuality" min="70" max="100" value="95" style="width: 80px;">
               </div>
+
+              <div class="result-meta-pill" id="resultMetaPill">
+                <span id="resultMetaText">-- px &bull; ~0 MB</span>
+              </div>
             </div>
 
             <div class="export-actions">
+              <div class="feedback-row">
+                <span>Đánh giá kết quả:</span>
+                <button type="button" class="feedback-btn" id="btnFeedbackGood" title="Kết quả đẹp">👍</button>
+                <button type="button" class="feedback-btn" id="btnFeedbackBad" title="Chưa ưng ý">👎</button>
+              </div>
+              <button type="button" class="secondary-action-btn" id="btnContinueEdit" title="Dùng ảnh kết quả làm đầu vào mới để tiếp tục mở rộng" hidden>🔄 Tinh chỉnh tiếp</button>
+              <button type="button" class="secondary-action-btn" id="btnUndoResult" title="Quay lại ảnh trước khi mở rộng" hidden>↶ Hoàn tác</button>
               <button type="button" class="secondary-action-btn" id="btnReExpand" title="Chạy lại mở rộng ảnh với cấu hình hiện tại">✦ Chạy Lại</button>
               <button type="button" class="secondary-action-btn" id="btnClear">Làm mới</button>
-              <button type="button" class="secondary-action-btn" id="btnShare" title="Sao chép link công cụ chia sẻ cho bạn bè (Ảnh của bạn không bao giờ bị chia sẻ)">🔗 Chia sẻ công cụ</button>
+              <button type="button" class="secondary-action-btn" id="btnShare" title="Sao chép link công cụ">🔗 Chia sẻ</button>
               <button type="button" class="download-btn" id="btnDownload" disabled>
                 <span>↓</span> Tải Ảnh Đã Mở Rộng
               </button>
@@ -397,6 +441,31 @@
         </main>
       </div>
     </div>
+
+    <!-- Verification Modal -->
+    <div class="verify-modal-overlay" id="verifyModalOverlay" hidden>
+      <div class="verify-modal-card" role="dialog" aria-modal="true" aria-labelledby="verifyModalTitle">
+        <div class="verify-modal-header">
+          <h3 id="verifyModalTitle">🔍 Cách tự kiểm chứng 100% On-Device</h3>
+          <button type="button" class="verify-modal-close" id="btnCloseVerifyModal" aria-label="Đóng">&times;</button>
+        </div>
+        <div class="verify-modal-steps">
+          <div class="verify-step-item">
+            <span class="verify-step-num">1</span>
+            <div>Nhấn <strong>F12</strong> trên bàn phím (hoặc chuột phải chọn <em>Kiểm tra / Inspect</em>) để mở Trình duyệt DevTools.</div>
+          </div>
+          <div class="verify-step-item">
+            <span class="verify-step-num">2</span>
+            <div>Chuyển sang tab <strong>Network (Mạng)</strong> và lọc mục <strong>Fetch/XHR</strong>.</div>
+          </div>
+          <div class="verify-step-item">
+            <span class="verify-step-num">3</span>
+            <div>Thực hiện mở rộng ảnh: Bạn sẽ thấy <strong>hoàn toàn không có bất kỳ request POST nào gửi dữ liệu ảnh</strong> lên máy chủ. Bạn thậm chí có thể ngắt kết nối Wi-Fi sau khi tải mô hình, công cụ vẫn chạy 100% mượt mà!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
   </main>
 
   <!-- Showcase Before / After Section -->
