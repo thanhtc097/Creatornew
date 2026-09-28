@@ -15,15 +15,15 @@
   <link rel="alternate" hreflang="x-default" href="https://creatornew.com/expand-image/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="CreatorNew">
-  <meta property="og:title" content="Free AI Image Expander &amp; Generative Fill – AI Uncrop Online">
+  <meta property="og:title" content="AI Image Expander &amp; Generative Fill — AI Uncrop Online | CreatorNew">
   <meta property="og:description" content="Expand image aspect ratios to 16:9, 9:16, 1:1, uncrop boundaries, and generative fill with on-device AI. 100% private in-browser, no watermark.">
   <meta property="og:url" content="https://creatornew.com/expand-image/">
   <meta property="og:image" content="https://creatornew.com/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free AI Image Expander &amp; Generative Fill | CreatorNew">
+  <meta name="twitter:title" content="AI Image Expander &amp; Generative Fill | CreatorNew">
   <meta name="twitter:description" content="Uncrop photos, expand backgrounds, and inpaint with on-device Fourier neural AI. Free & private.">
   <meta name="twitter:image" content="https://creatornew.com/og-image.png">
-  <title>Free AI Image Expander & Generative Fill – Uncrop & Outpaint Online | CreatorNew</title>
+  <title>AI Image Expander &amp; Generative Fill — Free Uncrop | CreatorNew</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -59,20 +59,19 @@
         ]
       },
       {
-        "@type": "WebApplication",
-        "@id": "https://creatornew.com/expand-image/#app",
+        "@type": "SoftwareApplication",
+        "@id": "https://creatornew.com/expand-image/#software",
         "name": "CreatorNew AI Image Expander & Generative Fill",
         "url": "https://creatornew.com/expand-image/",
         "applicationCategory": "MultimediaApplication",
-        "operatingSystem": "Web Browser",
-        "browserRequirements": "Requires JavaScript, WebAssembly/WebGPU, and a modern web browser",
-        "description": "Free on-device AI outpainting and uncropping tool that expands photo aspect ratios (16:9, 9:16, 1:1) and synthesizes missing backgrounds with Fourier neural inpainting locally in your browser.",
+        "operatingSystem": "Web Browser (Chrome, Safari, Firefox, Edge)",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "featureList": [
-          "Outpaint and expand aspect ratios to 16:9, 9:16, 1:1, 4:5, 21:9",
-          "Generative fill inpainting brush to remove and replace unwanted objects",
-          "On-device LaMa Fast Fourier Convolution neural network",
-          "100% private in-browser WebAssembly and WebGPU execution",
+          "Outpaint and expand aspect ratios to 16:9, 9:16, 1:1, 4:5, 3:2, 21:9",
+          "Generative fill inpainting brush and eraser with Undo/Redo support",
+          "On-device Fast Fourier Convolution neural network",
+          "Full resolution compositing preserving 100% original pixel sharpness",
+          "100% private in-browser WebGPU and WebAssembly execution",
           "Interactive before and after comparison split slider",
           "No watermarks and no registration required"
         ]
@@ -86,31 +85,31 @@
             "name": "What is AI Image Expander (Uncrop)?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "AI Image Expander extends the canvas of your photo beyond its original borders (outpainting), using deep neural networks to naturally continue the background scenery, lighting, and textures."
+              "text": "AI Image Expander extends the canvas of your photo beyond its original borders (outpainting), using deep neural networks to naturally continue the background scenery, lighting, and textures without stretching the subject."
             }
           },
           {
             "@type": "Question",
-            "name": "Is CreatorNew AI Image Expander free?",
+            "name": "Does expanding reduce the original image quality?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, 100% free with no subscriptions, credit systems, watermarks, or usage caps."
+              "text": "Never. CreatorNew uses multi-layer full-resolution compositing: 100% of your original image pixels remain untouched and uncompressed. The neural model only computes and adds pixels for the newly expanded outer margins."
             }
           },
           {
             "@type": "Question",
-            "name": "Are my photos uploaded to external servers?",
+            "name": "How does this compare to Photoshop Generative Fill and Canva Magic Expand?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. The AI neural model executes entirely inside your browser memory via WebAssembly and WebGPU. Your photos never leave your device."
+              "text": "Photoshop and Canva charge recurring subscriptions, consume cloud credits, and upload your personal photos to remote servers. CreatorNew runs directly on your local device (WebGPU/WASM), is 100% free with no limits or watermarks, and guarantees complete privacy."
             }
           },
           {
             "@type": "Question",
-            "name": "Can I use Generative Fill to remove objects while expanding?",
+            "name": "What is the maximum file size and resolution supported?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. Switch on the Inpaint Brush and paint over any unwanted object or defect. The AI will simultaneously replace the painted region and synthesize the expanded borders seamlessly."
+              "text": "It supports image files up to 25 MB and up to 4096px resolution in JPG, PNG, WebP, and AVIF formats."
             }
           }
         ]
@@ -182,15 +181,15 @@
           <div class="expand-samples-title">Or try with instant sample photos:</div>
           <div class="expand-samples-grid">
             <button type="button" class="expand-sample-item" data-sample="../samples/sample-portrait.jpg">
-              <img src="../samples/sample-portrait.jpg" alt="Portrait sample" loading="lazy">
+              <img src="../samples/sample-portrait.jpg" alt="Portrait photo sample uncropped to 16:9 widescreen" loading="lazy">
               <span>Portrait (Square to 16:9)</span>
             </button>
             <button type="button" class="expand-sample-item" data-sample="../samples/sample-product.jpg">
-              <img src="../samples/sample-product.jpg" alt="Product sample" loading="lazy">
+              <img src="../samples/sample-product.jpg" alt="Product sneaker sample with extended studio background" loading="lazy">
               <span>Product Photography</span>
             </button>
             <button type="button" class="expand-sample-item" data-sample="../samples/sample-object.jpg">
-              <img src="../samples/sample-object.jpg" alt="Object sample" loading="lazy">
+              <img src="../samples/sample-object.jpg" alt="Vintage camera landscape scenery sample" loading="lazy">
               <span>Landscape &amp; Vintage</span>
             </button>
           </div>
@@ -287,24 +286,35 @@
             </div>
           </details>
 
-          <!-- Inpainting / Generative Fill Brush -->
+          <!-- Inpainting / Generative Fill Brush with Eraser & Undo/Redo -->
           <div class="brush-toolbar">
             <div class="brush-controls-row">
-              <span style="font-size: 0.88rem; font-weight: 700; color: #fff;">Inpaint Brush</span>
-              <button type="button" class="brush-toggle-btn" id="btnToggleBrush">Enable Brush</button>
-              <button type="button" class="brush-clear-btn" id="btnClearBrush">Clear</button>
+              <div class="brush-mode-group">
+                <button type="button" class="brush-mode-btn is-active" id="btnModePaint" title="Brush area to inpaint">✏️ Paint</button>
+                <button type="button" class="brush-mode-btn" id="btnModeEraser" title="Erase brush strokes">🧹 Eraser</button>
+              </div>
+              <div class="brush-history-group">
+                <button type="button" class="brush-icon-btn" id="btnUndoBrush" title="Undo brush stroke" disabled>↶ Undo</button>
+                <button type="button" class="brush-icon-btn" id="btnRedoBrush" title="Redo brush stroke" disabled>↷ Redo</button>
+              </div>
             </div>
-            <div class="margin-slider-row" style="margin-top: 0.35rem;">
+            <div class="brush-controls-row">
+              <button type="button" class="brush-toggle-btn" id="btnToggleBrush">Enable Brush</button>
+              <button type="button" class="brush-clear-btn" id="btnClearBrush">Clear Brush</button>
+            </div>
+            <div class="margin-slider-row" style="margin-top: 0.2rem;">
               <div class="margin-slider-label"><span>Brush Size</span><span id="valBrushSize">30px</span></div>
               <input type="range" id="brushSize" min="10" max="100" value="30" aria-label="Brush radius">
             </div>
           </div>
 
-          <!-- Stats Pill -->
+          <!-- Stats Pill & Hardware Status Badge -->
           <div class="expand-stats-pill">
             <div>Original: <strong id="origDimsText">--</strong></div>
             <div>Target: <strong id="targetDimsText">--</strong></div>
             <div class="expand-diff-badge" id="expandBadge">+78% Expanded (16:9)</div>
+            <div id="hardwareBadge" class="hardware-badge is-gpu" hidden>⚡ WebGPU GPU &bull; Processing: ~1-2s</div>
+            <div id="expansionWarning" class="expansion-warning-box" hidden></div>
           </div>
 
           <!-- Action Button -->
@@ -365,9 +375,9 @@
             <div class="export-format-group">
               <label for="exportFormat">Format:</label>
               <select id="exportFormat" class="export-select">
-                <option value="png">PNG (Lossless)</option>
+                <option value="png">PNG (Lossless Quality)</option>
                 <option value="jpeg">JPG (High Quality)</option>
-                <option value="webp">WebP (Optimized)</option>
+                <option value="webp">WebP (Optimized Size)</option>
               </select>
 
               <div id="qualityRow" hidden style="margin-left: 0.5rem; display: inline-flex; align-items: center; gap: 0.35rem;">
@@ -377,8 +387,9 @@
             </div>
 
             <div class="export-actions">
+              <button type="button" class="secondary-action-btn" id="btnReExpand" title="Re-run image expansion with current settings">✦ Re-Expand</button>
               <button type="button" class="secondary-action-btn" id="btnClear">Reset</button>
-              <button type="button" class="secondary-action-btn" id="btnShare">Share Tool</button>
+              <button type="button" class="secondary-action-btn" id="btnShare" title="Copy tool link to share with others (Your photo is never uploaded)">🔗 Share Tool</button>
               <button type="button" class="download-btn" id="btnDownload" disabled>
                 <span>↓</span> Download Expanded Image
               </button>
@@ -388,6 +399,73 @@
       </div>
     </div>
   </main>
+
+  <!-- Showcase Before / After Section -->
+  <section class="content-section">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">Real Results</p>
+        <h2>Before &amp; After Real-World Use Cases</h2>
+        <p>See how AI seamlessly extends backgrounds without stretching or distorting central subjects.</p>
+      </div>
+      <div class="guide-grid">
+        <div class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label" style="background: rgba(99,68,245,0.15); color: #6344f5;">Portrait &bull; 1:1 to 16:9</span>
+            <h3>Profile to YouTube Thumbnail</h3>
+            <p>From a tight square selfie, AI naturally continues the room walls and shoulders seamlessly into 16:9 widescreen format.</p>
+          </div>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label" style="background: rgba(16,185,129,0.15); color: #10b981;">E-Commerce &bull; Studio Backdrop</span>
+            <h3>Product Banner Photography</h3>
+            <p>Extend white and gray studio backdrops to add promotional copy, prices, and branding badges cleanly.</p>
+          </div>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-body">
+            <span class="guide-label" style="background: rgba(245,158,11,0.15); color: #f59e0b;">Photography &bull; Cinema 21:9</span>
+            <h3>Scenic Landscape Expansion</h3>
+            <p>Naturally extrapolate skies, beaches, and horizons horizontally for dramatic cinematic ultrawide visuals.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- When to Use / When NOT to Use -->
+  <section class="content-section soft">
+    <div class="section-inner">
+      <div class="section-heading">
+        <p class="eyebrow">Best Practices</p>
+        <h2>When to Use &amp; When NOT to Use AI Expander</h2>
+      </div>
+      <div class="guide-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+        <article class="guide-card" style="border-top: 3px solid #10b981;">
+          <div class="guide-card-body">
+            <span class="guide-label" style="background: rgba(16,185,129,0.15); color: #10b981;">✓ RECOMMENDED USE CASES</span>
+            <ul style="margin: 0.75rem 0 0 1.25rem; line-height: 1.7; color: #cbd5e1;">
+              <li>Converting vertical photos to 16:9 widescreen for YouTube thumbnails or web banners.</li>
+              <li>Transforming horizontal landscape shots to 9:16 vertical for TikTok, Reels, or Shorts.</li>
+              <li>Expanding studio backgrounds, skies, ocean horizons, rooms, and natural textures.</li>
+              <li>Removing photobombers or unwanted watermarks while simultaneously uncropping.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="guide-card" style="border-top: 3px solid #ef4444;">
+          <div class="guide-card-body">
+            <span class="guide-label" style="background: rgba(239,68,68,0.15); color: #ef4444;">✕ NOT RECOMMENDED FOR</span>
+            <ul style="margin: 0.75rem 0 0 1.25rem; line-height: 1.7; color: #cbd5e1;">
+              <li>Expecting AI to invent completely new specific people or complex custom machinery.</li>
+              <li>Expanding borders that require 100% legally verbatim legible paragraphs or fine print.</li>
+              <li>Microscopic vector precision artwork (use specialized vector software instead).</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
   <!-- How It Works Section -->
   <section class="content-section">
@@ -471,6 +549,18 @@
           </p>
         </details>
         <details class="faq-item" style="background: #141622; border: 1px solid #272a3d; border-radius: 12px; padding: 1rem 1.25rem;">
+          <summary style="font-weight: 700; color: #fff; cursor: pointer;">Does expanding reduce the original image quality?</summary>
+          <p style="margin-top: 0.75rem; color: #9496a8; line-height: 1.6;">
+            Never. CreatorNew uses multi-layer full-resolution compositing: 100% of your original image pixels remain untouched and uncompressed. The neural model only computes and adds pixels for the newly expanded outer margins.
+          </p>
+        </details>
+        <details class="faq-item" style="background: #141622; border: 1px solid #272a3d; border-radius: 12px; padding: 1rem 1.25rem;">
+          <summary style="font-weight: 700; color: #fff; cursor: pointer;">How does this compare to Photoshop Generative Fill and Canva Magic Expand?</summary>
+          <p style="margin-top: 0.75rem; color: #9496a8; line-height: 1.6;">
+            Photoshop and Canva charge recurring subscriptions, consume cloud credits, and upload your personal photos to remote servers. CreatorNew runs directly on your local device (WebGPU/WASM), is 100% free with no limits or watermarks, and guarantees complete privacy.
+          </p>
+        </details>
+        <details class="faq-item" style="background: #141622; border: 1px solid #272a3d; border-radius: 12px; padding: 1rem 1.25rem;">
           <summary style="font-weight: 700; color: #fff; cursor: pointer;">How does Generative Fill work alongside expansion?</summary>
           <p style="margin-top: 0.75rem; color: #9496a8; line-height: 1.6;">
             If you want to remove an unwanted tourist, watermark, or object while expanding the canvas, activate the Inpaint Brush and paint over that area. The neural network will inpaint the brushed area and synthesize the outer borders in a single unified pass.
@@ -480,6 +570,12 @@
           <summary style="font-weight: 700; color: #fff; cursor: pointer;">Why does the first use take a few moments to load?</summary>
           <p style="margin-top: 0.75rem; color: #9496a8; line-height: 1.6;">
             On your first visit, your browser caches the lightweight neural model weights (92.6 MB). After the first run, the model remains cached in your browser and executes instantly, even offline.
+          </p>
+        </details>
+        <details class="faq-item" style="background: #141622; border: 1px solid #272a3d; border-radius: 12px; padding: 1rem 1.25rem;">
+          <summary style="font-weight: 700; color: #fff; cursor: pointer;">What is the maximum file size and resolution supported?</summary>
+          <p style="margin-top: 0.75rem; color: #9496a8; line-height: 1.6;">
+            It supports image files up to 25 MB and up to 4096px resolution in JPG, PNG, WebP, and AVIF formats.
           </p>
         </details>
       </div>

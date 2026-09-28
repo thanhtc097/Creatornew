@@ -23,7 +23,7 @@
   <meta name="twitter:title" content="Mở Rộng Ảnh Bằng AI &amp; Generative Fill | CreatorNew">
   <meta name="twitter:description" content="AI Uncrop &amp; outpainting mở rộng khung hình ảnh sang 16:9, 9:16 mượt mà không làm méo chủ thể.">
   <meta name="twitter:image" content="https://creatornew.com/og-image.png">
-  <title>Mở Rộng Ảnh Bằng AI & Generative Fill — Tự Động Vẽ Bù Khung Hình Online Miễn Phí | CreatorNew</title>
+  <title>Mở Rộng Ảnh AI &amp; Generative Fill — AI Uncrop | CreatorNew</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -61,18 +61,19 @@
       {
         "@type": "SoftwareApplication",
         "@id": "https://creatornew.com/vi/expand-image/#software",
-        "name": "CreatorNew Mở Rộng Ảnh Bằng AI & Generative Fill",
+        "name": "CreatorNew Mở Rộng Ảnh AI & Generative Fill",
         "url": "https://creatornew.com/vi/expand-image/",
         "applicationCategory": "MultimediaApplication",
-        "operatingSystem": "Any",
+        "operatingSystem": "Web Browser (Chrome, Safari, Firefox, Edge)",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "VND" },
         "featureList": [
-          "Mở rộng tỉ lệ ảnh sang 16:9, 9:16, 1:1, 4:5, 21:9",
-          "Tự động vẽ bù phông nền cảnh quan bằng AI LaMa Fourier",
-          "Cọ vẽ Generative Fill xóa vật thể thừa đồng thời",
-          "Xử lý trực tiếp trên trình duyệt, bảo mật 100%",
-          "Thanh trượt vuốt so sánh Before/After trực quan",
-          "Không watermark, không yêu cầu đăng ký tài khoản"
+          "Mở rộng tỉ lệ ảnh sang 16:9 YouTube, 9:16 TikTok Reels, 1:1, 4:5, 3:2, 21:9",
+          "Tự động vẽ bù phông nền cảnh quan bằng AI Fourier cục bộ",
+          "Cọ vẽ Generative Fill và Cọ Tẩy (Eraser) kèm Undo/Redo xóa vật thể thừa",
+          "Bảo toàn 100% độ sắc nét pixel gốc của ảnh ban đầu",
+          "Xử lý trực tiếp trên trình duyệt bằng WebGPU/WASM, bảo mật riêng tư 100%",
+          "Thanh trượt vuốt so sánh Before/After trực quan trên PC và mobile",
+          "Không watermark, không giới hạn lượt dùng, không cần đăng ký"
         ]
       },
       {
@@ -97,10 +98,18 @@
           },
           {
             "@type": "Question",
-            "name": "Làm thế nào để đổi ảnh vuông 1:1 sang ảnh bìa YouTube 16:9?",
+            "name": "Kích thước và dung lượng tối đa hỗ trợ là bao nhiêu?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Bạn chỉ cần tải ảnh lên, chọn tỉ lệ '16:9' và bấm 'Mở Rộng & Điền Bằng AI'. AI sẽ mở rộng hai bên viền ảnh sang chuẩn 16:9 mà vẫn giữ nguyên đối tượng ở giữa."
+              "text": "Hỗ trợ tệp ảnh dung lượng lên đến 25 MB với độ phân giải lên đến 4096px (JPG, PNG, WebP, AVIF). Vùng ảnh gốc của bạn luôn được bảo toàn 100% độ nét gốc."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Công cụ này khác gì Photoshop Generative Fill hay Canva Magic Expand?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Photoshop và Canva yêu cầu trả phí hàng tháng, tính credit và gửi ảnh lên cloud server. CreatorNew xử lý hoàn toàn on-device trong trình duyệt bằng WebGPU/WASM, miễn phí vĩnh viễn, không giới hạn số lần sử dụng và bảo mật riêng tư 100%."
             }
           }
         ]
@@ -116,7 +125,7 @@
       <a class="brand" href="../../vi/" aria-label="Trang chủ CreatorNew">
         <picture>
           <source srcset="../../creatornew-logo.webp?v=2" type="image/webp">
-          <img class="brand-logo" src="../../creatornew-logo.png?v=2" alt="CreatorNew" width="2075" height="758" fetchpriority="high" decoding="async">
+          <img class="brand-logo" src="../../creatornew-logo.png?v=2" alt="CreatorNew Logo" width="2075" height="758" fetchpriority="high" decoding="async">
         </picture>
       </a>
       <div class="nav-links">
@@ -162,7 +171,7 @@
       <div class="expand-dropzone" id="expandDropzone" tabindex="0" role="button" aria-label="Tải ảnh lên để mở rộng khung hình">
         <div class="expand-drop-icon" aria-hidden="true">⛶</div>
         <h2>Kéo thả ảnh vào đây, hoặc nhấn để chọn</h2>
-        <p>Hỗ trợ định dạng JPG, PNG, WebP, AVIF lên đến 25 MB &bull; Xử lý 100% riêng tư</p>
+        <p>Hỗ trợ định dạng JPG, PNG, WebP, AVIF lên đến 25 MB &bull; Xử lý 100% riêng tư on-device</p>
         <button type="button" class="expand-upload-btn" id="expandChooseBtn">Chọn ảnh từ thiết bị</button>
         <input type="file" id="expandFileInput" accept="image/png,image/jpeg,image/webp,image/avif" class="sr-only">
 
@@ -171,16 +180,16 @@
           <div class="expand-samples-title">Hoặc thử nhanh với ảnh mẫu có sẵn:</div>
           <div class="expand-samples-grid">
             <button type="button" class="expand-sample-item" data-sample="../../samples/sample-portrait.jpg">
-              <img src="../../samples/sample-portrait.jpg" alt="Ảnh chân dung mẫu" loading="lazy">
+              <img src="../../samples/sample-portrait.jpg" alt="Ảnh chân dung mẫu chuyển đổi sang 16:9" loading="lazy">
               <span>Chân Dung (Mở rộng sang 16:9)</span>
             </button>
             <button type="button" class="expand-sample-item" data-sample="../../samples/sample-product.jpg">
-              <img src="../../samples/sample-product.jpg" alt="Ảnh sản phẩm mẫu" loading="lazy">
-              <span>Ảnh Sản Phẩm</span>
+              <img src="../../samples/sample-product.jpg" alt="Ảnh sản phẩm giày sneaker mẫu trên nền studio" loading="lazy">
+              <span>Ảnh Sản Phẩm (Nền Studio)</span>
             </button>
             <button type="button" class="expand-sample-item" data-sample="../../samples/sample-object.jpg">
-              <img src="../../samples/sample-object.jpg" alt="Ảnh đồ vật mẫu" loading="lazy">
-              <span>Ảnh Phong Cảnh / Vật Thể</span>
+              <img src="../../samples/sample-object.jpg" alt="Ảnh máy ảnh vintage phong cảnh mẫu" loading="lazy">
+              <span>Phong Cảnh &amp; Đồ Vật</span>
             </button>
           </div>
         </div>
@@ -276,24 +285,35 @@
             </div>
           </details>
 
-          <!-- Inpainting / Generative Fill Brush -->
+          <!-- Inpainting / Generative Fill Brush with Eraser & Undo/Redo -->
           <div class="brush-toolbar">
             <div class="brush-controls-row">
-              <span style="font-size: 0.88rem; font-weight: 700; color: #fff;">Cọ Generative Fill</span>
-              <button type="button" class="brush-toggle-btn" id="btnToggleBrush">Bật Cọ Vẽ</button>
-              <button type="button" class="brush-clear-btn" id="btnClearBrush">Xóa nét vẽ</button>
+              <div class="brush-mode-group">
+                <button type="button" class="brush-mode-btn is-active" id="btnModePaint" title="Cọ vẽ vùng cần AI vẽ bù">✏️ Cọ Vẽ</button>
+                <button type="button" class="brush-mode-btn" id="btnModeEraser" title="Tẩy bớt nét cọ đã vẽ">🧹 Cọ Tẩy</button>
+              </div>
+              <div class="brush-history-group">
+                <button type="button" class="brush-icon-btn" id="btnUndoBrush" title="Hoàn tác (Undo)" disabled>↶ Hoàn tác</button>
+                <button type="button" class="brush-icon-btn" id="btnRedoBrush" title="Làm lại (Redo)" disabled>↷ Làm lại</button>
+              </div>
             </div>
-            <div class="margin-slider-row" style="margin-top: 0.35rem;">
-              <div class="margin-slider-label"><span>Kích thước cọ</span><span id="valBrushSize">30px</span></div>
+            <div class="brush-controls-row">
+              <button type="button" class="brush-toggle-btn" id="btnToggleBrush">Bật Cọ Vẽ</button>
+              <button type="button" class="brush-clear-btn" id="btnClearBrush">Xóa toàn bộ cọ</button>
+            </div>
+            <div class="margin-slider-row" style="margin-top: 0.2rem;">
+              <div class="margin-slider-label"><span>Kích thước nét cọ</span><span id="valBrushSize">30px</span></div>
               <input type="range" id="brushSize" min="10" max="100" value="30" aria-label="Kích thước cọ vẽ">
             </div>
           </div>
 
-          <!-- Stats Pill -->
+          <!-- Stats Pill & Hardware Acceleration Badge -->
           <div class="expand-stats-pill">
             <div>Ảnh ban đầu: <strong id="origDimsText">--</strong></div>
             <div>Khung hình mới: <strong id="targetDimsText">--</strong></div>
             <div class="expand-diff-badge" id="expandBadge">+78% Diện tích (16:9)</div>
+            <div id="hardwareBadge" class="hardware-badge is-gpu" hidden>⚡ WebGPU GPU &bull; Xử lý: ~1-2s</div>
+            <div id="expansionWarning" class="expansion-warning-box" hidden></div>
           </div>
 
           <!-- Action Button -->
@@ -366,8 +386,9 @@
             </div>
 
             <div class="export-actions">
+              <button type="button" class="secondary-action-btn" id="btnReExpand" title="Chạy lại mở rộng ảnh với cấu hình hiện tại">✦ Chạy Lại</button>
               <button type="button" class="secondary-action-btn" id="btnClear">Làm mới</button>
-              <button type="button" class="secondary-action-btn" id="btnShare">Chia sẻ</button>
+              <button type="button" class="secondary-action-btn" id="btnShare" title="Sao chép link công cụ chia sẻ cho bạn bè (Ảnh của bạn không bao giờ bị chia sẻ)">🔗 Chia sẻ công cụ</button>
               <button type="button" class="download-btn" id="btnDownload" disabled>
                 <span>↓</span> Tải Ảnh Đã Mở Rộng
               </button>
@@ -378,67 +399,67 @@
     </div>
   </main>
 
-  <!-- How It Works Section -->
+  <!-- Showcase Before / After Section -->
   <section class="content-section">
     <div class="section-inner">
       <div class="section-heading">
-        <p class="eyebrow">3 Bước Đơn Giản</p>
-        <h2>Cách mở rộng ảnh và tự động vẽ bù phông nền online</h2>
-        <p>Không cần phần mềm phức tạp, không cần tài khoản. Mọi tác vụ chạy mượt mà trên trình duyệt.</p>
+        <p class="eyebrow">Kết Quả Thực Tế</p>
+        <h2>Minh họa Before &amp; After các trường hợp thực tế</h2>
+        <p>Xem cách AI mở rộng khung hình tự nhiên mà không làm biến dạng đối tượng trung tâm.</p>
       </div>
       <div class="guide-grid">
         <div class="guide-card">
           <div class="guide-card-body">
-            <span class="guide-label">Bước 1</span>
-            <h3>Tải Ảnh Cần Mở Rộng</h3>
-            <p>Chọn ảnh từ thiết bị của bạn hoặc thử nghiệm với các ảnh chụp mẫu có sẵn.</p>
+            <span class="guide-label" style="background: rgba(99,68,245,0.15); color: #6344f5;">Chân Dung &bull; 1:1 sang 16:9</span>
+            <h3>Đổi Ảnh Đại Diện Sang Ảnh Bìa YouTube</h3>
+            <p>Từ ảnh selfie vuông, AI vẽ nối tiếp hai bên phòng ốc và cánh tay liền mạch chuẩn 16:9 để làm thumbnail video.</p>
           </div>
         </div>
         <div class="guide-card">
           <div class="guide-card-body">
-            <span class="guide-label">Bước 2</span>
-            <h3>Chọn Tỉ Lệ &amp; Quét Cọ</h3>
-            <p>Chọn tỉ lệ bạn muốn chuyển đổi (16:9 cho YouTube, 9:16 cho TikTok Reels) và có thể quét cọ xóa vật thể thừa nếu muốn.</p>
+            <span class="guide-label" style="background: rgba(16,185,129,0.15); color: #10b981;">Thương Mại &bull; Nền Studio</span>
+            <h3>Ảnh Sản Phẩm Bán Hàng E-Commerce</h3>
+            <p>Mở rộng không gian phông nền studio trắng/xám để chèn thêm slogan, tiêu đề khuyến mãi và giá bán.</p>
           </div>
         </div>
         <div class="guide-card">
           <div class="guide-card-body">
-            <span class="guide-label">Bước 3</span>
-            <h3>Nhận Ảnh Đã Vẽ Bù</h3>
-            <p>Nhấn Mở Rộng, kiểm tra độ liền mạch của phông nền qua thanh vuốt Before/After và tải ảnh về máy.</p>
+            <span class="guide-label" style="background: rgba(245,158,11,0.15); color: #f59e0b;">Nhiếp Ảnh &bull; Panorama 21:9</span>
+            <h3>Mở Rộng Không Gian Phong Cảnh</h3>
+            <p>Tự động mở rộng bầu trời, mặt biển, cánh đồng ra hai bên tạo cảm giác đại cảnh điện ảnh siêu rộng.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Key Technology Benefits -->
+  <!-- When to Use / When NOT to Use -->
   <section class="content-section soft">
     <div class="section-inner">
       <div class="section-heading">
-        <p class="eyebrow">Ưu Điểm Vượt Trội</p>
-        <h2>Công nghệ mở rộng ảnh AI thông minh, không rủi ro</h2>
+        <p class="eyebrow">Hướng Dẫn Ứng Dụng</p>
+        <h2>Khi nào nên dùng &amp; Khi nào không nên dùng AI Expander?</h2>
       </div>
-      <div class="guide-grid">
-        <article class="guide-card">
+      <div class="guide-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+        <article class="guide-card" style="border-top: 3px solid #10b981;">
           <div class="guide-card-body">
-            <span class="guide-label" style="background: rgba(16,185,129,0.15); color: #10b981;">Bảo Mật Tuyệt Đối</span>
-            <h3>Xử Lý Trên Máy Người Dùng</h3>
-            <p>Ảnh của bạn không bao giờ bị tải lên cloud. Mạng nơ-ron LaMa chạy trực tiếp trên card đồ họa máy tính hoặc chip điện thoại của bạn.</p>
+            <span class="guide-label" style="background: rgba(16,185,129,0.15); color: #10b981;">✓ NÊN DÙNG TRONG CÁC TRƯỜNG HỢP</span>
+            <ul style="margin: 0.75rem 0 0 1.25rem; line-height: 1.7; color: #cbd5e1;">
+              <li>Đổi tỉ lệ ảnh dọc sang ngang 16:9 cho YouTube, banner web.</li>
+              <li>Đổi ảnh ngang sang dọc 9:16 cho TikTok, Reels, Instagram Story.</li>
+              <li>Mở rộng phông nền phong cảnh, cây cối, bầu trời, phòng ốc, studio.</li>
+              <li>Xóa người đi đường, xóa watermark thừa đồng thời khi mở rộng viền.</li>
+            </ul>
           </div>
         </article>
-        <article class="guide-card">
+        <article class="guide-card" style="border-top: 3px solid #ef4444;">
           <div class="guide-card-body">
-            <span class="guide-label" style="background: rgba(99,68,245,0.15); color: #6344f5;">Cảnh Quan Tự Nhiên</span>
-            <h3>Nối Tiếp Bối Cảnh Mượt Mà</h3>
-            <p>AI phân tích ánh sáng, vân nền và góc chiếu để vẽ tiếp bầu trời, mặt đất, sàn nhà liền lạc không thấy vết ghép.</p>
-          </div>
-        </article>
-        <article class="guide-card">
-          <div class="guide-card-body">
-            <span class="guide-label" style="background: rgba(245,158,11,0.15); color: #f59e0b;">Tối Ưu Nền Tảng</span>
-            <h3>Chuẩn Kích Thước Mạng Xã Hội</h3>
-            <p>Dễ dàng biến ảnh dọc thành ảnh bìa video ngang 16:9 hoặc biến ảnh ngang thành video dọc 9:16 Shorts/TikTok mà không bị cắt mất chi tiết quan trọng.</p>
+            <span class="guide-label" style="background: rgba(239,68,68,0.15); color: #ef4444;">✕ KHÔNG NÊN DÙNG TRONG CÁC TRƯỜNG HỢP</span>
+            <ul style="margin: 0.75rem 0 0 1.25rem; line-height: 1.7; color: #cbd5e1;">
+              <li>Yêu cầu AI "sáng tạo vẽ mới" một người khác hoặc đồ vật cụ thể vào vùng trống.</li>
+              <li>Vùng viền cần mở rộng chứa tài liệu chữ viết văn bản pháp lý cần độ chính xác từ ngữ 100%.</li>
+              <li>Cần chỉnh sửa đường nét vi mô (nên dùng công cụ vẽ vector chuyên dụng).</li>
+            </ul>
           </div>
         </article>
       </div>
@@ -456,13 +477,25 @@
         <details class="faq-item" style="background: #141622; border: 1px solid #272a3d; border-radius: 12px; padding: 1rem 1.25rem;">
           <summary style="font-weight: 700; color: #fff; cursor: pointer;">Mở rộng ảnh AI (Uncrop / Outpainting) khác gì phóng to ảnh?</summary>
           <p style="margin-top: 0.75rem; color: #9496a8; line-height: 1.6;">
-            Phóng to (Upscale) chỉ làm sắc nét và tăng số pixel của nội dung hiện tại. Trong khi đó, Mở rộng ảnh (Uncrop/Outpainting) sẽ mở rộng thêm không gian viền bên ngoài và AI sẽ tự động "sáng tạo" vẽ tiếp phần bối cảnh bị thiếu.
+            Phóng to (Upscale) chỉ làm sắc nét và tăng số pixel của nội dung hiện tại. Trong khi đó, Mở rộng ảnh (Uncrop/Outpainting) sẽ mở rộng thêm không gian viền bên ngoài và AI sẽ tự động "sáng tạo" vẽ tiếp phần bối cảnh bị thiếu mà không làm biến dạng chủ thể ở giữa.
           </p>
         </details>
         <details class="faq-item" style="background: #141622; border: 1px solid #272a3d; border-radius: 12px; padding: 1rem 1.25rem;">
-          <summary style="font-weight: 700; color: #fff; cursor: pointer;">Cọ Generative Fill dùng để làm gì?</summary>
+          <summary style="font-weight: 700; color: #fff; cursor: pointer;">Chất lượng ảnh gốc có bị giảm khi mở rộng không?</summary>
           <p style="margin-top: 0.75rem; color: #9496a8; line-height: 1.6;">
-            Khi bạn muốn xóa một người đi đường, xóa logo, rác hoặc một chi tiết thừa trong ảnh, bạn chỉ cần bật cọ vẽ và quét lên vùng đó. AI sẽ vừa mở rộng khung hình vừa xóa và vẽ lấp vùng đó một cách tự nhiên.
+            Tuyệt đối không. CreatorNew sử dụng kỹ thuật ghép đa tầng (Full-Resolution Compositing): 100% pixel của ảnh gốc được giữ nguyên độ nét ban đầu, mô hình AI chỉ tính toán và bổ sung pixel cho các phần viền mở rộng bên ngoài.
+          </p>
+        </details>
+        <details class="faq-item" style="background: #141622; border: 1px solid #272a3d; border-radius: 12px; padding: 1rem 1.25rem;">
+          <summary style="font-weight: 700; color: #fff; cursor: pointer;">Công cụ này so với Photoshop Generative Fill và Canva Magic Expand như thế nào?</summary>
+          <p style="margin-top: 0.75rem; color: #9496a8; line-height: 1.6;">
+            Photoshop và Canva yêu cầu trả phí định kỳ, giới hạn credit và bắt buộc tải ảnh lên máy chủ đám mây. CreatorNew chạy trực tiếp trên GPU/CPU của thiết bị bạn (WebGPU/WASM), hoàn toàn miễn phí, không watermark, bảo mật 100% và hoạt động không giới hạn số lượt.
+          </p>
+        </details>
+        <details class="faq-item" style="background: #141622; border: 1px solid #272a3d; border-radius: 12px; padding: 1rem 1.25rem;">
+          <summary style="font-weight: 700; color: #fff; cursor: pointer;">Có giới hạn dung lượng và kích thước ảnh không?</summary>
+          <p style="margin-top: 0.75rem; color: #9496a8; line-height: 1.6;">
+            Hỗ trợ file ảnh dung lượng tối đa 25 MB với độ phân giải lên đến 4096px cho các định dạng JPG, PNG, WebP, AVIF.
           </p>
         </details>
       </div>

@@ -135,7 +135,7 @@
       <ul>
         <li><strong>Image Tools</strong> (Image Converter, Image Compressor, Image Resizer, PNG to WebP, JPG to WebP, WebP to JPG): All decompression, pixel transformations, and re-encoding occur entirely within your web browser using HTML5 Canvas and native browser APIs.</li>
         <li><strong>PDF Tools</strong> (Merge PDF, Split PDF, Delete PDF Pages, Images to PDF, PDF to JPG, PDF to PNG, Rotate PDF): Document parsing, page manipulation, and PDF generation are handled client-side using JavaScript in volatile browser memory.</li>
-        <li><strong>AI Background &amp; Object Remover</strong>: AI inference runs locally on your machine via WebAssembly (WASM) and ONNX Runtime Web. The model runs on your CPU inside a Web Worker. No pixels are ever uploaded to a remote AI cloud API.</li>
+        <li><strong>AI Tools</strong> (AI Image Expander &amp; Generative Fill, AI Image Upscaler, AI Background Remover): AI inference runs 100% locally on your machine via WebGPU and WebAssembly (WASM SIMD) powered by ONNX Runtime Web. The neural networks execute inside your local GPU/CPU. Zero image pixels are ever uploaded to remote cloud servers.</li>
       </ul>
       <p>Because your files are processed in your browser's local RAM, you can even disconnect your internet connection once the page is loaded, and the conversion or editing will complete without error.</p>
 
@@ -152,7 +152,7 @@
       <p>CreatorNew uses standard browser storage mechanisms solely to improve your user experience and performance:</p>
       <ul>
         <li><strong>Language Preference:</strong> We store a small preference key (<code>creatornew-language</code>) in your browser's <code>localStorage</code> so that the site remembers your chosen language (English or Vietnamese) across visits.</li>
-        <li><strong>AI Model Caching:</strong> When you use the AI Background Remover for the first time, your browser downloads the ONNX neural network model weights and stores them in your browser's Cache API or IndexedDB. This ensures that on future visits, the model loads instantly without consuming your network bandwidth.</li>
+        <li><strong>AI Model Caching:</strong> When you use AI tools (such as AI Image Expander or Background Remover) for the first time, your browser downloads the ONNX neural network model weights and securely stores them in your browser's Cache API or IndexedDB. This ensures that on future visits, the models load instantly without consuming your network bandwidth.</li>
       </ul>
       <p>All data stored in your browser remains on your physical device and can be cleared at any time through your browser settings.</p>
 

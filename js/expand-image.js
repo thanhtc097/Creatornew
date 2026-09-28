@@ -30,21 +30,28 @@ const elements = {
   marginB: $("marginB"),
   valMarginB: $("valMarginB"),
 
-  // Brush Controls
+  // Brush & Eraser Controls
   btnToggleBrush: $("btnToggleBrush"),
+  btnModePaint: $("btnModePaint"),
+  btnModeEraser: $("btnModeEraser"),
+  btnUndoBrush: $("btnUndoBrush"),
+  btnRedoBrush: $("btnRedoBrush"),
   brushSize: $("brushSize"),
   valBrushSize: $("valBrushSize"),
   btnClearBrush: $("btnClearBrush"),
   brushCanvas: $("brushCanvasLayer"),
 
-  // Stats Pill
+  // Stats Pill & Warning
   origDimsText: $("origDimsText"),
   targetDimsText: $("targetDimsText"),
   expandBadge: $("expandBadge"),
+  expansionWarning: $("expansionWarning"),
+  hardwareBadge: $("hardwareBadge"),
 
   // Action Buttons
   btnRunExpand: $("btnRunExpand"),
   btnCancelExpand: $("btnCancelExpand"),
+  btnReExpand: $("btnReExpand"),
 
   // Progress
   progressShell: $("expandProgressShell"),
@@ -99,9 +106,14 @@ const I18N = {
   brushOff: isVi
     ? "Chế độ Cọ Vẽ TẮT."
     : "Brush Mode Off.",
+  eraserOn: isVi
+    ? "✦ Đã chuyển sang Cọ Tẩy (Eraser): Quét lên nét cọ đã vẽ để tẩy bớt."
+    : "Eraser Mode On: Erase existing painted brush strokes.",
   brushCleared: isVi
     ? "Đã xóa toàn bộ nét vẽ cọ."
     : "Brush mask cleared.",
+  undoSuccess: isVi ? "Đã hoàn tác nét vẽ (Undo)." : "Undo brush stroke.",
+  redoSuccess: isVi ? "Đã làm lại nét vẽ (Redo)." : "Redo brush stroke.",
   buildingCanvas: isVi
     ? "Đang thiết lập khung hình mở rộng và chuẩn bị AI..."
     : "Building expanded canvas and neural mask...",
@@ -125,8 +137,8 @@ const I18N = {
     ? "Xử lý mở rộng AI cục bộ gặp lỗi. Vui lòng thử tỉ lệ khác hoặc dùng trình duyệt hiện đại hơn."
     : "Local neural expansion failed. Try a smaller aspect ratio or another browser.",
   linkCopied: isVi
-    ? "Đã sao chép liên kết công cụ vào khay nhớ tạm! Hãy chia sẻ cho bạn bè."
-    : "Tool link copied to clipboard! Share with your friends.",
+    ? "Đã sao chép link công cụ vào clipboard! (Lưu ý: Ảnh của bạn được bảo mật tuyệt đối trên thiết bị, không bị chia sẻ)."
+    : "Tool link copied to clipboard! (Note: Your photos remain 100% private on your device).",
   downloadSuccess: (name) =>
     isVi
       ? `Đã tải về ${name} thành công!`
@@ -156,6 +168,7 @@ let currentAlign = "center";
 let activeJobId = 0;
 let isProcessing = false;
 let isBrushActive = false;
+let brushToolMode = "paint"; // 'paint' | 'eraser'
 let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
@@ -165,10 +178,17 @@ let afterObjectUrl = null;
 let userMaskCanvas = null;
 let finalResultCanvas = null;
 
+// Brush Undo/Redo Stack
+let brushHistory = [];
+let brushHistoryStep = -1;
+const MAX_BRUSH_HISTORY = 20;
+
 // Initialize Inpaint Service
 const inpaint = new InpaintService({ onStatus: handleInpaintStatus });
 
 function initEvents() {
+  detectHardwareAcceleration();
+
   // File Picker
   elements.chooseBtn?.addEventListener("click", (e) => {
     e.stopPropagation();
@@ -255,8 +275,13 @@ function initEvents() {
     });
   });
 
-  // Brush Controls
+  // Brush & Eraser Mode Toggles
   elements.btnToggleBrush?.addEventListener("click", toggleBrush);
+  elements.btnModePaint?.addEventListener("click", () => setBrushMode("paint"));
+  elements.btnModeEraser?.addEventListener("click", () => setBrushMode("eraser"));
+  elements.btnUndoBrush?.addEventListener("click", undoBrush);
+  elements.btnRedoBrush?.addEventListener("click", redoBrush);
+
   elements.brushSize?.addEventListener("input", (e) => {
     if (elements.valBrushSize) elements.valBrushSize.textContent = `${e.target.value}px`;
   });
@@ -267,6 +292,7 @@ function initEvents() {
 
   // Action Buttons
   elements.btnRunExpand?.addEventListener("click", startExpanding);
+  elements.btnReExpand?.addEventListener("click", startExpanding);
   elements.btnCancelExpand?.addEventListener("click", cancelExpanding);
   elements.btnClear?.addEventListener("click", resetAll);
   elements.btnDownload?.addEventListener("click", downloadResult);
@@ -302,6 +328,36 @@ function initEvents() {
 }
 
 /**
+ * Detect WebGPU hardware acceleration vs WebAssembly fallback
+ */
+async function detectHardwareAcceleration() {
+  let isWebGPU = false;
+  try {
+    if (navigator.gpu) {
+      const adapter = await navigator.gpu.requestAdapter();
+      if (adapter) isWebGPU = true;
+    }
+  } catch {
+    isWebGPU = false;
+  }
+
+  if (elements.hardwareBadge) {
+    if (isWebGPU) {
+      elements.hardwareBadge.innerHTML = isVi
+        ? `⚡ <strong>WebGPU Tăng Tốc</strong> &bull; Xử lý: ~1-2s`
+        : `⚡ <strong>WebGPU Accelerated</strong> &bull; Speed: ~1-2s`;
+      elements.hardwareBadge.className = "hardware-badge is-gpu";
+    } else {
+      elements.hardwareBadge.innerHTML = isVi
+        ? `⚙️ <strong>WASM SIMD</strong> &bull; Xử lý: ~3-5s`
+        : `⚙️ <strong>WASM SIMD Fallback</strong> &bull; Speed: ~3-5s`;
+      elements.hardwareBadge.className = "hardware-badge is-cpu";
+    }
+    elements.hardwareBadge.hidden = false;
+  }
+}
+
+/**
  * Handle image file selection
  */
 async function handleFileSelected(file) {
@@ -325,10 +381,14 @@ async function handleFileSelected(file) {
 
     currentImage = img;
 
-    // Reset user brush canvas
+    // Reset user brush canvas & history
     userMaskCanvas = document.createElement("canvas");
     userMaskCanvas.width = img.naturalWidth;
     userMaskCanvas.height = img.naturalHeight;
+
+    brushHistory = [];
+    brushHistoryStep = -1;
+    updateUndoRedoButtons();
 
     if (elements.imgBefore) elements.imgBefore.src = beforeObjectUrl;
     if (elements.workspace) elements.workspace.hidden = false;
@@ -385,6 +445,18 @@ function updatePreviewLayout() {
     elements.expandBadge.textContent = `+${dims.expansionPercent}% ${actionLabel} (${dims.aspectKey})`;
   }
 
+  // Expansion warning for large expansion (>50%)
+  if (elements.expansionWarning) {
+    if (dims.expansionPercent >= 50) {
+      elements.expansionWarning.textContent = isVi
+        ? `💡 Mẹo: Mở rộng trên ${dims.expansionPercent}% diện tích cho kết quả tốt nhất với phong cảnh, tường phòng, bầu trời hoặc phông nền đơn giản.`
+        : `💡 Pro-tip: Expanding over ${dims.expansionPercent}% works best with scenery, textures, sky, or studio backgrounds.`;
+      elements.expansionWarning.hidden = false;
+    } else {
+      elements.expansionWarning.hidden = true;
+    }
+  }
+
   // Render visual canvas preview showing expanded layout frame
   renderVisualPreview(dims);
 }
@@ -435,7 +507,7 @@ function renderVisualPreview(dims) {
 }
 
 /**
- * Setup brush drawing on the brush canvas layer (mouse & touch support)
+ * Setup brush drawing on the brush canvas layer (mouse & touch support + eraser + history)
  */
 function setupBrushDrawing() {
   const canvas = elements.brushCanvas;
@@ -473,6 +545,7 @@ function setupBrushDrawing() {
     if (isDrawing) {
       isDrawing = false;
       syncBrushToUserMask();
+      pushBrushHistory();
     }
   };
 
@@ -507,8 +580,17 @@ function setupBrushDrawing() {
 
   function drawStroke(x, y) {
     const radius = Number(elements.brushSize?.value) || 30;
-    ctx.strokeStyle = "rgba(255, 60, 60, 0.85)";
-    ctx.fillStyle = "rgba(255, 60, 60, 0.85)";
+
+    if (brushToolMode === "eraser") {
+      ctx.globalCompositeOperation = "destination-out";
+      ctx.strokeStyle = "rgba(0, 0, 0, 1)";
+      ctx.fillStyle = "rgba(0, 0, 0, 1)";
+    } else {
+      ctx.globalCompositeOperation = "source-over";
+      ctx.strokeStyle = "rgba(255, 60, 60, 0.85)";
+      ctx.fillStyle = "rgba(255, 60, 60, 0.85)";
+    }
+
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
     ctx.lineWidth = radius * 2;
@@ -521,6 +603,9 @@ function setupBrushDrawing() {
     ctx.beginPath();
     ctx.arc(x, y, radius, 0, Math.PI * 2);
     ctx.fill();
+
+    // Reset composite operation
+    ctx.globalCompositeOperation = "source-over";
   }
 }
 
@@ -556,6 +641,96 @@ function syncBrushToUserMask() {
 }
 
 /**
+ * Push current mask state to history for Undo/Redo
+ */
+function pushBrushHistory() {
+  if (!userMaskCanvas) return;
+  // Truncate future steps
+  brushHistory = brushHistory.slice(0, brushHistoryStep + 1);
+  const uCtx = userMaskCanvas.getContext("2d");
+  const imgData = uCtx.getImageData(0, 0, userMaskCanvas.width, userMaskCanvas.height);
+  brushHistory.push(imgData);
+  if (brushHistory.length > MAX_BRUSH_HISTORY) {
+    brushHistory.shift();
+  }
+  brushHistoryStep = brushHistory.length - 1;
+  updateUndoRedoButtons();
+}
+
+/**
+ * Undo brush stroke
+ */
+function undoBrush() {
+  if (!userMaskCanvas || brushHistoryStep < 0) return;
+  if (brushHistoryStep > 0) {
+    brushHistoryStep--;
+    restoreBrushState(brushHistory[brushHistoryStep]);
+  } else if (brushHistoryStep === 0) {
+    brushHistoryStep = -1;
+    clearBrushMaskOnly();
+  }
+  updateUndoRedoButtons();
+  showStatus(I18N.undoSuccess, "info");
+}
+
+/**
+ * Redo brush stroke
+ */
+function redoBrush() {
+  if (!userMaskCanvas || brushHistoryStep >= brushHistory.length - 1) return;
+  brushHistoryStep++;
+  restoreBrushState(brushHistory[brushHistoryStep]);
+  updateUndoRedoButtons();
+  showStatus(I18N.redoSuccess, "info");
+}
+
+/**
+ * Restore mask state from ImageData
+ */
+function restoreBrushState(imgData) {
+  if (!userMaskCanvas || !imgData) return;
+  const uCtx = userMaskCanvas.getContext("2d");
+  uCtx.clearRect(0, 0, userMaskCanvas.width, userMaskCanvas.height);
+  uCtx.putImageData(imgData, 0, 0);
+
+  // Redraw onto visual brushCanvas
+  syncUserMaskToBrushCanvas();
+  updatePreviewLayout();
+}
+
+/**
+ * Sync userMaskCanvas back onto stage brushCanvas
+ */
+function syncUserMaskToBrushCanvas() {
+  if (!currentImage || !userMaskCanvas || !elements.brushCanvas) return;
+  const w = currentImage.naturalWidth;
+  const h = currentImage.naturalHeight;
+  const customPadding = {
+    top: Number(elements.marginT?.value) || 0,
+    bottom: Number(elements.marginB?.value) || 0,
+    left: Number(elements.marginL?.value) || 0,
+    right: Number(elements.marginR?.value) || 0,
+  };
+  const dims = calculateExpandedDimensions(w, h, currentAspect, currentAlign, customPadding);
+
+  const bCtx = elements.brushCanvas.getContext("2d");
+  bCtx.clearRect(0, 0, elements.brushCanvas.width, elements.brushCanvas.height);
+  bCtx.drawImage(userMaskCanvas, dims.offsetX, dims.offsetY);
+}
+
+/**
+ * Update disabled states of Undo/Redo buttons
+ */
+function updateUndoRedoButtons() {
+  if (elements.btnUndoBrush) {
+    elements.btnUndoBrush.disabled = brushHistoryStep < 0;
+  }
+  if (elements.btnRedoBrush) {
+    elements.btnRedoBrush.disabled = brushHistoryStep >= brushHistory.length - 1;
+  }
+}
+
+/**
  * Toggle brush mode
  */
 function toggleBrush() {
@@ -568,15 +743,36 @@ function toggleBrush() {
   }
   if (elements.brushCanvas) {
     elements.brushCanvas.style.pointerEvents = isBrushActive ? "auto" : "none";
-    elements.brushCanvas.style.cursor = isBrushActive ? "crosshair" : "default";
+    elements.brushCanvas.style.cursor = isBrushActive
+      ? brushToolMode === "eraser" ? "cell" : "crosshair"
+      : "default";
   }
   showStatus(isBrushActive ? I18N.brushOn : I18N.brushOff, "info");
 }
 
 /**
- * Clear brush mask
+ * Switch tool between Paint (cọ vẽ) and Eraser (cọ tẩy)
  */
-function clearBrush() {
+function setBrushMode(mode) {
+  brushToolMode = mode;
+  if (!isBrushActive) toggleBrush();
+
+  if (elements.btnModePaint) {
+    elements.btnModePaint.classList.toggle("is-active", mode === "paint");
+  }
+  if (elements.btnModeEraser) {
+    elements.btnModeEraser.classList.toggle("is-active", mode === "eraser");
+  }
+  if (elements.brushCanvas) {
+    elements.brushCanvas.style.cursor = mode === "eraser" ? "cell" : "crosshair";
+  }
+  showStatus(mode === "eraser" ? I18N.eraserOn : I18N.brushOn, "info");
+}
+
+/**
+ * Clear mask only without resetting whole history
+ */
+function clearBrushMaskOnly() {
   if (userMaskCanvas) {
     const ctx = userMaskCanvas.getContext("2d");
     ctx.clearRect(0, 0, userMaskCanvas.width, userMaskCanvas.height);
@@ -586,8 +782,19 @@ function clearBrush() {
     ctx.clearRect(0, 0, elements.brushCanvas.width, elements.brushCanvas.height);
   }
   updatePreviewLayout();
+}
+
+/**
+ * Clear all brush masks and history
+ */
+function clearBrush() {
+  clearBrushMaskOnly();
+  brushHistory = [];
+  brushHistoryStep = -1;
+  updateUndoRedoButtons();
   showStatus(I18N.brushCleared, "info");
 }
+
 
 /**
  * Start Expanding & Generative Inpainting

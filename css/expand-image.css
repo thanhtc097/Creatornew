@@ -301,6 +301,59 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.brush-mode-group {
+  display: inline-flex;
+  border-radius: 8px;
+  background: #10121d;
+  padding: 2px;
+  gap: 2px;
+}
+
+.brush-mode-btn {
+  padding: 0.35rem 0.65rem;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #9496a8;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.brush-mode-btn.is-active {
+  background: var(--expand-primary);
+  color: #fff;
+}
+
+.brush-history-group {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.brush-icon-btn {
+  padding: 0.35rem 0.55rem;
+  background: #23273c;
+  border: 1px solid var(--expand-border);
+  border-radius: 6px;
+  color: #d1d5e6;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.brush-icon-btn:hover:not(:disabled) {
+  background: #2f3450;
+  color: #fff;
+}
+
+.brush-icon-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
 }
 
 .brush-toggle-btn {
@@ -335,7 +388,7 @@
   color: #ff5e5e;
 }
 
-/* Stats Pill */
+/* Stats Pill & Hardware Badges */
 .expand-stats-pill {
   padding: 0.85rem;
   background: #0f111a;
@@ -355,6 +408,46 @@
   color: var(--expand-lime);
   font-weight: 700;
   font-size: 0.78rem;
+}
+
+.hardware-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.4rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  background: #181b2a;
+  border: 1px solid var(--expand-border);
+  color: #cbd5e1;
+}
+
+.hardware-badge.is-gpu {
+  border-color: rgba(99, 68, 245, 0.5);
+  color: #b9a9ff;
+  background: rgba(99, 68, 245, 0.12);
+}
+
+.hardware-badge.is-gpu strong {
+  color: #fff;
+}
+
+.hardware-badge.is-cpu {
+  border-color: #3b4252;
+  color: #94a3b8;
+}
+
+.expansion-warning-box {
+  margin-top: 0.5rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fbbf24;
+  font-size: 0.78rem;
+  line-height: 1.45;
 }
 
 /* Main Action Button */
