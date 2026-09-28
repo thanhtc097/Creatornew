@@ -64,6 +64,7 @@ export default defineConfig({
           "viGuideMoRongAnhAI": "vi/guides/mo-rong-anh-bang-ai/index.html",
           "viGuideWebpVsPngVsJpg": "vi/guides/so-sanh-webp-png-jpg/index.html",
           "blogHub": "blog/index.html",
+          "blogHowToExpandImagesWithAi": "blog/how-to-expand-images-with-ai/index.html",
           "blogHowToCompressImages": "blog/how-to-compress-images/index.html",
           "blogHowToMergePdf": "blog/how-to-merge-pdf/index.html",
           "blogWebpVsAvif": "blog/webp-vs-avif-2026/index.html",
