@@ -1290,90 +1290,151 @@
   }
 }
 
-/* Quick Navigation / Table of Contents */
+/* Flagship Centered Hero Layout for AI Image Expander */
+.hero#expandTool {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  width: min(1180px, calc(100% - 40px)) !important;
+  margin: 0 auto !important;
+  padding: 30px 0 50px !important;
+  min-height: auto !important;
+  gap: 0 !important;
+}
+
+.hero#expandTool .hero-copy {
+  max-width: 860px !important;
+  margin: 0 auto 1.25rem !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.hero#expandTool h1 {
+  max-width: 860px !important;
+  margin: 0 auto 0.85rem !important;
+  font-size: clamp(34px, 4.8vw, 54px) !important;
+  line-height: 1.15 !important;
+  text-align: center !important;
+  letter-spacing: -0.04em !important;
+}
+
+.hero#expandTool .eyebrow {
+  margin: 0 auto 16px !important;
+  display: inline-block !important;
+}
+
+.hero#expandTool .lead {
+  max-width: 780px !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+  font-size: 1.05rem !important;
+  line-height: 1.6 !important;
+  color: var(--muted, #64748b) !important;
+}
+
+.hero#expandTool .expand-tool {
+  width: 100% !important;
+  margin-top: 0.5rem !important;
+}
+
+/* Quick Navigation / Table of Contents - Modern Glassmorphism Pill Bar */
 .quick-nav-bar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.5rem 0.75rem;
-  padding: 0.75rem 1rem;
-  background: #11131c;
-  border: 1px solid var(--expand-border);
-  border-radius: 12px;
-  margin: 1.5rem auto 2rem;
-  max-width: 960px;
+  justify-content: center;
+  gap: 0.5rem 0.6rem;
+  padding: 0.65rem 1.15rem;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(208, 213, 221, 0.9);
+  border-radius: 999px;
+  box-shadow: 0 4px 20px rgba(12, 14, 20, 0.04);
+  backdrop-filter: blur(12px);
+  margin: 1.25rem auto 1.5rem;
+  max-width: 1020px;
   font-size: 0.86rem;
+  width: 100%;
 }
 .quick-nav-title {
-  color: var(--expand-lime);
-  font-weight: 700;
+  color: var(--navy, #0c0e14);
+  font-weight: 750;
   display: flex;
   align-items: center;
   gap: 0.35rem;
+  margin-right: 0.35rem;
+  font-size: 0.85rem;
 }
 .quick-nav-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem 0.6rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem 0.5rem;
 }
 .quick-nav-link {
-  color: #cbd5e1;
+  color: #475467;
   text-decoration: none;
-  padding: 0.25rem 0.65rem;
-  background: #181b29;
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  background: #ffffff;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
   transition: all 0.15s ease;
+  font-size: 0.82rem;
 }
 .quick-nav-link:hover {
-  color: #fff;
-  border-color: var(--expand-lime);
-  background: rgba(194, 248, 52, 0.1);
+  color: #6344f5;
+  border-color: #6344f5;
+  background: rgba(99, 68, 245, 0.06);
+  transform: translateY(-1px);
 }
 
-/* SEO Comparison & Dimension Tables */
+/* SEO Comparison & Dimension Tables - Modern Clean Theme */
 .seo-table-container {
   overflow-x: auto;
   margin: 1.5rem 0;
-  border-radius: 14px;
-  border: 1px solid var(--expand-border);
-  background: #11131c;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(12, 14, 20, 0.04);
   -webkit-overflow-scrolling: touch;
 }
 .seo-table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  font-size: 0.9rem;
-  min-width: 600px;
+  font-size: 0.92rem;
+  min-width: 640px;
 }
 .seo-table th,
 .seo-table td {
-  padding: 0.85rem 1rem;
-  border-bottom: 1px solid #1f2233;
+  padding: 1rem 1.15rem;
+  border-bottom: 1px solid #f1f5f9;
 }
 .seo-table th {
-  background: #161826;
-  color: #f1f5f9;
+  background: #f8fafc;
+  color: #0f172a;
   font-weight: 700;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
 }
 .seo-table tr:last-child td {
   border-bottom: none;
 }
 .seo-table tr:hover td {
-  background: rgba(255, 255, 255, 0.02);
+  background: #f8faff;
 }
 .seo-table .highlight-col {
-  background: rgba(99, 68, 245, 0.08);
+  background: rgba(99, 68, 245, 0.04);
   font-weight: 600;
-  color: #fff;
+  color: #0f172a;
 }
 .seo-table th.highlight-col {
-  background: rgba(99, 68, 245, 0.2);
-  color: var(--expand-lime);
+  background: rgba(99, 68, 245, 0.1);
+  color: #6344f5;
+  border-bottom: 2px solid #6344f5;
 }
 .badge-check {
   color: #10b981;
@@ -1446,38 +1507,71 @@
 
 /* Privacy Verification Inline Section */
 .privacy-verify-box {
-  background: #141622;
-  border: 1px solid var(--expand-border);
-  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
   padding: 2rem;
   margin-top: 1rem;
+  box-shadow: 0 10px 30px rgba(12, 14, 20, 0.04);
 }
 .privacy-steps-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.25rem;
-  margin-top: 1.25rem;
+  margin-top: 1rem;
 }
 .privacy-step-card {
-  background: #181b29;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  padding: 1.25rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1.5rem;
   position: relative;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.privacy-step-card:hover {
+  transform: translateY(-2px);
+  border-color: #6344f5;
 }
 .privacy-step-num {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  background: rgba(194, 248, 52, 0.15);
-  color: var(--expand-lime);
+  background: rgba(99, 68, 245, 0.12);
+  color: #6344f5;
   font-weight: 800;
   font-size: 0.95rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
 }
+
+/* FAQ Details Overrides */
+.faq-list .faq-item {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 14px !important;
+  padding: 1.15rem 1.35rem !important;
+  box-shadow: 0 2px 8px rgba(12, 14, 20, 0.03) !important;
+  transition: border-color 0.15s ease !important;
+}
+.faq-list .faq-item:hover,
+.faq-list .faq-item[open] {
+  border-color: #6344f5 !important;
+}
+.faq-list .faq-item summary {
+  font-weight: 700 !important;
+  color: #0f172a !important;
+  cursor: pointer !important;
+  font-size: 1rem !important;
+}
+.faq-list .faq-item p {
+  margin-top: 0.85rem !important;
+  color: #475467 !important;
+  line-height: 1.65 !important;
+  font-size: 0.95rem !important;
+}
+
 
 
 
