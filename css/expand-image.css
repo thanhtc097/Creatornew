@@ -1546,31 +1546,104 @@
   margin-bottom: 0.85rem;
 }
 
-/* FAQ Details Overrides */
-.faq-list .faq-item {
-  background: #ffffff !important;
-  border: 1px solid #e2e8f0 !important;
-  border-radius: 14px !important;
-  padding: 1.15rem 1.35rem !important;
-  box-shadow: 0 2px 8px rgba(12, 14, 20, 0.03) !important;
-  transition: border-color 0.15s ease !important;
+/* Dropzone Title */
+.dropzone-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #fff;
 }
-.faq-list .faq-item:hover,
-.faq-list .faq-item[open] {
-  border-color: #6344f5 !important;
+
+/* Before & After Visual Showcase Cards */
+.before-after-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.25rem;
 }
-.faq-list .faq-item summary {
-  font-weight: 700 !important;
-  color: #0f172a !important;
-  cursor: pointer !important;
-  font-size: 1rem !important;
+.before-after-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(12, 14, 20, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
 }
-.faq-list .faq-item p {
-  margin-top: 0.85rem !important;
-  color: #475467 !important;
-  line-height: 1.65 !important;
-  font-size: 0.95rem !important;
+.before-after-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(99, 68, 245, 0.08);
 }
+.before-after-visual-wrap {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: #0c0e14;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.before-after-visual-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.before-after-badge-overlay {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(12, 14, 20, 0.82);
+  color: #c2f834;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(194, 248, 52, 0.3);
+}
+.before-after-content {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.before-after-content h3 {
+  margin: 0.5rem 0;
+  font-size: 1.18rem;
+  color: var(--navy, #0c0e14);
+}
+.before-after-content p {
+  margin: 0;
+  color: var(--muted, #64748b);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+/* Dimension Table Preset Button */
+.table-preset-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(99, 68, 245, 0.08);
+  color: #6344f5;
+  border: 1px solid rgba(99, 68, 245, 0.25);
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+.table-preset-btn:hover {
+  background: #6344f5;
+  color: #ffffff;
+  transform: scale(1.03);
+}
+
 
 
 
