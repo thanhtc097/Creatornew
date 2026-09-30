@@ -9,6 +9,7 @@ export const ASPECT_RATIOS = {
   "9:16": { label: "9:16 Vertical (TikTok, Reels, Shorts)", ratio: 9 / 16 },
   "1:1": { label: "1:1 Square (Instagram Feed)", ratio: 1 / 1 },
   "4:5": { label: "4:5 Portrait (Instagram Post)", ratio: 4 / 5 },
+  "3:4": { label: "3:4 Portrait (Instagram Grid 2026 / Pinterest)", ratio: 3 / 4 },
   "4:3": { label: "4:3 Standard Photo", ratio: 4 / 3 },
   "3:2": { label: "3:2 Camera Photo", ratio: 3 / 2 },
   "2:3": { label: "2:3 Portrait Photo", ratio: 2 / 3 },
