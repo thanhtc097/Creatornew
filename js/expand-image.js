@@ -96,6 +96,9 @@ const elements = {
   btnShare: $("btnShare"),
   statusAlert: $("expandStatusAlert"),
 
+  // Next Tools CTA
+  nextToolsCard: $("nextToolsCard"),
+
   // Trust & Verification Modal
   btnOpenVerifyModal: $("btnOpenVerifyModal"),
   btnCloseVerifyModal: $("btnCloseVerifyModal"),
@@ -159,8 +162,8 @@ const I18N = {
     : "Please expand an image first.",
   modelDownloading: (loadedMB, totalMB, pct, speed) =>
     isVi
-      ? `Đang tải AI (một lần duy nhất): ${loadedMB} / ${totalMB} MB (${pct}%) • ${speed} MB/s`
-      : `Downloading on-device AI model: ${loadedMB} / ${totalMB} MB (${pct}%) • ${speed} MB/s`,
+      ? `Đang tải AI (Tải một lần, dùng offline): ${loadedMB} / ${totalMB} MB (${pct}%) • ${speed} MB/s`
+      : `Downloading on-device AI (Download once, use offline): ${loadedMB} / ${totalMB} MB (${pct}%) • ${speed} MB/s`,
   modelReady: isVi ? "🟢 AI Sẵn Sàng (Offline)" : "🟢 AI Ready (Offline)",
   feedbackThanks: isVi ? "Cảm ơn bạn đã gửi phản hồi!" : "Thank you for your feedback!",
   pasteDetected: isVi ? "Đã nhận diện ảnh từ clipboard!" : "Image pasted from clipboard!",
@@ -344,11 +347,30 @@ function initEvents() {
     if (elements.qualityRow) elements.qualityRow.hidden = !isLossy;
   });
 
-  // Share tool
-  elements.btnShare?.addEventListener("click", () => {
+  // Share tool (Web Share API with Clipboard Fallback)
+  elements.btnShare?.addEventListener("click", async () => {
+    const shareData = {
+      title: document.title,
+      text: isVi
+        ? "Mở rộng ảnh & Uncrop bằng AI on-device miễn phí, bảo mật 100% không watermark trên CreatorNew"
+        : "Free on-device AI Image Expander & Generative Fill — 100% private in-browser with zero watermark on CreatorNew",
+      url: window.location.href,
+    };
+    if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+      try {
+        await navigator.share(shareData);
+        return;
+      } catch (err) {
+        if (err?.name === "AbortError") return;
+      }
+    }
     if (navigator.clipboard) {
-      navigator.clipboard.writeText(window.location.href);
-      showStatus(I18N.linkCopied, "success");
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showStatus(I18N.linkCopied, "success");
+      } catch {
+        showStatus(window.location.href, "info");
+      }
     }
   });
 
@@ -1030,6 +1052,7 @@ async function startExpanding() {
 
       if (elements.btnDownload) elements.btnDownload.disabled = false;
       if (elements.btnContinueEdit) elements.btnContinueEdit.hidden = false;
+      if (elements.nextToolsCard) elements.nextToolsCard.hidden = false;
     }, "image/png");
   } catch (err) {
     console.error("Expand failed:", err);
@@ -1216,6 +1239,7 @@ function resetAll() {
   if (elements.btnDownload) elements.btnDownload.disabled = true;
   if (elements.btnContinueEdit) elements.btnContinueEdit.hidden = true;
   if (elements.btnUndoResult) elements.btnUndoResult.hidden = true;
+  if (elements.nextToolsCard) elements.nextToolsCard.hidden = true;
 
   resetProcessingState();
   switchTab("editor");

@@ -1290,4 +1290,194 @@
   }
 }
 
+/* Quick Navigation / Table of Contents */
+.quick-nav-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #11131c;
+  border: 1px solid var(--expand-border);
+  border-radius: 12px;
+  margin: 1.5rem auto 2rem;
+  max-width: 960px;
+  font-size: 0.86rem;
+}
+.quick-nav-title {
+  color: var(--expand-lime);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.quick-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.6rem;
+}
+.quick-nav-link {
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 0.25rem 0.65rem;
+  background: #181b29;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.15s ease;
+}
+.quick-nav-link:hover {
+  color: #fff;
+  border-color: var(--expand-lime);
+  background: rgba(194, 248, 52, 0.1);
+}
+
+/* SEO Comparison & Dimension Tables */
+.seo-table-container {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border-radius: 14px;
+  border: 1px solid var(--expand-border);
+  background: #11131c;
+  -webkit-overflow-scrolling: touch;
+}
+.seo-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+  min-width: 600px;
+}
+.seo-table th,
+.seo-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid #1f2233;
+}
+.seo-table th {
+  background: #161826;
+  color: #f1f5f9;
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.seo-table tr:last-child td {
+  border-bottom: none;
+}
+.seo-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+.seo-table .highlight-col {
+  background: rgba(99, 68, 245, 0.08);
+  font-weight: 600;
+  color: #fff;
+}
+.seo-table th.highlight-col {
+  background: rgba(99, 68, 245, 0.2);
+  color: var(--expand-lime);
+}
+.badge-check {
+  color: #10b981;
+  font-weight: 700;
+}
+.badge-cross {
+  color: #ef4444;
+  font-weight: 600;
+}
+.badge-neutral {
+  color: #f59e0b;
+}
+
+/* Next Tools Workflow CTA Card */
+.next-tools-card {
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, rgba(99, 68, 245, 0.15), rgba(194, 248, 52, 0.08));
+  border: 1px solid rgba(194, 248, 52, 0.25);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.next-tools-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.next-tools-title {
+  font-weight: 700;
+  color: #fff;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.next-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.75rem;
+}
+.next-tool-link-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #141622;
+  border: 1px solid var(--expand-border);
+  border-radius: 10px;
+  text-decoration: none;
+  color: #f1f5f9;
+  transition: all 0.2s ease;
+}
+.next-tool-link-card:hover {
+  border-color: var(--expand-lime);
+  transform: translateY(-2px);
+}
+.next-tool-link-card strong {
+  display: block;
+  font-size: 0.9rem;
+  color: #fff;
+}
+.next-tool-link-card small {
+  color: var(--expand-text-muted);
+  font-size: 0.78rem;
+}
+
+/* Privacy Verification Inline Section */
+.privacy-verify-box {
+  background: #141622;
+  border: 1px solid var(--expand-border);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-top: 1rem;
+}
+.privacy-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+.privacy-step-card {
+  background: #181b29;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.25rem;
+  position: relative;
+}
+.privacy-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(194, 248, 52, 0.15);
+  color: var(--expand-lime);
+  font-weight: 800;
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+
 
