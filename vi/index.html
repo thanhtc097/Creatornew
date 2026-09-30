@@ -117,7 +117,9 @@
   </header>
 
   <main>
-    <div class="home-hero-wrapper">
+    <div class="home-hero-wrapper" id="homeHeroWrapper">
+      <div class="hero-bg-layer" id="heroBgLayer" aria-hidden="true"></div>
+      <div class="hero-gradient-overlay" aria-hidden="true"></div>
       <section class="home-hero">
         <div class="home-hero-copy">
           <p class="eyebrow">100% Xử lý Trên Trình Duyệt · Bảo Mật Tuyệt Đối</p>
@@ -134,6 +136,12 @@
           </div>
         </div>
       </section>
+      <div class="hero-wallpaper-widget" id="heroWallpaperWidget" aria-label="Điều khiển hình nền">
+        <button type="button" class="hero-wallpaper-btn" id="heroWallpaperBtn" aria-label="Đổi hình nền 4K" title="Đổi hình nền 4K">
+          <svg class="wallpaper-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+          <span class="wallpaper-text" id="heroWallpaperTitle">Đổi hình nền 4K</span>
+        </button>
+      </div>
     </div>
 
     <section id="tools" class="content-section home-tools" aria-labelledby="tools-title">
@@ -291,5 +299,6 @@
   </footer>
 
   <script type="module" src="../js/site-i18n.js"></script>
+  <script type="module" src="../js/hero-wallpaper.js"></script>
 </body>
 </html>

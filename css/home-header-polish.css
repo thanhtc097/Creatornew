@@ -249,46 +249,128 @@
 .home-hero-wrapper {
   position: relative;
   width: 100%;
-  background:
-    linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0.94) 28%, rgba(255, 255, 255, 0.7) 45%, rgba(255, 255, 255, 0.1) 62%, transparent 75%),
-    image-set(
-      url('/hero-creator.webp') type('image/webp'),
-      url('/hero-creator-4k.jpg') type('image/jpeg')
-    ) right center / cover no-repeat;
+  overflow: hidden;
+  background-color: #0f172a;
   border-bottom: 1px solid rgba(208, 213, 221, 0.5);
 }
 
+.hero-bg-layer {
+  position: absolute;
+  inset: 0;
+  background-image: image-set(
+    url('/hero-creator.webp') type('image/webp'),
+    url('/hero-creator-4k.jpg') type('image/jpeg')
+  );
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+  will-change: opacity, transform;
+}
+
+.hero-bg-layer.changing {
+  opacity: 0.25;
+  transform: scale(1.02);
+}
+
+.hero-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0.95) 28%, rgba(255, 255, 255, 0.72) 48%, rgba(255, 255, 255, 0.18) 68%, transparent 82%);
+  z-index: 2;
+  pointer-events: none;
+}
+
 .home-page .home-hero {
+  position: relative;
+  z-index: 3;
   grid-template-columns: minmax(0, 580px);
   min-height: 580px;
   padding: 84px 0;
 }
 
 .home-page .home-hero-copy {
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.84);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   padding: 36px 40px;
   border-radius: 26px;
   border: 1px solid rgba(255, 255, 255, 0.95);
   box-shadow: 0 16px 42px rgba(16, 24, 40, 0.08);
 }
 
+/* Wallpaper Switcher Floating Pill */
+.hero-wallpaper-widget {
+  position: absolute;
+  bottom: 20px;
+  right: 24px;
+  z-index: 4;
+}
+
+.hero-wallpaper-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 9999px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12);
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+}
+
+.hero-wallpaper-btn:hover {
+  background: #ffffff;
+  color: #5d5fef;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.18);
+}
+
+.hero-wallpaper-btn:active {
+  transform: translateY(0);
+}
+
+.hero-wallpaper-btn .wallpaper-icon {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-wallpaper-btn.loading .wallpaper-icon {
+  transform: rotate(360deg);
+}
+
 @media (max-width: 960px) {
-  .home-hero-wrapper {
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.88) 55%, rgba(255, 255, 255, 0.25) 100%),
-      image-set(
-        url('/hero-creator.webp') type('image/webp'),
-        url('/hero-creator-4k.jpg') type('image/jpeg')
-      ) center top / cover no-repeat;
+  .hero-bg-layer {
+    background-position: center top;
+  }
+  .hero-gradient-overlay {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.9) 55%, rgba(255, 255, 255, 0.35) 100%);
   }
   .home-page .home-hero {
     grid-template-columns: 1fr;
     min-height: auto;
-    padding: 40px 0 60px;
+    padding: 40px 0 64px;
   }
   .home-page .home-hero-copy {
     padding: 26px 20px;
+  }
+  .hero-wallpaper-widget {
+    bottom: 12px;
+    right: 14px;
+  }
+  .hero-wallpaper-btn {
+    padding: 6px 11px;
+    font-size: 11.5px;
   }
 }
 
